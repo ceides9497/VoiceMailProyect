@@ -2,7 +2,7 @@
 target/
 
 # Eclipse files
-.classpath
+*.classpath
 .project
 .settings/
 
