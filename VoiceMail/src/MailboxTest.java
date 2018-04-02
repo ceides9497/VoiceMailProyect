@@ -73,5 +73,19 @@ public class MailboxTest {
 		mailbox.saveCurrentMessage();
 		assertEquals(mockedMessage,mailbox.getCurrentMessage());
     }
+	
+	@Test
+    public void deberiaCambiarGreeting() {
+		String newGreeting = "Bienvenido";
+		mailbox.setGreeting(newGreeting);
+		assertEquals(newGreeting,mailbox.getGreeting());
+    }
+	
+	@Test
+    public void deberiaCambiarPasscode() {
+		String newPasscode = "3";
+		mailbox.setPasscode(newPasscode);
+		assertTrue(mailbox.checkPasscode(newPasscode));
+    }
 
 }
