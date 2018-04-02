@@ -28,5 +28,11 @@ public class MailboxTest {
     public void deberiaDevolverPasscodeFalse() {
 		assertFalse(mailbox.checkPasscode("2"));
     }
+	
+	@Test
+    public void deberiaRetornarMensaje() {
+		mailbox.addMessage(mockedMessage);
+	    when(mockedMessage.getText()).thenReturn(greeting);
+    }
 
 }
