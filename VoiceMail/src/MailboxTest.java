@@ -2,18 +2,21 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import static org.mockito.Mockito.*;
 
 public class MailboxTest {
 
 	Mailbox mailbox;
 	String passcode;
 	String greeting;
+	Message mockedMessage;
 	
 	@Before
 	public void init(){
 		passcode = "1";
 		greeting = "Hola!";
 		mailbox = new Mailbox(passcode,greeting);
+		mockedMessage = mock(Message.class);
 	}
 	
 	@Test
