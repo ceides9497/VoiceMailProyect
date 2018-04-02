@@ -36,6 +36,10 @@ public class MailSystem
          return  mailboxes.get(i - 1);
       else return null;
    }
+   
+   public int getLengthMailbox(){
+	   return mailboxes.size();
+   }
 
    private ArrayList<Mailbox> mailboxes;
 }
