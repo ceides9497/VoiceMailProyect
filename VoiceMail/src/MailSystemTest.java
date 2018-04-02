@@ -15,7 +15,7 @@ public class MailSystemTest {
 	}
 	
 	@Test
-    public void deberiaEstarHaberCreadoLosMailboxes() {
+    public void deberiaHaberCreadoLosMailboxes() {
 		assertEquals(10, mailSystem.getLengthMailbox());
     }
 	
@@ -25,22 +25,27 @@ public class MailSystemTest {
     }
 	
 	@Test
-    public void deberiaDevolverPasscodeDeMailboxBien() {
+    public void deberiaDevolverDiferenteDeNullPorMailboxValido() {
+		assertNotEquals(null, mailSystem.findMailbox("8"));
+    }
+	
+	@Test
+    public void deberiaDevolverPasscodeDeMailboxTrue() {
 		assertTrue(mailSystem.findMailbox("8").checkPasscode("8"));
     }
 	
 	@Test
-    public void deberiaDevolverPasscodeDeMailboxMal() {
+    public void deberiaDevolverPasscodeDeMailboxFalse() {
 		assertFalse(mailSystem.findMailbox("8").checkPasscode("9"));
     }
 	
 	@Test
-    public void deberiaDevolverBienElGrettingDelMailbox() {
+    public void deberiaDevolverIgualElGrettingDelMailbox() {
 		assertEquals("You have reached mailbox 8. \nPlease leave a message now.",mailSystem.findMailbox("8").getGreeting());
     }
 	
 	@Test
-    public void deberiaDevolverMalElGrettingDelMailbox() {
+    public void deberiaDevolverNoIgualElGrettingDelMailbox() {
 		assertNotEquals("You have reached mailbox 9. \nPlease leave a message now.",mailSystem.findMailbox("8").getGreeting());
     }
 
