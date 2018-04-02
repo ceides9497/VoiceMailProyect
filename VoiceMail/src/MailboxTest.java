@@ -17,8 +17,13 @@ public class MailboxTest {
 	}
 	
 	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
+    public void deberiaDevolverPasscodeTrue() {
+		assertTrue(mailbox.checkPasscode("1"));
+    }
+	
+	@Test
+    public void deberiaDevolverPasscodeFalse() {
+		assertFalse(mailbox.checkPasscode("2"));
+    }
 
 }
