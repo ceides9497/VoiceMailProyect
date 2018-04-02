@@ -25,8 +25,23 @@ public class MailSystemTest {
     }
 	
 	@Test
-    public void deberiaDevolverMailboxValido() {
+    public void deberiaDevolverPasscodeDeMailboxBien() {
 		assertTrue(mailSystem.findMailbox("8").checkPasscode("8"));
+    }
+	
+	@Test
+    public void deberiaDevolverPasscodeDeMailboxMal() {
+		assertFalse(mailSystem.findMailbox("8").checkPasscode("9"));
+    }
+	
+	@Test
+    public void deberiaDevolverBienElGrettingDelMailbox() {
+		assertEquals("You have reached mailbox 8. \nPlease leave a message now.",mailSystem.findMailbox("8").getGreeting());
+    }
+	
+	@Test
+    public void deberiaDevolverMalElGrettingDelMailbox() {
+		assertNotEquals("You have reached mailbox 9. \nPlease leave a message now.",mailSystem.findMailbox("8").getGreeting());
     }
 
 }
