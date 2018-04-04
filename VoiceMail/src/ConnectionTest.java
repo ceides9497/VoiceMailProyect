@@ -1,10 +1,9 @@
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class ConnectionTest {
+public class ConnectionTest {
 	private Connection connection;
 	private MailSystem mailsystem;
 	private Telephone telephone;

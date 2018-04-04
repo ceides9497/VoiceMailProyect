@@ -1,10 +1,10 @@
-import org.junit.jupiter.api.Test;
-
 import static org.mockito.Mockito.*;
 
 import java.io.PrintStream;
 
-class TelephoneTest {
+import org.junit.Test;
+
+public class TelephoneTest {
 	private Telephone telephone;
 	
 	@Test

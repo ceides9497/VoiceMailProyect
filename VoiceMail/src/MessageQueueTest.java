@@ -1,9 +1,9 @@
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class MessageQueueTest {
+public class MessageQueueTest {
 	private MessageQueue messages;
 
 	@Test
