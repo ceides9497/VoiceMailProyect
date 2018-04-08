@@ -16,6 +16,7 @@ public class Connection implements Subject
    {
       system = s;
       phone = p;
+      userInterfaces = new ArrayList<UserInterface>();
       resetConnection();
    }
    
@@ -205,20 +206,19 @@ public class Connection implements Subject
    
 	@Override
 	public void addUserInterface(UserInterface userInterface) {
-		// TODO Auto-generated method stub
-		
+		userInterfaces.add(userInterface);
 	}
 	
 	@Override
 	public void deleteUserInterface(UserInterface userInterface) {
-		// TODO Auto-generated method stub
-		
+		userInterfaces.remove(userInterface);
 	}
 	
 	@Override
 	public void notify(String output) {
-		// TODO Auto-generated method stub
-		
+		for(UserInterface userInterface : userInterfaces) {
+			userInterface.updateInterface(output);
+		}
 	}
    
     // =========================================================================
