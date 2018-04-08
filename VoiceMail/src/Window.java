@@ -11,5 +11,11 @@ public class Window implements UserInterface {
 		mainMenu.changeMainLabel(output);
 	}
 	
+	public void run(Connection c) {
+		mainMenu.setConnection(c);
+		mainMenu.show();
+	}
+	
 	private MainMenu mainMenu;
+	private Connection connection;
 }

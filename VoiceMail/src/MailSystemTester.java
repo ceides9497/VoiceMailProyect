@@ -16,6 +16,7 @@ public class MailSystemTester
       c.addUserInterface(p);
       c.addUserInterface(w);
       c.start();		// REINICIA LA CONEXION PARA QUE APAREZCA "Enter mailbox number followed by #"
+      w.run(c);
       p.run(c);
    }
 
