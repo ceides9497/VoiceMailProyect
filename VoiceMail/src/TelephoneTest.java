@@ -13,7 +13,7 @@ public class TelephoneTest {
 		
 		PrintStream out = mock(PrintStream.class);
         System.setOut(out);
-        telephone.speak("TestRunning");
+        telephone.updateInterface("TestRunning");
         verify(out).println("TestRunning");
 	}
 

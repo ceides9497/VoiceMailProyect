@@ -4,7 +4,7 @@ import java.util.Scanner;
    A telephone that takes simulated keystrokes and voice input
    from the user and simulates spoken text.
 */
-public class Telephone
+public class Telephone implements UserInterface
 {
    /**
       Construct phone object.
@@ -19,7 +19,8 @@ public class Telephone
       Speak a message to System.out.
       @param output the text that will be "spoken"
    */
-   public void speak(String output)
+   @Override
+   public void updateInterface(String output)
    {
       System.out.println(output);
    }
@@ -50,4 +51,5 @@ public class Telephone
    }
 
    private Scanner scanner;
+
 }
