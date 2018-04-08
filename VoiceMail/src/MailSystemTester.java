@@ -9,13 +9,14 @@ public class MailSystemTester
    public static void main(String[] args)
    {
 	  Window w = new Window(new MainMenu());
-	  w.updateInterface("Nada");
       MailSystem system = new MailSystem(MAILBOX_COUNT);
       Scanner console = new Scanner(System.in);
       Telephone p = new Telephone(console);
-      Connection c = new Connection(system, p);
+      Connection c = new Connection(system);
+      c.addUserInterface(p);
+      c.addUserInterface(w);
+      c.start();		// REINICIA LA CONEXION PARA QUE APAREZCA "Enter mailbox number followed by #"
       p.run(c);
-      
    }
 
    private static final int MAILBOX_COUNT = 20;

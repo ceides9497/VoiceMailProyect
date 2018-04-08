@@ -12,10 +12,9 @@ public class Connection implements Subject
       @param s a MailSystem object
       @param p a Telephone object
    */
-   public Connection(MailSystem s, Telephone p)
+   public Connection(MailSystem s)
    {
       system = s;
-      phone = p;
       userInterfaces = new ArrayList<UserInterface>();
       resetConnection();
    }
@@ -69,7 +68,7 @@ public class Connection implements Subject
       currentRecording = "";
       accumulatedKeys = "";
       state = CONNECTED;
-      phone.updateInterface(INITIAL_PROMPT);
+      notify(INITIAL_PROMPT);
    }
 
    /**
@@ -84,10 +83,10 @@ public class Connection implements Subject
          if (currentMailbox != null)
          {
             state = RECORDING;
-            phone.updateInterface(currentMailbox.getGreeting());
+            notify(currentMailbox.getGreeting());
          }
          else
-            phone.updateInterface("Incorrect mailbox number. Try again!");
+        	notify("Incorrect mailbox number. Try again!");
          accumulatedKeys = "";
       }
       else
@@ -105,10 +104,10 @@ public class Connection implements Subject
          if (currentMailbox.checkPasscode(accumulatedKeys))
          {
             state = MAILBOX_MENU;
-            phone.updateInterface(MAILBOX_MENU_TEXT);
+            notify(MAILBOX_MENU_TEXT);
          }
          else
-            phone.updateInterface("Incorrect passcode. Try again!");
+        	notify("Incorrect passcode. Try again!");
          accumulatedKeys = "";
       }
       else
@@ -125,7 +124,7 @@ public class Connection implements Subject
       {
          currentMailbox.setPasscode(accumulatedKeys);
          state = MAILBOX_MENU;
-         phone.updateInterface(MAILBOX_MENU_TEXT);
+         notify(MAILBOX_MENU_TEXT);
          accumulatedKeys = "";
       }
       else
@@ -143,7 +142,7 @@ public class Connection implements Subject
          currentMailbox.setGreeting(currentRecording);
          currentRecording = "";
          state = MAILBOX_MENU;
-         phone.updateInterface(MAILBOX_MENU_TEXT);
+         notify(MAILBOX_MENU_TEXT);
       }
    }
 
@@ -156,17 +155,17 @@ public class Connection implements Subject
       if (key.equals("1"))
       {
          state = MESSAGE_MENU;
-         phone.updateInterface(MESSAGE_MENU_TEXT);
+         notify(MESSAGE_MENU_TEXT);
       }
       else if (key.equals("2"))
       {
          state = CHANGE_PASSCODE;
-         phone.updateInterface("Enter new passcode followed by the # key");
+         notify("Enter new passcode followed by the # key");
       }
       else if (key.equals("3"))
       {
          state = CHANGE_GREETING;
-         phone.updateInterface("Record your greeting, then press the # key");
+         notify("Record your greeting, then press the # key");
       }
    }
 
@@ -183,22 +182,22 @@ public class Connection implements Subject
          if (m == null) output += "No messages." + "\n";
          else output += m.getText() + "\n";
          output += MESSAGE_MENU_TEXT;
-         phone.updateInterface(output);
+         notify(output);
       }
       else if (key.equals("2"))
       {
          currentMailbox.saveCurrentMessage();
-         phone.updateInterface(MESSAGE_MENU_TEXT);
+         notify(MESSAGE_MENU_TEXT);
       }
       else if (key.equals("3"))
       {
          currentMailbox.removeCurrentMessage();
-         phone.updateInterface(MESSAGE_MENU_TEXT);
+         notify(MESSAGE_MENU_TEXT);
       }
       else if (key.equals("4"))
       {
          state = MAILBOX_MENU;
-         phone.updateInterface(MAILBOX_MENU_TEXT);
+         notify(MAILBOX_MENU_TEXT);
       }
    }
 
@@ -221,6 +220,10 @@ public class Connection implements Subject
 		}
 	}
    
+	public void start() {
+		resetConnection();
+	}
+	
     // =========================================================================
    
    
