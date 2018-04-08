@@ -1,9 +1,11 @@
+import java.util.ArrayList;
+
 /**
    Connects a phone to the mail system. The purpose of this
    class is to keep track of the state of a connection, since
    the phone itself is just a source of individual key presses.
 */
-public class Connection
+public class Connection implements Subject
 {
    /**
       Construct a Connection object.
@@ -15,8 +17,8 @@ public class Connection
       system = s;
       phone = p;
       resetConnection();
-   } 
-
+   }
+   
    /**
       Respond to the user's pressing a key on the phone touchpad
       @param key the phone key pressed by the user
@@ -199,41 +201,54 @@ public class Connection
       }
    }
 
-   private MailSystem system;
-   private Mailbox currentMailbox;
-   private String currentRecording;
-   private String accumulatedKeys;
-   private Telephone phone;
-   private int state;
+    // =========================================================================
+   
+	@Override
+	public void addUserInterface(UserInterface userInterface) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void deleteUserInterface(UserInterface userInterface) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void notify(String output) {
+		// TODO Auto-generated method stub
+		
+	}
+   
+    // =========================================================================
+   
+   
+	private MailSystem system;
+   	private Mailbox currentMailbox;
+   	private String currentRecording;
+   	private String accumulatedKeys;
+   	private Telephone phone;
+   	private int state;
+    private ArrayList<UserInterface> userInterfaces;
+    
+    private static final int DISCONNECTED = 0;
+   	private static final int CONNECTED = 1;
+   	private static final int RECORDING = 2;
+   	private static final int MAILBOX_MENU = 3;
+   	private static final int MESSAGE_MENU = 4;
+   	private static final int CHANGE_PASSCODE = 5;
+   	private static final int CHANGE_GREETING = 6;
 
-   private static final int DISCONNECTED = 0;
-   private static final int CONNECTED = 1;
-   private static final int RECORDING = 2;
-   private static final int MAILBOX_MENU = 3;
-   private static final int MESSAGE_MENU = 4;
-   private static final int CHANGE_PASSCODE = 5;
-   private static final int CHANGE_GREETING = 6;
-
-   private static final String INITIAL_PROMPT = 
-         "Enter mailbox number followed by #";      
-   private static final String MAILBOX_MENU_TEXT = 
-         "Enter 1 to listen to your messages\n"
-         + "Enter 2 to change your passcode\n"
-         + "Enter 3 to change your greeting";
-   private static final String MESSAGE_MENU_TEXT = 
-         "Enter 1 to listen to the current message\n"
-         + "Enter 2 to save the current message\n"
-         + "Enter 3 to delete the current message\n"
-         + "Enter 4 to return to the main menu";
+   	private static final String INITIAL_PROMPT = 
+        "Enter mailbox number followed by #";      
+   	private static final String MAILBOX_MENU_TEXT = 
+        "Enter 1 to listen to your messages\n"
+        + "Enter 2 to change your passcode\n"
+        + "Enter 3 to change your greeting";
+   	private static final String MESSAGE_MENU_TEXT = 
+        "Enter 1 to listen to the current message\n"
+        + "Enter 2 to save the current message\n"
+        + "Enter 3 to delete the current message\n"
+        + "Enter 4 to return to the main menu";
 }
-
-
-
-
-
-
-
-
-
-
-
