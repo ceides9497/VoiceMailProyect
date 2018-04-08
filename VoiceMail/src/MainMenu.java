@@ -46,8 +46,8 @@ public class MainMenu extends JFrame {
 		board.setLayout(null);
 		
 		lblOutput = new JLabel("nothing");
+		lblOutput.setHorizontalAlignment(SwingConstants.LEFT);
 		lblOutput.setBounds(5, 5, 369, 85);
-		lblOutput.setHorizontalAlignment(SwingConstants.CENTER);
 		board.add(lblOutput);
 		
 		JButton btnEnter = new JButton("#");
@@ -187,6 +187,7 @@ public class MainMenu extends JFrame {
 	}
 	
 	public void changeMainLabel(String output) {
+		output = "<html>" + output.replaceAll("\n", "<br/>") + "</html>";
 		lblOutput.setText(output);
 	}
 	
