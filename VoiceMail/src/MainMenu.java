@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Button;
 
 public class MainMenu extends JFrame {
 
@@ -181,9 +182,21 @@ public class MainMenu extends JFrame {
 		board.add(btn0);
 		
 		txtInput = new JTextField();
-		txtInput.setBounds(198, 101, 176, 148);
+		txtInput.setBounds(198, 101, 176, 114);
 		board.add(txtInput);
 		txtInput.setColumns(10);
+		
+		JButton btnAccept = new JButton("Enter");
+		btnAccept.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				System.out.println(txtInput.getText());
+				connection.record(txtInput.getText());
+				txtInput.setText("");
+			}
+		});
+		btnAccept.setBounds(198, 226, 176, 23);
+		board.add(btnAccept);
 	}
 	
 	public void changeMainLabel(String output) {
