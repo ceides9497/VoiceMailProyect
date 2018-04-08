@@ -8,8 +8,8 @@ public class MailSystemTester
 {
    public static void main(String[] args)
    {
-	  MainMenu w = new MainMenu();
-	  w.show();
+	  Window w = new Window(new MainMenu());
+	  w.updateInterface("Nada");
       MailSystem system = new MailSystem(MAILBOX_COUNT);
       Scanner console = new Scanner(System.in);
       Telephone p = new Telephone(console);

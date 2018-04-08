@@ -13,9 +13,9 @@ import javax.swing.JTextField;
 
 public class MainMenu extends JFrame {
 
-	private JPanel contentPane;
+	private JPanel board;
 	private JTextField txtInput;
-
+	private JLabel lblOutput;
 	/**
 	 * Launch the application.
 	 */
@@ -38,23 +38,23 @@ public class MainMenu extends JFrame {
 	public MainMenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 351);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		board = new JPanel();
+		board.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(board);
+		board.setLayout(null);
 		
-		JLabel lblOutput = new JLabel("nothing");
+		lblOutput = new JLabel("nothing");
 		lblOutput.setBounds(5, 5, 369, 85);
 		lblOutput.setHorizontalAlignment(SwingConstants.CENTER);
-		contentPane.add(lblOutput);
+		board.add(lblOutput);
 		
 		JButton btnEnter = new JButton("#");
 		btnEnter.setBounds(198, 260, 52, 42);
-		contentPane.add(btnEnter);
+		board.add(btnEnter);
 		
 		JButton btnH = new JButton("H");
 		btnH.setBounds(260, 260, 52, 42);
-		contentPane.add(btnH);
+		board.add(btnH);
 		
 		JButton btnQ = new JButton("Q");
 		btnQ.setBounds(322, 260, 52, 42);
@@ -62,51 +62,55 @@ public class MainMenu extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		contentPane.add(btnQ);
+		board.add(btnQ);
 		
 		JButton btn1 = new JButton("1");
 		btn1.setBounds(10, 101, 52, 42);
-		contentPane.add(btn1);
+		board.add(btn1);
 		
 		JButton btn4 = new JButton("4");
 		btn4.setBounds(10, 154, 52, 42);
-		contentPane.add(btn4);
+		board.add(btn4);
 		
 		JButton btn7 = new JButton("7");
 		btn7.setBounds(10, 207, 52, 42);
-		contentPane.add(btn7);
+		board.add(btn7);
 		
 		JButton btn2 = new JButton("2");
 		btn2.setBounds(72, 101, 52, 42);
-		contentPane.add(btn2);
+		board.add(btn2);
 		
 		JButton btn5 = new JButton("5");
 		btn5.setBounds(72, 154, 52, 42);
-		contentPane.add(btn5);
+		board.add(btn5);
 		
 		JButton btn8 = new JButton("8");
 		btn8.setBounds(72, 207, 52, 42);
-		contentPane.add(btn8);
+		board.add(btn8);
 		
 		JButton btn3 = new JButton("3");
 		btn3.setBounds(134, 101, 52, 42);
-		contentPane.add(btn3);
+		board.add(btn3);
 		
 		JButton btn6 = new JButton("6");
 		btn6.setBounds(134, 154, 52, 42);
-		contentPane.add(btn6);
+		board.add(btn6);
 		
 		JButton btn9 = new JButton("9");
 		btn9.setBounds(134, 207, 52, 42);
-		contentPane.add(btn9);
+		board.add(btn9);
 		
 		JButton btn0 = new JButton("0");
 		btn0.setBounds(72, 260, 52, 42);
-		contentPane.add(btn0);
+		board.add(btn0);
 		
 		txtInput = new JTextField();
 		txtInput.setBounds(198, 101, 176, 148);
-		contentPane.add(txtInput);
+		board.add(txtInput);
 		txtInput.setColumns(10);
+	}
+	
+	public void changeMainLabel(String output) {
+		lblOutput.setText(output);
 	}
 }
