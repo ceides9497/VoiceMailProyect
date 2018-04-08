@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 
-public class Window extends JFrame {
+public class MainMenu extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtInput;
@@ -23,7 +23,7 @@ public class Window extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Window frame = new Window();
+					MainMenu frame = new MainMenu();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +35,7 @@ public class Window extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Window() {
+	public MainMenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 351);
 		contentPane = new JPanel();

@@ -8,7 +8,7 @@ public class MailSystemTester
 {
    public static void main(String[] args)
    {
-	  Window w = new Window();
+	  MainMenu w = new MainMenu();
 	  w.show();
       MailSystem system = new MailSystem(MAILBOX_COUNT);
       Scanner console = new Scanner(System.in);
