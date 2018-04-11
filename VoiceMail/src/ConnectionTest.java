@@ -9,16 +9,11 @@ public class ConnectionTest {
 	private Telephone telephone;
 	
 	@Test
-	public void deberiaEjecutarseElMetodoSpeakDeTelephoneAlCrearUnConnection() {
+	public void test1() {
 		mailsystem = mock(MailSystem.class);
-		telephone = mock(Telephone.class);
 		
-		doNothing().when(telephone).updateInterface(isA(String.class));
+		connection = new Connection(mailsystem);
 		
-		telephone.updateInterface("mensaje inicial");
-		
-		//connection = new Connection(mailsystem, telephone);
-		
-		//verify(telephone).updateInterface("mensaje inicial");
+		connection.dial("key to test");
 	}
 }
