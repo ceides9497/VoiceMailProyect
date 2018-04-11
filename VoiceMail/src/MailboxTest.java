@@ -55,9 +55,16 @@ public class MailboxTest {
     }
 	
 	@Test
-    public void deberiaRetornarAlRemoverMesajes() {
+    public void deberiaRemoverCurrentMessages() {
 		mailbox.addMessage(mockedMessage);
 		mailbox.addMessage(mockedMessage);
+		assertEquals(mockedMessage,mailbox.removeCurrentMessage());
+    }
+	
+	@Test
+    public void deberiaRemoverKeptMessages() {
+		mailbox.addMessage(mockedMessage);
+		mailbox.saveCurrentMessage();
 		assertEquals(mockedMessage,mailbox.removeCurrentMessage());
     }
 	
@@ -67,11 +74,17 @@ public class MailboxTest {
     }
 	
 	@Test
-    public void deberiaGuardarMensajeActuak() {
+    public void deberiaGuardarMensajeActual() {
 		mailbox.addMessage(mockedMessage);
 		assertEquals(mockedMessage,mailbox.getCurrentMessage());
 		mailbox.saveCurrentMessage();
 		assertEquals(mockedMessage,mailbox.getCurrentMessage());
+    }
+	
+	@Test
+    public void deberiaNoGuardarMensajeActual() {
+		mailbox.saveCurrentMessage();
+		assertNotEquals(mockedMessage,mailbox.getCurrentMessage());
     }
 	
 	@Test

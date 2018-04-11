@@ -49,8 +49,10 @@ public class MessageQueue
    */
    public Message peek()
    {
-      if (queue.size() == 0) return null;
-      else return queue.get(0);
+      if (queue.size() == 0) 
+    	  return null;
+      else 
+    	  return queue.get(0);
    }
 
    private ArrayList<Message> queue;
