@@ -1,43 +1,48 @@
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class MessageQueueTest {
-	private MessageQueue messages;
-
+	MessageQueue messages;
+	Message mockedMessage;
+	
+	@Before
+	public void init(){
+		mockedMessage = mock(Message.class);
+		messages = new MessageQueue();
+	}
+	
 	@Test
 	public void deberiaRetornar0ConSize() {
-		messages = mock(MessageQueue.class);
-		when(messages.size()).thenReturn(0);
-
 		assertEquals(0, messages.size());
 	}
 	
 	@Test
-	public void deberiaRetornarNullConRemove() {
-		messages = mock(MessageQueue.class);
-		when(messages.remove()).thenReturn(null);
+	public void deberiaRetornarNumeroConSize() {
+		messages.add(mockedMessage);
+		messages.add(mockedMessage);
+		assertEquals(2, messages.size());
+	}
+	
+	@Test
+	public void deberiaRetornarMesajequeSeRemovera() {
+		messages.add(mockedMessage);
+		messages.add(mockedMessage);
 		
-		assertNull(messages.remove());
+		assertEquals(mockedMessage, messages.remove());
 	}
 	
 	@Test
 	public void deberiaGuardarUnNuevoMensajeConAdd() {
-		Message nuevo = new Message("mensaje1");
+		messages.add(mockedMessage);
 		
-		messages = mock(MessageQueue.class);
-		doNothing().when(messages).add(isA(Message.class));
-		messages.add(nuevo);
-		
-		verify(messages, times(1)).add(nuevo);
+		assertEquals(mockedMessage, messages.peek());
 	}
 	
 	@Test
 	public void deberiaRetornarNullConPeek() {
-		messages = mock(MessageQueue.class);
-		when(messages.peek()).thenReturn(null);
-		
 		assertNull(messages.peek());
 	}
 
