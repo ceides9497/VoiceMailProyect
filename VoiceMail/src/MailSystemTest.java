@@ -1,52 +1,36 @@
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+package com.voicemail.Test;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class MailSystemTest {
-	MailSystem mailSystem;
-	int mailBoxCount;
-	
-	@Before
-	public void init(){
-		mailBoxCount = 10;
-		mailSystem = new MailSystem(mailBoxCount);		
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.voicemail.Class.MailSystem;
+import com.voicemail.Class.Mailbox;
+
+class MailSystemTest {
+	private MailSystem mailSystem;
+
+	@BeforeEach
+	public void setUp() throws Exception {
+		mailSystem = new MailSystem(5);
+	}
+
+	@Test
+	public void testFindMailboxWithExistentMailbox() {
+		Mailbox actual = mailSystem.findMailbox("1");
+		Mailbox expected = new Mailbox("1", "You have reached mailbox " + 1 + ". \nPlease leave a message now.");
+		
+		assertEquals(expected.getGreeting(), actual.getGreeting());
 	}
 	
 	@Test
-    public void deberiaHaberCreadoLosMailboxes() {
-		assertEquals(10, mailSystem.getLengthMailbox());
-    }
+	public void testFindMailboxWithNonExistentMailboxGreaterThanMailboxesListSize() {
+		assertNull(mailSystem.findMailbox("6"));
+	}
 	
 	@Test
-    public void deberiaDevolverNullPorMailboxInvalido() {
-		assertEquals(null, mailSystem.findMailbox("23"));
-    }
-	
-	@Test
-    public void deberiaDevolverDiferenteDeNullPorMailboxValido() {
-		assertNotEquals(null, mailSystem.findMailbox("8"));
-    }
-	
-	@Test
-    public void deberiaDevolverPasscodeDeMailboxTrue() {
-		assertTrue(mailSystem.findMailbox("8").checkPasscode("8"));
-    }
-	
-	@Test
-    public void deberiaDevolverPasscodeDeMailboxFalse() {
-		assertFalse(mailSystem.findMailbox("8").checkPasscode("9"));
-    }
-	
-	@Test
-    public void deberiaDevolverIgualElGrettingDelMailbox() {
-		assertEquals("You have reached mailbox 8. \nPlease leave a message now.",mailSystem.findMailbox("8").getGreeting());
-    }
-	
-	@Test
-    public void deberiaDevolverNoIgualElGrettingDelMailbox() {
-		assertNotEquals("You have reached mailbox 9. \nPlease leave a message now.",mailSystem.findMailbox("8").getGreeting());
-    }
-
+	public void testFindMailboxWithNonExistentMailboxLessThanOne() {
+		assertNull(mailSystem.findMailbox("0"));
+	}
 }

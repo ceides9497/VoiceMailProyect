@@ -1,104 +1,105 @@
-import static org.junit.Assert.*;
+package com.voicemail.Test;
 
-import org.junit.Before;
-import org.junit.Test;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class MailboxTest {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-	Mailbox mailbox;
-	String passcode;
-	String greeting;
-	Message mockedMessage;
-	MessageQueue mockedMessageQueue;
-	
-	@Before
-	public void init(){
-		passcode = "1";
-		greeting = "Hola!";
-		mailbox = new Mailbox(passcode,greeting);
-		mockedMessage = mock(Message.class);
-		mockedMessageQueue = mock(MessageQueue.class);
+import com.voicemail.Class.Mailbox;
+import com.voicemail.Class.Message;
+
+class MailBoxTest {
+	private Mailbox mailBoxEmpty;
+	private Mailbox mailBoxWithCurrentMessageInNewMessagesQueue;
+	private Mailbox mailBoxWithCurrentMessageInKeptMessagesQueue;
+
+	@BeforeEach
+	public void setUp() throws Exception {
+		mailBoxEmpty = new Mailbox("passcode", "greeting");
+		mailBoxWithCurrentMessageInNewMessagesQueue = new Mailbox("passcode", "greeting");
+		mailBoxWithCurrentMessageInKeptMessagesQueue = new Mailbox("passcode", "greeting");
+		
+		mailBoxWithCurrentMessageInNewMessagesQueue.addMessage(new Message("current message"));
+		mailBoxWithCurrentMessageInKeptMessagesQueue.addMessage(new Message("current message"));
+		
+		mailBoxWithCurrentMessageInKeptMessagesQueue.saveCurrentMessage();
+	}
+
+	@Test
+	public void testCheckPasscodeWithCorrectPasscode() {
+		assertTrue(mailBoxEmpty.checkPasscode("passcode"));
 	}
 	
 	@Test
-    public void deberiaDevolverPasscodeTrue() {
-		assertTrue(mailbox.checkPasscode("1"));
-    }
+	public void testCheckPasscodeWithIncorrectPasscode() {
+		assertFalse(mailBoxEmpty.checkPasscode("incorrect"));
+	}
 	
 	@Test
-    public void deberiaDevolverPasscodeFalse() {
-		assertFalse(mailbox.checkPasscode("2"));
-    }
+	public void testGetGreeting() {
+		assertEquals("greeting", mailBoxEmpty.getGreeting());
+	}
 	
 	@Test
-    public void deberiaRetornarMensaje() {
-		mailbox.addMessage(mockedMessage);
-	    when(mockedMessage.getText()).thenReturn(greeting);
-    }
+	public void testSetGreeting() {
+		mailBoxEmpty.setGreeting("greeting2");
+		
+		assertEquals("greeting2", mailBoxEmpty.getGreeting());
+	}
 	
 	@Test
-    public void deberiaRetornarNumeroDeMensajes() {
-		int sizeMessages = 2;
-		when(mockedMessageQueue.size()).thenReturn(sizeMessages);		
-    }
+	public void testSetPasscode() {
+		mailBoxEmpty.setPasscode("passcode2");
+		
+		assertTrue(mailBoxEmpty.checkPasscode("passcode2"));
+	}
 	
 	@Test
-    public void deberiaRetornarMensajeActual() {
-		mailbox.addMessage(mockedMessage);
-		assertEquals(mockedMessage,mailbox.getCurrentMessage());
-    }
+	public void testGetCurrentMessageWithNewMessagesQueue() {
+		Message currentMessage = mailBoxWithCurrentMessageInNewMessagesQueue.getCurrentMessage();
+		
+		assertEquals("current message", currentMessage.getText());
+	}
 	
 	@Test
-    public void deberiaRetornarNullSinMensajes() {
-		assertEquals(null,mailbox.getCurrentMessage());
-    }
+	public void testRemoveCurrentMessageWithNewMessagesQueue() {
+		Message currentMessage = mailBoxWithCurrentMessageInNewMessagesQueue.removeCurrentMessage();
+		
+		assertEquals("current message", currentMessage.getText());
+	}
 	
 	@Test
-    public void deberiaRemoverCurrentMessages() {
-		mailbox.addMessage(mockedMessage);
-		mailbox.addMessage(mockedMessage);
-		assertEquals(mockedMessage,mailbox.removeCurrentMessage());
-    }
+	public void testGetCurrentMessageWithKeptMessagesQueue() {
+		Message currentMessage = mailBoxWithCurrentMessageInKeptMessagesQueue.getCurrentMessage();
+		
+		assertEquals("current message", currentMessage.getText());
+	}
 	
 	@Test
-    public void deberiaRemoverKeptMessages() {
-		mailbox.addMessage(mockedMessage);
-		mailbox.saveCurrentMessage();
-		assertEquals(mockedMessage,mailbox.removeCurrentMessage());
-    }
+	public void testRemoveCurrentMessageWithKeptMessagesQueue() {
+		Message currentMessage = mailBoxWithCurrentMessageInKeptMessagesQueue.removeCurrentMessage();
+		
+		assertEquals("current message", currentMessage.getText());
+	}
 	
 	@Test
-    public void deberiaRetornarNullAlRemoverMesajesPorVacio() {
-		assertEquals(null,mailbox.removeCurrentMessage());
-    }
+	public void testGetCurrentMessageWithEmptyQueues() {
+		assertNull(mailBoxEmpty.getCurrentMessage());
+	}
 	
 	@Test
-    public void deberiaGuardarMensajeActual() {
-		mailbox.addMessage(mockedMessage);
-		assertEquals(mockedMessage,mailbox.getCurrentMessage());
-		mailbox.saveCurrentMessage();
-		assertEquals(mockedMessage,mailbox.getCurrentMessage());
-    }
+	public void testRemoveCurrentMessageWithEmptyQueues() {
+		assertNull(mailBoxEmpty.removeCurrentMessage());
+	}
 	
 	@Test
-    public void deberiaNoGuardarMensajeActual() {
-		mailbox.saveCurrentMessage();
-		assertNotEquals(mockedMessage,mailbox.getCurrentMessage());
-    }
-	
-	@Test
-    public void deberiaCambiarGreeting() {
-		String newGreeting = "Bienvenido";
-		mailbox.setGreeting(newGreeting);
-		assertEquals(newGreeting,mailbox.getGreeting());
-    }
-	
-	@Test
-    public void deberiaCambiarPasscode() {
-		String newPasscode = "3";
-		mailbox.setPasscode(newPasscode);
-		assertTrue(mailbox.checkPasscode(newPasscode));
-    }
-
+	public void testSaveCurrentMessageWithEmptyQueues() {
+		Message message1 = mailBoxEmpty.getCurrentMessage();
+		
+		mailBoxEmpty.saveCurrentMessage();
+		
+		Message message2 = mailBoxEmpty.getCurrentMessage();
+		
+		assertEquals(message1, message2);
+	}
 }
