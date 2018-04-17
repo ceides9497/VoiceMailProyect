@@ -1,11 +1,14 @@
 package ucb.voicemail.Test;
 import static org.mockito.Mockito.*;
 
+import java.util.Scanner;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import ucb.voicemail.Class.Connection;
 import ucb.voicemail.Class.MailSystem;
+import ucb.voicemail.Class.Telephone;
 
 public class ConnectionTest {
 	private Connection connection;
@@ -33,7 +36,20 @@ public class ConnectionTest {
 	}
 	
 	@Test
+	public void deberiaAgregarUnUserInterface() {
+		connection.addUserInterface(new Telephone(new Scanner(System.in)));
+	}
+	
+	@Test
 	public void deberiaLlamarAlMetodoNotify() {
+		connection.addUserInterface(new Telephone(new Scanner(System.in)));
 		connection.dial("#");
+	}
+	
+	@Test
+	public void deberiaEliminarUnUserInterface() {
+		Telephone telephone = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(telephone);
+		connection.deleteUserInterface(telephone);
 	}
 }
