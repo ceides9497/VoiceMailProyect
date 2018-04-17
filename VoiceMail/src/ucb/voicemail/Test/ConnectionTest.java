@@ -31,4 +31,9 @@ public class ConnectionTest {
 	public void noDeberiaAgregarMensajeACurrentMailbox() {
 		connection.hangup();
 	}
+	
+	@Test
+	public void deberiaLlamarAlMetodoNotify() {
+		connection.dial("#");
+	}
 }
