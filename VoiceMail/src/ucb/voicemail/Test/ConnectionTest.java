@@ -2,6 +2,7 @@ package ucb.voicemail.Test;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
+import java.io.PrintStream;
 import java.util.Scanner;
 
 import org.junit.Before;
@@ -43,10 +44,16 @@ public class ConnectionTest {
 	}
 	
 	@Test
-	public void deberiaLlamarAlMetodoNotify() {
+	public void deberiaMostrarElmensajeIncorrectmailboxnumberTryAgain() {
 		Telephone t = new Telephone(new Scanner(System.in));
 		connection.addUserInterface(t);
+		
+		PrintStream out = mock(PrintStream.class);
+        System.setOut(out);
+		
 		connection.dial("#");
+		
+		verify(out).println("Incorrect mailbox number. Try again!");
 	}
 	
 	@Test
