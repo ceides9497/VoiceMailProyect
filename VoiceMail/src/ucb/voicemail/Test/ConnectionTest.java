@@ -1,4 +1,5 @@
 package ucb.voicemail.Test;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 import java.util.Scanner;
@@ -37,12 +38,14 @@ public class ConnectionTest {
 	
 	@Test
 	public void deberiaAgregarUnUserInterface() {
-		connection.addUserInterface(new Telephone(new Scanner(System.in)));
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
 	}
 	
 	@Test
 	public void deberiaLlamarAlMetodoNotify() {
-		connection.addUserInterface(new Telephone(new Scanner(System.in)));
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
 		connection.dial("#");
 	}
 	
@@ -51,5 +54,10 @@ public class ConnectionTest {
 		Telephone telephone = new Telephone(new Scanner(System.in));
 		connection.addUserInterface(telephone);
 		connection.deleteUserInterface(telephone);
+	}
+	
+	@Test
+	public void deberiaLlamarAlMetodoResetConnection() {
+		connection.start();
 	}
 }
