@@ -1,24 +1,34 @@
 package ucb.voicemail.Test;
-import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import ucb.voicemail.Class.Connection;
 import ucb.voicemail.Class.MailSystem;
-import ucb.voicemail.Class.Telephone;
 
 public class ConnectionTest {
 	private Connection connection;
 	private MailSystem mailsystem;
-	private Telephone telephone;
+	
+	@Before
+	public void init() {
+		mailsystem = mock(MailSystem.class);
+		connection = new Connection(mailsystem);
+	}
 	
 	@Test
-	public void test1() {
-		mailsystem = mock(MailSystem.class);
-		
-		connection = new Connection(mailsystem);
-		
+	public void deberiaLlamarAlMetodoConnect() {
 		connection.dial("key to test");
+	}
+	
+	@Test
+	public void noDeberiaConcatenarElTextoACurrentRecording() {
+		connection.record("texto");
+	}
+	
+	@Test
+	public void noDeberiaAgregarMensajeACurrentMailbox() {
+		connection.hangup();
 	}
 }

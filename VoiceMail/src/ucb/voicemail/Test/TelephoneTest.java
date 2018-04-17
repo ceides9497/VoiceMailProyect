@@ -50,5 +50,5 @@ public class TelephoneTest {
 		
 		doNothing().when(connection).dial(isA(String.class));
 	}
-
+	
 }
