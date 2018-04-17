@@ -1,3 +1,4 @@
+package ucb.voicemail.Test;
 import static org.mockito.Mockito.*;
 
 import java.io.ByteArrayInputStream;
@@ -6,6 +7,9 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 import org.junit.Test;
+
+import ucb.voicemail.Class.Connection;
+import ucb.voicemail.Class.Telephone;
 
 public class TelephoneTest {
 	private Telephone telephone;

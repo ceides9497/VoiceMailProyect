@@ -1,3 +1,4 @@
+package ucb.voicemail.Class;
 /**
    A message left by the caller.
 */
