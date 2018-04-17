@@ -1,3 +1,4 @@
+package ucb.voicemail.Class;
 import static org.mockito.Mockito.*;
 
 import java.io.ByteArrayInputStream;

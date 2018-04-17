@@ -1,3 +1,4 @@
+package ucb.voicemail.Class;
 /**
    A mailbox contains messages that can be listed, kept or discarded.
 */

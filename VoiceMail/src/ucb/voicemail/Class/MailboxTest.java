@@ -1,3 +1,4 @@
+package ucb.voicemail.Class;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
