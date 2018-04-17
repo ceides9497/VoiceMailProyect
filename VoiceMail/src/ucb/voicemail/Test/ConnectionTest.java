@@ -1,11 +1,15 @@
 package ucb.voicemail.Test;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
+
+import java.util.Scanner;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import ucb.voicemail.Class.Connection;
 import ucb.voicemail.Class.MailSystem;
+import ucb.voicemail.Class.Telephone;
 
 public class ConnectionTest {
 	private Connection connection;
@@ -30,5 +34,30 @@ public class ConnectionTest {
 	@Test
 	public void noDeberiaAgregarMensajeACurrentMailbox() {
 		connection.hangup();
+	}
+	
+	@Test
+	public void deberiaAgregarUnUserInterface() {
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
+	}
+	
+	@Test
+	public void deberiaLlamarAlMetodoNotify() {
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
+		connection.dial("#");
+	}
+	
+	@Test
+	public void deberiaEliminarUnUserInterface() {
+		Telephone telephone = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(telephone);
+		connection.deleteUserInterface(telephone);
+	}
+	
+	@Test
+	public void deberiaLlamarAlMetodoResetConnection() {
+		connection.start();
 	}
 }
