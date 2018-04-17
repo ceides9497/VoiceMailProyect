@@ -85,3 +85,4 @@ local.properties
 .cache-main
 .scala_dependencies
 .worksheet
+mockito-all-1.9.0-rc1.jar
