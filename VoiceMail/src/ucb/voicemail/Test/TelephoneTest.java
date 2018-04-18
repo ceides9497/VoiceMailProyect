@@ -40,28 +40,24 @@ public class TelephoneTest {
 	
 	@Test
 	public void deberiaDarElValorDeFalseAMore() {		
-		String input = "Q";
-	    InputStream in = new ByteArrayInputStream(input.getBytes());
-	    System.setIn(in);
+		Scanner scanner = getScannerWithText("Q");
+		Connection mockConnection = mock(Connection.class);
+		Telephone telephone = new Telephone(scanner);
 		
-		telephone = new Telephone(new Scanner(System.in));
-		
-		connection = mock(Connection.class);
-		
-		telephone.run(connection);
+		telephone.run(mockConnection);
 	}
 	
 	@Test
 	public void deberiaEjecutarElMetodoDialDeConnection() {		
-		String input = "1";
-	    InputStream in = new ByteArrayInputStream(input.getBytes());
-	    System.setIn(in);
+		Scanner scanner = getScannerWithText("1");
+		Connection mockConnection = mock(Connection.class);
+		Telephone telephone = new Telephone(scanner);
 		
-		telephone = new Telephone(new Scanner(System.in));
+		doNothing().when(mockConnection).dial(any(String.class));
 		
-		connection = mock(Connection.class);
+		telephone.run(mockConnection);
 		
-		doNothing().when(connection).dial(isA(String.class));
+		verify(mockConnection).dial(any(String.class));
 	}
 	
 	private Scanner getScannerWithText(String text) {
