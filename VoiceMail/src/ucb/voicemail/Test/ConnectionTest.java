@@ -16,11 +16,13 @@ import ucb.voicemail.Class.Telephone;
 public class ConnectionTest {
 	private Connection connection;
 	private MailSystem mockMailsystem;
+	private Mailbox mockMailbox;
 	
 	@Before
 	public void init() {
 		mockMailsystem = mock(MailSystem.class);
 		connection = new Connection(mockMailsystem);
+		mockMailbox = mock(Mailbox.class);
 	}
 	
 	@Test
@@ -78,5 +80,38 @@ public class ConnectionTest {
 		
 		connection.dial("#");
 		connection.dial("texto");
+	}
+	
+	@Test
+	public void deberiaDarElValorDeMailBoxMenuAState() {
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
+		
+		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		
+		connection.dial("#");
+		
+		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
+		
+		connection.dial("#");
+	}
+	
+	@Test
+	public void deberiaMostrarElMensajeDeIncorrectPasscode() {
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
+		
+		PrintStream out = mock(PrintStream.class);
+        System.setOut(out);
+		
+		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		
+		connection.dial("#");
+		
+		when(mockMailbox.checkPasscode(anyString())).thenReturn(false);
+		
+		connection.dial("#");
+		
+		verify(out).println("Incorrect passcode. Try again!");
 	}
 }
