@@ -114,4 +114,81 @@ public class ConnectionTest {
 		
 		verify(out).println("Incorrect passcode. Try again!");
 	}
+	
+	@Test
+	public void deberiaEjecutarElMetodoMailboxMenu() {
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
+		
+		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		
+		connection.dial("#");
+		
+		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
+		
+		connection.dial("#");
+		
+		connection.dial("1");
+	}
+	
+	@Test
+	public void deberiaMostrarMensajeDeEnterNewPasscode() {
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
+		
+		PrintStream out = mock(PrintStream.class);
+        System.setOut(out);
+		
+		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		
+		connection.dial("#");
+		
+		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
+		
+		connection.dial("#");
+		
+		connection.dial("2");
+		
+		verify(out).println("Enter new passcode followed by the # key");
+	}
+	
+	@Test
+	public void deberiaMostrarMensajeDeRecordYourGreeting() {
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
+		
+		PrintStream out = mock(PrintStream.class);
+        System.setOut(out);
+		
+		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		
+		connection.dial("#");
+		
+		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
+		
+		connection.dial("#");
+		
+		connection.dial("3");
+		
+		verify(out).println("Record your greeting, then press the # key");
+	}
+	
+	@Test
+	public void noDeberiaMostrarMensajeAlEntrarAMailboxMenu() {
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
+		
+		PrintStream out = mock(PrintStream.class);
+        System.setOut(out);
+		
+		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		
+		connection.dial("#");
+		
+		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
+		
+		connection.dial("#");
+		
+		connection.dial("4");
+	}
 }
