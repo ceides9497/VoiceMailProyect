@@ -10,16 +10,17 @@ import org.junit.Test;
 
 import ucb.voicemail.Class.Connection;
 import ucb.voicemail.Class.MailSystem;
+import ucb.voicemail.Class.Mailbox;
 import ucb.voicemail.Class.Telephone;
 
 public class ConnectionTest {
 	private Connection connection;
-	private MailSystem mailsystem;
+	private MailSystem mockMailsystem;
 	
 	@Before
 	public void init() {
-		mailsystem = mock(MailSystem.class);
-		connection = new Connection(mailsystem);
+		mockMailsystem = mock(MailSystem.class);
+		connection = new Connection(mockMailsystem);
 	}
 	
 	@Test
@@ -66,5 +67,16 @@ public class ConnectionTest {
 	@Test
 	public void deberiaLlamarAlMetodoResetConnection() {
 		connection.start();
+	}
+	
+	@Test
+	public void deberiaLlamarAlMetodoLogin() {
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
+		
+		when(mockMailsystem.findMailbox(anyString())).thenReturn(new Mailbox("passcode", "greeting"));
+		
+		connection.dial("#");
+		connection.dial("texto");
 	}
 }
