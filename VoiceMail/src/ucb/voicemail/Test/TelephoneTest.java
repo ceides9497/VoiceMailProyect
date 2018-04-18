@@ -26,29 +26,83 @@ public class TelephoneTest {
 	}
 	
 	@Test
+	public void deberiaEjecutarseHanupDeConnection() {
+		Scanner scanner = getScannerWithText("H");
+		Connection mockConnection = mock(Connection.class);
+		Telephone telephone = new Telephone(scanner);
+		
+		doNothing().when(mockConnection).hangup();
+		
+		telephone.run(mockConnection);
+		
+		verify(mockConnection).hangup();
+	}
+	
+	@Test
 	public void deberiaDarElValorDeFalseAMore() {		
-		String input = "Q";
-	    InputStream in = new ByteArrayInputStream(input.getBytes());
-	    System.setIn(in);
+		Scanner scanner = getScannerWithText("Q");
+		Connection mockConnection = mock(Connection.class);
+		Telephone telephone = new Telephone(scanner);
 		
-		telephone = new Telephone(new Scanner(System.in));
-		
-		connection = mock(Connection.class);
-		
-		telephone.run(connection);
+		telephone.run(mockConnection);
 	}
 	
 	@Test
 	public void deberiaEjecutarElMetodoDialDeConnection() {		
-		String input = "1";
-	    InputStream in = new ByteArrayInputStream(input.getBytes());
-	    System.setIn(in);
+		Scanner scanner = getScannerWithText("1");
+		Connection mockConnection = mock(Connection.class);
+		Telephone telephone = new Telephone(scanner);
 		
-		telephone = new Telephone(new Scanner(System.in));
+		doNothing().when(mockConnection).dial(any(String.class));
 		
-		connection = mock(Connection.class);
+		telephone.run(mockConnection);
 		
-		doNothing().when(connection).dial(isA(String.class));
+		verify(mockConnection).dial(any(String.class));
 	}
 	
+	@Test
+	public void deberiaEjecutarElMetodoRecordDeConnection() {
+		Scanner scanner = getScannerWithText("ZR");
+		Connection mockConnection = mock(Connection.class);
+		Telephone telephone = new Telephone(scanner);
+		
+		doNothing().when(mockConnection).record(any(String.class));
+		
+		telephone.run(mockConnection);
+		
+		verify(mockConnection).record(any(String.class));
+	}
+	
+	@Test
+	public void deberiaEjecutarElMetodoDialDeConnectionConNumeral() {
+		Scanner scanner = getScannerWithText("#");
+		Connection mockConnection = mock(Connection.class);
+		Telephone telephone = new Telephone(scanner);
+		
+		doNothing().when(mockConnection).dial(any(String.class));
+		
+		telephone.run(mockConnection);
+		
+		verify(mockConnection).dial(any(String.class));
+	}
+	
+	@Test
+	public void deberiaEjecutarElMetodoRecordDeConnectionCon2Numeros() {
+		Scanner scanner = getScannerWithText("12");
+		Connection mockConnection = mock(Connection.class);
+		Telephone telephone = new Telephone(scanner);
+		
+		doNothing().when(mockConnection).record(any(String.class));
+		
+		telephone.run(mockConnection);
+		
+		verify(mockConnection).record(any(String.class));
+	}
+	
+	private Scanner getScannerWithText(String text) {
+		text += "\nQ";
+		InputStream inputStream = new ByteArrayInputStream(text.getBytes());
+		System.setIn(inputStream);
+		return new Scanner(System.in);
+	}
 }
