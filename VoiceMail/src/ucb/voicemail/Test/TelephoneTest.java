@@ -60,6 +60,19 @@ public class TelephoneTest {
 		verify(mockConnection).dial(any(String.class));
 	}
 	
+	@Test
+	public void deberiaEjecutarElMetodoRecordDeConnection() {
+		Scanner scanner = getScannerWithText("Z");
+		Connection mockConnection = mock(Connection.class);
+		Telephone telephone = new Telephone(scanner);
+		
+		doNothing().when(mockConnection).record(any(String.class));
+		
+		telephone.run(mockConnection);
+		
+		verify(mockConnection).record(any(String.class));
+	}
+	
 	private Scanner getScannerWithText(String text) {
 		text += "\nQ";
 		InputStream inputStream = new ByteArrayInputStream(text.getBytes());
