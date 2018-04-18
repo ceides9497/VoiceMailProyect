@@ -62,7 +62,33 @@ public class TelephoneTest {
 	
 	@Test
 	public void deberiaEjecutarElMetodoRecordDeConnection() {
-		Scanner scanner = getScannerWithText("Z");
+		Scanner scanner = getScannerWithText("ZR");
+		Connection mockConnection = mock(Connection.class);
+		Telephone telephone = new Telephone(scanner);
+		
+		doNothing().when(mockConnection).record(any(String.class));
+		
+		telephone.run(mockConnection);
+		
+		verify(mockConnection).record(any(String.class));
+	}
+	
+	@Test
+	public void deberiaEjecutarElMetodoDialDeConnectionConNumeral() {
+		Scanner scanner = getScannerWithText("#");
+		Connection mockConnection = mock(Connection.class);
+		Telephone telephone = new Telephone(scanner);
+		
+		doNothing().when(mockConnection).dial(any(String.class));
+		
+		telephone.run(mockConnection);
+		
+		verify(mockConnection).dial(any(String.class));
+	}
+	
+	@Test
+	public void deberiaEjecutarElMetodoRecordDeConnectionCon2Numeros() {
+		Scanner scanner = getScannerWithText("12");
 		Connection mockConnection = mock(Connection.class);
 		Telephone telephone = new Telephone(scanner);
 		
