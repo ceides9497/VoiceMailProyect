@@ -26,6 +26,19 @@ public class TelephoneTest {
 	}
 	
 	@Test
+	public void deberiaEjecutarseHanupDeConnection() {
+		Scanner scanner = getScannerWithText("H");
+		Connection mockConnection = mock(Connection.class);
+		Telephone telephone = new Telephone(scanner);
+		
+		doNothing().when(mockConnection).hangup();
+		
+		telephone.run(mockConnection);
+		
+		verify(mockConnection).hangup();
+	}
+	
+	@Test
 	public void deberiaDarElValorDeFalseAMore() {		
 		String input = "Q";
 	    InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -51,4 +64,10 @@ public class TelephoneTest {
 		doNothing().when(connection).dial(isA(String.class));
 	}
 	
+	private Scanner getScannerWithText(String text) {
+		text += "\nQ";
+		InputStream inputStream = new ByteArrayInputStream(text.getBytes());
+		System.setIn(inputStream);
+		return new Scanner(System.in);
+	}
 }
