@@ -41,12 +41,7 @@ public class MailboxTest {
     public void deberiaRetornarMensaje() {
 		mailbox.addMessage(mockedMessage);
 	    when(mockedMessage.getText()).thenReturn(greeting);
-    }
-	
-	@Test
-    public void deberiaRetornarNumeroDeMensajes() {
-		int sizeMessages = 2;
-		when(mockedMessageQueue.size()).thenReturn(sizeMessages);		
+	    assertEquals(greeting,mailbox.getCurrentMessage().getText());
     }
 	
 	@Test
@@ -61,21 +56,21 @@ public class MailboxTest {
     }
 	
 	@Test
-    public void deberiaRemoverCurrentMessages() {
+    public void deberiaRemoverCurrentMessage() {
 		mailbox.addMessage(mockedMessage);
 		mailbox.addMessage(mockedMessage);
 		assertEquals(mockedMessage,mailbox.removeCurrentMessage());
     }
 	
 	@Test
-    public void deberiaRemoverKeptMessages() {
+    public void deberiaRemoverKeptMessage() {
 		mailbox.addMessage(mockedMessage);
 		mailbox.saveCurrentMessage();
 		assertEquals(mockedMessage,mailbox.removeCurrentMessage());
     }
 	
 	@Test
-    public void deberiaRetornarNullAlRemoverMesajesPorVacio() {
+    public void deberiaRetornarNullAlRemoverMesajesPorNoTenerMensajes() {
 		assertEquals(null,mailbox.removeCurrentMessage());
     }
 	
@@ -88,9 +83,9 @@ public class MailboxTest {
     }
 	
 	@Test
-    public void deberiaNoGuardarMensajeActual() {
+    public void deberiaNoHaberGuardadoMensajeActual() {
 		mailbox.saveCurrentMessage();
-		assertNotEquals(mockedMessage,mailbox.getCurrentMessage());
+		assertEquals(null,mailbox.getCurrentMessage());
     }
 	
 	@Test

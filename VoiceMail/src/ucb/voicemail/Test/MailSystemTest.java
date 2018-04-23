@@ -1,7 +1,5 @@
 package ucb.voicemail.Test;
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,27 +26,27 @@ public class MailSystemTest {
     }
 	
 	@Test
-    public void deberiaDevolverDiferenteDeNullPorMailboxValido() {
+    public void deberiaDevolverMailboxValido() {
 		assertNotEquals(null, mailSystem.findMailbox("8"));
     }
 	
 	@Test
-    public void deberiaDevolverPasscodeDeMailboxTrue() {
+    public void deberiaDevolverTrueAlEncontrarVerificarPasscode() {
 		assertTrue(mailSystem.findMailbox("8").checkPasscode("8"));
     }
 	
 	@Test
-    public void deberiaDevolverPasscodeDeMailboxFalse() {
+    public void deberiaDevolverFalseAlVerificarPasscode() {
 		assertFalse(mailSystem.findMailbox("8").checkPasscode("9"));
     }
 	
 	@Test
-    public void deberiaDevolverIgualElGrettingDelMailbox() {
+    public void deberiaDevolverElMismoGrettingDelMailbox8() {
 		assertEquals("You have reached mailbox 8. \nPlease leave a message now.",mailSystem.findMailbox("8").getGreeting());
     }
 	
 	@Test
-    public void deberiaDevolverNoIgualElGrettingDelMailbox() {
+    public void deberiaDevolverNoIgualPorDIferenteGreetingAlDelMailbox8() {
 		assertNotEquals("You have reached mailbox 9. \nPlease leave a message now.",mailSystem.findMailbox("8").getGreeting());
     }
 
