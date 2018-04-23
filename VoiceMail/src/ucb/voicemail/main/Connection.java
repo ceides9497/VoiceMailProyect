@@ -36,7 +36,7 @@ public class Connection implements Subject
          changeGreeting(key);
       else if (state == MAILBOX_MENU)
          mailboxMenu(key);
-      else if (state == MESSAGE_MENU)
+      else if (state == MESSAGE_MENU) // <---------- No existe un momento donde el state sea diferente a estos 6
          messageMenu(key);
    }
 

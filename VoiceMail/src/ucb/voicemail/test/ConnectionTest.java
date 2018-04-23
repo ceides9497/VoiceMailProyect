@@ -201,6 +201,37 @@ public class ConnectionTest {
 	}
 	
 	@Test
+	public void deberiaRealizarGrabacionEnEstadoRecording() {
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
+		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		connection.dial("#");
+		connection.record("Voice");
+	}
+	
+	@Test
+	public void deberiaRealizarGrabacionEnEstadoChangeGreeting() {
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
+		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		connection.dial("#");
+		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
+		connection.dial("#");
+		connection.dial("3");
+		connection.record("Voice");
+	}
+	
+	@Test
+	public void deberiaGrabarMensaje() {
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
+		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		connection.dial("#");
+		connection.record("Voice");
+		connection.hangup();
+	}
+	
+	@Test
 	public void deberiaGuardarUltimoMensaje() {
 		Telephone t = new Telephone(new Scanner(System.in));
 		connection.addUserInterface(t);
