@@ -1,24 +1,22 @@
 package ucb.voicemail.test;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
-
+import java.util.ArrayList;
 import java.io.PrintStream;
 import java.util.Scanner;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import ucb.voicemail.main.Connection;
-import ucb.voicemail.main.MailSystem;
-import ucb.voicemail.main.Mailbox;
-import ucb.voicemail.main.Message;
-import ucb.voicemail.main.Telephone;
+import ucb.voicemail.main.*;
 
 public class ConnectionTest {
 	
 	private Connection connection;
 	private MailSystem mockMailsystem;
 	private Mailbox mockMailbox;
+	private ArrayList<UserInterface> mockArrayList;
 	
 	@Before
 	public void init() {
@@ -40,86 +38,75 @@ public class ConnectionTest {
 		verify(mockMailsystem).findMailbox("1");
 	}
 	
-	// ====================================================================
-	
 	@Test
 	public void noDeberiaConcatenarElTextoACurrentRecording() {
 		connection.record("texto");
+		assertEquals("", connection.getCurrentRecording());
 	}
 	
 	@Test
 	public void noDeberiaAgregarMensajeACurrentMailbox() {
+		connection.dial("1");
 		connection.hangup();
+		assertEquals("", connection.getAccumulatedKeys());
 	}
 	
 	@Test
 	public void deberiaAgregarUnUserInterface() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
-	}
-	
-	@Test
-	public void deberiaLlamarAlMetodoNotify() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
-		connection.dial("#");
+		UserInterface mockUserInterface = mock(UserInterface.class);
+		connection.addUserInterface(mockUserInterface);
+		assertEquals(1, connection.getUserInterfaces().size());
 	}
 	
 	@Test
 	public void deberiaEliminarUnUserInterface() {
-		Telephone telephone = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(telephone);
-		connection.deleteUserInterface(telephone);
+		UserInterface mockUserInterface = mock(UserInterface.class);
+		connection.addUserInterface(mockUserInterface);
+		connection.deleteUserInterface(mockUserInterface);
+		assertEquals(0, connection.getUserInterfaces().size());
 	}
 	
 	@Test
 	public void deberiaLlamarAlMetodoResetConnection() {
 		connection.start();
+		assertEquals("", connection.getCurrentRecording());
+		assertEquals("", connection.getAccumulatedKeys());
 	}
-	
+
 	@Test
 	public void deberiaLlamarAlMetodoLogin() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
-		
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(new Mailbox("passcode", "greeting"));
-		
+		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
-		connection.dial("texto");
+		connection.dial("1");
+		connection.dial("#");
+		verify(mockMailbox).checkPasscode("1");
 	}
 	
 	@Test
 	public void deberiaDarElValorDeMailBoxMenuAState() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
-		
+		UserInterface mockUserInterface = mock(UserInterface.class);
+		connection.addUserInterface(mockUserInterface);
 		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
-		
 		connection.dial("#");
-		
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
-		
 		connection.dial("#");
+		verify(mockUserInterface).updateInterface("Enter 1 to listen to your messages\n"
+		        + "Enter 2 to change your passcode\n"
+		        + "Enter 3 to change your greeting");
 	}
 	
 	@Test
 	public void deberiaMostrarElMensajeDeIncorrectPasscode() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
-		
-		PrintStream out = mock(PrintStream.class);
-        System.setOut(out);
-		
+		UserInterface mockUserInterface = mock(UserInterface.class);
+		connection.addUserInterface(mockUserInterface);
 		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
-		
 		connection.dial("#");
-		
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(false);
-		
 		connection.dial("#");
-		
-		verify(out).println("Incorrect passcode. Try again!");
+		verify(mockUserInterface).updateInterface("Incorrect passcode. Try again!");
 	}
+	
+	// ====================================================================
 	
 	@Test
 	public void deberiaEjecutarElMetodoMailboxMenu() {

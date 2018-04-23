@@ -1,6 +1,6 @@
 package ucb.voicemail.main;
 import java.util.ArrayList;
-
+import java.util.List;
 /**
    Connects a phone to the mail system. The purpose of this
    class is to keep track of the state of a connection, since
@@ -223,6 +223,18 @@ public class Connection implements Subject
    
 	public void start() {
 		resetConnection();
+	}
+	
+	public String getCurrentRecording() {
+		return currentRecording;
+	}
+	
+	public String getAccumulatedKeys() {
+		return accumulatedKeys;
+	}
+	
+	public ArrayList<UserInterface> getUserInterfaces() {
+		return userInterfaces;
 	}
 	
     // =========================================================================
