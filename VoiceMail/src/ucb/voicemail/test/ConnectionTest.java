@@ -225,6 +225,30 @@ public class ConnectionTest {
 	}
 	
 	@Test
+	public void deberiaSalirMessageMenu() {
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
+		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		connection.dial("#");
+		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
+		connection.dial("#");
+		connection.dial("1");
+		connection.dial("4");
+	}
+	
+	@Test
+	public void noDeberiaHacerNadaEnMessageMenu() {
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
+		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		connection.dial("#");
+		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
+		connection.dial("#");
+		connection.dial("1");
+		connection.dial("5");
+	}
+	
+	@Test
 	public void deberiaMostrarMensajeDeRecordYourGreeting() {
 		Telephone t = new Telephone(new Scanner(System.in));
 		connection.addUserInterface(t);
