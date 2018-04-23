@@ -15,6 +15,7 @@ import ucb.voicemail.main.Message;
 import ucb.voicemail.main.Telephone;
 
 public class ConnectionTest {
+	
 	private Connection connection;
 	private MailSystem mockMailsystem;
 	private Mailbox mockMailbox;
@@ -27,9 +28,19 @@ public class ConnectionTest {
 	}
 	
 	@Test
-	public void deberiaLlamarAlMetodoConnect() {
-		connection.dial("key to test");
+	public void deberiaBuscarUnMailBox() {
+		connection.dial("#");
+		verify(mockMailsystem).findMailbox(any(String.class));
 	}
+	
+	@Test
+	public void deberiaBuscarMailBoxEspecifico() {
+		connection.dial("1");
+		connection.dial("#");
+		verify(mockMailsystem).findMailbox("1");
+	}
+	
+	// ====================================================================
 	
 	@Test
 	public void noDeberiaConcatenarElTextoACurrentRecording() {
