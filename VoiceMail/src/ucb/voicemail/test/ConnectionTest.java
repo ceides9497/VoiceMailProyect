@@ -106,44 +106,34 @@ public class ConnectionTest {
 		verify(mockUserInterface).updateInterface("Incorrect passcode. Try again!");
 	}
 	
-	// ====================================================================
-	
 	@Test
 	public void deberiaEjecutarElMetodoMailboxMenu() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
-		
+		UserInterface mockUserInterface = mock(UserInterface.class);
+		connection.addUserInterface(mockUserInterface);
 		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
-		
 		connection.dial("#");
-		
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
-		
 		connection.dial("#");
-		
 		connection.dial("1");
+		verify(mockUserInterface).updateInterface("Enter 1 to listen to the current message\n"
+		        + "Enter 2 to save the current message\n"
+		        + "Enter 3 to delete the current message\n"
+		        + "Enter 4 to return to the main menu");
 	}
 	
 	@Test
 	public void deberiaMostrarMensajeDeEnterNewPasscode() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
-		
-		PrintStream out = mock(PrintStream.class);
-        System.setOut(out);
-		
+		UserInterface mockUserInterface = mock(UserInterface.class);
+		connection.addUserInterface(mockUserInterface);
 		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
-		
 		connection.dial("#");
-		
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
-		
 		connection.dial("#");
-		
 		connection.dial("2");
-		
-		verify(out).println("Enter new passcode followed by the # key");
+		verify(mockUserInterface).updateInterface("Enter new passcode followed by the # key");
 	}
+	
+	// ====================================================================
 	
 	@Test
 	public void deberiaEjecutarElMetodoChangePasscode() {
