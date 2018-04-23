@@ -225,6 +225,10 @@ public class Connection implements Subject
 		resetConnection();
 	}
 	
+	public int userInterfacesSize(){
+		return userInterfaces.size();
+	}
+	
     // =========================================================================
    
    

@@ -1,10 +1,11 @@
 package ucb.voicemail.test;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import java.io.PrintStream;
 import java.util.Scanner;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,6 +46,7 @@ public class ConnectionTest {
 	public void deberiaAgregarUnUserInterface() {
 		Telephone t = new Telephone(new Scanner(System.in));
 		connection.addUserInterface(t);
+		assertNotEquals(0,connection.userInterfacesSize());
 	}
 	
 	@Test
@@ -59,6 +61,7 @@ public class ConnectionTest {
 		Telephone telephone = new Telephone(new Scanner(System.in));
 		connection.addUserInterface(telephone);
 		connection.deleteUserInterface(telephone);
+		assertEquals(0,connection.userInterfacesSize());
 	}
 	
 	@Test
