@@ -1,9 +1,9 @@
-package ucb.voicemail.Test;
+package ucb.voicemail.test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import ucb.voicemail.Class.MailSystem;
+import ucb.voicemail.main.MailSystem;
 
 public class MailSystemTest {
 	MailSystem mailSystem;

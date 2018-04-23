@@ -1,16 +1,17 @@
-package ucb.voicemail.Test;
+package ucb.voicemail.test;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
+import java.io.*;
 import java.util.Scanner;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import ucb.voicemail.Class.Connection;
-import ucb.voicemail.Class.MailSystem;
-import ucb.voicemail.Class.Mailbox;
-import ucb.voicemail.Class.Telephone;
+import ucb.voicemail.main.Connection;
+import ucb.voicemail.main.MailSystem;
+import ucb.voicemail.main.Mailbox;
+import ucb.voicemail.main.Telephone;
 
 public class ConnectionTest {
 	private Connection connection;

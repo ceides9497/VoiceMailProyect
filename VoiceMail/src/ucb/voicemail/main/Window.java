@@ -1,4 +1,4 @@
-package ucb.voicemail.Class;
+package ucb.voicemail.main;
 
 public class Window implements UserInterface {
 	
