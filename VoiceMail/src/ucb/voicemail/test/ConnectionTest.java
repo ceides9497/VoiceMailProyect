@@ -2,7 +2,7 @@ package ucb.voicemail.test;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
-import java.io.*;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 import org.junit.Before;
