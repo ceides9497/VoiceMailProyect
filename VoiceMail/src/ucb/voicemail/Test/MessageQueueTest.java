@@ -31,7 +31,7 @@ public class MessageQueueTest {
 	}
 	
 	@Test
-	public void deberiaRetornarMesajequeSeRemovera() {
+	public void deberiaRetornarMensajeQueSeraRemovido() {
 		messages.add(mockedMessage);
 		messages.add(mockedMessage);
 		
