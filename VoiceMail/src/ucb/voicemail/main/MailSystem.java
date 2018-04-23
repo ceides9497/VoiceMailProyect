@@ -1,4 +1,5 @@
-package ucb.voicemail.Class;
+package ucb.voicemail.main;
+
 import java.util.ArrayList;
 
 /**

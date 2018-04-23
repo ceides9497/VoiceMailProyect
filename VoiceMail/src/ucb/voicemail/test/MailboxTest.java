@@ -1,12 +1,12 @@
-package ucb.voicemail.Test;
+package ucb.voicemail.test;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import ucb.voicemail.Class.Mailbox;
-import ucb.voicemail.Class.Message;
-import ucb.voicemail.Class.MessageQueue;
+import ucb.voicemail.main.Mailbox;
+import ucb.voicemail.main.Message;
+import ucb.voicemail.main.MessageQueue;
 
 import static org.mockito.Mockito.*;
 

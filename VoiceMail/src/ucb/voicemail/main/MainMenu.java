@@ -1,4 +1,5 @@
-package ucb.voicemail.Class;
+package ucb.voicemail.main;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
