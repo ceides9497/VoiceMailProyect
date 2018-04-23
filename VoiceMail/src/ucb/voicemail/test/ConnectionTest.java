@@ -18,6 +18,17 @@ public class ConnectionTest {
 	private Mailbox mockMailbox;
 	private ArrayList<UserInterface> mockArrayList;
 	
+	private static final String MESSAGE_MENU_TEXT = 
+	        "Enter 1 to listen to the current message\n"
+	        + "Enter 2 to save the current message\n"
+	        + "Enter 3 to delete the current message\n"
+	        + "Enter 4 to return to the main menu";
+	
+	private static final String MAILBOX_MENU_TEXT = 
+	        "Enter 1 to listen to your messages\n"
+	        + "Enter 2 to change your passcode\n"
+	        + "Enter 3 to change your greeting";
+	
 	@Before
 	public void init() {
 		mockMailsystem = mock(MailSystem.class);
@@ -115,10 +126,7 @@ public class ConnectionTest {
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
 		connection.dial("1");
-		verify(mockUserInterface).updateInterface("Enter 1 to listen to the current message\n"
-		        + "Enter 2 to save the current message\n"
-		        + "Enter 3 to delete the current message\n"
-		        + "Enter 4 to return to the main menu");
+		verify(mockUserInterface).updateInterface(MESSAGE_MENU_TEXT);
 	}
 	
 	@Test
@@ -130,55 +138,44 @@ public class ConnectionTest {
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
 		connection.dial("2");
-		verify(mockUserInterface).updateInterface("Enter new passcode followed by the # key");
-	}
-	
-	// ====================================================================
-	
-	@Test
-	public void deberiaEjecutarElMetodoChangePasscode() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
-		connection.dial("#");
-		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
-		connection.dial("#");
-		connection.dial("2");
 		connection.dial("NEW_PASSCODE");
 		connection.dial("#");
-		connection.dial("H");
+		verify(mockUserInterface).updateInterface("Enter new passcode followed by the # key");
+		verify(mockMailbox).setPasscode("NEW_PASSCODE");
 	}
 	
 	@Test
 	public void deberiaEjecutarElMetodoChangeGreeting() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
+		UserInterface mockUserInterface = mock(UserInterface.class);
+		connection.addUserInterface(mockUserInterface);
 		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
 		connection.dial("3");
-		connection.dial("NEW_GREETING");
+		connection.record("NEW_GREETING");
+		connection.dial("1");
 		connection.dial("#");
-		connection.dial("H");
+		verify(mockUserInterface).updateInterface("Record your greeting, then press the # key");
+		verify(mockMailbox).setGreeting("NEW_GREETING");
 	}
 	
 	@Test
 	public void deberiaEjecutarElMetodoMessageMenu() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
+		UserInterface mockUserInterface = mock(UserInterface.class);
+		connection.addUserInterface(mockUserInterface);
 		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
 		connection.dial("1");
-		connection.dial("1");
+		verify(mockUserInterface).updateInterface(MESSAGE_MENU_TEXT);
 	}
 	
 	@Test
 	public void deberiaMostarMensaje() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
+		UserInterface mockUserInterface = mock(UserInterface.class);
+		connection.addUserInterface(mockUserInterface);
 		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
@@ -186,124 +183,98 @@ public class ConnectionTest {
 		connection.dial("#");
 		connection.dial("1");
 		connection.dial("1");
+		verify(mockUserInterface).updateInterface("Not null\n" + MESSAGE_MENU_TEXT);
 	}
 	
-	@Test
-	public void deberiaRealizarGrabacionEnEstadoRecording() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
-		connection.dial("#");
-		connection.record("Voice");
-	}
-	
-	@Test
-	public void deberiaRealizarGrabacionEnEstadoChangeGreeting() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
+	@Test 
+	public void noDeberiaMostrarMensajes() {
+		UserInterface mockUserInterface = mock(UserInterface.class);
+		connection.addUserInterface(mockUserInterface);
 		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
+		when(mockMailbox.getCurrentMessage()).thenReturn(null);
 		connection.dial("#");
-		connection.dial("3");
-		connection.record("Voice");
+		connection.dial("1");
+		connection.dial("1");
+		verify(mockUserInterface).updateInterface("No messages.\n" + MESSAGE_MENU_TEXT);
 	}
 	
 	@Test
 	public void deberiaGrabarMensaje() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
+		UserInterface mockUserInterface = mock(UserInterface.class);
+		connection.addUserInterface(mockUserInterface);
 		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		connection.record("Voice");
 		connection.hangup();
+		verify(mockMailbox).addMessage(any());
 	}
 	
 	@Test
 	public void deberiaGuardarUltimoMensaje() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
+		UserInterface mockUserInterface = mock(UserInterface.class);
+		connection.addUserInterface(mockUserInterface);
 		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
 		connection.dial("1");
 		connection.dial("2");
+		verify(mockMailbox).saveCurrentMessage();
 	}
 	
 	@Test
 	public void deberiaEliminarUltimoMensaje() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
+		UserInterface mockUserInterface = mock(UserInterface.class);
+		connection.addUserInterface(mockUserInterface);
 		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
 		connection.dial("1");
 		connection.dial("3");
+		verify(mockMailbox).removeCurrentMessage();
 	}
 	
 	@Test
 	public void deberiaSalirMessageMenu() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
+		UserInterface mockUserInterface = mock(UserInterface.class);
+		connection.addUserInterface(mockUserInterface);
 		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
 		connection.dial("1");
 		connection.dial("4");
+		verify(mockUserInterface, times(2)).updateInterface(MAILBOX_MENU_TEXT);
 	}
+	
+	
 	
 	@Test
 	public void noDeberiaHacerNadaEnMessageMenu() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
+		UserInterface mockUserInterface = mock(UserInterface.class);
+		connection.addUserInterface(mockUserInterface);
 		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
 		connection.dial("1");
 		connection.dial("5");
+		verify(mockMailbox, never()).saveCurrentMessage();
+		verify(mockMailbox, never()).removeCurrentMessage();
 	}
 	
 	@Test
 	public void deberiaMostrarMensajeDeRecordYourGreeting() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
-		
-		PrintStream out = mock(PrintStream.class);
-        System.setOut(out);
-		
+		UserInterface mockUserInterface = mock(UserInterface.class);
+		connection.addUserInterface(mockUserInterface);
 		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
-		
 		connection.dial("#");
-		
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
-		
 		connection.dial("#");
-		
 		connection.dial("3");
-		
-		verify(out).println("Record your greeting, then press the # key");
-	}
-	
-	@Test
-	public void noDeberiaMostrarMensajeAlEntrarAMailboxMenu() {
-		Telephone t = new Telephone(new Scanner(System.in));
-		connection.addUserInterface(t);
-		
-		PrintStream out = mock(PrintStream.class);
-        System.setOut(out);
-		
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
-		
-		connection.dial("#");
-		
-		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
-		
-		connection.dial("#");
-		
-		connection.dial("4");
+		verify(mockUserInterface).updateInterface("Record your greeting, then press the # key");
 	}
 }
