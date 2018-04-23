@@ -9,45 +9,45 @@ import ucb.voicemail.main.Message;
 import ucb.voicemail.main.MessageQueue;
 
 public class MessageQueueTest {
-	MessageQueue messages;
+	MessageQueue messagesQueueEmpty;
 	Message mockedMessage;
 	
 	@Before
 	public void init(){
 		mockedMessage = mock(Message.class);
-		messages = new MessageQueue();
+		messagesQueueEmpty = new MessageQueue();
 	}
 	
 	@Test
 	public void deberiaRetornar0ConSize() {
-		assertEquals(0, messages.size());
+		assertEquals(0, messagesQueueEmpty.size());
 	}
 	
 	@Test
 	public void deberiaRetornarNumeroConSize() {
-		messages.add(mockedMessage);
-		messages.add(mockedMessage);
-		assertEquals(2, messages.size());
+		messagesQueueEmpty.add(mockedMessage);
+		messagesQueueEmpty.add(mockedMessage);
+		assertEquals(2, messagesQueueEmpty.size());
 	}
 	
 	@Test
 	public void deberiaRetornarMensajeQueSeraRemovido() {
-		messages.add(mockedMessage);
-		messages.add(mockedMessage);
+		messagesQueueEmpty.add(mockedMessage);
+		messagesQueueEmpty.add(mockedMessage);
 		
-		assertEquals(mockedMessage, messages.remove());
+		assertEquals(mockedMessage, messagesQueueEmpty.remove());
 	}
 	
 	@Test
 	public void deberiaGuardarUnNuevoMensajeConAdd() {
-		messages.add(mockedMessage);
+		messagesQueueEmpty.add(mockedMessage);
 		
-		assertEquals(mockedMessage, messages.peek());
+		assertEquals(mockedMessage, messagesQueueEmpty.peek());
 	}
 	
 	@Test
 	public void deberiaRetornarNullConPeek() {
-		assertNull(messages.peek());
+		assertNull(messagesQueueEmpty.peek());
 	}
 
 }
