@@ -1,14 +1,14 @@
 package ucb.voicemail.main;
 
-public class Window implements UserInterface {
+public class GraphicalTelephone implements Telephone {
 	
-	public Window(MainMenu mainMenu) {
+	public GraphicalTelephone(MainMenu mainMenu) {
 		this.mainMenu = mainMenu;
 		mainMenu.show();
 	}
 	
 	@Override
-	public void updateInterface(String output) {
+	public void speak(String output) {
 		mainMenu.changeMainLabel(output);
 	}
 	

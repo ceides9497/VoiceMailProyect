@@ -2,7 +2,7 @@ package ucb.voicemail.main;
 
 public interface Subject {
 	
-	public void addUserInterface(UserInterface userInterface);
-	public void deleteUserInterface(UserInterface userInterface);
-	public void notify(String output);
+	public void addUserInterface(Telephone userInterface);
+	public void deleteUserInterface(Telephone userInterface);
+	public void speakToAll(String output);
 }

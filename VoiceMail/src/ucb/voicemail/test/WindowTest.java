@@ -15,8 +15,8 @@ import ucb.voicemail.main.MailSystem;
 import ucb.voicemail.main.Mailbox;
 import ucb.voicemail.main.MainMenu;
 import ucb.voicemail.main.Message;
-import ucb.voicemail.main.Telephone;
-import ucb.voicemail.main.Window;
+import ucb.voicemail.main.ConsoleTelephone;
+import ucb.voicemail.main.GraphicalTelephone;
 
 public class WindowTest {
 	
@@ -35,13 +35,13 @@ public class WindowTest {
 	
 	@Test
 	public void deberiaAgregarUnUserInterface() {
-		Window w = new Window(mockMainMenu);
+		GraphicalTelephone w = new GraphicalTelephone(mockMainMenu);
 		connection.addUserInterface(w);
 	}
 	
 	@Test
 	public void deberiaActualizarElLabelPrincipal() {
-		Window w = new Window(mockMainMenu);
+		GraphicalTelephone w = new GraphicalTelephone(mockMainMenu);
 		connection.addUserInterface(w);
 		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
@@ -49,7 +49,7 @@ public class WindowTest {
 	
 	@Test
 	public void deberiaEjecutarRun() {
-		Window w = new Window(mockMainMenu);
+		GraphicalTelephone w = new GraphicalTelephone(mockMainMenu);
 		connection.addUserInterface(w);
 		w.run(connection);
 	}

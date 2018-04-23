@@ -16,7 +16,7 @@ public class Connection implements Subject
    public Connection(MailSystem s)
    {
       system = s;
-      userInterfaces = new ArrayList<UserInterface>();
+      userInterfaces = new ArrayList<Telephone>();
       resetConnection();
    }
    
@@ -69,7 +69,7 @@ public class Connection implements Subject
       currentRecording = "";
       accumulatedKeys = "";
       state = CONNECTED;
-      notify(INITIAL_PROMPT);
+      speakToAll(INITIAL_PROMPT);
    }
 
    /**
@@ -84,10 +84,10 @@ public class Connection implements Subject
          if (currentMailbox != null)
          {
             state = RECORDING;
-            notify(currentMailbox.getGreeting());
+            speakToAll(currentMailbox.getGreeting());
          }
          else
-        	notify("Incorrect mailbox number. Try again!");
+        	speakToAll("Incorrect mailbox number. Try again!");
          accumulatedKeys = "";
       }
       else
@@ -105,10 +105,10 @@ public class Connection implements Subject
          if (currentMailbox.checkPasscode(accumulatedKeys))
          {
             state = MAILBOX_MENU;
-            notify(MAILBOX_MENU_TEXT);
+            speakToAll(MAILBOX_MENU_TEXT);
          }
          else
-        	notify("Incorrect passcode. Try again!");
+        	speakToAll("Incorrect passcode. Try again!");
          accumulatedKeys = "";
       }
       else
@@ -125,7 +125,7 @@ public class Connection implements Subject
       {
          currentMailbox.setPasscode(accumulatedKeys);
          state = MAILBOX_MENU;
-         notify(MAILBOX_MENU_TEXT);
+         speakToAll(MAILBOX_MENU_TEXT);
          accumulatedKeys = "";
       }
       else
@@ -143,7 +143,7 @@ public class Connection implements Subject
          currentMailbox.setGreeting(currentRecording);
          currentRecording = "";
          state = MAILBOX_MENU;
-         notify(MAILBOX_MENU_TEXT);
+         speakToAll(MAILBOX_MENU_TEXT);
       }
    }
 
@@ -156,17 +156,17 @@ public class Connection implements Subject
       if (key.equals("1"))
       {
          state = MESSAGE_MENU;
-         notify(MESSAGE_MENU_TEXT);
+         speakToAll(MESSAGE_MENU_TEXT);
       }
       else if (key.equals("2"))
       {
          state = CHANGE_PASSCODE;
-         notify("Enter new passcode followed by the # key");
+         speakToAll("Enter new passcode followed by the # key");
       }
       else if (key.equals("3"))
       {
          state = CHANGE_GREETING;
-         notify("Record your greeting, then press the # key");
+         speakToAll("Record your greeting, then press the # key");
       }
    }
 
@@ -183,41 +183,41 @@ public class Connection implements Subject
          if (m == null) output += "No messages." + "\n";
          else output += m.getText() + "\n";
          output += MESSAGE_MENU_TEXT;
-         notify(output);
+         speakToAll(output);
       }
       else if (key.equals("2"))
       {
          currentMailbox.saveCurrentMessage();
-         notify(MESSAGE_MENU_TEXT);
+         speakToAll(MESSAGE_MENU_TEXT);
       }
       else if (key.equals("3"))
       {
          currentMailbox.removeCurrentMessage();
-         notify(MESSAGE_MENU_TEXT);
+         speakToAll(MESSAGE_MENU_TEXT);
       }
       else if (key.equals("4"))
       {
          state = MAILBOX_MENU;
-         notify(MAILBOX_MENU_TEXT);
+         speakToAll(MAILBOX_MENU_TEXT);
       }
    }
 
     // =========================================================================
    
 	@Override
-	public void addUserInterface(UserInterface userInterface) {
+	public void addUserInterface(Telephone userInterface) {
 		userInterfaces.add(userInterface);
 	}
 	
 	@Override
-	public void deleteUserInterface(UserInterface userInterface) {
+	public void deleteUserInterface(Telephone userInterface) {
 		userInterfaces.remove(userInterface);
 	}
 	
 	@Override
-	public void notify(String output) {
-		for(UserInterface userInterface : userInterfaces) {
-			userInterface.updateInterface(output);
+	public void speakToAll(String output) {
+		for(Telephone userInterface : userInterfaces) {
+			userInterface.speak(output);
 		}
 	}
    
@@ -233,7 +233,7 @@ public class Connection implements Subject
 		return accumulatedKeys;
 	}
 	
-	public ArrayList<UserInterface> getUserInterfaces() {
+	public ArrayList<Telephone> getUserInterfaces() {
 		return userInterfaces;
 	}
 	
@@ -244,9 +244,9 @@ public class Connection implements Subject
    	private Mailbox currentMailbox;
    	private String currentRecording;
    	private String accumulatedKeys;
-   	private Telephone phone;
+   	private ConsoleTelephone phone;
    	private int state;
-    private ArrayList<UserInterface> userInterfaces;
+    private ArrayList<Telephone> userInterfaces;
     
     private static final int DISCONNECTED = 0;
    	private static final int CONNECTED = 1;

@@ -9,19 +9,19 @@ import java.util.Scanner;
 import org.junit.Test;
 
 import ucb.voicemail.main.Connection;
-import ucb.voicemail.main.Telephone;
+import ucb.voicemail.main.ConsoleTelephone;
 
 public class TelephoneTest {
-	private Telephone telephone;
+	private ConsoleTelephone telephone;
 	private Connection connection;
 	
 	@Test
 	public void deberiaMostrarTestRunning() {
-		telephone = new Telephone(new Scanner(System.in));
+		telephone = new ConsoleTelephone(new Scanner(System.in));
 		
 		PrintStream out = mock(PrintStream.class);
         System.setOut(out);
-        telephone.updateInterface("TestRunning");
+        telephone.speak("TestRunning");
         verify(out).println("TestRunning");
 	}
 	
@@ -29,7 +29,7 @@ public class TelephoneTest {
 	public void deberiaEjecutarseHanupDeConnection() {
 		Scanner scanner = getScannerWithText("H");
 		Connection mockConnection = mock(Connection.class);
-		Telephone telephone = new Telephone(scanner);
+		ConsoleTelephone telephone = new ConsoleTelephone(scanner);
 		
 		doNothing().when(mockConnection).hangup();
 		
@@ -42,7 +42,7 @@ public class TelephoneTest {
 	public void deberiaDarElValorDeFalseAMore() {		
 		Scanner scanner = getScannerWithText("Q");
 		Connection mockConnection = mock(Connection.class);
-		Telephone telephone = new Telephone(scanner);
+		ConsoleTelephone telephone = new ConsoleTelephone(scanner);
 		
 		telephone.run(mockConnection);
 	}
@@ -51,7 +51,7 @@ public class TelephoneTest {
 	public void deberiaEjecutarElMetodoDialDeConnection() {		
 		Scanner scanner = getScannerWithText("1");
 		Connection mockConnection = mock(Connection.class);
-		Telephone telephone = new Telephone(scanner);
+		ConsoleTelephone telephone = new ConsoleTelephone(scanner);
 		
 		doNothing().when(mockConnection).dial(any(String.class));
 		
@@ -64,7 +64,7 @@ public class TelephoneTest {
 	public void deberiaEjecutarElMetodoRecordDeConnection() {
 		Scanner scanner = getScannerWithText("ZR");
 		Connection mockConnection = mock(Connection.class);
-		Telephone telephone = new Telephone(scanner);
+		ConsoleTelephone telephone = new ConsoleTelephone(scanner);
 		
 		doNothing().when(mockConnection).record(any(String.class));
 		
@@ -77,7 +77,7 @@ public class TelephoneTest {
 	public void deberiaEjecutarElMetodoDialDeConnectionConNumeral() {
 		Scanner scanner = getScannerWithText("#");
 		Connection mockConnection = mock(Connection.class);
-		Telephone telephone = new Telephone(scanner);
+		ConsoleTelephone telephone = new ConsoleTelephone(scanner);
 		
 		doNothing().when(mockConnection).dial(any(String.class));
 		
@@ -90,7 +90,7 @@ public class TelephoneTest {
 	public void deberiaEjecutarElMetodoRecordDeConnectionCon2Numeros() {
 		Scanner scanner = getScannerWithText("12");
 		Connection mockConnection = mock(Connection.class);
-		Telephone telephone = new Telephone(scanner);
+		ConsoleTelephone telephone = new ConsoleTelephone(scanner);
 		
 		doNothing().when(mockConnection).record(any(String.class));
 		
