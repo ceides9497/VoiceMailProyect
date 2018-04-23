@@ -11,6 +11,7 @@ import org.junit.Test;
 import ucb.voicemail.main.Connection;
 import ucb.voicemail.main.MailSystem;
 import ucb.voicemail.main.Mailbox;
+import ucb.voicemail.main.Message;
 import ucb.voicemail.main.Telephone;
 
 public class ConnectionTest {
@@ -150,9 +151,6 @@ public class ConnectionTest {
 	public void deberiaEjecutarElMetodoChangePasscode() {
 		Telephone t = new Telephone(new Scanner(System.in));
 		connection.addUserInterface(t);
-		
-		PrintStream out = mock(PrintStream.class);
-        System.setOut(out);
 		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
@@ -161,6 +159,45 @@ public class ConnectionTest {
 		connection.dial("NEW_PASSCODE");
 		connection.dial("#");
 		connection.dial("H");
+	}
+	
+	@Test
+	public void deberiaEjecutarElMetodoChangeGreeting() {
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
+		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		connection.dial("#");
+		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
+		connection.dial("#");
+		connection.dial("3");
+		connection.dial("NEW_GREETING");
+		connection.dial("#");
+		connection.dial("H");
+	}
+	
+	@Test
+	public void deberiaEjecutarElMetodoMessageMenu() {
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
+		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		connection.dial("#");
+		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
+		connection.dial("#");
+		connection.dial("1");
+		connection.dial("1");
+	}
+	
+	@Test
+	public void deberiaMostarMensaje() {
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
+		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		connection.dial("#");
+		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
+		when(mockMailbox.getCurrentMessage()).thenReturn(new Message("Not null"));
+		connection.dial("#");
+		connection.dial("1");
+		connection.dial("1");
 	}
 	
 	@Test
