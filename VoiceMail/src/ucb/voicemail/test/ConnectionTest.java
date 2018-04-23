@@ -147,6 +147,23 @@ public class ConnectionTest {
 	}
 	
 	@Test
+	public void deberiaEjecutarElMetodoChangePasscode() {
+		Telephone t = new Telephone(new Scanner(System.in));
+		connection.addUserInterface(t);
+		
+		PrintStream out = mock(PrintStream.class);
+        System.setOut(out);
+		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		connection.dial("#");
+		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
+		connection.dial("#");
+		connection.dial("2");
+		connection.dial("NEW_PASSCODE");
+		connection.dial("#");
+		connection.dial("H");
+	}
+	
+	@Test
 	public void deberiaMostrarMensajeDeRecordYourGreeting() {
 		Telephone t = new Telephone(new Scanner(System.in));
 		connection.addUserInterface(t);
