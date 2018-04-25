@@ -1,9 +1,10 @@
 package ucb.voicemail.main;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MessageQueue {
 	
-	private ArrayList<Message> queue;
+	private List<Message> queue;
 
 	public MessageQueue() {
 		queue = new ArrayList<Message>();
