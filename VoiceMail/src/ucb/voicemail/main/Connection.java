@@ -1,267 +1,187 @@
 package ucb.voicemail.main;
+
 import java.util.ArrayList;
-import java.util.List;
-/**
-   Connects a phone to the mail system. The purpose of this
-   class is to keep track of the state of a connection, since
-   the phone itself is just a source of individual key presses.
-*/
-public class Connection implements Subject
-{
-   /**
-      Construct a Connection object.
-      @param s a MailSystem object
-      @param p a Telephone object
-   */
-   public Connection(MailSystem s)
-   {
-      system = s;
-      userInterfaces = new ArrayList<Telephone>();
-      resetConnection();
-   }
+
+public class Connection implements Subject {
    
-   /**
-      Respond to the user's pressing a key on the phone touchpad
-      @param key the phone key pressed by the user
-   */
-   public void dial(String key)
-   {
-      if (state == CONNECTED)
-         connect(key);
-      else if (state == RECORDING)
-         login(key);
-      else if (state == CHANGE_PASSCODE)
-         changePasscode(key);
-      else if (state == CHANGE_GREETING)
-         changeGreeting(key);
-      else if (state == MAILBOX_MENU)
-         mailboxMenu(key);
-      else if (state == MESSAGE_MENU) // <---------- No existe un momento donde el state sea diferente a estos 6
-         messageMenu(key);
-   }
+    public Connection(MailSystem s) {
+        system = s;
+        userInterfaces = new ArrayList<Telephone>();
+        resetConnection();
+    }
+   
+    public void dial(String key) {
+        connectionState.dial(this, key);
+    }
 
-   /**
-      Record voice.
-      @param voice voice spoken by the user
-   */
-   public void record(String voice)
-   {
-      if (state == RECORDING || state == CHANGE_GREETING)
-         currentRecording += voice;
-   }
+    public void record(String voice) {
+        connectionState.record(this, voice);
+    }
 
-   /**
-      The user hangs up the phone.
-   */
-   public void hangup()
-   {
-      if (state == RECORDING)
-         currentMailbox.addMessage(new Message(currentRecording));
-      resetConnection();
-   }
+    public void hangup() {
+        connectionState.hangup(this);
+        resetConnection();
+    }
 
-   /**
-      Reset the connection to the initial state and prompt
-      for mailbox number
-   */
-   private void resetConnection()
-   {
-      currentRecording = "";
-      accumulatedKeys = "";
-      state = CONNECTED;
-      speakToAll(INITIAL_PROMPT);
-   }
+    private void resetConnection() {
+        currentRecording = "";
+        accumulatedKeys = "";
+        connectionState = new ConnectedState();
+        speakToAll(INITIAL_PROMPT);
+    }
 
-   /**
-      Try to connect the user with the specified mailbox.
-      @param key the phone key pressed by the user
-   */
-   private void connect(String key)
-   {
-      if (key.equals("#"))
-      {
-         currentMailbox = system.findMailbox(accumulatedKeys);
-         if (currentMailbox != null)
-         {
-            state = RECORDING;
-            speakToAll(currentMailbox.getGreeting());
-         }
-         else
-        	speakToAll("Incorrect mailbox number. Try again!");
-         accumulatedKeys = "";
-      }
-      else
-         accumulatedKeys += key;
-   }
+    public void connect(String key) { // private -> public 
+        if (key.equals("#")) {
+            currentMailbox = system.findMailbox(accumulatedKeys);
+            if (currentMailbox != null) {
+                connectionState = new RecordingState();
+                speakToAll(currentMailbox.getGreeting());
+            }
+            else {
+                speakToAll("Incorrect mailbox number. Try again!");
+            }
+            accumulatedKeys = "";
+        }
+        else {
+            accumulatedKeys += key;
+        }
+    }
 
-   /**
-      Try to log in the user.
-      @param key the phone key pressed by the user
-   */
-   private void login(String key)
-   {
-      if (key.equals("#"))
-      {
-         if (currentMailbox.checkPasscode(accumulatedKeys))
-         {
-            state = MAILBOX_MENU;
+    public void login(String key) { // private -> public
+        if (key.equals("#")) {
+            if (currentMailbox.checkPasscode(accumulatedKeys)) {
+                connectionState = new MailboxMenuState();
+                speakToAll(MAILBOX_MENU_TEXT);
+            }
+            else {
+                speakToAll("Incorrect passcode. Try again!");
+            }
+            accumulatedKeys = "";
+        }
+        else {
+            accumulatedKeys += key;
+        }
+    }
+
+    public void changePasscode(String key) { // private -> public
+        if (key.equals("#")) {
+            currentMailbox.setPasscode(accumulatedKeys);
+            connectionState = new MailboxMenuState();
             speakToAll(MAILBOX_MENU_TEXT);
-         }
-         else
-        	speakToAll("Incorrect passcode. Try again!");
-         accumulatedKeys = "";
-      }
-      else
-         accumulatedKeys += key;
-   }
+            accumulatedKeys = "";
+        }
+        else {
+            accumulatedKeys += key;
+        }
+    }
 
-   /**
-      Change passcode.
-      @param key the phone key pressed by the user
-   */
-   private void changePasscode(String key)
-   {
-      if (key.equals("#"))
-      {
-         currentMailbox.setPasscode(accumulatedKeys);
-         state = MAILBOX_MENU;
-         speakToAll(MAILBOX_MENU_TEXT);
-         accumulatedKeys = "";
-      }
-      else
-         accumulatedKeys += key;
-   }
+    public void changeGreeting(String key) { // private -> public
+        if (key.equals("#")) {
+            currentMailbox.setGreeting(currentRecording);
+            currentRecording = "";
+            connectionState = new MailboxMenuState();
+            speakToAll(MAILBOX_MENU_TEXT);
+        }
+    }
 
-   /**
-      Change greeting.
-      @param key the phone key pressed by the user
-   */
-   private void changeGreeting(String key)
-   {
-      if (key.equals("#"))
-      {
-         currentMailbox.setGreeting(currentRecording);
-         currentRecording = "";
-         state = MAILBOX_MENU;
-         speakToAll(MAILBOX_MENU_TEXT);
-      }
-   }
+    public void mailboxMenu(String key) { // private -> public
+        if (key.equals("1")) {
+            connectionState = new MessageMenuState();
+            speakToAll(MESSAGE_MENU_TEXT);
+        }
+        else if (key.equals("2")) {
+            connectionState = new ChangePasscodeState();
+            speakToAll("Enter new passcode followed by the # key");
+        }
+        else if (key.equals("3")) {
+            connectionState = new ChangeGreetingState();
+            speakToAll("Record your greeting, then press the # key");
+        }
+    }
 
-   /**
-      Respond to the user's selection from mailbox menu.
-      @param key the phone key pressed by the user
-   */
-   private void mailboxMenu(String key)
-   {
-      if (key.equals("1"))
-      {
-         state = MESSAGE_MENU;
-         speakToAll(MESSAGE_MENU_TEXT);
-      }
-      else if (key.equals("2"))
-      {
-         state = CHANGE_PASSCODE;
-         speakToAll("Enter new passcode followed by the # key");
-      }
-      else if (key.equals("3"))
-      {
-         state = CHANGE_GREETING;
-         speakToAll("Record your greeting, then press the # key");
-      }
-   }
-
-   /**
-      Respond to the user's selection from message menu.
-      @param key the phone key pressed by the user
-   */
-   private void messageMenu(String key)
-   {
-      if (key.equals("1"))
-      {
-         String output = "";
-         Message m = currentMailbox.getCurrentMessage();
-         if (m == null) output += "No messages." + "\n";
-         else output += m.getText() + "\n";
-         output += MESSAGE_MENU_TEXT;
-         speakToAll(output);
-      }
-      else if (key.equals("2"))
-      {
-         currentMailbox.saveCurrentMessage();
-         speakToAll(MESSAGE_MENU_TEXT);
-      }
-      else if (key.equals("3"))
-      {
-         currentMailbox.removeCurrentMessage();
-         speakToAll(MESSAGE_MENU_TEXT);
-      }
-      else if (key.equals("4"))
-      {
-         state = MAILBOX_MENU;
-         speakToAll(MAILBOX_MENU_TEXT);
-      }
-   }
-
-    // =========================================================================
+    public void messageMenu(String key) { // private -> public
+        if (key.equals("1")) {
+            String output = "";
+            Message m = currentMailbox.getCurrentMessage();
+            if (m == null) {
+                output += "No messages." + "\n";
+            }
+            else {
+                output += m.getText() + "\n";
+            }
+            output += MESSAGE_MENU_TEXT;
+            speakToAll(output);
+        }
+        else if (key.equals("2")) {
+            currentMailbox.saveCurrentMessage();
+            speakToAll(MESSAGE_MENU_TEXT);
+        }
+        else if (key.equals("3")) {
+            currentMailbox.removeCurrentMessage();
+            speakToAll(MESSAGE_MENU_TEXT);
+        }
+        else if (key.equals("4")) {
+            connectionState = new MailboxMenuState();
+            speakToAll(MAILBOX_MENU_TEXT);
+        }
+    }
    
-	@Override
-	public void addUserInterface(Telephone userInterface) {
-		userInterfaces.add(userInterface);
-	}
+    @Override
+    public void addUserInterface(Telephone userInterface) {
+        userInterfaces.add(userInterface);
+    }
 	
-	@Override
-	public void deleteUserInterface(Telephone userInterface) {
-		userInterfaces.remove(userInterface);
-	}
+    @Override
+    public void deleteUserInterface(Telephone userInterface) {
+        userInterfaces.remove(userInterface);
+    }
 	
-	@Override
-	public void speakToAll(String output) {
-		for(Telephone userInterface : userInterfaces) {
-			userInterface.speak(output);
-		}
-	}
+    @Override
+    public void speakToAll(String output) {
+        for(Telephone userInterface : userInterfaces) {
+            userInterface.speak(output);
+        }
+    }
    
-	public void start() {
-		resetConnection();
-	}
+    public void start() {
+        resetConnection();
+    }
 	
-	public String getCurrentRecording() {
-		return currentRecording;
-	}
+    public String getCurrentRecording() {
+        return currentRecording;
+    }
 	
-	public String getAccumulatedKeys() {
-		return accumulatedKeys;
-	}
+    public String getAccumulatedKeys() {
+        return accumulatedKeys;
+    }
 	
-	public ArrayList<Telephone> getUserInterfaces() {
-		return userInterfaces;
-	}
-	
-    // =========================================================================
-   
-   
-	private MailSystem system;
-   	private Mailbox currentMailbox;
-   	private String currentRecording;
-   	private String accumulatedKeys;
-   	private ConsoleTelephone phone;
-   	private int state;
-    private ArrayList<Telephone> userInterfaces;
+    public ArrayList<Telephone> getUserInterfaces() {
+        return userInterfaces;
+    }
     
-    private static final int DISCONNECTED = 0;
-   	private static final int CONNECTED = 1;
-   	private static final int RECORDING = 2;
-   	private static final int MAILBOX_MENU = 3;
-   	private static final int MESSAGE_MENU = 4;
-   	private static final int CHANGE_PASSCODE = 5;
-   	private static final int CHANGE_GREETING = 6;
+    public void addRecordingText(String voice) {
+        currentRecording += voice;
+    }
+    
+    public void addMessageInCurrentMailbox() {
+        currentMailbox.addMessage(new Message(currentRecording));
+    }
+    
+    private MailSystem system;
+    private Mailbox currentMailbox;
+    private String currentRecording;
+    private String accumulatedKeys;
+    private ArrayList<Telephone> userInterfaces;
+    private ConnectionState connectionState;
 
    	private static final String INITIAL_PROMPT = 
-        "Enter mailbox number followed by #";      
+        "Enter mailbox number followed by #";
+   	
    	private static final String MAILBOX_MENU_TEXT = 
         "Enter 1 to listen to your messages\n"
         + "Enter 2 to change your passcode\n"
         + "Enter 3 to change your greeting";
+   	
    	private static final String MESSAGE_MENU_TEXT = 
         "Enter 1 to listen to the current message\n"
         + "Enter 2 to save the current message\n"

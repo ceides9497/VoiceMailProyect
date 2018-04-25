@@ -43,6 +43,7 @@ public class WindowTest {
 	public void deberiaActualizarElLabelPrincipal() {
 		GraphicalTelephone w = new GraphicalTelephone(mockMainMenu);
 		connection.addUserInterface(w);
+		doNothing().when(mockMainMenu).show();
 		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 	}
@@ -51,6 +52,7 @@ public class WindowTest {
 	public void deberiaEjecutarRun() {
 		GraphicalTelephone w = new GraphicalTelephone(mockMainMenu);
 		connection.addUserInterface(w);
+		doNothing().when(mockMainMenu).show();
 		w.run(connection);
 	}
 }
