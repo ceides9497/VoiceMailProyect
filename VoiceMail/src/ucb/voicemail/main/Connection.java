@@ -26,18 +26,7 @@ public class Connection implements Subject
    */
    public void dial(String key)
    {
-      if (state == CONNECTED)
-         connect(key);
-      else if (state == RECORDING)
-         login(key);
-      else if (state == CHANGE_PASSCODE)
-         changePasscode(key);
-      else if (state == CHANGE_GREETING)
-         changeGreeting(key);
-      else if (state == MAILBOX_MENU)
-         mailboxMenu(key);
-      else if (state == MESSAGE_MENU) // <---------- No existe un momento donde el state sea diferente a estos 6
-         messageMenu(key);
+	   connectionState.dial(this, key);
    }
 
    /**
@@ -69,6 +58,7 @@ public class Connection implements Subject
       currentRecording = "";
       accumulatedKeys = "";
       state = CONNECTED;
+      connectionState = new ConnectedState();
       speakToAll(INITIAL_PROMPT);
    }
 
@@ -76,7 +66,7 @@ public class Connection implements Subject
       Try to connect the user with the specified mailbox.
       @param key the phone key pressed by the user
    */
-   private void connect(String key)
+   public void connect(String key) // private -> public
    {
       if (key.equals("#"))
       {
@@ -84,6 +74,7 @@ public class Connection implements Subject
          if (currentMailbox != null)
          {
             state = RECORDING;
+            connectionState = new RecordingState();
             speakToAll(currentMailbox.getGreeting());
          }
          else
@@ -98,13 +89,14 @@ public class Connection implements Subject
       Try to log in the user.
       @param key the phone key pressed by the user
    */
-   private void login(String key)
+   public void login(String key) // private -> public
    {
       if (key.equals("#"))
       {
          if (currentMailbox.checkPasscode(accumulatedKeys))
          {
             state = MAILBOX_MENU;
+            connectionState = new MailboxMenuState();
             speakToAll(MAILBOX_MENU_TEXT);
          }
          else
@@ -119,12 +111,13 @@ public class Connection implements Subject
       Change passcode.
       @param key the phone key pressed by the user
    */
-   private void changePasscode(String key)
+   public void changePasscode(String key) // private -> public
    {
       if (key.equals("#"))
       {
          currentMailbox.setPasscode(accumulatedKeys);
          state = MAILBOX_MENU;
+         connectionState = new MailboxMenuState();
          speakToAll(MAILBOX_MENU_TEXT);
          accumulatedKeys = "";
       }
@@ -136,13 +129,14 @@ public class Connection implements Subject
       Change greeting.
       @param key the phone key pressed by the user
    */
-   private void changeGreeting(String key)
+   public void changeGreeting(String key) // private -> public
    {
       if (key.equals("#"))
       {
          currentMailbox.setGreeting(currentRecording);
          currentRecording = "";
          state = MAILBOX_MENU;
+         connectionState = new MailboxMenuState();
          speakToAll(MAILBOX_MENU_TEXT);
       }
    }
@@ -151,21 +145,24 @@ public class Connection implements Subject
       Respond to the user's selection from mailbox menu.
       @param key the phone key pressed by the user
    */
-   private void mailboxMenu(String key)
+   public void mailboxMenu(String key) // private -> public
    {
       if (key.equals("1"))
       {
          state = MESSAGE_MENU;
+         connectionState = new MessageMenuState();
          speakToAll(MESSAGE_MENU_TEXT);
       }
       else if (key.equals("2"))
       {
          state = CHANGE_PASSCODE;
+         connectionState = new ChangePasscodeState();
          speakToAll("Enter new passcode followed by the # key");
       }
       else if (key.equals("3"))
       {
          state = CHANGE_GREETING;
+         connectionState = new ChangeGreetingState();
          speakToAll("Record your greeting, then press the # key");
       }
    }
@@ -174,7 +171,7 @@ public class Connection implements Subject
       Respond to the user's selection from message menu.
       @param key the phone key pressed by the user
    */
-   private void messageMenu(String key)
+   public void messageMenu(String key) // private -> public
    {
       if (key.equals("1"))
       {
@@ -198,6 +195,7 @@ public class Connection implements Subject
       else if (key.equals("4"))
       {
          state = MAILBOX_MENU;
+         connectionState = new MailboxMenuState();
          speakToAll(MAILBOX_MENU_TEXT);
       }
    }
@@ -247,6 +245,7 @@ public class Connection implements Subject
    	private ConsoleTelephone phone;
    	private int state;
     private ArrayList<Telephone> userInterfaces;
+    private ConnectionState connectionState;
     
     private static final int DISCONNECTED = 0;
    	private static final int CONNECTED = 1;
@@ -257,11 +256,13 @@ public class Connection implements Subject
    	private static final int CHANGE_GREETING = 6;
 
    	private static final String INITIAL_PROMPT = 
-        "Enter mailbox number followed by #";      
+        "Enter mailbox number followed by #";
+   	
    	private static final String MAILBOX_MENU_TEXT = 
         "Enter 1 to listen to your messages\n"
         + "Enter 2 to change your passcode\n"
         + "Enter 3 to change your greeting";
+   	
    	private static final String MESSAGE_MENU_TEXT = 
         "Enter 1 to listen to the current message\n"
         + "Enter 2 to save the current message\n"
