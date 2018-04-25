@@ -1,7 +1,7 @@
 package ucb.voicemail.main;
 
-public class Message
-{
+public class Message {
+	
 	private String text;
 	
 	public Message(String messageText) {
@@ -11,4 +11,5 @@ public class Message
 	public String getText() {
 		return text;
 	}
+	
 }
