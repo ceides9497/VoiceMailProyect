@@ -10,7 +10,7 @@ public class MailSystemTest {
 	int mailBoxCount;
 	
 	@Before
-	public void init(){
+	public void init() {
 		mailBoxCount = 10;
 		mailSystem = new MailSystem(mailBoxCount);		
 	}
