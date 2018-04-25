@@ -1,56 +1,58 @@
 package ucb.voicemail.main;
 import java.util.Scanner;
 
-/**
-   A telephone that takes simulated keystrokes and voice input
-   from the user and simulates spoken text.
-*/
-public class ConsoleTelephone implements Telephone
-{
-   /**
-      Construct phone object.
-      @param aScanner that reads text from a character-input stream
-   */
-   public ConsoleTelephone(Scanner aScanner)
-   {
-      scanner = aScanner;
-   }
+public class ConsoleTelephone implements Telephone {
 
-   /**
-      Speak a message to System.out.
-      @param output the text that will be "spoken"
-   */
-   @Override
-   public void speak(String output)
-   {
-      System.out.println(output);
-   }
+	private Scanner scanner;
+	
+	private final static String HANGUP = "H";
+	private final static String QUIT = "Q";
+	private final static String OPTIONS_TO_MARK = "1234567890#";
+	
+	public ConsoleTelephone(Scanner aScanner) {
+		scanner = aScanner;
+	}
 
-   /**
-      Loops reading user input and passes the input to the
-      Connection object's methods dial, record or hangup.
-      @param c the connection that connects this phone to the
-      voice mail system
-   */
-   public void run(Connection c)
-   {
-      boolean more = true;
-      while (more)
-      {
-         String input = scanner.nextLine();
-         if (input == null) return;
-         if (input.equalsIgnoreCase("H"))
-            c.hangup();
-         else if (input.equalsIgnoreCase("Q"))
-            more = false;
-         else if (input.length() == 1
-            && "1234567890#".indexOf(input) >= 0)
-            c.dial(input);
-         else
-            c.record(input);
-      }
-   }
+	@Override
+	public void speak(String output) {
+		System.out.println(output);
+	}
 
-   private Scanner scanner;
+	public void run(Connection c) {
+		boolean more = true;
+		
+		while (more) {
+			String input = scanner.nextLine();
+			
+			if (isNull(input)) {
+				return;
+			}
+			if (isHanging(input)) {
+				c.hangup();				
+			} else if (isFinished(input)) {
+				more = false;
+			} else if (isDialing(input)) {
+				c.dial(input);
+			} else {
+				c.record(input);
+			}
+		}
+	}
+
+	private boolean isNull(String input) {
+		return input == null;
+	}
+
+	private boolean isDialing(String input) {
+		return input.length() == 1 && OPTIONS_TO_MARK.indexOf(input) >= 0;
+	}
+
+	private boolean isFinished(String input) {
+		return input.equalsIgnoreCase(QUIT);
+	}
+
+	private boolean isHanging(String input) {
+		return input.equalsIgnoreCase(HANGUP);
+	}
 
 }
