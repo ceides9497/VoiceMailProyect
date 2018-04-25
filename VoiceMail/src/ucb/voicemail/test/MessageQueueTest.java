@@ -15,7 +15,7 @@ public class MessageQueueTest {
 	Message mockedMessage;
 	
 	@Before
-	public void init() {
+	public void setUp() {
 		mockedMessage = mock(Message.class);
 		messageQueueEmpty = new MessageQueue();
 		messageQueueNotEmpy = new MessageQueue();
