@@ -9,12 +9,13 @@ import ucb.voicemail.main.Message;
 import ucb.voicemail.main.MessageQueue;
 
 public class MessageQueueTest {
+	
 	MessageQueue messageQueueEmpty;
 	MessageQueue messageQueueNotEmpy;
 	Message mockedMessage;
 	
 	@Before
-	public void init(){
+	public void init() {
 		mockedMessage = mock(Message.class);
 		messageQueueEmpty = new MessageQueue();
 		messageQueueNotEmpy = new MessageQueue();
