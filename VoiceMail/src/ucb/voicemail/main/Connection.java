@@ -15,15 +15,11 @@ public class Connection implements Subject {
     }
 
     public void record(String voice) {
-        if (state == RECORDING || state == CHANGE_GREETING) {
-            addRecordingText(voice);
-        }
+        connectionState.record(this, voice);
     }
 
     public void hangup() {
-        if (state == RECORDING) {
-            currentMailbox.addMessage(new Message(currentRecording));
-        }
+        connectionState.hangup(this);
         resetConnection();
     }
 
@@ -174,6 +170,10 @@ public class Connection implements Subject {
     
     public void addRecordingText(String voice) {
         currentRecording += voice;
+    }
+    
+    public void addMessageInCurrentMailbox() {
+        currentMailbox.addMessage(new Message(currentRecording));
     }
     
     private MailSystem system;
