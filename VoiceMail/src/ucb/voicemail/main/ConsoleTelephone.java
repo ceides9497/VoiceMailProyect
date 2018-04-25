@@ -1,39 +1,58 @@
 package ucb.voicemail.main;
 import java.util.Scanner;
 
-public class ConsoleTelephone implements Telephone
-{
+public class ConsoleTelephone implements Telephone {
 
-   public ConsoleTelephone(Scanner aScanner)
-   {
-      scanner = aScanner;
-   }
+	private Scanner scanner;
+	
+	private final static String HANGUP = "H";
+	private final static String QUIT = "Q";
+	private final static String OPTIONS_TO_MARK = "1234567890#";
+	
+	public ConsoleTelephone(Scanner aScanner) {
+		scanner = aScanner;
+	}
 
-   @Override
-   public void speak(String output)
-   {
-      System.out.println(output);
-   }
+	@Override
+	public void speak(String output) {
+		System.out.println(output);
+	}
 
-   public void run(Connection c)
-   {
-      boolean more = true;
-      while (more)
-      {
-         String input = scanner.nextLine();
-         if (input == null) return;
-         if (input.equalsIgnoreCase("H"))
-            c.hangup();
-         else if (input.equalsIgnoreCase("Q"))
-            more = false;
-         else if (input.length() == 1
-            && "1234567890#".indexOf(input) >= 0)
-            c.dial(input);
-         else
-            c.record(input);
-      }
-   }
+	public void run(Connection c) {
+		boolean more = true;
+		
+		while (more) {
+			String input = scanner.nextLine();
+			
+			if (isNull(input)) {
+				return;
+			}
+			if (isHanging(input)) {
+				c.hangup();				
+			} else if (isFinished(input)) {
+				more = false;
+			} else if (isDialing(input)) {
+				c.dial(input);
+			} else {
+				c.record(input);
+			}
+		}
+	}
 
-   private Scanner scanner;
+	private boolean isNull(String input) {
+		return input == null;
+	}
+
+	private boolean isDialing(String input) {
+		return input.length() == 1 && OPTIONS_TO_MARK.indexOf(input) >= 0;
+	}
+
+	private boolean isFinished(String input) {
+		return input.equalsIgnoreCase(QUIT);
+	}
+
+	private boolean isHanging(String input) {
+		return input.equalsIgnoreCase(HANGUP);
+	}
 
 }
