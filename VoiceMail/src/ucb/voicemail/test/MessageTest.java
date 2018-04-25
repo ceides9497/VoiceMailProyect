@@ -11,7 +11,7 @@ public class MessageTest {
 	String text;
 	
 	@Before
-	public void setUp(){
+	public void setUp() {
 		text = "Hola soy mensaje";
 		message = new Message(text);
 	}
