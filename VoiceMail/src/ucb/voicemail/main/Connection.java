@@ -16,7 +16,7 @@ public class Connection implements Subject {
 
     public void record(String voice) {
         if (state == RECORDING || state == CHANGE_GREETING) {
-            currentRecording += voice;
+            addRecordingText(voice);
         }
     }
 
@@ -171,11 +171,15 @@ public class Connection implements Subject {
     public ArrayList<Telephone> getUserInterfaces() {
         return userInterfaces;
     }
-   
-	private MailSystem system;
-   	private Mailbox currentMailbox;
-   	private String currentRecording;
-   	private String accumulatedKeys;
+    
+    public void addRecordingText(String voice) {
+        currentRecording += voice;
+    }
+    
+    private MailSystem system;
+    private Mailbox currentMailbox;
+    private String currentRecording;
+    private String accumulatedKeys;
    	private ConsoleTelephone phone;
    	private int state;
     private ArrayList<Telephone> userInterfaces;
