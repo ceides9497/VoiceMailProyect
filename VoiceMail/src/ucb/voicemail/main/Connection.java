@@ -30,22 +30,6 @@ public class Connection implements Subject {
         speakToAll(INITIAL_PROMPT);
     }
 
-    public void login(String key) { // private -> public
-        if (key.equals("#")) {
-            if (currentMailbox.checkPasscode(accumulatedKeys)) {
-                connectionState = new MailboxMenuState();
-                speakToAll(MAILBOX_MENU_TEXT);
-            }
-            else {
-                speakToAll("Incorrect passcode. Try again!");
-            }
-            accumulatedKeys = "";
-        }
-        else {
-            accumulatedKeys += key;
-        }
-    }
-
     public void changePasscode(String key) { // private -> public
         if (key.equals("#")) {
             currentMailbox.setPasscode(accumulatedKeys);
@@ -166,6 +150,10 @@ public class Connection implements Subject {
         return system;
     }
     
+    public Mailbox getCurrentMailbox() {
+        return currentMailbox;
+    }
+    
     public Mailbox setCurrentMailboxByAccumulatedKeys() {
         return currentMailbox = system.findMailbox(accumulatedKeys);
     }
@@ -177,15 +165,15 @@ public class Connection implements Subject {
     private ArrayList<Telephone> userInterfaces;
     private ConnectionState connectionState;
 
-   	private static final String INITIAL_PROMPT = 
+   	public static final String INITIAL_PROMPT = 
         "Enter mailbox number followed by #";
    	
-   	private static final String MAILBOX_MENU_TEXT = 
+   	public static final String MAILBOX_MENU_TEXT = 
         "Enter 1 to listen to your messages\n"
         + "Enter 2 to change your passcode\n"
         + "Enter 3 to change your greeting";
    	
-   	private static final String MESSAGE_MENU_TEXT = 
+   	public static final String MESSAGE_MENU_TEXT = 
         "Enter 1 to listen to the current message\n"
         + "Enter 2 to save the current message\n"
         + "Enter 3 to delete the current message\n"
