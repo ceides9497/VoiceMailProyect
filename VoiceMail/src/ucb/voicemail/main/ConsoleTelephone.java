@@ -9,6 +9,10 @@ public class ConsoleTelephone implements Telephone {
 	private final static String QUIT = "Q";
 	private final static String OPTIONS_TO_MARK = "1234567890#";
 	
+	public ConsoleTelephone() {
+		scanner = new Scanner(System.in);
+	}
+	
 	public ConsoleTelephone(Scanner aScanner) {
 		scanner = aScanner;
 	}
