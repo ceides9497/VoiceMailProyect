@@ -30,18 +30,6 @@ public class Connection implements Subject {
         speakToAll(INITIAL_PROMPT);
     }
 
-    public void changePasscode(String key) { // private -> public
-        if (key.equals("#")) {
-            currentMailbox.setPasscode(accumulatedKeys);
-            connectionState = new MailboxMenuState();
-            speakToAll(MAILBOX_MENU_TEXT);
-            accumulatedKeys = "";
-        }
-        else {
-            accumulatedKeys += key;
-        }
-    }
-
     public void changeGreeting(String key) { // private -> public
         if (key.equals("#")) {
             currentMailbox.setGreeting(currentRecording);
