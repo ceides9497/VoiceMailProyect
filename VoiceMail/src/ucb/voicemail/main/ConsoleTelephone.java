@@ -22,7 +22,7 @@ public class ConsoleTelephone implements Telephone {
 		boolean more = true;
 		
 		while (more) {
-			String input = scanner.nextLine();
+			String input = getScannerNextLine();
 			
 			if (isNull(input)) {
 				return;
@@ -37,6 +37,10 @@ public class ConsoleTelephone implements Telephone {
 				c.record(input);
 			}
 		}
+	}
+
+	private String getScannerNextLine() {
+		return scanner.nextLine();
 	}
 
 	private boolean isNull(String input) {
