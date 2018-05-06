@@ -4,7 +4,13 @@ public class ChangeGreetingState implements ConnectionState {
 
 	@Override
 	public void dial(Connection connection, String key) {
-		connection.changeGreeting(key);
+	    Mailbox currentMailbox = connection.getCurrentMailbox();
+        if (key.equals("#")) {
+            currentMailbox.setGreeting(connection.getCurrentRecording());
+            connection.setCurrentRecording("");
+            connection.setConnectionState(new MailboxMenuState());
+            connection.speakToAll(Connection.MAILBOX_MENU_TEXT);
+        }
 	}
 	
 	@Override

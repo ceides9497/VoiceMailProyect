@@ -3,13 +3,17 @@ package ucb.voicemail.main;
 import java.util.ArrayList;
 
 public class Connection implements Subject {
-   
+
+    // ==================== CONSTRUCTOR ====================
+    
     public Connection(MailSystem s) {
         system = s;
         userInterfaces = new ArrayList<Telephone>();
         resetConnection();
     }
-   
+
+    // ==================== FUNCTIONS ====================
+    
     public void dial(String key) {
         connectionState.dial(this, key);
     }
@@ -22,110 +26,9 @@ public class Connection implements Subject {
         connectionState.hangup(this);
         resetConnection();
     }
-
-    private void resetConnection() {
-        currentRecording = "";
-        accumulatedKeys = "";
-        connectionState = new ConnectedState();
-        speakToAll(INITIAL_PROMPT);
-    }
-
-    public void connect(String key) { // private -> public 
-        if (key.equals("#")) {
-            currentMailbox = system.findMailbox(accumulatedKeys);
-            if (currentMailbox != null) {
-                connectionState = new RecordingState();
-                speakToAll(currentMailbox.getGreeting());
-            }
-            else {
-                speakToAll("Incorrect mailbox number. Try again!");
-            }
-            accumulatedKeys = "";
-        }
-        else {
-            accumulatedKeys += key;
-        }
-    }
-
-    public void login(String key) { // private -> public
-        if (key.equals("#")) {
-            if (currentMailbox.checkPasscode(accumulatedKeys)) {
-                connectionState = new MailboxMenuState();
-                speakToAll(MAILBOX_MENU_TEXT);
-            }
-            else {
-                speakToAll("Incorrect passcode. Try again!");
-            }
-            accumulatedKeys = "";
-        }
-        else {
-            accumulatedKeys += key;
-        }
-    }
-
-    public void changePasscode(String key) { // private -> public
-        if (key.equals("#")) {
-            currentMailbox.setPasscode(accumulatedKeys);
-            connectionState = new MailboxMenuState();
-            speakToAll(MAILBOX_MENU_TEXT);
-            accumulatedKeys = "";
-        }
-        else {
-            accumulatedKeys += key;
-        }
-    }
-
-    public void changeGreeting(String key) { // private -> public
-        if (key.equals("#")) {
-            currentMailbox.setGreeting(currentRecording);
-            currentRecording = "";
-            connectionState = new MailboxMenuState();
-            speakToAll(MAILBOX_MENU_TEXT);
-        }
-    }
-
-    public void mailboxMenu(String key) { // private -> public
-        if (key.equals("1")) {
-            connectionState = new MessageMenuState();
-            speakToAll(MESSAGE_MENU_TEXT);
-        }
-        else if (key.equals("2")) {
-            connectionState = new ChangePasscodeState();
-            speakToAll("Enter new passcode followed by the # key");
-        }
-        else if (key.equals("3")) {
-            connectionState = new ChangeGreetingState();
-            speakToAll("Record your greeting, then press the # key");
-        }
-    }
-
-    public void messageMenu(String key) { // private -> public
-        if (key.equals("1")) {
-            String output = "";
-            Message m = currentMailbox.getCurrentMessage();
-            if (m == null) {
-                output += "No messages." + "\n";
-            }
-            else {
-                output += m.getText() + "\n";
-            }
-            output += MESSAGE_MENU_TEXT;
-            speakToAll(output);
-        }
-        else if (key.equals("2")) {
-            currentMailbox.saveCurrentMessage();
-            speakToAll(MESSAGE_MENU_TEXT);
-        }
-        else if (key.equals("3")) {
-            currentMailbox.removeCurrentMessage();
-            speakToAll(MESSAGE_MENU_TEXT);
-        }
-        else if (key.equals("4")) {
-            connectionState = new MailboxMenuState();
-            speakToAll(MAILBOX_MENU_TEXT);
-        }
-    }
-   
+    
+    // ==================== SUBJECT FUNCTIONS ====================
+    
     @Override
     public void addUserInterface(Telephone userInterface) {
         userInterfaces.add(userInterface);
@@ -142,30 +45,71 @@ public class Connection implements Subject {
             userInterface.speak(output);
         }
     }
-   
+    
+    // ==================== HELPER FUNCTIONS ====================
+    
+    private void resetConnection() {
+        currentRecording = "";
+        accumulatedKeys = "";
+        connectionState = new ConnectedState();
+        speakToAll(INITIAL_PROMPT);
+    }
+    
     public void start() {
         resetConnection();
     }
-	
-    public String getCurrentRecording() {
-        return currentRecording;
-    }
-	
-    public String getAccumulatedKeys() {
-        return accumulatedKeys;
-    }
-	
-    public ArrayList<Telephone> getUserInterfaces() {
-        return userInterfaces;
+    
+    public void addMessageInCurrentMailbox() {
+        currentMailbox.addMessage(new Message(currentRecording));
     }
     
     public void addRecordingText(String voice) {
         currentRecording += voice;
     }
     
-    public void addMessageInCurrentMailbox() {
-        currentMailbox.addMessage(new Message(currentRecording));
+    public void addAccumulatedKeysText(String key) {
+        accumulatedKeys += key;
     }
+    
+    public Mailbox setCurrentMailboxByAccumulatedKeys() {
+        return currentMailbox = system.findMailbox(accumulatedKeys);
+    }
+    
+    // ==================== GET AND SET ====================
+    
+    public ArrayList<Telephone> getUserInterfaces() {
+        return userInterfaces;
+    }
+    
+    public MailSystem getMailSystem() {
+        return system;
+    }
+    
+    public String getCurrentRecording() {
+        return currentRecording;
+    }
+    
+    public void setCurrentRecording(String currentRecording) {
+        this.currentRecording = currentRecording;
+    }
+    
+    public String getAccumulatedKeys() {
+        return accumulatedKeys;
+    }
+    
+    public void setAccumulatedKeys(String accumulatedKeys) {
+        this.accumulatedKeys = accumulatedKeys;
+    }
+    
+    public Mailbox getCurrentMailbox() {
+        return currentMailbox;
+    }
+    
+    public void setConnectionState(ConnectionState connectionState) {
+        this.connectionState = connectionState;
+    }
+    
+    // ==================== VARIABLES ====================
     
     private MailSystem system;
     private Mailbox currentMailbox;
@@ -173,16 +117,16 @@ public class Connection implements Subject {
     private String accumulatedKeys;
     private ArrayList<Telephone> userInterfaces;
     private ConnectionState connectionState;
-
-   	private static final String INITIAL_PROMPT = 
+    
+   	public static final String INITIAL_PROMPT = 
         "Enter mailbox number followed by #";
    	
-   	private static final String MAILBOX_MENU_TEXT = 
+   	public static final String MAILBOX_MENU_TEXT = 
         "Enter 1 to listen to your messages\n"
         + "Enter 2 to change your passcode\n"
         + "Enter 3 to change your greeting";
    	
-   	private static final String MESSAGE_MENU_TEXT = 
+   	public static final String MESSAGE_MENU_TEXT = 
         "Enter 1 to listen to the current message\n"
         + "Enter 2 to save the current message\n"
         + "Enter 3 to delete the current message\n"

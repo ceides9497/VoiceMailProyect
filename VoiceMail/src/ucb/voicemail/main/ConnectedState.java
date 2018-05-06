@@ -4,7 +4,20 @@ public class ConnectedState implements ConnectionState {
 
 	@Override
 	public void dial(Connection connection, String key) {
-		connection.connect(key);
+	    if (key.equals("#")) {
+            Mailbox currentMailbox = connection.setCurrentMailboxByAccumulatedKeys();
+            if (currentMailbox != null) {
+                connection.setConnectionState(new RecordingState());
+                connection.speakToAll(currentMailbox.getGreeting());
+            }
+            else {
+                connection.speakToAll("Incorrect mailbox number. Try again!");
+            }
+            connection.setAccumulatedKeys("");
+        }
+        else {
+            connection.addAccumulatedKeysText(key);
+        }
 	}
 	
 	@Override
