@@ -30,23 +30,6 @@ public class Connection implements Subject {
         speakToAll(INITIAL_PROMPT);
     }
 
-    public void connect(String key) { // private -> public 
-        if (key.equals("#")) {
-            currentMailbox = system.findMailbox(accumulatedKeys);
-            if (currentMailbox != null) {
-                connectionState = new RecordingState();
-                speakToAll(currentMailbox.getGreeting());
-            }
-            else {
-                speakToAll("Incorrect mailbox number. Try again!");
-            }
-            accumulatedKeys = "";
-        }
-        else {
-            accumulatedKeys += key;
-        }
-    }
-
     public void login(String key) { // private -> public
         if (key.equals("#")) {
             if (currentMailbox.checkPasscode(accumulatedKeys)) {
@@ -159,12 +142,32 @@ public class Connection implements Subject {
         return userInterfaces;
     }
     
+    public void addMessageInCurrentMailbox() {
+        currentMailbox.addMessage(new Message(currentRecording));
+    }
+    
     public void addRecordingText(String voice) {
         currentRecording += voice;
     }
     
-    public void addMessageInCurrentMailbox() {
-        currentMailbox.addMessage(new Message(currentRecording));
+    public void setAccumulatedKeys(String accumulatedKeys) {
+        this.accumulatedKeys = accumulatedKeys;
+    }
+    
+    public void addAccumulatedKeysText(String key) {
+        accumulatedKeys += key;
+    }
+    
+    public void setConnectionState(ConnectionState connectionState) {
+        this.connectionState = connectionState;
+    }
+    
+    public MailSystem getMailSystem() {
+        return system;
+    }
+    
+    public Mailbox setCurrentMailboxByAccumulatedKeys() {
+        return currentMailbox = system.findMailbox(accumulatedKeys);
     }
     
     private MailSystem system;
