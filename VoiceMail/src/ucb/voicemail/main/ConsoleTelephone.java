@@ -43,7 +43,7 @@ public class ConsoleTelephone implements Telephone {
 		}
 	}
 
-	private String getScannerNextLine() {
+	public String getScannerNextLine() {
 		return scanner.nextLine();
 	}
 
