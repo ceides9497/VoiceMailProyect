@@ -9,6 +9,10 @@ public class ConsoleTelephone implements Telephone {
 	private final static String QUIT = "Q";
 	private final static String OPTIONS_TO_MARK = "1234567890#";
 	
+	public ConsoleTelephone() {
+		scanner = new Scanner(System.in);
+	}
+	
 	public ConsoleTelephone(Scanner aScanner) {
 		scanner = aScanner;
 	}
@@ -22,7 +26,7 @@ public class ConsoleTelephone implements Telephone {
 		boolean more = true;
 		
 		while (more) {
-			String input = scanner.nextLine();
+			String input = getScannerNextLine();
 			
 			if (isNull(input)) {
 				return;
@@ -37,6 +41,10 @@ public class ConsoleTelephone implements Telephone {
 				c.record(input);
 			}
 		}
+	}
+
+	public String getScannerNextLine() {
+		return scanner.nextLine();
 	}
 
 	private boolean isNull(String input) {

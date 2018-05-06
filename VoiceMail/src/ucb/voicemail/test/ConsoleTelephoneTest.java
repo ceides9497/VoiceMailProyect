@@ -9,6 +9,7 @@ import java.util.Scanner;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import ucb.voicemail.main.Connection;
 import ucb.voicemail.main.ConsoleTelephone;
@@ -16,15 +17,20 @@ import ucb.voicemail.main.ConsoleTelephone;
 public class ConsoleTelephoneTest {
 	
 	private ConsoleTelephone consoleTelephone;
+	private ConsoleTelephone mockConsoleTelephone;
 	private PrintStream out;
 	private Connection mockConnection;
 	
 	@Before
 	public void setUp() {
+		mockConsoleTelephone = mock(ConsoleTelephone.class);
 		out = mock(PrintStream.class);
 		mockConnection = mock(Connection.class);
 		
 		System.setOut(out);
+		
+		when(mockConsoleTelephone.getScannerNextLine()).thenReturn(null);
+		Mockito.doCallRealMethod().when(mockConsoleTelephone).run(any(Connection.class));
 		
 		doNothing().when(mockConnection).hangup();
 		doNothing().when(mockConnection).dial(any(String.class));
@@ -38,7 +44,7 @@ public class ConsoleTelephoneTest {
 	
 	@Test
 	public void deberiaMostrarTestRunning() {
-		consoleTelephone = new ConsoleTelephone(new Scanner(System.in));
+		consoleTelephone = new ConsoleTelephone();
         
         consoleTelephone.speak("TestRunning");
         
@@ -79,7 +85,7 @@ public class ConsoleTelephoneTest {
 	
 	@Test
 	public void deberiaEjecutarElMetodoRecordDeConnection() {
-		Scanner scanner = getScannerWithText("ZR");
+		Scanner scanner = getScannerWithText("X");
 		ConsoleTelephone telephone = new ConsoleTelephone(scanner);
 		
 		telephone.run(mockConnection);
@@ -105,6 +111,15 @@ public class ConsoleTelephoneTest {
 		telephone.run(mockConnection);
 		
 		verify(mockConnection).record(anyString());
+	}
+	
+	@Test
+	public void deberiaDarElValorDeNullAInput() {
+		mockConsoleTelephone.run(mockConnection);
+		
+		verify(mockConnection, never()).hangup();
+		verify(mockConnection, never()).dial(anyString());
+		verify(mockConnection, never()).record(anyString());
 	}
 	
 	private Scanner getScannerWithText(String text) {
