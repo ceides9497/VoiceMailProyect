@@ -3,7 +3,7 @@ package ucb.voicemail.main;
 import java.util.ArrayList;
 
 public class Connection implements Subject {
-   
+
     public Connection(MailSystem s) {
         system = s;
         userInterfaces = new ArrayList<Telephone>();
@@ -29,58 +29,7 @@ public class Connection implements Subject {
         connectionState = new ConnectedState();
         speakToAll(INITIAL_PROMPT);
     }
-
-    public void changeGreeting(String key) { // private -> public
-        if (key.equals("#")) {
-            currentMailbox.setGreeting(currentRecording);
-            currentRecording = "";
-            connectionState = new MailboxMenuState();
-            speakToAll(MAILBOX_MENU_TEXT);
-        }
-    }
-
-    public void mailboxMenu(String key) { // private -> public
-        if (key.equals("1")) {
-            connectionState = new MessageMenuState();
-            speakToAll(MESSAGE_MENU_TEXT);
-        }
-        else if (key.equals("2")) {
-            connectionState = new ChangePasscodeState();
-            speakToAll("Enter new passcode followed by the # key");
-        }
-        else if (key.equals("3")) {
-            connectionState = new ChangeGreetingState();
-            speakToAll("Record your greeting, then press the # key");
-        }
-    }
-
-    public void messageMenu(String key) { // private -> public
-        if (key.equals("1")) {
-            String output = "";
-            Message m = currentMailbox.getCurrentMessage();
-            if (m == null) {
-                output += "No messages." + "\n";
-            }
-            else {
-                output += m.getText() + "\n";
-            }
-            output += MESSAGE_MENU_TEXT;
-            speakToAll(output);
-        }
-        else if (key.equals("2")) {
-            currentMailbox.saveCurrentMessage();
-            speakToAll(MESSAGE_MENU_TEXT);
-        }
-        else if (key.equals("3")) {
-            currentMailbox.removeCurrentMessage();
-            speakToAll(MESSAGE_MENU_TEXT);
-        }
-        else if (key.equals("4")) {
-            connectionState = new MailboxMenuState();
-            speakToAll(MAILBOX_MENU_TEXT);
-        }
-    }
-   
+    
     @Override
     public void addUserInterface(Telephone userInterface) {
         userInterfaces.add(userInterface);
@@ -110,6 +59,10 @@ public class Connection implements Subject {
         return accumulatedKeys;
     }
 	
+    public void setCurrentRecording(String currentRecording) {
+        this.currentRecording = currentRecording;
+    }
+    
     public ArrayList<Telephone> getUserInterfaces() {
         return userInterfaces;
     }
