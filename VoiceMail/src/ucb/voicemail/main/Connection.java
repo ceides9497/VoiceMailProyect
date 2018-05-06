@@ -4,12 +4,16 @@ import java.util.ArrayList;
 
 public class Connection implements Subject {
 
+    // ==================== CONSTRUCTOR ====================
+    
     public Connection(MailSystem s) {
         system = s;
         userInterfaces = new ArrayList<Telephone>();
         resetConnection();
     }
-   
+
+    // ==================== FUNCTIONS ====================
+    
     public void dial(String key) {
         connectionState.dial(this, key);
     }
@@ -22,13 +26,8 @@ public class Connection implements Subject {
         connectionState.hangup(this);
         resetConnection();
     }
-
-    private void resetConnection() {
-        currentRecording = "";
-        accumulatedKeys = "";
-        connectionState = new ConnectedState();
-        speakToAll(INITIAL_PROMPT);
-    }
+    
+    // ==================== SUBJECT FUNCTIONS ====================
     
     @Override
     public void addUserInterface(Telephone userInterface) {
@@ -46,25 +45,18 @@ public class Connection implements Subject {
             userInterface.speak(output);
         }
     }
-   
-    public void start() {
-        resetConnection();
-    }
-	
-    public String getCurrentRecording() {
-        return currentRecording;
-    }
-	
-    public String getAccumulatedKeys() {
-        return accumulatedKeys;
-    }
-	
-    public void setCurrentRecording(String currentRecording) {
-        this.currentRecording = currentRecording;
+    
+    // ==================== HELPER FUNCTIONS ====================
+    
+    private void resetConnection() {
+        currentRecording = "";
+        accumulatedKeys = "";
+        connectionState = new ConnectedState();
+        speakToAll(INITIAL_PROMPT);
     }
     
-    public ArrayList<Telephone> getUserInterfaces() {
-        return userInterfaces;
+    public void start() {
+        resetConnection();
     }
     
     public void addMessageInCurrentMailbox() {
@@ -75,29 +67,49 @@ public class Connection implements Subject {
         currentRecording += voice;
     }
     
-    public void setAccumulatedKeys(String accumulatedKeys) {
-        this.accumulatedKeys = accumulatedKeys;
-    }
-    
     public void addAccumulatedKeysText(String key) {
         accumulatedKeys += key;
     }
     
-    public void setConnectionState(ConnectionState connectionState) {
-        this.connectionState = connectionState;
+    public Mailbox setCurrentMailboxByAccumulatedKeys() {
+        return currentMailbox = system.findMailbox(accumulatedKeys);
+    }
+    
+    // ==================== GET AND SET ====================
+    
+    public ArrayList<Telephone> getUserInterfaces() {
+        return userInterfaces;
     }
     
     public MailSystem getMailSystem() {
         return system;
     }
     
+    public String getCurrentRecording() {
+        return currentRecording;
+    }
+    
+    public void setCurrentRecording(String currentRecording) {
+        this.currentRecording = currentRecording;
+    }
+    
+    public String getAccumulatedKeys() {
+        return accumulatedKeys;
+    }
+    
+    public void setAccumulatedKeys(String accumulatedKeys) {
+        this.accumulatedKeys = accumulatedKeys;
+    }
+    
     public Mailbox getCurrentMailbox() {
         return currentMailbox;
     }
     
-    public Mailbox setCurrentMailboxByAccumulatedKeys() {
-        return currentMailbox = system.findMailbox(accumulatedKeys);
+    public void setConnectionState(ConnectionState connectionState) {
+        this.connectionState = connectionState;
     }
+    
+    // ==================== VARIABLES ====================
     
     private MailSystem system;
     private Mailbox currentMailbox;
@@ -105,7 +117,7 @@ public class Connection implements Subject {
     private String accumulatedKeys;
     private ArrayList<Telephone> userInterfaces;
     private ConnectionState connectionState;
-
+    
    	public static final String INITIAL_PROMPT = 
         "Enter mailbox number followed by #";
    	
