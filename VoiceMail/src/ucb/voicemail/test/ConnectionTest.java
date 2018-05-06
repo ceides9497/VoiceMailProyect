@@ -275,4 +275,9 @@ public class ConnectionTest {
 		connection.dial("3");
 		verify(mockUserInterface).speak("Record your greeting, then press the # key");
 	}
+	
+	@Test
+	public void deberiaRetornarElMailSystemAsignadoEnElConstructor() {
+		assertEquals(mockMailsystem, connection.getMailSystem());
+	}
 }
