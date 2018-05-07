@@ -12,8 +12,6 @@ import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import ucb.voicemail.main.Connection;
-
 public class MainMenu extends JFrame {
 
     private static final long serialVersionUID = 1L;

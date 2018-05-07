@@ -1,7 +1,5 @@
 package ucb.voicemail.main;
 
-import ucb.voicemail.main.Message;
-
 public class Mailbox {
 
     public Mailbox(String aPasscode, String aGreeting, MessageRepository repository) {

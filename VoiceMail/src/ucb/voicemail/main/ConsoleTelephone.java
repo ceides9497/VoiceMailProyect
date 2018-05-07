@@ -2,8 +2,6 @@ package ucb.voicemail.main;
 
 import java.util.Scanner;
 
-import ucb.voicemail.main.Connection;
-
 public class ConsoleTelephone implements Telephone {
 
 	private Scanner scanner;

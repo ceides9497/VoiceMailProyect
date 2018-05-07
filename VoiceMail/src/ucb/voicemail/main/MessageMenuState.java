@@ -1,10 +1,5 @@
 package ucb.voicemail.main;
 
-import ucb.voicemail.main.Connection;
-import ucb.voicemail.main.Mailbox;
-import ucb.voicemail.main.MailboxMenuState;
-import ucb.voicemail.main.Message;
-
 public class MessageMenuState implements ConnectionState {
 
 	@Override

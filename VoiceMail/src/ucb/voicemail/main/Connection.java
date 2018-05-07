@@ -2,13 +2,6 @@ package ucb.voicemail.main;
 
 import java.util.ArrayList;
 
-import ucb.voicemail.main.ConnectionState;
-import ucb.voicemail.main.MailboxRepository;
-import ucb.voicemail.main.Mailbox;
-import ucb.voicemail.main.Message;
-import ucb.voicemail.main.Subject;
-import ucb.voicemail.main.Telephone;
-
 public class Connection implements Subject {
 
     // ==================== CONSTRUCTOR ====================

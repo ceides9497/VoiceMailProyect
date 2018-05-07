@@ -1,9 +1,5 @@
 package ucb.voicemail.main;
 
-import ucb.voicemail.main.Connection;
-import ucb.voicemail.main.Mailbox;
-import ucb.voicemail.main.MailboxMenuState;
-
 public class ChangeGreetingState implements ConnectionState {
 
 	@Override

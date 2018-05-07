@@ -2,8 +2,6 @@ package ucb.voicemail.main;
 
 import java.util.ArrayList;
 
-import ucb.voicemail.main.Mailbox;
-
 public class ArrayMailboxRepository implements MailboxRepository {
 
     public ArrayMailboxRepository(int mailboxCount) {
