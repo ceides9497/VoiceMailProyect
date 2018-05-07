@@ -15,17 +15,6 @@ public class ConnectionTest {
 	private Mailbox mockMailbox;
 	private Telephone mockUserInterface;
 	
-	private static final String MESSAGE_MENU_TEXT = 
-	        "Enter 1 to listen to the current message\n"
-	        + "Enter 2 to save the current message\n"
-	        + "Enter 3 to delete the current message\n"
-	        + "Enter 4 to return to the main menu";
-	
-	private static final String MAILBOX_MENU_TEXT = 
-	        "Enter 1 to listen to your messages\n"
-	        + "Enter 2 to change your passcode\n"
-	        + "Enter 3 to change your greeting";
-	
 	@Before
 	public void init() {
 		mockMailsystem = mock(MailSystem.class);
@@ -98,7 +87,7 @@ public class ConnectionTest {
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
-		verify(mockUserInterface).speak(MAILBOX_MENU_TEXT);
+		verify(mockUserInterface).speak(Connection.MAILBOX_MENU_TEXT);
 	}
 	
 	@Test
@@ -119,7 +108,7 @@ public class ConnectionTest {
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
 		connection.dial("1");
-		verify(mockUserInterface).speak(MESSAGE_MENU_TEXT);
+		verify(mockUserInterface).speak(Connection.MESSAGE_MENU_TEXT);
 	}
 	
 	@Test
@@ -159,7 +148,7 @@ public class ConnectionTest {
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
 		connection.dial("4");
-		verify(mockUserInterface, never()).speak(MESSAGE_MENU_TEXT);
+		verify(mockUserInterface, never()).speak(Connection.MESSAGE_MENU_TEXT);
 		verify(mockUserInterface, never()).speak("Enter new passcode followed by the # key");
 		verify(mockUserInterface, never()).speak("Record your greeting, then press the # key");
 	}
@@ -172,7 +161,7 @@ public class ConnectionTest {
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
 		connection.dial("1");
-		verify(mockUserInterface).speak(MESSAGE_MENU_TEXT);
+		verify(mockUserInterface).speak(Connection.MESSAGE_MENU_TEXT);
 	}
 	
 	@Test
@@ -187,7 +176,7 @@ public class ConnectionTest {
 		connection.dial("#");
 		connection.dial("1");
 		connection.dial("1");
-		verify(mockUserInterface).speak("Not null\n" + MESSAGE_MENU_TEXT);
+		verify(mockUserInterface).speak("Not null\n" + Connection.MESSAGE_MENU_TEXT);
 	}
 	
 	@Test 
@@ -200,7 +189,7 @@ public class ConnectionTest {
 		connection.dial("#");
 		connection.dial("1");
 		connection.dial("1");
-		verify(mockUserInterface).speak("No messages.\n" + MESSAGE_MENU_TEXT);
+		verify(mockUserInterface).speak("No messages.\n" + Connection.MESSAGE_MENU_TEXT);
 	}
 	
 	@Test
@@ -246,7 +235,7 @@ public class ConnectionTest {
 		connection.dial("#");
 		connection.dial("1");
 		connection.dial("4");
-		verify(mockUserInterface, times(2)).speak(MAILBOX_MENU_TEXT);
+		verify(mockUserInterface, times(2)).speak(Connection.MAILBOX_MENU_TEXT);
 	}
 	
 	@Test
