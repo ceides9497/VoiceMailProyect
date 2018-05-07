@@ -63,8 +63,8 @@ public class Mailbox {
         return greeting;
     }
 
-    private NonPersistentMessageRepository newMessages;
-    private NonPersistentMessageRepository keptMessages;
+    private MessageRepository newMessages;
+    private MessageRepository keptMessages;
     private String greeting;
     private String passcode;
 }

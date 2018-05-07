@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import ucb.voicemail.main.Message;
 
-public class NonPersistentMessageRepository {
+public class NonPersistentMessageRepository implements MessageRepository {
 	
 	private ArrayList<Message> queue;
 
@@ -12,22 +12,22 @@ public class NonPersistentMessageRepository {
 		queue = new ArrayList<Message>();
 	}
 
-	//REMOVE FIRST MESSAGE
+	@Override
 	public Message remove() {
 		return queue.remove(0);
 	}
 
-	// ADD LAST MESSAGE
+	@Override
 	public void add(Message newMessage) {
 		queue.add(newMessage);
 	}
 
-	// GET COUNT OF MESSAGES
+	@Override
 	public int size() {
 		return queue.size();
 	}
 
-	// GET FIRST MESSAGE OR NULL
+	@Override
 	public Message peek() {
 		if (queue.size() == 0) {
 			return null;
