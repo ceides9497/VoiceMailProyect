@@ -2,7 +2,6 @@ package ucb.voicemail.main;
 
 import ucb.voicemail.main.Connection;
 import ucb.voicemail.main.MainMenu;
-import ucb.voicemail.main.Telephone;
 
 public class GraphicalTelephone implements Telephone {
 	

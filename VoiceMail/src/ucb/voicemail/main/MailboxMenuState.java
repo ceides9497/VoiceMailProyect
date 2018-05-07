@@ -3,7 +3,6 @@ package ucb.voicemail.main;
 import ucb.voicemail.main.ChangeGreetingState;
 import ucb.voicemail.main.ChangePasscodeState;
 import ucb.voicemail.main.Connection;
-import ucb.voicemail.main.ConnectionState;
 import ucb.voicemail.main.MessageMenuState;
 
 public class MailboxMenuState implements ConnectionState {

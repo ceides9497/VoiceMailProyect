@@ -3,7 +3,6 @@ package ucb.voicemail.main;
 import java.util.Scanner;
 
 import ucb.voicemail.main.Connection;
-import ucb.voicemail.main.Telephone;
 
 public class ConsoleTelephone implements Telephone {
 
