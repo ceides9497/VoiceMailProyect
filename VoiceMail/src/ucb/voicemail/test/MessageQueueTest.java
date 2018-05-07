@@ -6,19 +6,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ucb.voicemail.main.Message;
-import ucb.voicemail.main.NonPersistentMessageRepository;
+import ucb.voicemail.main.MessageQueue;
 
-public class NonPersistentMessageRepositoryTest {
+public class MessageQueueTest {
 	
-	NonPersistentMessageRepository messageQueueEmpty;
-	NonPersistentMessageRepository messageQueueNotEmpy;
+	MessageQueue messageQueueEmpty;
+	MessageQueue messageQueueNotEmpy;
 	Message mockedMessage;
 	
 	@Before
 	public void setUp() {
 		mockedMessage = mock(Message.class);
-		messageQueueEmpty = new NonPersistentMessageRepository();
-		messageQueueNotEmpy = new NonPersistentMessageRepository();
+		messageQueueEmpty = new MessageQueue();
+		messageQueueNotEmpy = new MessageQueue();
 		
 		messageQueueNotEmpy.add(mockedMessage);
 		messageQueueNotEmpy.add(mockedMessage);
