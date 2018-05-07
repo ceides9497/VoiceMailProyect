@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import ucb.voicemail.main.Mailbox;
 import ucb.voicemail.main.Message;
-import ucb.voicemail.main.MessageQueue;
+import ucb.voicemail.main.NonPersistentMessageRepository;
 
 import static org.mockito.Mockito.*;
 
@@ -17,7 +17,7 @@ public class MailboxTest {
 	String passcode;
 	String greeting;
 	Message mockedMessage;
-	MessageQueue mockedMessageQueue;
+	NonPersistentMessageRepository mockedMessageQueue;
 	
 	@Before
 	public void init(){
@@ -26,7 +26,7 @@ public class MailboxTest {
 		mailboxNotEmpty = new Mailbox(passcode,greeting);
 		mailboxEmpty = new Mailbox(passcode, greeting);
 		mockedMessage = mock(Message.class);
-		mockedMessageQueue = mock(MessageQueue.class);
+		mockedMessageQueue = mock(NonPersistentMessageRepository.class);
 		
 		mailboxNotEmpty.addMessage(mockedMessage);
 	    when(mockedMessage.getText()).thenReturn(greeting);

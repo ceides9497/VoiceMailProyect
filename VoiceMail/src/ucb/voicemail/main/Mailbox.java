@@ -1,15 +1,15 @@
 package ucb.voicemail.main;
 
 import ucb.voicemail.main.Message;
-import ucb.voicemail.main.MessageQueue;
+import ucb.voicemail.main.NonPersistentMessageRepository;
 
 public class Mailbox {
 
     public Mailbox(String aPasscode, String aGreeting) {
         passcode = aPasscode;
         greeting = aGreeting;
-        newMessages = new MessageQueue();
-        keptMessages = new MessageQueue();
+        newMessages = new NonPersistentMessageRepository();
+        keptMessages = new NonPersistentMessageRepository();
     }
 
     public boolean checkPasscode(String aPasscode) {
@@ -63,8 +63,8 @@ public class Mailbox {
         return greeting;
     }
 
-    private MessageQueue newMessages;
-    private MessageQueue keptMessages;
+    private NonPersistentMessageRepository newMessages;
+    private NonPersistentMessageRepository keptMessages;
     private String greeting;
     private String passcode;
 }

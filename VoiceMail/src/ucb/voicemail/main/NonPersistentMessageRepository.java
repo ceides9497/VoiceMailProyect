@@ -1,15 +1,14 @@
 package ucb.voicemail.main;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import ucb.voicemail.main.Message;
 
-public class MessageQueue {
+public class NonPersistentMessageRepository {
 	
-	private List<Message> queue;
+	private ArrayList<Message> queue;
 
-	public MessageQueue() {
+	public NonPersistentMessageRepository() {
 		queue = new ArrayList<Message>();
 	}
 
