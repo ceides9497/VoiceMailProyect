@@ -11,13 +11,13 @@ import ucb.voicemail.main.*;
 public class ConnectionTest {
 	
 	private Connection connection;
-	private MailSystem mockMailsystem;
+	private ArrayMailboxRepository mockMailsystem;
 	private Mailbox mockMailbox;
 	private Telephone mockUserInterface;
 	
 	@Before
 	public void init() {
-		mockMailsystem = mock(MailSystem.class);
+		mockMailsystem = mock(ArrayMailboxRepository.class);
 		mockMailbox = mock(Mailbox.class);
 		mockUserInterface = mock(Telephone.class);
 		connection = new Connection(mockMailsystem, new ConnectedState());

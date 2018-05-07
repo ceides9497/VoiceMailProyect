@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 import ucb.voicemail.main.Mailbox;
 
-public class MailSystem implements MailboxRepository {
+public class ArrayMailboxRepository implements MailboxRepository {
 
-    public MailSystem(int mailboxCount) {
+    public ArrayMailboxRepository(int mailboxCount) {
         mailboxes = new ArrayList<Mailbox>();
         
         for (int i = 0; i < mailboxCount; i++) {
             String passcode = "" + (i + 1);
             String greeting = "You have reached mailbox " + (i + 1) + ". \nPlease leave a message now.";
-            mailboxes.add(new Mailbox(passcode, greeting));
+            mailboxes.add(new Mailbox(passcode, greeting, new ArrayMessageRepository()));
         }
     }
 

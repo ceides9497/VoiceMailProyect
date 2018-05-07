@@ -6,7 +6,7 @@ public class MailSystemTester {
     
     public static void main(String[] args) {
         GraphicalTelephone w = new GraphicalTelephone(new MainMenu());
-        MailSystem system = new MailSystem(MAILBOX_COUNT);
+        ArrayMailboxRepository system = new ArrayMailboxRepository(MAILBOX_COUNT);
         Scanner console = new Scanner(System.in);
         ConsoleTelephone p = new ConsoleTelephone(console);
         Connection c = new Connection(system, new ConnectedState());
