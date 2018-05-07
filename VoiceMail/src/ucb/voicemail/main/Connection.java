@@ -3,8 +3,8 @@ package ucb.voicemail.main;
 import java.util.ArrayList;
 
 import ucb.voicemail.main.ConnectionState;
+import ucb.voicemail.main.MailboxRepository;
 import ucb.voicemail.main.Mailbox;
-import ucb.voicemail.main.MailSystem;
 import ucb.voicemail.main.Message;
 import ucb.voicemail.main.Subject;
 import ucb.voicemail.main.Telephone;
@@ -13,10 +13,10 @@ public class Connection implements Subject {
 
     // ==================== CONSTRUCTOR ====================
     
-    public Connection(MailSystem s, ConnectionState initialState) {
+    public Connection(MailboxRepository s, ConnectionState initialState) {
         this.initialState = initialState;
-        system = s;
-        userInterfaces = new ArrayList<Telephone>();
+        this.repository = s;
+        this.userInterfaces = new ArrayList<Telephone>();
         resetConnection();
     }
 
@@ -80,7 +80,7 @@ public class Connection implements Subject {
     }
     
     public Mailbox setCurrentMailboxByAccumulatedKeys() {
-        return currentMailbox = system.findMailbox(accumulatedKeys);
+        return currentMailbox = repository.findMailbox(accumulatedKeys);
     }
     
     // ==================== GET AND SET ====================
@@ -89,8 +89,8 @@ public class Connection implements Subject {
         return userInterfaces;
     }
     
-    public MailSystem getMailSystem() {
-        return system;
+    public MailboxRepository getMailSystem() {
+        return repository;
     }
     
     public String getCurrentRecording() {
@@ -119,7 +119,7 @@ public class Connection implements Subject {
     
     // ==================== VARIABLES ====================
     
-    private MailSystem system;
+    private MailboxRepository repository;
     private Mailbox currentMailbox;
     private String currentRecording;
     private String accumulatedKeys;

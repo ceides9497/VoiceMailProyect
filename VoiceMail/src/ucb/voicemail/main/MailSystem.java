@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import ucb.voicemail.main.Mailbox;
 
-public class MailSystem {
+public class MailSystem implements MailboxRepository {
 
     public MailSystem(int mailboxCount) {
         mailboxes = new ArrayList<Mailbox>();
@@ -16,6 +16,7 @@ public class MailSystem {
         }
     }
 
+    @Override
     public Mailbox findMailbox(String ext) {
         int i = Integer.parseInt(ext);
         if (1 <= i && i <= mailboxes.size()) {
@@ -25,7 +26,8 @@ public class MailSystem {
             return null;
         }
     }
-   
+
+    @Override
     public int getLengthMailbox() {
         return mailboxes.size();
     }
