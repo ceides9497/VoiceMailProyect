@@ -6,9 +6,10 @@ public class Connection implements Subject {
 
     // ==================== CONSTRUCTOR ====================
     
-    public Connection(MailSystem s) {
-        system = s;
-        userInterfaces = new ArrayList<Telephone>();
+    public Connection(MailboxRepository s, ConnectionState initialState) {
+        this.initialState = initialState;
+        this.repository = s;
+        this.userInterfaces = new ArrayList<Telephone>();
         resetConnection();
     }
 
@@ -51,7 +52,7 @@ public class Connection implements Subject {
     private void resetConnection() {
         currentRecording = "";
         accumulatedKeys = "";
-        connectionState = new ConnectedState();
+        connectionState = initialState;
         speakToAll(INITIAL_PROMPT);
     }
     
@@ -72,7 +73,7 @@ public class Connection implements Subject {
     }
     
     public Mailbox setCurrentMailboxByAccumulatedKeys() {
-        return currentMailbox = system.findMailbox(accumulatedKeys);
+        return currentMailbox = repository.findMailbox(accumulatedKeys);
     }
     
     // ==================== GET AND SET ====================
@@ -81,8 +82,8 @@ public class Connection implements Subject {
         return userInterfaces;
     }
     
-    public MailSystem getMailSystem() {
-        return system;
+    public MailboxRepository getMailSystem() {
+        return repository;
     }
     
     public String getCurrentRecording() {
@@ -111,12 +112,14 @@ public class Connection implements Subject {
     
     // ==================== VARIABLES ====================
     
-    private MailSystem system;
+    private MailboxRepository repository;
     private Mailbox currentMailbox;
     private String currentRecording;
     private String accumulatedKeys;
     private ArrayList<Telephone> userInterfaces;
     private ConnectionState connectionState;
+    
+    private final ConnectionState initialState;
     
    	public static final String INITIAL_PROMPT = 
         "Enter mailbox number followed by #";

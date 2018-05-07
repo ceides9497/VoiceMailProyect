@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import ucb.voicemail.main.ArrayMessageRepository;
 import ucb.voicemail.main.Mailbox;
 import ucb.voicemail.main.Message;
 import ucb.voicemail.main.MessageQueue;
@@ -23,8 +24,8 @@ public class MailboxTest {
 	public void init(){
 		passcode = "1";
 		greeting = "Hola!";
-		mailboxNotEmpty = new Mailbox(passcode,greeting);
-		mailboxEmpty = new Mailbox(passcode, greeting);
+		mailboxNotEmpty = new Mailbox(passcode,greeting, new ArrayMessageRepository());
+		mailboxEmpty = new Mailbox(passcode, greeting, new ArrayMessageRepository());
 		mockedMessage = mock(Message.class);
 		mockedMessageQueue = mock(MessageQueue.class);
 		

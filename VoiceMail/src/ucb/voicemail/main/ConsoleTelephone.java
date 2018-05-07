@@ -1,4 +1,5 @@
 package ucb.voicemail.main;
+
 import java.util.Scanner;
 
 public class ConsoleTelephone implements Telephone {

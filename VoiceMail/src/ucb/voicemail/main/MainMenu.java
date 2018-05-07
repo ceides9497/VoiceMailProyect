@@ -1,24 +1,21 @@
 package ucb.voicemail.main;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+
+import java.awt.EventQueue;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.Button;
 
 public class MainMenu extends JFrame {
 
-	private JPanel board;
+    private static final long serialVersionUID = 1L;
+    private JPanel board;
 	private JTextField txtInput;
 	private JLabel lblOutput;
 	/**

@@ -3,16 +3,16 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import ucb.voicemail.main.MailSystem;
+import ucb.voicemail.main.ArrayMailboxRepository;
 
-public class MailSystemTest {
-	MailSystem mailSystem;
+public class ArrayMailboxRepositoryTest {
+	ArrayMailboxRepository mailSystem;
 	int mailBoxCount;
 	
 	@Before
 	public void init() {
 		mailBoxCount = 10;
-		mailSystem = new MailSystem(mailBoxCount);		
+		mailSystem = new ArrayMailboxRepository(mailBoxCount);		
 	}
 	
 	@Test
