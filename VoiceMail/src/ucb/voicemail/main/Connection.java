@@ -2,7 +2,6 @@ package ucb.voicemail.main;
 
 import java.util.ArrayList;
 
-import ucb.voicemail.main.ConnectedState;
 import ucb.voicemail.main.ConnectionState;
 import ucb.voicemail.main.Mailbox;
 import ucb.voicemail.main.MailSystem;
@@ -14,7 +13,8 @@ public class Connection implements Subject {
 
     // ==================== CONSTRUCTOR ====================
     
-    public Connection(MailSystem s) {
+    public Connection(MailSystem s, ConnectionState initialState) {
+        this.initialState = initialState;
         system = s;
         userInterfaces = new ArrayList<Telephone>();
         resetConnection();
@@ -59,7 +59,7 @@ public class Connection implements Subject {
     private void resetConnection() {
         currentRecording = "";
         accumulatedKeys = "";
-        connectionState = new ConnectedState();
+        connectionState = initialState;
         speakToAll(INITIAL_PROMPT);
     }
     
@@ -125,6 +125,8 @@ public class Connection implements Subject {
     private String accumulatedKeys;
     private ArrayList<Telephone> userInterfaces;
     private ConnectionState connectionState;
+    
+    private final ConnectionState initialState;
     
    	public static final String INITIAL_PROMPT = 
         "Enter mailbox number followed by #";

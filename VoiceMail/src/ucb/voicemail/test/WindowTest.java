@@ -10,12 +10,11 @@ import java.util.Scanner;
 import org.junit.Before;
 import org.junit.Test;
 
+import ucb.voicemail.main.ConnectedState;
 import ucb.voicemail.main.Connection;
 import ucb.voicemail.main.MailSystem;
 import ucb.voicemail.main.Mailbox;
 import ucb.voicemail.main.MainMenu;
-import ucb.voicemail.main.Message;
-import ucb.voicemail.main.ConsoleTelephone;
 import ucb.voicemail.main.GraphicalTelephone;
 
 public class WindowTest {
@@ -28,7 +27,7 @@ public class WindowTest {
 	@Before
 	public void init() {
 		mockMailsystem = mock(MailSystem.class);
-		connection = new Connection(mockMailsystem);
+		connection = new Connection(mockMailsystem, new ConnectedState());
 		mockMailbox = mock(Mailbox.class);
 		mockMainMenu = mock(MainMenu.class);
 	}

@@ -14,7 +14,7 @@ public class MailSystemTester
       MailSystem system = new MailSystem(MAILBOX_COUNT);
       Scanner console = new Scanner(System.in);
       ConsoleTelephone p = new ConsoleTelephone(console);
-      Connection c = new Connection(system);
+      Connection c = new Connection(system, new ConnectedState());
       c.addUserInterface(p);
       c.addUserInterface(w);
       c.start();		// REINICIA LA CONEXION PARA QUE APAREZCA "Enter mailbox number followed by #"

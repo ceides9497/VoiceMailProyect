@@ -31,7 +31,7 @@ public class ConnectionTest {
 		mockMailsystem = mock(MailSystem.class);
 		mockMailbox = mock(Mailbox.class);
 		mockUserInterface = mock(Telephone.class);
-		connection = new Connection(mockMailsystem);
+		connection = new Connection(mockMailsystem, new ConnectedState());
 	}
 	
 	@Test
