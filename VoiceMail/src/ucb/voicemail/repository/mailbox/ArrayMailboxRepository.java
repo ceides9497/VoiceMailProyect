@@ -4,11 +4,10 @@ import java.util.ArrayList;
 
 import ucb.voicemail.main.Mailbox;
 import ucb.voicemail.main.MailboxRepository;
-import ucb.voicemail.main.MessageRepository;
 
 public class ArrayMailboxRepository implements MailboxRepository {
 
-    public ArrayMailboxRepository(int mailboxCount, MessageRepository messageRepository) {
+    public ArrayMailboxRepository(int mailboxCount) {
         mailboxes = new ArrayList<Mailbox>();
         for (int i = 0; i < mailboxCount; i++) {
             String id = "" + (i + 1);

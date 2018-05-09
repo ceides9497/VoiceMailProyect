@@ -8,9 +8,10 @@ import org.junit.Test;
 
 import ucb.voicemail.state.ConnectedState;
 import ucb.voicemail.main.Connection;
-import ucb.voicemail.main.ArrayMessageRepository;
+
 import ucb.voicemail.main.Mailbox;
 import ucb.voicemail.repository.mailbox.ArrayMailboxRepository;
+import ucb.voicemail.repository.message.ArrayMessageRepository;
 import ucb.voicemail.view.MainMenu;
 import ucb.voicemail.view.GraphicalTelephone;
 

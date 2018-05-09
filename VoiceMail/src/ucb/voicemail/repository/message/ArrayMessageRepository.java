@@ -1,6 +1,9 @@
-package ucb.voicemail.main;
+package ucb.voicemail.repository.message;
 
 import java.util.ArrayList;
+
+import ucb.voicemail.main.Message;
+import ucb.voicemail.main.MessageRepository;
 
 public class ArrayMessageRepository implements MessageRepository {
 
