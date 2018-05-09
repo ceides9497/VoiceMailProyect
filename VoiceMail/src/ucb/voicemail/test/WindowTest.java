@@ -1,20 +1,16 @@
 package ucb.voicemail.test;
 
-import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
-
-import java.io.PrintStream;
-import java.util.Scanner;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import ucb.voicemail.state.ConnectedState;
 import ucb.voicemail.main.Connection;
-import ucb.voicemail.main.ArrayMailboxRepository;
 import ucb.voicemail.main.ArrayMessageRepository;
 import ucb.voicemail.main.Mailbox;
+import ucb.voicemail.repository.mailbox.ArrayMailboxRepository;
 import ucb.voicemail.view.MainMenu;
 import ucb.voicemail.view.GraphicalTelephone;
 

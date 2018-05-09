@@ -2,6 +2,7 @@ package ucb.voicemail.main;
 
 import java.util.Scanner;
 
+import ucb.voicemail.repository.mailbox.ArrayMailboxRepository;
 import ucb.voicemail.state.ConnectedState;
 import ucb.voicemail.view.ConsoleTelephone;
 import ucb.voicemail.view.GraphicalTelephone;

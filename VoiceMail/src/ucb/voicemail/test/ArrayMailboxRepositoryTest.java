@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import ucb.voicemail.main.ArrayMailboxRepository;
+import ucb.voicemail.repository.mailbox.ArrayMailboxRepository;
 import ucb.voicemail.main.ArrayMessageRepository;
 
 public class ArrayMailboxRepositoryTest {
