@@ -2,8 +2,8 @@ package ucb.voicemail.main;
 
 import java.util.Scanner;
 
-import ucb.voicemail.repository.mailbox.ArrayMailboxRepository;
-import ucb.voicemail.repository.message.ArrayMessageRepository;
+import ucb.voicemail.repository.mailbox.*;
+import ucb.voicemail.repository.message.*;
 import ucb.voicemail.state.ConnectedState;
 import ucb.voicemail.view.ConsoleTelephone;
 import ucb.voicemail.view.GraphicalTelephone;
@@ -12,6 +12,8 @@ import ucb.voicemail.view.MainMenu;
 public class MailSystemTester {
     
     public static void main(String[] args) {
+        MySqlMailboxRepository mysqlMailboxRepository = new MySqlMailboxRepository("root", "mysql", "arqui");
+        //System.out.println(mysqlMailboxRepository.findMailbox("1").getGreeting());
         GraphicalTelephone w = new GraphicalTelephone(new MainMenu());
         MessageRepository messageRepository = new ArrayMessageRepository(MAILBOX_COUNT);
         MailboxRepository mailboxRepository = new ArrayMailboxRepository(MAILBOX_COUNT);
