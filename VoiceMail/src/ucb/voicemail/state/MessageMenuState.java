@@ -1,13 +1,20 @@
-package ucb.voicemail.main;
+package ucb.voicemail.state;
+
+import ucb.voicemail.main.Connection;
+import ucb.voicemail.main.ConnectionState;
+import ucb.voicemail.main.Mailbox;
+import ucb.voicemail.main.Message;
+import ucb.voicemail.main.MessageRepository;
 
 public class MessageMenuState implements ConnectionState {
 
 	@Override
 	public void dial(Connection connection, String key) {
 	    Mailbox currentMailbox = connection.getCurrentMailbox();
-        if (key.equals("1")) {
+        MessageRepository messageRepository = connection.getMessageRepository();
+	    if (key.equals("1")) {
             String output = "";
-            Message m = currentMailbox.getCurrentMessage();
+            Message m = messageRepository.getCurrentMessage(currentMailbox.getId());
             if (m == null) {
                 output += "No messages." + "\n";
             }
@@ -18,11 +25,11 @@ public class MessageMenuState implements ConnectionState {
             connection.speakToAll(output);
         }
         else if (key.equals("2")) {
-            currentMailbox.saveCurrentMessage();
+            messageRepository.saveCurrentMessage(currentMailbox.getId());
             connection.speakToAll(Connection.MESSAGE_MENU_TEXT);
         }
         else if (key.equals("3")) {
-            currentMailbox.removeCurrentMessage();
+            messageRepository.removeCurrentMessage(currentMailbox.getId());
             connection.speakToAll(Connection.MESSAGE_MENU_TEXT);
         }
         else if (key.equals("4")) {

@@ -12,7 +12,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import ucb.voicemail.main.Connection;
-import ucb.voicemail.main.ConsoleTelephone;
+import ucb.voicemail.view.ConsoleTelephone;
 
 public class ConsoleTelephoneTest {
 	

@@ -7,33 +7,38 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ucb.voicemail.main.*;
+import ucb.voicemail.repository.mailbox.ArrayMailboxRepository;
+import ucb.voicemail.repository.message.ArrayMessageRepository;
+import ucb.voicemail.state.ConnectedState;
 
 public class ConnectionTest {
 	
 	private Connection connection;
-	private ArrayMailboxRepository mockMailsystem;
+	private ArrayMailboxRepository mockMailboxRepository;
+	private ArrayMessageRepository mockMessageRepository;
 	private Mailbox mockMailbox;
 	private Telephone mockUserInterface;
 	
 	@Before
 	public void init() {
-		mockMailsystem = mock(ArrayMailboxRepository.class);
+		mockMailboxRepository = mock(ArrayMailboxRepository.class);
+		mockMessageRepository = mock(ArrayMessageRepository.class);
 		mockMailbox = mock(Mailbox.class);
 		mockUserInterface = mock(Telephone.class);
-		connection = new Connection(mockMailsystem, new ConnectedState());
+		connection = new Connection(mockMailboxRepository, mockMessageRepository, new ConnectedState());
 	}
 	
 	@Test
 	public void deberiaBuscarUnMailBox() {
 		connection.dial("#");
-		verify(mockMailsystem).findMailbox(any(String.class));
+		verify(mockMailboxRepository).findMailbox(any(String.class));
 	}
 	
 	@Test
 	public void deberiaBuscarMailBoxEspecifico() {
 		connection.dial("1");
 		connection.dial("#");
-		verify(mockMailsystem).findMailbox("1");
+		verify(mockMailboxRepository).findMailbox("1");
 	}
 	
 	@Test
@@ -73,7 +78,7 @@ public class ConnectionTest {
 
 	@Test
 	public void deberiaLlamarAlMetodoLogin() {
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		when(mockMailboxRepository.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		connection.dial("1");
 		connection.dial("#");
@@ -83,7 +88,7 @@ public class ConnectionTest {
 	@Test
 	public void deberiaDarElValorDeMailBoxMenuAState() {
 		connection.addUserInterface(mockUserInterface);
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		when(mockMailboxRepository.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
@@ -93,7 +98,7 @@ public class ConnectionTest {
 	@Test
 	public void deberiaMostrarElMensajeDeIncorrectPasscode() {
 		connection.addUserInterface(mockUserInterface);
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		when(mockMailboxRepository.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(false);
 		connection.dial("#");
@@ -103,7 +108,7 @@ public class ConnectionTest {
 	@Test
 	public void deberiaEjecutarElMetodoMailboxMenu() {
 		connection.addUserInterface(mockUserInterface);
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		when(mockMailboxRepository.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
@@ -114,7 +119,8 @@ public class ConnectionTest {
 	@Test
 	public void deberiaMostrarMensajeDeEnterNewPasscode() {
 		connection.addUserInterface(mockUserInterface);
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		when(mockMailbox.getId()).thenReturn("1");
+		when(mockMailboxRepository.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
@@ -122,13 +128,14 @@ public class ConnectionTest {
 		connection.dial("NEW_PASSCODE");
 		connection.dial("#");
 		verify(mockUserInterface).speak("Enter new passcode followed by the # key");
-		verify(mockMailbox).setPasscode("NEW_PASSCODE");
+		verify(mockMailboxRepository).setMailboxPasscode("1", "NEW_PASSCODE");
 	}
 	
 	@Test
 	public void deberiaEjecutarElMetodoChangeGreeting() {
 		connection.addUserInterface(mockUserInterface);
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		when(mockMailbox.getId()).thenReturn("1");
+		when(mockMailboxRepository.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
@@ -137,13 +144,13 @@ public class ConnectionTest {
 		connection.dial("1");
 		connection.dial("#");
 		verify(mockUserInterface).speak("Record your greeting, then press the # key");
-		verify(mockMailbox).setGreeting("NEW_GREETING");
+		verify(mockMailboxRepository).setMailboxGreeting("1", "NEW_GREETING");
 	}
 	
 	@Test
 	public void noDeberiaHacerNadaEnMailboxMenu() {
 		connection.addUserInterface(mockUserInterface);
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		when(mockMailboxRepository.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
@@ -156,7 +163,7 @@ public class ConnectionTest {
 	@Test
 	public void deberiaEjecutarElMetodoMessageMenu() {
 		connection.addUserInterface(mockUserInterface);
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		when(mockMailboxRepository.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
@@ -167,12 +174,14 @@ public class ConnectionTest {
 	@Test
 	public void deberiaMostarMensaje() {
 		connection.addUserInterface(mockUserInterface);
+		when(mockMailbox.getId()).thenReturn("1");
 		Message mockMessage = mock(Message.class);
 		when(mockMessage.getText()).thenReturn("Not null");
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		when(mockMailboxRepository.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
-		when(mockMailbox.getCurrentMessage()).thenReturn(mockMessage);
+		//when(mockMailbox.getCurrentMessage()).thenReturn(mockMessage);
+		when(mockMessageRepository.getCurrentMessage("1")).thenReturn(mockMessage);
 		connection.dial("#");
 		connection.dial("1");
 		connection.dial("1");
@@ -182,10 +191,12 @@ public class ConnectionTest {
 	@Test 
 	public void noDeberiaMostrarMensajes() {
 		connection.addUserInterface(mockUserInterface);
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		when(mockMailbox.getId()).thenReturn("1");
+		when(mockMailboxRepository.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
-		when(mockMailbox.getCurrentMessage()).thenReturn(null);
+		//when(mockMailbox.getCurrentMessage()).thenReturn(null);
+		when(mockMessageRepository.getCurrentMessage("1")).thenReturn(null);
 		connection.dial("#");
 		connection.dial("1");
 		connection.dial("1");
@@ -195,41 +206,44 @@ public class ConnectionTest {
 	@Test
 	public void deberiaGrabarMensaje() {
 		connection.addUserInterface(mockUserInterface);
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		when(mockMailbox.getId()).thenReturn("1");
+		when(mockMailboxRepository.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		connection.record("Voice");
 		connection.hangup();
-		verify(mockMailbox).addMessage(any());
+		verify(mockMessageRepository).addMessage(eq("1"), any());
 	}
 	
 	@Test
 	public void deberiaGuardarUltimoMensaje() {
 		connection.addUserInterface(mockUserInterface);
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		when(mockMailbox.getId()).thenReturn("1");
+		when(mockMailboxRepository.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
 		connection.dial("1");
 		connection.dial("2");
-		verify(mockMailbox).saveCurrentMessage();
+		verify(mockMessageRepository).saveCurrentMessage("1");
 	}
 	
 	@Test
 	public void deberiaEliminarUltimoMensaje() {
 		connection.addUserInterface(mockUserInterface);
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		when(mockMailbox.getId()).thenReturn("1");
+		when(mockMailboxRepository.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
 		connection.dial("1");
 		connection.dial("3");
-		verify(mockMailbox).removeCurrentMessage();
+		verify(mockMessageRepository).removeCurrentMessage("1");
 	}
 	
 	@Test
 	public void deberiaSalirMessageMenu() {
 		connection.addUserInterface(mockUserInterface);
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		when(mockMailboxRepository.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
@@ -241,20 +255,21 @@ public class ConnectionTest {
 	@Test
 	public void noDeberiaHacerNadaEnMessageMenu() {
 		connection.addUserInterface(mockUserInterface);
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		when(mockMailbox.getId()).thenReturn("1");
+		when(mockMailboxRepository.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
 		connection.dial("1");
 		connection.dial("5");
-		verify(mockMailbox, never()).saveCurrentMessage();
-		verify(mockMailbox, never()).removeCurrentMessage();
+		verify(mockMessageRepository, never()).saveCurrentMessage("1");
+		verify(mockMessageRepository, never()).removeCurrentMessage("1");
 	}
 	
 	@Test
 	public void deberiaMostrarMensajeDeRecordYourGreeting() {
 		connection.addUserInterface(mockUserInterface);
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		when(mockMailboxRepository.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
@@ -264,6 +279,6 @@ public class ConnectionTest {
 	
 	@Test
 	public void deberiaRetornarElMailSystemAsignadoEnElConstructor() {
-		assertEquals(mockMailsystem, connection.getMailSystem());
+		assertEquals(mockMailboxRepository, connection.getMailSystem());
 	}
 }

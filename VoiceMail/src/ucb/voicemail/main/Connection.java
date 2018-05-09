@@ -6,9 +6,10 @@ public class Connection implements Subject {
 
     // ==================== CONSTRUCTOR ====================
     
-    public Connection(MailboxRepository s, ConnectionState initialState) {
+    public Connection(MailboxRepository mailboxRepository, MessageRepository messageRepository, ConnectionState initialState) {
         this.initialState = initialState;
-        this.repository = s;
+        this.mailboxRepository = mailboxRepository;
+        this.messageRepository = messageRepository;
         this.userInterfaces = new ArrayList<Telephone>();
         resetConnection();
     }
@@ -61,7 +62,7 @@ public class Connection implements Subject {
     }
     
     public void addMessageInCurrentMailbox() {
-        currentMailbox.addMessage(new Message(currentRecording));
+        messageRepository.addMessage(currentMailbox.getId(), new Message(currentRecording));
     }
     
     public void addRecordingText(String voice) {
@@ -73,7 +74,7 @@ public class Connection implements Subject {
     }
     
     public Mailbox setCurrentMailboxByAccumulatedKeys() {
-        return currentMailbox = repository.findMailbox(accumulatedKeys);
+        return currentMailbox = mailboxRepository.findMailbox(accumulatedKeys);
     }
     
     // ==================== GET AND SET ====================
@@ -83,7 +84,7 @@ public class Connection implements Subject {
     }
     
     public MailboxRepository getMailSystem() {
-        return repository;
+        return mailboxRepository;
     }
     
     public String getCurrentRecording() {
@@ -96,6 +97,14 @@ public class Connection implements Subject {
     
     public String getAccumulatedKeys() {
         return accumulatedKeys;
+    }
+    
+    public MailboxRepository getMailboxRepository() {
+        return mailboxRepository;
+    }
+    
+    public MessageRepository getMessageRepository() {
+        return messageRepository;
     }
     
     public void setAccumulatedKeys(String accumulatedKeys) {
@@ -112,7 +121,8 @@ public class Connection implements Subject {
     
     // ==================== VARIABLES ====================
     
-    private MailboxRepository repository;
+    private MailboxRepository mailboxRepository;
+    private MessageRepository messageRepository;
     private Mailbox currentMailbox;
     private String currentRecording;
     private String accumulatedKeys;

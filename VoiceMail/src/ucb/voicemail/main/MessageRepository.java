@@ -1,8 +1,8 @@
 package ucb.voicemail.main;
 
 public interface MessageRepository {
-    void addMessage(Message aMessage);
-    Message getCurrentMessage();
-    Message removeCurrentMessage();
-    void saveCurrentMessage();
+    void addMessage(String id, Message aMessage);
+    Message getCurrentMessage(String id);
+    Message removeCurrentMessage(String id);
+    void saveCurrentMessage(String id);
 }

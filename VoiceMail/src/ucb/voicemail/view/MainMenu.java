@@ -1,8 +1,11 @@
-package ucb.voicemail.main;
+package ucb.voicemail.view;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import ucb.voicemail.main.Connection;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
