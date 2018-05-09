@@ -1,4 +1,7 @@
-package ucb.voicemail.main;
+package ucb.voicemail.view;
+
+import ucb.voicemail.main.Connection;
+import ucb.voicemail.main.Telephone;
 
 public class GraphicalTelephone implements Telephone {
 	

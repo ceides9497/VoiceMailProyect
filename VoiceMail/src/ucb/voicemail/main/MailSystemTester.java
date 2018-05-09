@@ -3,6 +3,9 @@ package ucb.voicemail.main;
 import java.util.Scanner;
 
 import ucb.voicemail.state.ConnectedState;
+import ucb.voicemail.view.ConsoleTelephone;
+import ucb.voicemail.view.GraphicalTelephone;
+import ucb.voicemail.view.MainMenu;
 
 public class MailSystemTester {
     

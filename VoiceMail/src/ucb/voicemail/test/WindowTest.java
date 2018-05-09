@@ -15,8 +15,8 @@ import ucb.voicemail.main.Connection;
 import ucb.voicemail.main.ArrayMailboxRepository;
 import ucb.voicemail.main.ArrayMessageRepository;
 import ucb.voicemail.main.Mailbox;
-import ucb.voicemail.main.MainMenu;
-import ucb.voicemail.main.GraphicalTelephone;
+import ucb.voicemail.view.MainMenu;
+import ucb.voicemail.view.GraphicalTelephone;
 
 public class WindowTest {
 	
