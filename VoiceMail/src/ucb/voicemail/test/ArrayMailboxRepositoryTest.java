@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ucb.voicemail.main.ArrayMailboxRepository;
+import ucb.voicemail.main.ArrayMessageRepository;
 
 public class ArrayMailboxRepositoryTest {
 	ArrayMailboxRepository mailSystem;
@@ -12,7 +13,7 @@ public class ArrayMailboxRepositoryTest {
 	@Before
 	public void init() {
 		mailBoxCount = 10;
-		mailSystem = new ArrayMailboxRepository(mailBoxCount);		
+		mailSystem = new ArrayMailboxRepository(mailBoxCount, new ArrayMessageRepository(mailBoxCount));		
 	}
 	
 	@Test

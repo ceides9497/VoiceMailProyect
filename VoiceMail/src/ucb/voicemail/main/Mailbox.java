@@ -2,10 +2,10 @@ package ucb.voicemail.main;
 
 public class Mailbox {
 
-    public Mailbox(String aPasscode, String aGreeting, MessageRepository repository) {
+    public Mailbox(String id, String aPasscode, String aGreeting) {
+        this.id = id;
         passcode = aPasscode;
         greeting = aGreeting;
-        this.repository = repository;
     }
 
     public boolean checkPasscode(String aPasscode) {
@@ -24,27 +24,11 @@ public class Mailbox {
         return greeting;
     }
 
-    // ===== REPOSITORY FUNCTIONS =====
-    
-    public void addMessage(Message aMessage) {
-        repository.addMessage(aMessage);
-    }
-
-    public Message getCurrentMessage() {
-        return repository.getCurrentMessage();
-    }
-
-    public Message removeCurrentMessage() {
-        return repository.removeCurrentMessage();
-    }
-
-    public void saveCurrentMessage() {
-        repository.saveCurrentMessage();
+    public String getId() {
+        return id;
     }
     
-    // ===== REPOSITORY FUNCTIONS =====
-    
-    private MessageRepository repository;
     private String greeting;
     private String passcode;
+    private String id;
 }

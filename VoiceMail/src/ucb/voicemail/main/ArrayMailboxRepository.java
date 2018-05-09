@@ -4,13 +4,15 @@ import java.util.ArrayList;
 
 public class ArrayMailboxRepository implements MailboxRepository {
 
-    public ArrayMailboxRepository(int mailboxCount) {
+    public ArrayMailboxRepository(int mailboxCount, MessageRepository messageRepository) {
         mailboxes = new ArrayList<Mailbox>();
-        
         for (int i = 0; i < mailboxCount; i++) {
+            String id = "" + (i + 1);
             String passcode = "" + (i + 1);
             String greeting = "You have reached mailbox " + (i + 1) + ". \nPlease leave a message now.";
-            mailboxes.add(new Mailbox(passcode, greeting, new ArrayMessageRepository()));
+            mailboxes.add(
+                new Mailbox(id, passcode, greeting)
+            );
         }
     }
 
@@ -30,5 +32,21 @@ public class ArrayMailboxRepository implements MailboxRepository {
         return mailboxes.size();
     }
 
+    @Override
+    public void setMailboxPasscode(String id, String passcode) {
+        Mailbox selectedMailbox = findMailbox(id);
+        if(selectedMailbox != null) {
+            selectedMailbox.setPasscode(passcode);
+        }
+    }
+    
+    @Override
+    public void setMailboxGreeting(String id, String greeting) {
+        Mailbox selectedMailbox = findMailbox(id);
+        if(selectedMailbox != null) {
+            selectedMailbox.setGreeting(greeting);
+        }
+    }
+    
     private ArrayList<Mailbox> mailboxes;
 }

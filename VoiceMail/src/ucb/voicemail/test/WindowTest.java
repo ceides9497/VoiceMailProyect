@@ -13,6 +13,7 @@ import org.junit.Test;
 import ucb.voicemail.main.ConnectedState;
 import ucb.voicemail.main.Connection;
 import ucb.voicemail.main.ArrayMailboxRepository;
+import ucb.voicemail.main.ArrayMessageRepository;
 import ucb.voicemail.main.Mailbox;
 import ucb.voicemail.main.MainMenu;
 import ucb.voicemail.main.GraphicalTelephone;
@@ -20,14 +21,16 @@ import ucb.voicemail.main.GraphicalTelephone;
 public class WindowTest {
 	
 	private Connection connection;
-	private ArrayMailboxRepository mockMailsystem;
+	private ArrayMailboxRepository mockMailboxRepository;
+	private ArrayMessageRepository mockMessageRepository;
 	private Mailbox mockMailbox;
 	private MainMenu mockMainMenu;
 	
 	@Before
 	public void init() {
-		mockMailsystem = mock(ArrayMailboxRepository.class);
-		connection = new Connection(mockMailsystem, new ConnectedState());
+		mockMailboxRepository = mock(ArrayMailboxRepository.class);
+		mockMessageRepository = mock(ArrayMessageRepository.class);
+		connection = new Connection(mockMailboxRepository, mockMessageRepository, new ConnectedState());
 		mockMailbox = mock(Mailbox.class);
 		mockMainMenu = mock(MainMenu.class);
 	}
@@ -43,7 +46,7 @@ public class WindowTest {
 		GraphicalTelephone w = new GraphicalTelephone(mockMainMenu);
 		connection.addUserInterface(w);
 		doNothing().when(mockMainMenu).show();
-		when(mockMailsystem.findMailbox(anyString())).thenReturn(mockMailbox);
+		when(mockMailboxRepository.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 	}
 	

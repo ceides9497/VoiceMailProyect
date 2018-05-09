@@ -6,7 +6,8 @@ public class ChangeGreetingState implements ConnectionState {
 	public void dial(Connection connection, String key) {
 	    Mailbox currentMailbox = connection.getCurrentMailbox();
         if (key.equals("#")) {
-            currentMailbox.setGreeting(connection.getCurrentRecording());
+            MailboxRepository repository = connection.getMailboxRepository();
+            repository.setMailboxGreeting(currentMailbox.getId(), connection.getCurrentRecording());
             connection.setCurrentRecording("");
             connection.setConnectionState(new MailboxMenuState());
             connection.speakToAll(Connection.MAILBOX_MENU_TEXT);

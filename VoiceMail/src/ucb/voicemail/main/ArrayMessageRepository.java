@@ -1,24 +1,21 @@
 package ucb.voicemail.main;
 
+import java.util.ArrayList;
+
 public class ArrayMessageRepository implements MessageRepository {
 
-    public ArrayMessageRepository() {
-        newMessages = new MessageQueue();
-        keptMessages = new MessageQueue();
-    }
-    
-    @Override
-    public void addMessage(Message aMessage) {
-        newMessages.add(aMessage);
-    }
-    
-    @Override
-    public Message getCurrentMessage() {
-        if (newMessages.size() > 0) {
-            return newMessages.peek();
+    public ArrayMessageRepository(int mailboxCount) {
+        messages = new ArrayList<MessageQueue[]>();
+        for (int i = 0; i < mailboxCount; i++) {
+            MessageQueue[] array = { new MessageQueue(), new MessageQueue() };
+            messages.add(array);
         }
-        else if (keptMessages.size() > 0) {
-            return keptMessages.peek();
+    }
+    
+    private MessageQueue[] findMessages(String id) {
+        int i = Integer.parseInt(id);
+        if (1 <= i && i <= messages.size()) {
+            return  messages.get(i - 1);
         }
         else {
             return null;
@@ -26,26 +23,55 @@ public class ArrayMessageRepository implements MessageRepository {
     }
     
     @Override
-    public Message removeCurrentMessage() {
-        if (newMessages.size() > 0) {
-            return newMessages.remove();
-        }
-        else if (keptMessages.size() > 0) {
-            return keptMessages.remove();
-        }
-        else {
-            return null;
+    public void addMessage(String id, Message aMessage) {
+        MessageQueue[] selectArray = findMessages(id);
+        if(selectArray != null) {
+            selectArray[0].add(aMessage);
         }
     }
     
     @Override
-    public void saveCurrentMessage() {
-        Message m = removeCurrentMessage();
-        if (m != null) {
-            keptMessages.add(m);
+    public Message getCurrentMessage(String id) {
+        MessageQueue[] selectArray = findMessages(id);
+        if(selectArray != null) {
+            if (selectArray[0].size() > 0) {
+                return selectArray[0].peek();
+            }
+            else if (selectArray[1].size() > 0) {
+                return selectArray[1].peek();
+            }
+            else {
+                return null;
+            }
+        }
+        return null;
+    }
+    
+    @Override
+    public Message removeCurrentMessage(String id) {
+        MessageQueue[] selectArray = findMessages(id);
+        if(selectArray != null) {
+            if (selectArray[0].size() > 0) {
+                return selectArray[0].remove();
+            }
+            else if (selectArray[1].size() > 0) {
+                return selectArray[1].remove();
+            }
+            else {
+                return null;
+            }
+        }
+        return null;
+    }
+    
+    @Override
+    public void saveCurrentMessage(String id) {
+        MessageQueue[] selectArray = findMessages(id);
+        Message selectedMessage = removeCurrentMessage(id);
+        if (selectedMessage != null) {
+            selectArray[1].add(selectedMessage);
         }
     }
     
-    private MessageQueue newMessages;
-    private MessageQueue keptMessages;
+    private ArrayList<MessageQueue[]> messages;
 }

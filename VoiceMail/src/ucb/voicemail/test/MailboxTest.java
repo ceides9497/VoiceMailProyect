@@ -2,9 +2,9 @@ package ucb.voicemail.test;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
-import ucb.voicemail.main.ArrayMessageRepository;
 import ucb.voicemail.main.Mailbox;
 import ucb.voicemail.main.Message;
 import ucb.voicemail.main.MessageQueue;
@@ -24,12 +24,12 @@ public class MailboxTest {
 	public void init(){
 		passcode = "1";
 		greeting = "Hola!";
-		mailboxNotEmpty = new Mailbox(passcode,greeting, new ArrayMessageRepository());
-		mailboxEmpty = new Mailbox(passcode, greeting, new ArrayMessageRepository());
+		mailboxNotEmpty = new Mailbox("1", passcode, greeting);
+		mailboxEmpty = new Mailbox("1", passcode, greeting);
 		mockedMessage = mock(Message.class);
 		mockedMessageQueue = mock(MessageQueue.class);
 		
-		mailboxNotEmpty.addMessage(mockedMessage);
+		//mailboxNotEmpty.addMessage(mockedMessage);
 	    when(mockedMessage.getText()).thenReturn(greeting);
 	}
 	
@@ -41,50 +41,6 @@ public class MailboxTest {
 	@Test
     public void deberiaDevolverPasscodeFalse() {
 		assertFalse(mailboxEmpty.checkPasscode("2"));
-    }
-	
-	@Test
-    public void deberiaRetornarMensaje() {
-	    assertEquals(greeting,mailboxNotEmpty.getCurrentMessage().getText());
-    }
-	
-	@Test
-    public void deberiaRetornarMensajeActual() {
-		mailboxEmpty.addMessage(mockedMessage);
-		assertEquals(mockedMessage,mailboxNotEmpty.getCurrentMessage());
-    }
-	
-	@Test
-    public void deberiaRetornarNullSinMensajes() {
-		assertEquals(null,mailboxEmpty.getCurrentMessage());
-    }
-	
-	@Test
-    public void deberiaRemoverCurrentMessage() {
-		assertEquals(mockedMessage,mailboxNotEmpty.removeCurrentMessage());
-    }
-	
-	@Test
-    public void deberiaRemoverKeptMessage() {
-		mailboxNotEmpty.saveCurrentMessage();
-		assertEquals(mockedMessage,mailboxNotEmpty.removeCurrentMessage());
-    }
-	
-	@Test
-    public void deberiaRetornarNullAlRemoverMesajesPorNoTenerMensajes() {
-		assertEquals(null,mailboxEmpty.removeCurrentMessage());
-    }
-	
-	@Test
-    public void deberiaGuardarMensajeActual() {
-		mailboxNotEmpty.saveCurrentMessage();
-		assertEquals(mockedMessage,mailboxNotEmpty.getCurrentMessage());
-    }
-	
-	@Test
-    public void deberiaNoHaberGuardadoMensajeActual() {
-		mailboxEmpty.saveCurrentMessage();
-		assertEquals(null,mailboxEmpty.getCurrentMessage());
     }
 	
 	@Test
@@ -101,4 +57,8 @@ public class MailboxTest {
 		assertTrue(mailboxNotEmpty.checkPasscode(newPasscode));
     }
 
+	@Test
+	public void deberiaObtenerElId() {
+	    assertEquals("1", mailboxNotEmpty.getId());
+	}
 }

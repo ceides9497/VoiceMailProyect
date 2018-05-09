@@ -6,10 +6,11 @@ public class MailSystemTester {
     
     public static void main(String[] args) {
         GraphicalTelephone w = new GraphicalTelephone(new MainMenu());
-        ArrayMailboxRepository system = new ArrayMailboxRepository(MAILBOX_COUNT);
+        MessageRepository messageRepository = new ArrayMessageRepository(MAILBOX_COUNT);
+        MailboxRepository mailboxRepository = new ArrayMailboxRepository(MAILBOX_COUNT, messageRepository);
         Scanner console = new Scanner(System.in);
         ConsoleTelephone p = new ConsoleTelephone(console);
-        Connection c = new Connection(system, new ConnectedState());
+        Connection c = new Connection(mailboxRepository, messageRepository, new ConnectedState());
         c.addUserInterface(p);
         c.addUserInterface(w);
         c.start();		// REINICIA LA CONEXION PARA QUE APAREZCA "Enter mailbox number followed by #"
