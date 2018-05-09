@@ -23,7 +23,7 @@ public class MailSystemTester {
             MessageRepository messageRepository = new ArrayMessageRepository(MAILBOX_COUNT);
             Scanner console = new Scanner(System.in);
             ConsoleTelephone p = new ConsoleTelephone(console);
-            Connection c = new Connection(mailboxRepository, messageRepository, new ConnectedState());
+            Connection c = new Connection(mysqlMailboxRepository, mysqlMessageRepository, new ConnectedState());
             c.addUserInterface(p);
             c.addUserInterface(w);
             c.start();      // REINICIA LA CONEXION PARA QUE APAREZCA "Enter mailbox number followed by #"
