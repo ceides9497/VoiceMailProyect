@@ -12,10 +12,9 @@ public class MySqlMailboxRepository implements MailboxRepository {
 
     private Connection connection;
     
-    public MySqlMailboxRepository(String user, String password, String databaseName) {
+    public MySqlMailboxRepository(Connection connection) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + databaseName, user, password);
+            this.connection = connection;
         } catch (Exception e) {
             e.printStackTrace();
         }
