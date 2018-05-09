@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ucb.voicemail.main.*;
+import ucb.voicemail.state.ConnectedState;
 
 public class ConnectionTest {
 	

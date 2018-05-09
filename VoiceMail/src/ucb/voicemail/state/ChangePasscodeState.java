@@ -1,4 +1,9 @@
-package ucb.voicemail.main;
+package ucb.voicemail.state;
+
+import ucb.voicemail.main.Connection;
+import ucb.voicemail.main.ConnectionState;
+import ucb.voicemail.main.Mailbox;
+import ucb.voicemail.main.MailboxRepository;
 
 public class ChangePasscodeState implements ConnectionState {
 	

@@ -10,7 +10,7 @@ import java.util.Scanner;
 import org.junit.Before;
 import org.junit.Test;
 
-import ucb.voicemail.main.ConnectedState;
+import ucb.voicemail.state.ConnectedState;
 import ucb.voicemail.main.Connection;
 import ucb.voicemail.main.ArrayMailboxRepository;
 import ucb.voicemail.main.ArrayMessageRepository;

@@ -2,6 +2,8 @@ package ucb.voicemail.main;
 
 import java.util.Scanner;
 
+import ucb.voicemail.state.ConnectedState;
+
 public class MailSystemTester {
     
     public static void main(String[] args) {
