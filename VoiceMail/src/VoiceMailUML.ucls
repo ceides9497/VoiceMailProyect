@@ -4,7 +4,7 @@
   <interface id="1" language="java" name="ucb.voicemail.main.MailboxRepository" project="VoicemailProject" 
     file="/VoicemailProject/VoiceMail/src/ucb/voicemail/main/MailboxRepository.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="790" y="1475"/>    
+    <position height="-1" width="-1" x="980" y="1463"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -23,7 +23,7 @@
   </class>  
   <class id="3" language="java" name="ucb.voicemail.main.Mailbox" project="VoicemailProject" 
     file="/VoicemailProject/VoiceMail/src/ucb/voicemail/main/Mailbox.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1348" y="1522"/>    
+    <position height="-1" width="-1" x="1289" y="1503"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -33,7 +33,7 @@
   <class id="4" language="java" name="ucb.voicemail.state.ChangePasscodeState" project="VoicemailProject" 
     file="/VoicemailProject/VoiceMail/src/ucb/voicemail/state/ChangePasscodeState.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3041" y="712"/>    
+    <position height="-1" width="-1" x="2257" y="580"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -43,7 +43,7 @@
   <class id="5" language="java" name="ucb.voicemail.state.MessageMenuState" project="VoicemailProject" 
     file="/VoicemailProject/VoiceMail/src/ucb/voicemail/state/MessageMenuState.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3038" y="858"/>    
+    <position height="-1" width="-1" x="2254" y="726"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -71,7 +71,7 @@
   <class id="8" language="java" name="ucb.voicemail.state.ChangeGreetingState" project="VoicemailProject" 
     file="/VoicemailProject/VoiceMail/src/ucb/voicemail/state/ChangeGreetingState.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3039" y="1006"/>    
+    <position height="-1" width="-1" x="2255" y="874"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -127,7 +127,7 @@
   </class>  
   <class id="14" language="java" name="ucb.voicemail.main.Message" project="VoicemailProject" 
     file="/VoicemailProject/VoiceMail/src/ucb/voicemail/main/Message.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="203" y="580"/>    
+    <position height="-1" width="-1" x="942" y="592"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -136,7 +136,7 @@
   </class>  
   <interface id="15" language="java" name="ucb.voicemail.main.ConnectionState" project="VoicemailProject" 
     file="/VoicemailProject/VoiceMail/src/ucb/voicemail/main/ConnectionState.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2308" y="820"/>    
+    <position height="-1" width="-1" x="1849" y="970"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -147,7 +147,7 @@
     project="VoicemailProject" 
     file="/VoicemailProject/VoiceMail/src/ucb/voicemail/repository/mailbox/ArrayMailboxRepository.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1076" y="1491"/>    
+    <position height="-1" width="-1" x="612" y="1777"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -158,7 +158,7 @@
     project="VoicemailProject" 
     file="/VoicemailProject/VoiceMail/src/ucb/voicemail/repository/mailbox/MySqlMailboxRepository.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="784" y="1739"/>    
+    <position height="-1" width="-1" x="279" y="1725"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -168,7 +168,7 @@
   <class id="18" language="java" name="ucb.voicemail.repository.message.MessageQueue" project="VoicemailProject" 
     file="/VoicemailProject/VoiceMail/src/ucb/voicemail/repository/message/MessageQueue.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="467" y="571"/>    
+    <position height="-1" width="-1" x="946" y="789"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -177,7 +177,7 @@
   </class>  
   <class id="19" language="java" name="ucb.voicemail.state.ConnectedState" project="VoicemailProject" 
     file="/VoicemailProject/VoiceMail/src/ucb/voicemail/state/ConnectedState.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3038" y="1152"/>    
+    <position height="-1" width="-1" x="2254" y="1020"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -187,7 +187,7 @@
   <class id="20" language="java" name="ucb.voicemail.state.MailboxMenuState" project="VoicemailProject" 
     file="/VoicemailProject/VoiceMail/src/ucb/voicemail/state/MailboxMenuState.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3039" y="1300"/>    
+    <position height="-1" width="-1" x="2255" y="1168"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -197,7 +197,7 @@
   <interface id="21" language="java" name="ucb.voicemail.main.MessageRepository" project="VoicemailProject" 
     file="/VoicemailProject/VoiceMail/src/ucb/voicemail/main/MessageRepository.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="772" y="949"/>    
+    <position height="-1" width="-1" x="926" y="1038"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -208,7 +208,7 @@
     project="VoicemailProject" 
     file="/VoicemailProject/VoiceMail/src/ucb/voicemail/repository/message/ArrayMessageRepository.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="776" y="559"/>    
+    <position height="-1" width="-1" x="385" y="665"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -217,7 +217,7 @@
   </class>  
   <class id="23" language="java" name="ucb.voicemail.state.RecordingState" project="VoicemailProject" 
     file="/VoicemailProject/VoiceMail/src/ucb/voicemail/state/RecordingState.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3042" y="1460"/>    
+    <position height="-1" width="-1" x="2258" y="1328"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -225,151 +225,199 @@
     </display>  
   </class>  
   <realization id="24">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="10"/>  
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="15"/>  
   </realization>  
   <association id="25">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="26" name="userInterfaces">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="27" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="28">    
     <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="26" name="queue"/>      
-      <multiplicity id="27" minimum="0" maximum="2147483647"/>    
+      <attribute id="29" name="queue">        
+        <position height="0" width="0" x="739" y="12"/>      
+      </attribute>      
+      <multiplicity id="30" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="739" y="12"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="28">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="29" name="connectionState"/>      
-      <multiplicity id="30" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <realization id="31">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="1"/>  
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="15"/>  
   </realization>  
   <realization id="32">    
-    <end type="SOURCE" refId="19"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="10"/>  
+  </realization>  
+  <realization id="33">    
+    <end type="SOURCE" refId="23"/>    
     <end type="TARGET" refId="15"/>  
   </realization>  
-  <association id="33">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="34" name="mailboxRepository"/>      
-      <multiplicity id="35" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="36">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="1"/>  
-  </realization>  
-  <association id="37">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="38" name="messageRepository"/>      
-      <multiplicity id="39" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="40">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="15"/>  
-  </realization>  
-  <association id="41">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="42" name="currentMailbox"/>      
-      <multiplicity id="43" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="44">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="45" name="mailboxes"/>      
-      <multiplicity id="46" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="47">    
+  <realization id="34">    
     <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="15"/>  
   </realization>  
-  <association id="48">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="49" name="connection"/>      
-      <multiplicity id="50" minimum="0" maximum="1"/>    
+  <association id="35">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="36" name="connection">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="37" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="51">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="11"/>  
-  </realization>  
-  <realization id="52">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="15"/>  
-  </realization>  
-  <association id="53">    
+  <association id="38">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="54" name="initialState"/>      
-      <multiplicity id="55" minimum="0" maximum="1"/>    
+      <attribute id="39" name="connectionState">        
+        <position height="0" width="0" x="-459" y="150"/>      
+      </attribute>      
+      <multiplicity id="40" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-459" y="150"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="56">    
-    <end type="SOURCE" refId="6"/>    
+  <realization id="41">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="21"/>  
+  </realization>  
+  <association id="42">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="43" name="currentMailbox">        
+        <position height="0" width="0" x="-59" y="-19"/>      
+      </attribute>      
+      <multiplicity id="44" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-59" y="-19"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="45">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <realization id="46">    
+    <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="11"/>  
   </realization>  
-  <association id="57">    
+  <association id="47">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="48" name="connection">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="49" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="50">    
     <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="58" name="messages"/>      
-      <multiplicity id="59" minimum="0" maximum="2147483647"/>    
+      <attribute id="51" name="messages">        
+        <position height="0" width="0" x="479" y="218"/>      
+      </attribute>      
+      <multiplicity id="52" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="479" y="218"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="18" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="53">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="54" name="messageRepository">        
+        <position height="0" width="0" x="154" y="89"/>      
+      </attribute>      
+      <multiplicity id="55" minimum="0" maximum="1">        
+        <position height="0" width="0" x="154" y="89"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="56">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="57" name="initialState">        
+        <position height="0" width="0" x="-459" y="150"/>      
+      </attribute>      
+      <multiplicity id="58" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-459" y="150"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="59">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
   <realization id="60">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <realization id="61">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <realization id="62">    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="15"/>  
   </realization>  
-  <association id="61">    
+  <realization id="63">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="21"/>  
+  </realization>  
+  <association id="64">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="62" name="mainMenu"/>      
-      <multiplicity id="63" minimum="0" maximum="1"/>    
+      <attribute id="65" name="mainMenu">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="66" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="64">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="21"/>  
-  </realization>  
-  <realization id="65">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="21"/>  
-  </realization>  
-  <realization id="66">    
-    <end type="SOURCE" refId="23"/>    
-    <end type="TARGET" refId="15"/>  
-  </realization>  
   <association id="67">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="68" name="connection"/>      
-      <multiplicity id="69" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="68" name="mailboxRepository">        
+        <position height="0" width="0" x="190" y="-12"/>      
+      </attribute>      
+      <multiplicity id="69" minimum="0" maximum="1">        
+        <position height="0" width="0" x="190" y="-12"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="70">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="71" name="userInterfaces"/>      
-      <multiplicity id="72" minimum="0" maximum="2147483647"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="71" name="mailboxes">        
+        <position height="0" width="0" x="-59" y="-19"/>      
+      </attribute>      
+      <multiplicity id="72" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-59" y="-19"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
