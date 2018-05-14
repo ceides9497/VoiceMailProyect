@@ -128,6 +128,14 @@ public class Connection implements Subject {
     	return mailboxMenuPresenter.getMenu();
     }
     
+    public void setMessageMenuTextPresenter(MenuPresenter messageMenuTextPresenter) {
+    	this.messageMenuTextPresenter = messageMenuTextPresenter;
+    }
+    
+    public String getMessageMenuTextPresenter() {
+    	return messageMenuTextPresenter.getMenu();
+    }
+    
     // ==================== VARIABLES ====================
     
     private MailboxRepository mailboxRepository;
@@ -139,6 +147,7 @@ public class Connection implements Subject {
     private ConnectionState connectionState;
     private MenuPresenter initialPromptPresenter;
     private MenuPresenter mailboxMenuPresenter;
+    private MenuPresenter messageMenuTextPresenter;
     
     private final ConnectionState initialState;
    	
