@@ -188,7 +188,7 @@ public class MainMenu extends JFrame {
 		board.add(txtInput);
 		txtInput.setColumns(10);
 		
-		JButton btnAccept = new JButton("Enter");
+		JButton btnAccept = new JButton("Enviar");
 		btnAccept.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -197,7 +197,7 @@ public class MainMenu extends JFrame {
 				txtInput.setText("");
 			}
 		});
-		btnAccept.setBounds(17, 175, 176, 23);
+		btnAccept.setBounds(17, 169, 160, 23);
 		board.add(btnAccept);
 		
 		JSeparator separator = new JSeparator();
@@ -215,7 +215,6 @@ public class MainMenu extends JFrame {
 	
 	public void changeMainLabel(String output) {
 		dtrpnNothing.setText(output);
-		output = "<html>" + output.replaceAll("\n", "<br/>") + "</html>";
 	}
 	
 	public void setConnection(Connection connection) {
