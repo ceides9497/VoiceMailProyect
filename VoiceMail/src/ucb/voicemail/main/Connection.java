@@ -120,6 +120,14 @@ public class Connection implements Subject {
         this.connectionState = connectionState;
     }
     
+    public void setInitialPromptPresenter(MenuPresenter initialPromptPresenter) {
+    	this.initialPromptPresenter = initialPromptPresenter;
+    }
+    
+    public void setMailBoxMenuPresenter(MenuPresenter mailboxMenuPresenter) {
+    	this.mailboxMenuPresenter = mailboxMenuPresenter;
+    }
+    
     // ==================== VARIABLES ====================
     
     private MailboxRepository mailboxRepository;
@@ -130,6 +138,7 @@ public class Connection implements Subject {
     private ArrayList<Telephone> userInterfaces;
     private ConnectionState connectionState;
     private MenuPresenter initialPromptPresenter;
+    private MenuPresenter mailboxMenuPresenter;
     
     private final ConnectionState initialState;
    	
