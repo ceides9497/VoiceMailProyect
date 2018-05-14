@@ -6,11 +6,12 @@ public class Connection implements Subject {
 
     // ==================== CONSTRUCTOR ====================
     
-    public Connection(MailboxRepository mailboxRepository, MessageRepository messageRepository, ConnectionState initialState) {
+    public Connection(MailboxRepository mailboxRepository, MessageRepository messageRepository, ConnectionState initialState, MenuPresenter initialPromptPresenter) {
         this.initialState = initialState;
         this.mailboxRepository = mailboxRepository;
         this.messageRepository = messageRepository;
         this.userInterfaces = new ArrayList<Telephone>();
+        this.initialPromptPresenter = initialPromptPresenter;
         resetConnection();
     }
 
@@ -54,7 +55,7 @@ public class Connection implements Subject {
         currentRecording = "";
         accumulatedKeys = "";
         connectionState = initialState;
-        speakToAll(INITIAL_PROMPT);
+        speakToAll(initialPromptPresenter.getMenu());
     }
     
     public void start() {
@@ -128,11 +129,9 @@ public class Connection implements Subject {
     private String accumulatedKeys;
     private ArrayList<Telephone> userInterfaces;
     private ConnectionState connectionState;
+    private MenuPresenter initialPromptPresenter;
     
     private final ConnectionState initialState;
-    
-   	public static final String INITIAL_PROMPT = 
-        "Enter mailbox number followed by #";
    	
    	public static final String MAILBOX_MENU_TEXT = 
         "Enter 1 to listen to your messages\n"

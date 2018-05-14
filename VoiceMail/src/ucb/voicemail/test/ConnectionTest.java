@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ucb.voicemail.main.*;
+import ucb.voicemail.presenters.InitialPromptPresenter;
 import ucb.voicemail.repository.mailbox.ArrayMailboxRepository;
 import ucb.voicemail.repository.message.ArrayMessageRepository;
 import ucb.voicemail.state.ConnectedState;
@@ -25,7 +26,7 @@ public class ConnectionTest {
 		mockMessageRepository = mock(ArrayMessageRepository.class);
 		mockMailbox = mock(Mailbox.class);
 		mockUserInterface = mock(Telephone.class);
-		connection = new Connection(mockMailboxRepository, mockMessageRepository, new ConnectedState());
+		connection = new Connection(mockMailboxRepository, mockMessageRepository, new ConnectedState(), new InitialPromptPresenter());
 	}
 	
 	@Test

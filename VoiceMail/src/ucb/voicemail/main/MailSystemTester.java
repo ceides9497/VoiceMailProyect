@@ -3,6 +3,7 @@ package ucb.voicemail.main;
 import java.sql.DriverManager;
 import java.util.Scanner;
 
+import ucb.voicemail.presenters.InitialPromptPresenter;
 import ucb.voicemail.repository.mailbox.*;
 import ucb.voicemail.repository.message.*;
 import ucb.voicemail.state.ConnectedState;
@@ -23,7 +24,7 @@ public class MailSystemTester {
             MessageRepository messageRepository = new ArrayMessageRepository(MAILBOX_COUNT);
             Scanner console = new Scanner(System.in);
             ConsoleTelephone p = new ConsoleTelephone(console);
-            Connection c = new Connection(mysqlMailboxRepository, mysqlMessageRepository, new ConnectedState());
+            Connection c = new Connection(mysqlMailboxRepository, mysqlMessageRepository, new ConnectedState(), new InitialPromptPresenter());
             c.addUserInterface(p);
             c.addUserInterface(w);
             c.start();      // REINICIA LA CONEXION PARA QUE APAREZCA "Enter mailbox number followed by #"
