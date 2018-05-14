@@ -21,16 +21,16 @@ public class MessageMenuState implements ConnectionState {
             else {
                 output += m.getText() + "\n";
             }
-            output += Connection.MESSAGE_MENU_TEXT;
+            output += connection.getMessageMenuTextPresenter();
             connection.speakToAll(output);
         }
         else if (key.equals("2")) {
             messageRepository.saveCurrentMessage(currentMailbox.getId());
-            connection.speakToAll(Connection.MESSAGE_MENU_TEXT);
+            connection.speakToAll(connection.getMessageMenuTextPresenter());
         }
         else if (key.equals("3")) {
             messageRepository.removeCurrentMessage(currentMailbox.getId());
-            connection.speakToAll(Connection.MESSAGE_MENU_TEXT);
+            connection.speakToAll(connection.getMessageMenuTextPresenter());
         }
         else if (key.equals("4")) {
             connection.setConnectionState(new MailboxMenuState());
