@@ -23,7 +23,10 @@ public class MailboxMenuPresenter implements MenuPresenter {
 			menu += (index) + 1;
 			menu += " to ";
 			menu += optionsList.get(index);
-			menu += "\n";
+			
+			if (index < (optionsListSize - 1)) {
+				menu += "\n";				
+			}
 		}
 		
 		return menu;

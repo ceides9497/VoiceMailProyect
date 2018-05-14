@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.util.Scanner;
 
 import ucb.voicemail.presenters.InitialPromptPresenter;
+import ucb.voicemail.presenters.MailboxMenuPresenter;
 import ucb.voicemail.repository.mailbox.*;
 import ucb.voicemail.repository.message.*;
 import ucb.voicemail.state.ConnectedState;
@@ -24,7 +25,12 @@ public class MailSystemTester {
             MessageRepository messageRepository = new ArrayMessageRepository(MAILBOX_COUNT);
             Scanner console = new Scanner(System.in);
             ConsoleTelephone p = new ConsoleTelephone(console);
+            MailboxMenuPresenter mailboxMenuPresenter = new MailboxMenuPresenter();
+            mailboxMenuPresenter.addOption("listen to your messages");
+            mailboxMenuPresenter.addOption("change your passcode");
+            mailboxMenuPresenter.addOption("change your greeting");
             Connection c = new Connection(mysqlMailboxRepository, mysqlMessageRepository, new ConnectedState(), new InitialPromptPresenter());
+            c.setMailBoxMenuPresenter(mailboxMenuPresenter);
             c.addUserInterface(p);
             c.addUserInterface(w);
             c.start();      // REINICIA LA CONEXION PARA QUE APAREZCA "Enter mailbox number followed by #"

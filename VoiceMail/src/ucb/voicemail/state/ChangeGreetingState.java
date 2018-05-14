@@ -15,7 +15,7 @@ public class ChangeGreetingState implements ConnectionState {
             repository.setMailboxGreeting(currentMailbox.getId(), connection.getCurrentRecording());
             connection.setCurrentRecording("");
             connection.setConnectionState(new MailboxMenuState());
-            connection.speakToAll(Connection.MAILBOX_MENU_TEXT);
+            connection.speakToAll(connection.getMailboxMenu());
         }
 	}
 	

@@ -120,12 +120,12 @@ public class Connection implements Subject {
         this.connectionState = connectionState;
     }
     
-    public void setInitialPromptPresenter(MenuPresenter initialPromptPresenter) {
-    	this.initialPromptPresenter = initialPromptPresenter;
-    }
-    
     public void setMailBoxMenuPresenter(MenuPresenter mailboxMenuPresenter) {
     	this.mailboxMenuPresenter = mailboxMenuPresenter;
+    }
+    
+    public String getMailboxMenu() {
+    	return mailboxMenuPresenter.getMenu();
     }
     
     // ==================== VARIABLES ====================
@@ -141,11 +141,6 @@ public class Connection implements Subject {
     private MenuPresenter mailboxMenuPresenter;
     
     private final ConnectionState initialState;
-   	
-   	public static final String MAILBOX_MENU_TEXT = 
-        "Enter 1 to listen to your messages\n"
-        + "Enter 2 to change your passcode\n"
-        + "Enter 3 to change your greeting";
    	
    	public static final String MESSAGE_MENU_TEXT = 
         "Enter 1 to listen to the current message\n"
