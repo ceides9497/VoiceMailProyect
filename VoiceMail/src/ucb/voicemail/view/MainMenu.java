@@ -19,6 +19,8 @@ import java.awt.Color;
 import javax.swing.JTextPane;
 import javax.swing.JEditorPane;
 import java.awt.SystemColor;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MainMenu extends JFrame {
 
@@ -60,34 +62,28 @@ public class MainMenu extends JFrame {
 				connection.dial("#");
 			}
 		});
-		btnEnter.setBounds(194, 169, 30, 33);
+		btnEnter.setBounds(186, 373, 52, 42);
 		board.add(btnEnter);
 		
-		JButton btnH = new JButton("H");
+		JButton btnH = new JButton("Colgar");
+		btnH.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnH.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				connection.hangup();
 			}
 		});
-		btnH.setBounds(225, 169, 30, 33);
+		btnH.setBounds(145, 169, 139, 23);
 		board.add(btnH);
-		
-		JButton btnQ = new JButton("Q");
-		btnQ.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				closeFrame();
-			}
-		});
-		btnQ.setBounds(258, 169, 30, 33);
-		board.add(btnQ);
 		
 		JButton btn1 = new JButton("1");
 		btn1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				connection.dial("1");
+				refreshScreen("1");
 			}
 		});
 		btn1.setBounds(62, 214, 52, 42);
@@ -97,7 +93,7 @@ public class MainMenu extends JFrame {
 		btn2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				connection.dial("2");
+				refreshScreen("2");
 			}
 		});
 		btn2.setBounds(124, 214, 52, 42);
@@ -107,7 +103,7 @@ public class MainMenu extends JFrame {
 		btn3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				connection.dial("3");
+				refreshScreen("3");
 			}
 		});
 		btn3.setBounds(186, 214, 52, 42);
@@ -117,7 +113,7 @@ public class MainMenu extends JFrame {
 		btn4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				connection.dial("4");
+				refreshScreen("4");
 			}
 		});
 		btn4.setBounds(62, 267, 52, 42);
@@ -127,7 +123,7 @@ public class MainMenu extends JFrame {
 		btn5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				connection.dial("5");
+				refreshScreen("5");
 			}
 		});
 		btn5.setBounds(124, 267, 52, 42);
@@ -137,7 +133,7 @@ public class MainMenu extends JFrame {
 		btn6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				connection.dial("6");
+				refreshScreen("6");
 			}
 		});
 		btn6.setBounds(186, 267, 52, 42);
@@ -147,7 +143,7 @@ public class MainMenu extends JFrame {
 		btn7.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				connection.dial("7");
+				refreshScreen("7");
 			}
 		});
 		btn7.setBounds(62, 320, 52, 42);
@@ -157,7 +153,7 @@ public class MainMenu extends JFrame {
 		btn8.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				connection.dial("8");
+				refreshScreen("8");
 			}
 		});
 		btn8.setBounds(124, 320, 52, 42);
@@ -167,7 +163,7 @@ public class MainMenu extends JFrame {
 		btn9.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				connection.dial("9");
+				refreshScreen("9");
 			}
 		});
 		btn9.setBounds(186, 320, 52, 42);
@@ -177,27 +173,29 @@ public class MainMenu extends JFrame {
 		btn0.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				connection.dial("0");
+				refreshScreen("0");
 			}
 		});
 		btn0.setBounds(124, 373, 52, 42);
 		board.add(btn0);
 		
 		txtInput = new JTextField();
+		txtInput.setToolTipText("");
 		txtInput.setBounds(17, 97, 270, 66);
 		board.add(txtInput);
 		txtInput.setColumns(10);
 		
-		JButton btnAccept = new JButton("Enviar");
+		JButton btnAccept = new JButton("Aceptar");
 		btnAccept.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				System.out.println(txtInput.getText());
 				connection.record(txtInput.getText());
+				dtrpnNothing.setText(txtInput.getText());
 				txtInput.setText("");
 			}
 		});
-		btnAccept.setBounds(17, 169, 160, 23);
+		btnAccept.setBounds(17, 169, 126, 23);
 		board.add(btnAccept);
 		
 		JSeparator separator = new JSeparator();
@@ -206,7 +204,8 @@ public class MainMenu extends JFrame {
 		board.add(separator);
 		
 		dtrpnNothing = new JEditorPane();
-		dtrpnNothing.setText("nothing");
+		dtrpnNothing.setEditable(false);
+		dtrpnNothing.setForeground(SystemColor.activeCaption);
 		dtrpnNothing.setToolTipText("");
 		dtrpnNothing.setBackground(SystemColor.controlHighlight);
 		dtrpnNothing.setBounds(17, 6, 267, 85);
@@ -221,8 +220,9 @@ public class MainMenu extends JFrame {
 		this.connection = connection;
 	}
 	
-	private void closeFrame() {
-		super.dispose();
+	private void refreshScreen(String text) {
+		dtrpnNothing.setText(text);
+		connection.dial(text);
 	}
 	
 	private Connection connection;
