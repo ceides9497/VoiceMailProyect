@@ -12,7 +12,7 @@ public class RecordingState implements ConnectionState {
 	    if (key.equals("#")) {
             if (currentMailbox.checkPasscode(connection.getAccumulatedKeys())) {
                 connection.setConnectionState(new MailboxMenuState());
-                connection.speakToAll(Connection.MAILBOX_MENU_TEXT);
+                connection.speakToAll(connection.getMailboxMenu());
             }
             else {
                 connection.speakToAll("Incorrect passcode. Try again!");

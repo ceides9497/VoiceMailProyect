@@ -10,6 +10,7 @@ import ucb.voicemail.state.ConnectedState;
 import ucb.voicemail.main.Connection;
 
 import ucb.voicemail.main.Mailbox;
+import ucb.voicemail.presenters.InitialPromptPresenter;
 import ucb.voicemail.repository.mailbox.ArrayMailboxRepository;
 import ucb.voicemail.repository.message.ArrayMessageRepository;
 import ucb.voicemail.view.MainMenu;
@@ -27,7 +28,7 @@ public class WindowTest {
 	public void init() {
 		mockMailboxRepository = mock(ArrayMailboxRepository.class);
 		mockMessageRepository = mock(ArrayMessageRepository.class);
-		connection = new Connection(mockMailboxRepository, mockMessageRepository, new ConnectedState());
+		connection = new Connection(mockMailboxRepository, mockMessageRepository, new ConnectedState(), new InitialPromptPresenter());
 		mockMailbox = mock(Mailbox.class);
 		mockMainMenu = mock(MainMenu.class);
 	}
