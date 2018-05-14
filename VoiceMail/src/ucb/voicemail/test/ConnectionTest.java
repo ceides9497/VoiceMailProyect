@@ -7,6 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ucb.voicemail.main.*;
+import ucb.voicemail.presenters.InitialPromptPresenter;
+import ucb.voicemail.presenters.MailboxMenuPresenter;
+import ucb.voicemail.presenters.MessageMenuTextPresenter;
 import ucb.voicemail.repository.mailbox.ArrayMailboxRepository;
 import ucb.voicemail.repository.message.ArrayMessageRepository;
 import ucb.voicemail.state.ConnectedState;
@@ -25,7 +28,18 @@ public class ConnectionTest {
 		mockMessageRepository = mock(ArrayMessageRepository.class);
 		mockMailbox = mock(Mailbox.class);
 		mockUserInterface = mock(Telephone.class);
-		connection = new Connection(mockMailboxRepository, mockMessageRepository, new ConnectedState());
+		MailboxMenuPresenter mailboxMenuPresenter = new MailboxMenuPresenter();
+        mailboxMenuPresenter.addOption("listen to your messages");
+        mailboxMenuPresenter.addOption("change your passcode");
+        mailboxMenuPresenter.addOption("change your greeting");
+        MessageMenuTextPresenter messageMenuTextPresenter = new MessageMenuTextPresenter();
+        messageMenuTextPresenter.addOption("listen to the current message");
+        messageMenuTextPresenter.addOption("save the current message");
+        messageMenuTextPresenter.addOption("delete the current message");
+        messageMenuTextPresenter.addOption("return to the main menu");
+		connection = new Connection(mockMailboxRepository, mockMessageRepository, new ConnectedState(), new InitialPromptPresenter());
+		connection.setMailBoxMenuPresenter(mailboxMenuPresenter);
+		connection.setMessageMenuTextPresenter(messageMenuTextPresenter);
 	}
 	
 	@Test
@@ -92,7 +106,7 @@ public class ConnectionTest {
 		connection.dial("#");
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
-		verify(mockUserInterface).speak(Connection.MAILBOX_MENU_TEXT);
+		verify(mockUserInterface).speak(connection.getMailboxMenu());
 	}
 	
 	@Test
@@ -113,7 +127,7 @@ public class ConnectionTest {
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
 		connection.dial("1");
-		verify(mockUserInterface).speak(Connection.MESSAGE_MENU_TEXT);
+		verify(mockUserInterface).speak(connection.getMessageMenuTextPresenter());
 	}
 	
 	@Test
@@ -155,7 +169,7 @@ public class ConnectionTest {
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
 		connection.dial("4");
-		verify(mockUserInterface, never()).speak(Connection.MESSAGE_MENU_TEXT);
+		verify(mockUserInterface, never()).speak(connection.getMessageMenuTextPresenter());
 		verify(mockUserInterface, never()).speak("Enter new passcode followed by the # key");
 		verify(mockUserInterface, never()).speak("Record your greeting, then press the # key");
 	}
@@ -168,7 +182,7 @@ public class ConnectionTest {
 		when(mockMailbox.checkPasscode(anyString())).thenReturn(true);
 		connection.dial("#");
 		connection.dial("1");
-		verify(mockUserInterface).speak(Connection.MESSAGE_MENU_TEXT);
+		verify(mockUserInterface).speak(connection.getMessageMenuTextPresenter());
 	}
 	
 	@Test
@@ -185,7 +199,7 @@ public class ConnectionTest {
 		connection.dial("#");
 		connection.dial("1");
 		connection.dial("1");
-		verify(mockUserInterface).speak("Not null\n" + Connection.MESSAGE_MENU_TEXT);
+		verify(mockUserInterface).speak("Not null\n" + connection.getMessageMenuTextPresenter());
 	}
 	
 	@Test 
@@ -200,7 +214,7 @@ public class ConnectionTest {
 		connection.dial("#");
 		connection.dial("1");
 		connection.dial("1");
-		verify(mockUserInterface).speak("No messages.\n" + Connection.MESSAGE_MENU_TEXT);
+		verify(mockUserInterface).speak("No messages.\n" + connection.getMessageMenuTextPresenter());
 	}
 	
 	@Test
@@ -249,7 +263,7 @@ public class ConnectionTest {
 		connection.dial("#");
 		connection.dial("1");
 		connection.dial("4");
-		verify(mockUserInterface, times(2)).speak(Connection.MAILBOX_MENU_TEXT);
+		verify(mockUserInterface, times(2)).speak(connection.getMailboxMenu());
 	}
 	
 	@Test

@@ -3,6 +3,9 @@ package ucb.voicemail.main;
 import java.sql.DriverManager;
 import java.util.Scanner;
 
+import ucb.voicemail.presenters.InitialPromptPresenter;
+import ucb.voicemail.presenters.MailboxMenuPresenter;
+import ucb.voicemail.presenters.MessageMenuTextPresenter;
 import ucb.voicemail.repository.mailbox.*;
 import ucb.voicemail.repository.message.*;
 import ucb.voicemail.state.ConnectedState;
@@ -23,7 +26,18 @@ public class MailSystemTester {
             MessageRepository messageRepository = new ArrayMessageRepository(MAILBOX_COUNT);
             Scanner console = new Scanner(System.in);
             ConsoleTelephone p = new ConsoleTelephone(console);
-            Connection c = new Connection(mysqlMailboxRepository, mysqlMessageRepository, new ConnectedState());
+            MailboxMenuPresenter mailboxMenuPresenter = new MailboxMenuPresenter();
+            mailboxMenuPresenter.addOption("listen to your messages");
+            mailboxMenuPresenter.addOption("change your passcode");
+            mailboxMenuPresenter.addOption("change your greeting");
+            MessageMenuTextPresenter messageMenuTextPresenter = new MessageMenuTextPresenter();
+            messageMenuTextPresenter.addOption("listen to the current message");
+            messageMenuTextPresenter.addOption("save the current message");
+            messageMenuTextPresenter.addOption("delete the current message");
+            messageMenuTextPresenter.addOption("return to the main menu");
+            Connection c = new Connection(mysqlMailboxRepository, mysqlMessageRepository, new ConnectedState(), new InitialPromptPresenter());
+            c.setMailBoxMenuPresenter(mailboxMenuPresenter);
+            c.setMessageMenuTextPresenter(messageMenuTextPresenter);
             c.addUserInterface(p);
             c.addUserInterface(w);
             c.start();      // REINICIA LA CONEXION PARA QUE APAREZCA "Enter mailbox number followed by #"
