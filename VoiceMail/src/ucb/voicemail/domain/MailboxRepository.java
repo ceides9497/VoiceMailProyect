@@ -1,4 +1,4 @@
-package ucb.voicemail.main;
+package ucb.voicemail.domain;
 
 public interface MailboxRepository {
     Mailbox findMailbox(String ext);

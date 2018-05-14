@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import ucb.voicemail.main.Connection;
+import ucb.voicemail.domain.Connection;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;

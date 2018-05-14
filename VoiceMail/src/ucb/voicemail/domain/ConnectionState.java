@@ -1,4 +1,4 @@
-package ucb.voicemail.main;
+package ucb.voicemail.domain;
 
 public interface ConnectionState {
 	void dial(Connection connection, String key);

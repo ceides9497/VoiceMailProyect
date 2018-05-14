@@ -2,8 +2,8 @@ package ucb.voicemail.view;
 
 import java.util.Scanner;
 
-import ucb.voicemail.main.Connection;
-import ucb.voicemail.main.Telephone;
+import ucb.voicemail.domain.Connection;
+import ucb.voicemail.domain.Telephone;
 
 public class ConsoleTelephone implements Telephone {
 

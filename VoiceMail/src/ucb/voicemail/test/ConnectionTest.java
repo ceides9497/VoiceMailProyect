@@ -6,13 +6,13 @@ import static org.mockito.Mockito.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import ucb.voicemail.main.*;
+import ucb.voicemail.domain.*;
+import ucb.voicemail.domain.connection.state.ConnectedState;
 import ucb.voicemail.presenters.InitialPromptPresenter;
 import ucb.voicemail.presenters.MailboxMenuPresenter;
 import ucb.voicemail.presenters.MessageMenuTextPresenter;
 import ucb.voicemail.repository.mailbox.ArrayMailboxRepository;
 import ucb.voicemail.repository.message.ArrayMessageRepository;
-import ucb.voicemail.state.ConnectedState;
 
 public class ConnectionTest {
 	

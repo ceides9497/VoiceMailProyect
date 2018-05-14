@@ -2,7 +2,7 @@ package ucb.voicemail.repository.message;
 
 import java.util.ArrayList;
 
-import ucb.voicemail.main.Message;
+import ucb.voicemail.domain.Message;
 
 public class MessageQueue {
 	

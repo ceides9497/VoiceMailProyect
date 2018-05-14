@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import ucb.voicemail.main.Message;
+import ucb.voicemail.domain.Message;
 
 public class MessageTest {
 	

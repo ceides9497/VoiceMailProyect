@@ -3,8 +3,8 @@ package ucb.voicemail.repository.message;
 import java.sql.Connection;
 import java.sql.Statement;
 
-import ucb.voicemail.main.Message;
-import ucb.voicemail.main.MessageRepository;
+import ucb.voicemail.domain.Message;
+import ucb.voicemail.domain.MessageRepository;
 
 public class MySqlMessageRepository implements MessageRepository {
 

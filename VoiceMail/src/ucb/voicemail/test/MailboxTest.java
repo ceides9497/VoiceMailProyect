@@ -5,8 +5,8 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import ucb.voicemail.main.Mailbox;
-import ucb.voicemail.main.Message;
+import ucb.voicemail.domain.Mailbox;
+import ucb.voicemail.domain.Message;
 import ucb.voicemail.repository.message.MessageQueue;
 
 import static org.mockito.Mockito.*;

@@ -1,4 +1,4 @@
-package ucb.voicemail.main;
+package ucb.voicemail.domain;
 
 public interface MessageRepository {
     void addMessage(String id, Message aMessage);

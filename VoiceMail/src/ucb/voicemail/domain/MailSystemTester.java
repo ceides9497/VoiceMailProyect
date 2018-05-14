@@ -1,14 +1,14 @@
-package ucb.voicemail.main;
+package ucb.voicemail.domain;
 
 import java.sql.DriverManager;
 import java.util.Scanner;
 
+import ucb.voicemail.domain.connection.state.ConnectedState;
 import ucb.voicemail.presenters.InitialPromptPresenter;
 import ucb.voicemail.presenters.MailboxMenuPresenter;
 import ucb.voicemail.presenters.MessageMenuTextPresenter;
 import ucb.voicemail.repository.mailbox.*;
 import ucb.voicemail.repository.message.*;
-import ucb.voicemail.state.ConnectedState;
 import ucb.voicemail.view.ConsoleTelephone;
 import ucb.voicemail.view.GraphicalTelephone;
 import ucb.voicemail.view.MainMenu;

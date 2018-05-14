@@ -6,10 +6,9 @@ import static org.mockito.Mockito.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import ucb.voicemail.state.ConnectedState;
-import ucb.voicemail.main.Connection;
-
-import ucb.voicemail.main.Mailbox;
+import ucb.voicemail.domain.Connection;
+import ucb.voicemail.domain.Mailbox;
+import ucb.voicemail.domain.connection.state.ConnectedState;
 import ucb.voicemail.presenters.InitialPromptPresenter;
 import ucb.voicemail.repository.mailbox.ArrayMailboxRepository;
 import ucb.voicemail.repository.message.ArrayMessageRepository;

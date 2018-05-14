@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import ucb.voicemail.main.Connection;
+import ucb.voicemail.domain.Connection;
 import ucb.voicemail.view.ConsoleTelephone;
 
 public class ConsoleTelephoneTest {

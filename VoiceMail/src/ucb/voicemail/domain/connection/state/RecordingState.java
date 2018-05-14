@@ -1,8 +1,8 @@
-package ucb.voicemail.state;
+package ucb.voicemail.domain.connection.state;
 
-import ucb.voicemail.main.Connection;
-import ucb.voicemail.main.ConnectionState;
-import ucb.voicemail.main.Mailbox;
+import ucb.voicemail.domain.Connection;
+import ucb.voicemail.domain.ConnectionState;
+import ucb.voicemail.domain.Mailbox;
 
 public class RecordingState implements ConnectionState {
 	

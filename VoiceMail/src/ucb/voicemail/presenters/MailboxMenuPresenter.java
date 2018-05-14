@@ -1,6 +1,6 @@
 package ucb.voicemail.presenters;
 
-import ucb.voicemail.main.MenuPresenter;
+import ucb.voicemail.domain.MenuPresenter;
 
 public class MailboxMenuPresenter implements MenuPresenter {
 	private OptionsList optionsList;
