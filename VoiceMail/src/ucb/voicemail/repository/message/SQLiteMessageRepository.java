@@ -25,4 +25,30 @@ public class SQLiteMessageRepository {
             // NADA
         }
     }
+	
+	public Message getCurrentMessage(String id) {
+        try {
+            String query = "SELECT * FROM new_message WHERE mailbox_id=" + id + " LIMIT 1";
+            Statement st = connection.createStatement();
+            java.sql.ResultSet resultSet;
+            resultSet = st.executeQuery(query);
+            if (!resultSet.next()) {
+                query = "SELECT * FROM kept_message WHERE mailbox_id=" + id + " LIMIT 1";
+                st = connection.createStatement();
+                resultSet = st.executeQuery(query);
+                if(resultSet.next()) {
+                    return new Message(resultSet.getString("text"));
+                }
+                else {
+                    return null;
+                }
+            }
+            else {
+                return new Message(resultSet.getString("text"));
+            }
+        } catch (Exception e) {
+            // NADA
+        }
+        return null;
+    }
 }
