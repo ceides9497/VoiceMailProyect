@@ -4,8 +4,9 @@ import java.sql.Connection;
 import java.sql.Statement;
 
 import ucb.voicemail.domain.Message;
+import ucb.voicemail.domain.MessageRepository;
 
-public class SQLiteMessageRepository {
+public class SQLiteMessageRepository implements MessageRepository {
 	private Connection connection;
 	
 	public SQLiteMessageRepository(Connection connection) {
@@ -16,6 +17,7 @@ public class SQLiteMessageRepository {
 		}
 	}
 	
+	@Override
 	public void addMessage(String id, Message aMessage) {
         try {
             String query = "INSERT INTO new_message(text,mailbox_id) VALUES('" + aMessage.getText() + "'," + id + ")";
@@ -26,6 +28,7 @@ public class SQLiteMessageRepository {
         }
     }
 	
+	@Override
 	public Message getCurrentMessage(String id) {
         try {
             String query = "SELECT * FROM new_message WHERE mailbox_id=" + id + " LIMIT 1";
@@ -52,6 +55,7 @@ public class SQLiteMessageRepository {
         return null;
     }
 	
+	@Override
 	public Message removeCurrentMessage(String id) {
         try {
             String query = "SELECT * FROM new_message WHERE mailbox_id=" + id + " LIMIT 1";
@@ -87,6 +91,7 @@ public class SQLiteMessageRepository {
         return null;
     }
 	
+	@Override
 	public void saveCurrentMessage(String id) {
         Message selectedMessage = removeCurrentMessage(id);
         try {
