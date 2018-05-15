@@ -51,4 +51,39 @@ public class SQLiteMessageRepository {
         }
         return null;
     }
+	
+	public Message removeCurrentMessage(String id) {
+        try {
+            String query = "SELECT * FROM new_message WHERE mailbox_id=" + id + " LIMIT 1";
+            Statement st = connection.createStatement();
+            java.sql.ResultSet resultSet;
+            resultSet = st.executeQuery(query);
+            if (!resultSet.next()) {
+                query = "SELECT * FROM kept_message WHERE mailbox_id=" + id + " LIMIT 1";
+                Statement st2 = connection.createStatement();
+                st2 = connection.createStatement();
+                resultSet = st2.executeQuery(query);
+                if(resultSet.next()) {
+                    query = "DELETE FROM kept_message WHERE id IN " + 
+                    		"(SELECT id FROM kept_message WHERE mailbox_id=" + id + " LIMIT 1)";
+                    Statement stDelete = connection.createStatement();
+                    stDelete.executeUpdate(query);
+                    return new Message(resultSet.getString("text"));
+                }
+                else {
+                    return null;
+                }
+            }
+            else {
+                query = "DELETE FROM new_message WHERE id = " + 
+                		"(SELECT id FROM new_message WHERE mailbox_id=" + id + " LIMIT 1)";
+                Statement stDelete = connection.createStatement();
+                stDelete.executeUpdate(query);
+                return new Message(resultSet.getString("text"));
+            }
+        } catch (Exception e) {
+            // NADA
+        }
+        return null;
+    }
 }
