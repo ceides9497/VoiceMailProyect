@@ -14,6 +14,7 @@ import ucb.voicemail.view.GraphicalTelephone;
 import ucb.voicemail.view.MainMenu;
 
 public class MailSystemTester {
+	private static java.sql.Connection sqliteConnection;
     
     public static void main(String[] args) {
         try {
