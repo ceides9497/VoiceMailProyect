@@ -86,4 +86,18 @@ public class SQLiteMessageRepository {
         }
         return null;
     }
+	
+	public void saveCurrentMessage(String id) {
+        Message selectedMessage = removeCurrentMessage(id);
+        try {
+            if(selectedMessage != null) {
+                String query = "INSERT INTO kept_message(text,mailbox_id) VALUES('" + selectedMessage.getText() + "'," + id + ")";
+                Statement st = connection.createStatement();
+                st.executeUpdate(query);
+            }
+        }
+        catch(Exception e) {
+            // NADA
+        }
+    }
 }
