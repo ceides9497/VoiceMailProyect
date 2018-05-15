@@ -22,10 +22,13 @@ public class MailSystemTester {
     
     public static void main(String[] args) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+        	getConnectionSQLite();
+        	MailboxRepository sqliteMailboxRepository = new SQLiteMailboxRepository(sqliteConnection);
+        	MessageRepository sqliteMessageRepository = new SQLiteMessageRepository(sqliteConnection);
+            /*Class.forName("com.mysql.jdbc.Driver");
             java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + "arqui", "root", "mysql");
             MySqlMailboxRepository mysqlMailboxRepository = new MySqlMailboxRepository(connection);
-            MySqlMessageRepository mysqlMessageRepository = new MySqlMessageRepository(connection);
+            MySqlMessageRepository mysqlMessageRepository = new MySqlMessageRepository(connection);*/
             GraphicalTelephone w = new GraphicalTelephone(new MainMenu());
             MailboxRepository mailboxRepository = new ArrayMailboxRepository(MAILBOX_COUNT);
             MessageRepository messageRepository = new ArrayMessageRepository(MAILBOX_COUNT);
@@ -40,7 +43,7 @@ public class MailSystemTester {
             messageMenuTextPresenter.addOption("save the current message");
             messageMenuTextPresenter.addOption("delete the current message");
             messageMenuTextPresenter.addOption("return to the main menu");
-            Connection c = new Connection(mysqlMailboxRepository, mysqlMessageRepository, new ConnectedState(), new InitialPromptPresenter());
+            Connection c = new Connection(sqliteMailboxRepository, sqliteMessageRepository, new ConnectedState(), new InitialPromptPresenter());
             c.setMailBoxMenuPresenter(mailboxMenuPresenter);
             c.setMessageMenuTextPresenter(messageMenuTextPresenter);
             c.addUserInterface(p);
