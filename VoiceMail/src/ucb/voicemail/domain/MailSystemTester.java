@@ -1,6 +1,7 @@
 package ucb.voicemail.domain;
 
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import ucb.voicemail.domain.connection.state.ConnectedState;
@@ -49,6 +50,17 @@ public class MailSystemTester {
             e.printStackTrace();
         }
     }
+    
+    private static void getConnectionSQLite() throws ClassNotFoundException, SQLException {
+    	Class.forName("org.sqlite.JDBC");
+    	sqliteConnection = DriverManager.getConnection("jdbc:sqlite:VoiceMailDB.db");
+    	initialise();
+    }
 
-    private static final int MAILBOX_COUNT = 20;
+    private static void initialise() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static final int MAILBOX_COUNT = 20;
 }
