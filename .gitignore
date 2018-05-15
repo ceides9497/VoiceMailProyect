@@ -2,6 +2,9 @@
 target/
 VoiceMail/.classpath
 
+# SQLite database
+*.db
+
 # Eclipse files
 .classpath
 .project
