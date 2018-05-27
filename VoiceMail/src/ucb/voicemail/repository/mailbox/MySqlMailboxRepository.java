@@ -65,7 +65,7 @@ public class MySqlMailboxRepository implements MailboxRepository {
     @Override
     public void setMailboxPasscode(String id, String passcode) {
         try {
-            String query = "UPDATE mailbox set passcode = " + passcode + " WHERE id = " + id;
+            String query = "UPDATE mailbox set passcode ='" + passcode + "' WHERE id = " + id;
             Statement st = connection.createStatement();
             st.executeUpdate(query);
         } catch (Exception e) {
@@ -76,7 +76,7 @@ public class MySqlMailboxRepository implements MailboxRepository {
     @Override
     public void setMailboxGreeting(String id, String greeting) {
         try {
-            String query = "UPDATE mailbox set greeting = " + greeting + " WHERE id = " + id;
+            String query = "UPDATE mailbox set greeting='" + greeting + "' WHERE id = " + id;
             Statement st = connection.createStatement();
             st.executeUpdate(query);
         } catch (Exception e) {

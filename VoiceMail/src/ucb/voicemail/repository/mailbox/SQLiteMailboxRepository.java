@@ -64,7 +64,7 @@ public class SQLiteMailboxRepository implements MailboxRepository {
 	@Override
     public void setMailboxPasscode(String id, String passcode) {
         try {
-            String query = "UPDATE mailbox set passcode = " + passcode + " WHERE id = " + id;
+            String query = "UPDATE mailbox set passcode ='" + passcode + "' WHERE id = " + id;
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
         } catch (Exception e) {
@@ -75,7 +75,7 @@ public class SQLiteMailboxRepository implements MailboxRepository {
     @Override
     public void setMailboxGreeting(String id, String greeting) {
         try {
-            String query = "UPDATE mailbox set greeting = " + greeting + " WHERE id = " + id;
+            String query = "UPDATE mailbox set greeting ='" + greeting + "' WHERE id = " + id;
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
         } catch (Exception e) {
