@@ -4,7 +4,6 @@ public class GetLastMessageResponse {
 
 	private String ext;
 	private String message;
-	private boolean isFounded;
 	
 	public String getExt() {
 		return ext;
@@ -20,14 +19,6 @@ public class GetLastMessageResponse {
 	
 	public void setMessage(String message) {
 		this.message = message;
-	}
-	
-	public boolean isFounded() {
-		return isFounded;
-	}
-	
-	public void setFounded(boolean isFounded) {
-		this.isFounded = isFounded;
 	}
 	
 }
