@@ -9,7 +9,6 @@ import org.junit.Test;
 import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.Mailbox;
 import ucb.voicemail.domain.connection.state.ConnectedState;
-import ucb.voicemail.presenters.InitialPromptPresenter;
 import ucb.voicemail.repository.mailbox.ArrayMailboxRepository;
 import ucb.voicemail.repository.message.ArrayMessageRepository;
 import ucb.voicemail.view.MainMenu;
@@ -27,7 +26,7 @@ public class WindowTest {
 	public void init() {
 		mockMailboxRepository = mock(ArrayMailboxRepository.class);
 		mockMessageRepository = mock(ArrayMessageRepository.class);
-		connection = new Connection(mockMailboxRepository, mockMessageRepository, new ConnectedState(), new InitialPromptPresenter());
+		connection = new Connection(mockMailboxRepository, mockMessageRepository, new ConnectedState());
 		mockMailbox = mock(Mailbox.class);
 		mockMainMenu = mock(MainMenu.class);
 	}

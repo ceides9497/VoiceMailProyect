@@ -9,7 +9,7 @@ public class MailboxMenuState implements ConnectionState {
 	public void dial(Connection connection, String key) {
 		if (key.equals("1")) {
 	        connection.setConnectionState(new MessageMenuState());
-	        connection.speakToAll(connection.getMessageMenuTextPresenter());
+	        connection.speakToAll(Connection.MESSAGE_MENU_TEXT);
         }
         else if (key.equals("2")) {
             connection.setConnectionState(new ChangePasscodeState());
