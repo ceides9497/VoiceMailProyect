@@ -7,10 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-import ucb.voicemail.domain.boundary.output.ChangeGreetingInteractorOutput;
 import ucb.voicemail.domain.connection.state.ConnectedState;
-import ucb.voicemail.domain.dto.response.ChangeGreetingResponse;
-import ucb.voicemail.domain.usecases.ChangeGreetingInteractor;
 import ucb.voicemail.repository.mailbox.*;
 import ucb.voicemail.repository.message.*;
 import ucb.voicemail.view.ConsoleTelephone;
