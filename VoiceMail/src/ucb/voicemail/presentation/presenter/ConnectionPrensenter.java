@@ -49,7 +49,9 @@ public class ConnectionPrensenter implements
 		for (Telephone telephone : telephoneList) {
 			try {
 				SendMessageInteractorOutput output = (SendMessageInteractorOutput) telephone.routePresenter("SendMessage");
-				output.displayConfirmSendMessage(response);				
+				if (output != null) {
+					output.displayConfirmSendMessage(response);					
+				}
 			} catch (Exception e) {}
 		}
 	}
@@ -61,7 +63,9 @@ public class ConnectionPrensenter implements
 		for (Telephone telephone : telephoneList) {
 			try {
 				SaveCurrentMessageInteractorOutput output = (SaveCurrentMessageInteractorOutput) telephone.routePresenter("SaveCurrentMessage");
-				output.displayConfirmSaveCurrentMessage(response);				
+				if (output != null) {
+					output.displayConfirmSaveCurrentMessage(response);									
+				}
 			} catch (Exception e) {}
 		}
 	}
@@ -73,7 +77,9 @@ public class ConnectionPrensenter implements
 		for (Telephone telephone : telephoneList) {
 			try {
 				LoginMailboxInteractorOutput output = (LoginMailboxInteractorOutput) telephone.routePresenter("LoginMailbox");
-				output.displayMailboxMenu(response);				
+				if (output != null) {
+					output.displayMailboxMenu(response);									
+				}
 			} catch (Exception e) {}
 		}
 	}
@@ -85,7 +91,9 @@ public class ConnectionPrensenter implements
 		for (Telephone telephone : telephoneList) {
 			try {
 				LoginMailboxInteractorOutput output = (LoginMailboxInteractorOutput) telephone.routePresenter("LoginMailbox");
-				output.displayLoginFailed();				
+				if (output != null) {
+					output.displayLoginFailed();									
+				}
 			} catch (Exception e) {}
 		}
 	}
@@ -97,7 +105,9 @@ public class ConnectionPrensenter implements
 		for (Telephone telephone : telephoneList) {
 			try {
 				GetMailboxGreetingInteractorOutput output = (GetMailboxGreetingInteractorOutput) telephone.routePresenter("GetMailboxGreeting");
-				output.displayMailboxGreeting(response);				
+				if (output != null) {
+					output.displayMailboxGreeting(response);					
+				}
 			} catch (Exception e) {}
 		}
 	}
@@ -109,7 +119,9 @@ public class ConnectionPrensenter implements
 		for (Telephone telephone : telephoneList) {
 			try {
 				GetMailboxGreetingInteractorOutput output = (GetMailboxGreetingInteractorOutput) telephone.routePresenter("GetMailboxGreeting");
-				output.displayGreetingError();				
+				if (output != null) {
+					output.displayGreetingError();									
+				}
 			} catch (Exception e) {}
 		}
 	}
@@ -121,7 +133,9 @@ public class ConnectionPrensenter implements
 		for (Telephone telephone : telephoneList) {
 			try {
 				GetLastMessageInteractorOutput output = (GetLastMessageInteractorOutput) telephone.routePresenter("GetLastMessage");
-				output.presentMessage(response);				
+				if (output != null) {
+					output.presentMessage(response);									
+				}
 			} catch (Exception e) {}
 		}
 	}
@@ -133,7 +147,9 @@ public class ConnectionPrensenter implements
 		for (Telephone telephone : telephoneList) {
 			try {
 				GetLastMessageInteractorOutput output = (GetLastMessageInteractorOutput) telephone.routePresenter("GetLastMessage");
-				output.presentNotFoundMessage();				
+				if (output != null) {
+					output.presentNotFoundMessage();					
+				}
 			} catch (Exception e) {}
 		}
 	}
@@ -145,7 +161,9 @@ public class ConnectionPrensenter implements
 		for (Telephone telephone : telephoneList) {
 			try {
 				DeleteCurrentMessageInteractorOutput output = (DeleteCurrentMessageInteractorOutput) telephone.routePresenter("DeleteCurrentMessage");
-				output.displayConfirmDeleteCurrentMessage(response);				
+				if (output != null) {
+					output.displayConfirmDeleteCurrentMessage(response);									
+				}
 			} catch (Exception e) {}
 		}
 	}
@@ -157,7 +175,9 @@ public class ConnectionPrensenter implements
 		for (Telephone telephone : telephoneList) {
 			try {
 				ChangePasscodeInteractorOutput output = (ChangePasscodeInteractorOutput) telephone.routePresenter("ChangePasscode");
-				output.displayConfirmChangePasscode(response);				
+				if (output != null) {
+					output.displayConfirmChangePasscode(response);									
+				}
 			} catch (Exception e) {}
 		}
 	}
@@ -169,7 +189,9 @@ public class ConnectionPrensenter implements
 		for (Telephone telephone : telephoneList) {
 			try {
 				ChangeGreetingInteractorOutput output = (ChangeGreetingInteractorOutput) telephone.routePresenter("ChangeGreeting");
-				output.displayConfirmChangeGreeting(response);				
+				if (output != null) {
+					output.displayConfirmChangeGreeting(response);					
+				}
 			} catch (Exception e) {}
 		}
 	}
@@ -193,7 +215,9 @@ public class ConnectionPrensenter implements
 		for (Telephone telephone : telephoneList) {
 			try {
 				Presenter output = (Presenter) telephone.routePresenter("Presenter");
-				output.displayGreetingForm();				
+				if (output != null) {
+					output.displayGreetingForm();					
+				}
 			} catch (Exception e) {}
 		}
 	}
@@ -203,7 +227,9 @@ public class ConnectionPrensenter implements
 		for (Telephone telephone : telephoneList) {
 			try {
 				Presenter output = (Presenter) telephone.routePresenter("Presenter");
-				output.displayInitialPrompt();				
+				if (output != null) {
+					output.displayInitialPrompt();									
+				}
 			} catch (Exception e) {}
 		}
 	}
@@ -213,7 +239,9 @@ public class ConnectionPrensenter implements
 		for (Telephone telephone : telephoneList) {
 			try {
 				Presenter output = (Presenter) telephone.routePresenter("Presenter");
-				output.displayMailboxMenu();				
+				if (output != null) {
+					output.displayMailboxMenu();					
+				}
 			} catch (Exception e) {}
 		}
 	}
@@ -223,7 +251,9 @@ public class ConnectionPrensenter implements
 		for (Telephone telephone : telephoneList) {
 			try {
 				Presenter output = (Presenter) telephone.routePresenter("Presenter");
-				output.displayMessageMenu();				
+				if (output != null) {
+					output.displayMessageMenu();					
+				}
 			} catch (Exception e) {}
 		}
 	}
