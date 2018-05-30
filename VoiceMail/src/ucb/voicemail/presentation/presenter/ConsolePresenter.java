@@ -20,6 +20,7 @@ import ucb.voicemail.presentation.view.ConsoleView;
 import ucb.voicemail.presentation.viewmodel.ConsoleViewModel;
 
 public class ConsolePresenter implements 
+    Presenter,
     ChangeGreetingInteractorOutput, 
     ChangePasscodeInteractorOutput,
     DeleteCurrentMessageInteractorOutput,
@@ -45,6 +46,10 @@ public class ConsolePresenter implements
     private static final String INCORRECT_MAILBOX_PASSCODE = "Incorrect passcode. Try again!";
     
     private static final String INITIAL_PROMPT = "Enter mailbox number followed by #";
+    
+    private static final String GREETING_FORM = "Record your greeting, then press the # key";
+    
+    private static final String PASSCODE_FORM = "Enter new passcode followed by the # key";
     
     // =============================================================================
     
@@ -134,6 +139,29 @@ public class ConsolePresenter implements
 
     @Override
     public void displayConfirmSendMessage(SendMessageResponse response) {
+        ConsoleViewModel model = new ConsoleViewModel();
+        model.setText(INITIAL_PROMPT);
+        view.display(model);
+    }
+
+    // =============================================================================
+    
+    @Override
+    public void displayPasscodeForm() {
+        ConsoleViewModel model = new ConsoleViewModel();
+        model.setText(PASSCODE_FORM);
+        view.display(model);
+    }
+
+    @Override
+    public void displayGreetingForm() {
+        ConsoleViewModel model = new ConsoleViewModel();
+        model.setText(GREETING_FORM);
+        view.display(model);
+    }
+
+    @Override
+    public void displayInitialPrompt() {
         ConsoleViewModel model = new ConsoleViewModel();
         model.setText(INITIAL_PROMPT);
         view.display(model);

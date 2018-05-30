@@ -61,20 +61,12 @@ public class Connection implements Subject {
         resetConnection();
     }
     
-    public void addMessageInCurrentMailbox() {
-        messageRepository.addMessage(currentMailbox.getId(), new Message(currentRecording));
-    }
-    
     public void addRecordingText(String voice) {
         currentRecording += voice;
     }
     
     public void addAccumulatedKeysText(String key) {
         accumulatedKeys += key;
-    }
-    
-    public Mailbox setCurrentMailboxByAccumulatedKeys() {
-        return currentMailbox = mailboxRepository.findMailbox(accumulatedKeys);
     }
     
     // ==================== GET AND SET ====================
@@ -113,6 +105,10 @@ public class Connection implements Subject {
     
     public Mailbox getCurrentMailbox() {
         return currentMailbox;
+    }
+    
+    public void setCurrentMailbox(Mailbox currentMailbox) {
+        this.currentMailbox = currentMailbox;
     }
     
     public void setConnectionState(ConnectionState connectionState) {
