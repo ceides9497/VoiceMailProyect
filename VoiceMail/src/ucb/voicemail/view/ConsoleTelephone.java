@@ -1,5 +1,6 @@
 package ucb.voicemail.view;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 import ucb.voicemail.domain.Connection;
@@ -8,6 +9,7 @@ import ucb.voicemail.domain.Telephone;
 public class ConsoleTelephone implements Telephone {
 
 	private Scanner scanner;
+	private HashMap<String, Object> presentersRoutes;
 	
 	private final static String HANGUP = "H";
 	private final static String QUIT = "Q";
@@ -15,10 +17,12 @@ public class ConsoleTelephone implements Telephone {
 	
 	public ConsoleTelephone() {
 		scanner = new Scanner(System.in);
+		presentersRoutes = new HashMap<>();
 	}
 	
 	public ConsoleTelephone(Scanner aScanner) {
 		scanner = aScanner;
+		presentersRoutes = new HashMap<>();
 	}
 
 	@Override
@@ -66,5 +70,18 @@ public class ConsoleTelephone implements Telephone {
 	private boolean isHanging(String input) {
 		return input.equalsIgnoreCase(HANGUP);
 	}
-
+	
+	@Override
+	public void addRoute(String route, Object presenter) {
+		presentersRoutes.put(route, presenter);
+	}
+	
+	@Override
+	public Object routePresenter(String route) {
+		if (presentersRoutes.containsKey(route)) {
+			return presentersRoutes.get(route);
+		}
+		
+		return null;
+	}
 }
