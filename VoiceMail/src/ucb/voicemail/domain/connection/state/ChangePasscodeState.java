@@ -4,15 +4,16 @@ import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.ConnectionState;
 import ucb.voicemail.domain.Mailbox;
 import ucb.voicemail.domain.MailboxRepository;
+import ucb.voicemail.domain.boundary.input.ChangePasscodeInteractorInput;
 import ucb.voicemail.domain.dto.request.ChangeGreetingRequest;
 import ucb.voicemail.domain.dto.request.ChangePasscodeRequest;
 import ucb.voicemail.domain.usecases.ChangePasscodeInteractor;
 
 public class ChangePasscodeState implements ConnectionState {
 	
-	private ChangePasscodeInteractor interactor;
+	private ChangePasscodeInteractorInput interactor;
 	
-	public ChangePasscodeState(ChangePasscodeInteractor interactor) {
+	public ChangePasscodeState(ChangePasscodeInteractorInput interactor) {
 		this.interactor = interactor;
 	}
 	

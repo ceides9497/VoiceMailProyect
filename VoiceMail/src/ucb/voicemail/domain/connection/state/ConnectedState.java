@@ -4,9 +4,12 @@ import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.ConnectionState;
 import ucb.voicemail.domain.Mailbox;
 import ucb.voicemail.domain.MailboxRepository;
+import ucb.voicemail.domain.usecases.LoginMailboxInteractor;
 
 public class ConnectedState implements ConnectionState {
 
+	private LoginMailboxInteractor loginMailboxInteractor;
+	
 	@Override
 	public void dial(Connection connection, String key) {
 	    if (key.equals("#")) {
