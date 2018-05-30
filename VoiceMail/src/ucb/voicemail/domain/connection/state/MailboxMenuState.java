@@ -4,13 +4,31 @@ import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.ConnectionState;
 import ucb.voicemail.domain.usecases.ChangeGreetingInteractor;
 import ucb.voicemail.domain.usecases.ChangePasscodeInteractor;
+import ucb.voicemail.domain.usecases.DeleteCurrentMessageInteractor;
+import ucb.voicemail.domain.usecases.GetLastMessageInteractor;
+import ucb.voicemail.domain.usecases.SaveCurrentMessageInteractor;
 
 public class MailboxMenuState implements ConnectionState {
 
 	@Override
 	public void dial(Connection connection, String key) {
 		if (key.equals("1")) {
-	        connection.setConnectionState(new MessageMenuState());
+	        connection.setConnectionState(
+	        		new MessageMenuState(
+	        				new GetLastMessageInteractor(
+	        						connection.getMessageRepository(), 
+	        						connection.generateConnectionPresenter()
+	        				),
+	        				new SaveCurrentMessageInteractor(
+	        						connection.getMessageRepository(),
+	        						connection.generateConnectionPresenter())
+	        				,
+	        				new DeleteCurrentMessageInteractor(
+	        						connection.getMessageRepository(), 
+	        						connection.generateConnectionPresenter()
+    						)
+	        		)
+    		);
 	        //connection.speakToAll(Connection.MESSAGE_MENU_TEXT);
 	        connection.generateConnectionPresenter().displayMessageMenu();
         }
