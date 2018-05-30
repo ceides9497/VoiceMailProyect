@@ -6,12 +6,11 @@ public class Connection implements Subject {
 
     // ==================== CONSTRUCTOR ====================
     
-    public Connection(MailboxRepository mailboxRepository, MessageRepository messageRepository, ConnectionState initialState, MenuPresenter initialPromptPresenter) {
+    public Connection(MailboxRepository mailboxRepository, MessageRepository messageRepository, ConnectionState initialState) {
         this.initialState = initialState;
         this.mailboxRepository = mailboxRepository;
         this.messageRepository = messageRepository;
         this.userInterfaces = new ArrayList<Telephone>();
-        this.initialPromptPresenter = initialPromptPresenter;
         resetConnection();
     }
 
@@ -55,7 +54,7 @@ public class Connection implements Subject {
         currentRecording = "";
         accumulatedKeys = "";
         connectionState = initialState;
-        speakToAll(initialPromptPresenter.getMenu());
+        speakToAll(INITIAL_PROMPT);
     }
     
     public void start() {
@@ -120,22 +119,6 @@ public class Connection implements Subject {
         this.connectionState = connectionState;
     }
     
-    public void setMailBoxMenuPresenter(MenuPresenter mailboxMenuPresenter) {
-    	this.mailboxMenuPresenter = mailboxMenuPresenter;
-    }
-    
-    public String getMailboxMenu() {
-    	return mailboxMenuPresenter.getMenu();
-    }
-    
-    public void setMessageMenuTextPresenter(MenuPresenter messageMenuTextPresenter) {
-    	this.messageMenuTextPresenter = messageMenuTextPresenter;
-    }
-    
-    public String getMessageMenuTextPresenter() {
-    	return messageMenuTextPresenter.getMenu();
-    }
-    
     // ==================== VARIABLES ====================
     
     private MailboxRepository mailboxRepository;
@@ -145,9 +128,20 @@ public class Connection implements Subject {
     private String accumulatedKeys;
     private ArrayList<Telephone> userInterfaces;
     private ConnectionState connectionState;
-    private MenuPresenter initialPromptPresenter;
-    private MenuPresenter mailboxMenuPresenter;
-    private MenuPresenter messageMenuTextPresenter;
     
     private final ConnectionState initialState;
+    
+   	public static final String INITIAL_PROMPT = 
+        "Enter mailbox number followed by #";
+   	
+   	public static final String MAILBOX_MENU_TEXT = 
+        "Enter 1 to listen to your messages\n"
+        + "Enter 2 to change your passcode\n"
+        + "Enter 3 to change your greeting";
+   	
+   	public static final String MESSAGE_MENU_TEXT = 
+        "Enter 1 to listen to the current message\n"
+        + "Enter 2 to save the current message\n"
+        + "Enter 3 to delete the current message\n"
+        + "Enter 4 to return to the main menu";
 }

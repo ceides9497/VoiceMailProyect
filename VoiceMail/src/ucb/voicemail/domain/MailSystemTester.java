@@ -34,18 +34,7 @@ public class MailSystemTester {
             MessageRepository messageRepository = new ArrayMessageRepository(MAILBOX_COUNT);
             Scanner console = new Scanner(System.in);
             ConsoleTelephone p = new ConsoleTelephone(console);
-            MailboxMenuPresenter mailboxMenuPresenter = new MailboxMenuPresenter();
-            mailboxMenuPresenter.addOption("listen to your messages");
-            mailboxMenuPresenter.addOption("change your passcode");
-            mailboxMenuPresenter.addOption("change your greeting");
-            MessageMenuTextPresenter messageMenuTextPresenter = new MessageMenuTextPresenter();
-            messageMenuTextPresenter.addOption("listen to the current message");
-            messageMenuTextPresenter.addOption("save the current message");
-            messageMenuTextPresenter.addOption("delete the current message");
-            messageMenuTextPresenter.addOption("return to the main menu");
-            Connection c = new Connection(sqliteMailboxRepository, sqliteMessageRepository, new ConnectedState(), new InitialPromptPresenter());
-            c.setMailBoxMenuPresenter(mailboxMenuPresenter);
-            c.setMessageMenuTextPresenter(messageMenuTextPresenter);
+            Connection c = new Connection(sqliteMailboxRepository, sqliteMessageRepository, new ConnectedState());
             c.addUserInterface(p);
             c.addUserInterface(w);
             c.start();      // REINICIA LA CONEXION PARA QUE APAREZCA "Enter mailbox number followed by #"
