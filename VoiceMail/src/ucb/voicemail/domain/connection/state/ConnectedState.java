@@ -4,6 +4,8 @@ import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.ConnectionState;
 import ucb.voicemail.domain.Mailbox;
 import ucb.voicemail.domain.MailboxRepository;
+import ucb.voicemail.domain.usecases.LoginMailboxInteractor;
+import ucb.voicemail.domain.usecases.SendMessageInteractor;
 
 public class ConnectedState implements ConnectionState {
 	
@@ -15,7 +17,11 @@ public class ConnectedState implements ConnectionState {
             connection.setCurrentMailbox(currentMailbox);
 	        
 	        if (currentMailbox != null) {
-                connection.setConnectionState(new RecordingState());
+                connection.setConnectionState(
+                		new RecordingState(
+                				new LoginMailboxInteractor(connection.getMailboxRepository(), connection.generateConnectionPresenter()),
+                				new SendMessageInteractor(connection.getMessageRepository(), connection.generateConnectionPresenter())
+                		));
                 connection.speakToAll(currentMailbox.getGreeting());
             }
             else {

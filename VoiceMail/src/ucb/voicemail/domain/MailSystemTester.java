@@ -37,6 +37,9 @@ public class MailSystemTester {
             p.addRoute("ChangeGreeting", consolePresenter);
             p.addRoute("ChangePasscode", consolePresenter);
             p.addRoute("GetLastMessage", consolePresenter);
+            p.addRoute("SaveCurrentMessage", consolePresenter);
+            p.addRoute("DeleteCurrentMessage", consolePresenter);
+            p.addRoute("LoginMailbox", consolePresenter);
             Connection c = new Connection(sqliteMailboxRepository, sqliteMessageRepository, new ConnectedState());
             c.addUserInterface(p);
             c.addUserInterface(w);
