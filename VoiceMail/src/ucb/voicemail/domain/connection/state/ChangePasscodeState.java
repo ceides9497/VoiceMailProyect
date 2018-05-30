@@ -4,17 +4,32 @@ import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.ConnectionState;
 import ucb.voicemail.domain.Mailbox;
 import ucb.voicemail.domain.MailboxRepository;
+import ucb.voicemail.domain.dto.request.ChangeGreetingRequest;
+import ucb.voicemail.domain.dto.request.ChangePasscodeRequest;
+import ucb.voicemail.domain.usecases.ChangePasscodeInteractor;
 
 public class ChangePasscodeState implements ConnectionState {
+	
+	private ChangePasscodeInteractor interactor;
+	
+	public ChangePasscodeState(ChangePasscodeInteractor interactor) {
+		this.interactor = interactor;
+	}
 	
 	@Override
 	public void dial(Connection connection, String key) {
 	    Mailbox currentMailbox = connection.getCurrentMailbox();
         if (key.equals("#")) {
-            MailboxRepository repository = connection.getMailboxRepository();
-            repository.setMailboxPasscode(currentMailbox.getId(), connection.getAccumulatedKeys());
+            //MailboxRepository repository = connection.getMailboxRepository();
+            //repository.setMailboxPasscode(currentMailbox.getId(), connection.getAccumulatedKeys());
             connection.setConnectionState(new MailboxMenuState());
-            connection.speakToAll(Connection.MAILBOX_MENU_TEXT);
+            
+            ChangePasscodeRequest request = new ChangePasscodeRequest();
+        	request.setExt(currentMailbox.getId());
+        	request.setPasscode(connection.getAccumulatedKeys());
+        	interactor.changePasscode(request);
+            
+            //connection.speakToAll(Connection.MAILBOX_MENU_TEXT);
             connection.setAccumulatedKeys("");
         }
         else {

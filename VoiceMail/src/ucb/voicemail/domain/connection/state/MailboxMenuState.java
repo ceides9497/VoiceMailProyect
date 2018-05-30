@@ -3,6 +3,7 @@ package ucb.voicemail.domain.connection.state;
 import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.ConnectionState;
 import ucb.voicemail.domain.usecases.ChangeGreetingInteractor;
+import ucb.voicemail.domain.usecases.ChangePasscodeInteractor;
 
 public class MailboxMenuState implements ConnectionState {
 
@@ -14,7 +15,14 @@ public class MailboxMenuState implements ConnectionState {
 	        connection.generateConnectionPresenter().displayMessageMenu();
         }
         else if (key.equals("2")) {
-            connection.setConnectionState(new ChangePasscodeState());
+            connection.setConnectionState(
+            		new ChangePasscodeState(
+            				new ChangePasscodeInteractor(
+            						connection.getMailboxRepository(), 
+            						connection.generateConnectionPresenter()
+            				)
+            		)		
+    		);
             connection.generateConnectionPresenter().displayPasscodeForm();
             //connection.speakToAll("Enter new passcode followed by the # key");
         }
