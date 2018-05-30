@@ -8,9 +8,6 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 import ucb.voicemail.domain.connection.state.ConnectedState;
-import ucb.voicemail.presenters.InitialPromptPresenter;
-import ucb.voicemail.presenters.MailboxMenuPresenter;
-import ucb.voicemail.presenters.MessageMenuTextPresenter;
 import ucb.voicemail.repository.mailbox.*;
 import ucb.voicemail.repository.message.*;
 import ucb.voicemail.view.ConsoleTelephone;

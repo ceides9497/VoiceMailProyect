@@ -8,9 +8,6 @@ import org.junit.Test;
 
 import ucb.voicemail.domain.*;
 import ucb.voicemail.domain.connection.state.ConnectedState;
-import ucb.voicemail.presenters.InitialPromptPresenter;
-import ucb.voicemail.presenters.MailboxMenuPresenter;
-import ucb.voicemail.presenters.MessageMenuTextPresenter;
 import ucb.voicemail.repository.mailbox.ArrayMailboxRepository;
 import ucb.voicemail.repository.message.ArrayMessageRepository;
 
@@ -28,15 +25,6 @@ public class ConnectionTest {
 		mockMessageRepository = mock(ArrayMessageRepository.class);
 		mockMailbox = mock(Mailbox.class);
 		mockUserInterface = mock(Telephone.class);
-		MailboxMenuPresenter mailboxMenuPresenter = new MailboxMenuPresenter();
-        mailboxMenuPresenter.addOption("listen to your messages");
-        mailboxMenuPresenter.addOption("change your passcode");
-        mailboxMenuPresenter.addOption("change your greeting");
-        MessageMenuTextPresenter messageMenuTextPresenter = new MessageMenuTextPresenter();
-        messageMenuTextPresenter.addOption("listen to the current message");
-        messageMenuTextPresenter.addOption("save the current message");
-        messageMenuTextPresenter.addOption("delete the current message");
-        messageMenuTextPresenter.addOption("return to the main menu");
 		connection = new Connection(mockMailboxRepository, mockMessageRepository, new ConnectedState());
 	}
 	
