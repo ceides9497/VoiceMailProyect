@@ -2,44 +2,37 @@ package ucb.voicemail.domain.usecases;
 
 import ucb.voicemail.domain.Mailbox;
 import ucb.voicemail.domain.MailboxRepository;
+import ucb.voicemail.domain.boundary.input.GetMailboxGreetingInteractorInput;
+import ucb.voicemail.domain.boundary.output.GetMailboxGreetingInteractorOutput;
 import ucb.voicemail.domain.dto.GetMailboxGreetingRequest;
 import ucb.voicemail.domain.dto.GetMailboxGreetingResponse;
 
-public class GetMailboxGreetingInteractor implements InputBoundary<GetMailboxGreetingRequest, GetMailboxGreetingResponse> {
+public class GetMailboxGreetingInteractor implements GetMailboxGreetingInteractorInput {
 
 	private MailboxRepository mailboxRepository;
+	private GetMailboxGreetingInteractorOutput output;
 	
-	public GetMailboxGreetingInteractor(MailboxRepository mailboxRepository) {
+	public GetMailboxGreetingInteractor(MailboxRepository mailboxRepository, GetMailboxGreetingInteractorOutput output) {
 		this.mailboxRepository = mailboxRepository;
+		this.output = output;
 	}
 	
 	@Override
-	public GetMailboxGreetingResponse handle(GetMailboxGreetingRequest request) {
+	public void getMailboxGreeting(GetMailboxGreetingRequest request) {
 		
 		String ext = request.getExt();
 		
 		Mailbox mailbox = mailboxRepository.findMailbox(ext);
 		
-		GetMailboxGreetingResponse response = new GetMailboxGreetingResponse();
-		response.setExt(ext);
-		response.setGreeting(mailbox.getGreeting());
+		if(mailbox != null) {
+		    GetMailboxGreetingResponse response = new GetMailboxGreetingResponse();
+	        response.setGreeting(mailbox.getGreeting());
+	        output.displayMailboxGreeting(response);
+		}
+		else {
+		    output.displayGreetingError();
+		}
 		
-		return response;
 	}
 
 }
-
-/*
- * get("/mailbox", (request, response) -> {
- *   
- *   GetMailboxGreetingRequest req = new GetMailboxGreetingRequest();
- *   req.setExt( request.get("ext") );
- *   
- *   OutputBoundary outputBoundary = new OutputBoundary(response);
- *   GetMailboxGreetingInteractor interactor = new GetMailboxGreetingInteractor(new SQLiteMailboxRepository);
- *   interactor.setPresenter(outputBoundary);
- *   
- *   return interactor.handle(req);
- * })
- * 
- * */
