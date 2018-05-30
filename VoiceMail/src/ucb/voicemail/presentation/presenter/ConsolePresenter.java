@@ -167,4 +167,30 @@ public class ConsolePresenter implements
         view.display(model);
     }
 
+    @Override
+    public void displayMailboxMenu() {
+        ConsoleViewModel model = new ConsoleViewModel();
+        model.setText(MAILBOX_MENU);
+        view.display(model);
+    }
+
+    @Override
+    public void displayMessageMenu() {
+        ConsoleViewModel model = new ConsoleViewModel();
+        model.setText(MESSAGE_MENU);
+        view.display(model);
+    }
+
+    /*public interface Presentee {
+        Presenter getPresenter();
+        ChangeGreetingInteractorOutput getChangeGreetingInteractorOutput();
+        ChangePasscodeInteractorOutput getChangePasscodeInteractorOutput();
+        DeleteCurrentMessageInteractorOutput getDeleteCurrentMessageInteractorOutput();
+        GetLastMessageInteractorOutput getGetLastMessageInteractorOutput();
+        GetMailboxGreetingInteractorOutput getGetMailboxGreetingInteractorOutput();
+        LoginMailboxInteractorOutput getLoginMailboxInteractorOutput();
+        SaveCurrentMessageInteractorOutput getSaveCurrentMessageInteractorOutput();
+        SendMessageInteractorOutput getSendMessageInteractorOutput();
+    }*/
+    
 }
