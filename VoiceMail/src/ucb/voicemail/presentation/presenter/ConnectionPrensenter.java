@@ -2,7 +2,6 @@ package ucb.voicemail.presentation.presenter;
 
 import java.util.ArrayList;
 
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 import ucb.voicemail.domain.Telephone;
 
 import ucb.voicemail.domain.boundary.output.ChangeGreetingInteractorOutput;
