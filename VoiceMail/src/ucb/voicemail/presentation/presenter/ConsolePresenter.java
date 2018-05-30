@@ -30,7 +30,7 @@ public class ConsolePresenter implements
     SaveCurrentMessageInteractorOutput,
     SendMessageInteractorOutput {
 
-    private ConsoleView view;
+    private ConsoleView view = new ConsoleView();
 
     private static final String MAILBOX_MENU = "Enter 1 to listen to your messages\r\n" + 
             "Enter 2 to change your passcode\r\n" + 

@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 import ucb.voicemail.domain.connection.state.ConnectedState;
+import ucb.voicemail.presentation.presenter.ConsolePresenter;
 import ucb.voicemail.repository.mailbox.*;
 import ucb.voicemail.repository.message.*;
 import ucb.voicemail.view.ConsoleTelephone;
@@ -31,6 +32,10 @@ public class MailSystemTester {
             MessageRepository messageRepository = new ArrayMessageRepository(MAILBOX_COUNT);
             Scanner console = new Scanner(System.in);
             ConsoleTelephone p = new ConsoleTelephone(console);
+            ConsolePresenter consolePresenter = new ConsolePresenter();
+            p.addRoute("Presenter", consolePresenter);
+            p.addRoute("ChangeGreeting", consolePresenter);
+            p.addRoute("ChangePasscode", consolePresenter);
             Connection c = new Connection(sqliteMailboxRepository, sqliteMessageRepository, new ConnectedState());
             c.addUserInterface(p);
             c.addUserInterface(w);

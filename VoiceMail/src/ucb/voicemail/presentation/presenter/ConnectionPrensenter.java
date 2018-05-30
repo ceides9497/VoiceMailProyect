@@ -181,7 +181,9 @@ public class ConnectionPrensenter implements
 		for (Telephone telephone : telephoneList) {
 			try {
 				Presenter output = (Presenter) telephone.routePresenter("Presenter");
-				output.displayPasscodeForm();				
+				if(output != null) {
+					output.displayPasscodeForm();
+				}
 			} catch (Exception e) {}
 		}
 	}
