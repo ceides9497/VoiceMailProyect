@@ -27,7 +27,7 @@ public class WindowTest {
 	public void init() {
 		mockMailboxRepository = mock(ArrayMailboxRepository.class);
 		mockMessageRepository = mock(ArrayMessageRepository.class);
-		connection = new Connection(mockMailboxRepository, mockMessageRepository, new ConnectedState(), new InitialPromptPresenter());
+		connection = new Connection(mockMailboxRepository, mockMessageRepository, new ConnectedState());
 		mockMailbox = mock(Mailbox.class);
 		mockMainMenu = mock(MainMenu.class);
 	}
