@@ -1,6 +1,6 @@
-package ucb.voicemail.domain.dto;
+package ucb.voicemail.domain.dto.request;
 
-public class ChangePasscodeRequest {
+public class LoginMailboxRequest {
 
 	private String ext;
 	private String passcode;

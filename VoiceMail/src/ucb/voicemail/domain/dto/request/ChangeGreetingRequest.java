@@ -1,4 +1,4 @@
-package ucb.voicemail.domain.dto;
+package ucb.voicemail.domain.dto.request;
 
 public class ChangeGreetingRequest {
 

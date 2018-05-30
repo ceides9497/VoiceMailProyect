@@ -4,8 +4,8 @@ import ucb.voicemail.domain.Mailbox;
 import ucb.voicemail.domain.MailboxRepository;
 import ucb.voicemail.domain.boundary.input.GetMailboxGreetingInteractorInput;
 import ucb.voicemail.domain.boundary.output.GetMailboxGreetingInteractorOutput;
-import ucb.voicemail.domain.dto.GetMailboxGreetingRequest;
-import ucb.voicemail.domain.dto.GetMailboxGreetingResponse;
+import ucb.voicemail.domain.dto.request.GetMailboxGreetingRequest;
+import ucb.voicemail.domain.dto.response.GetMailboxGreetingResponse;
 
 public class GetMailboxGreetingInteractor implements GetMailboxGreetingInteractorInput {
 

@@ -3,8 +3,8 @@ package ucb.voicemail.domain.usecases;
 import ucb.voicemail.domain.MessageRepository;
 import ucb.voicemail.domain.boundary.input.DeleteCurrentMessageInteractorInput;
 import ucb.voicemail.domain.boundary.output.DeleteCurrentMessageInteractorOutput;
-import ucb.voicemail.domain.dto.DeleteCurrentMessageRequest;
-import ucb.voicemail.domain.dto.DeleteCurrentMessageResponse;
+import ucb.voicemail.domain.dto.request.DeleteCurrentMessageRequest;
+import ucb.voicemail.domain.dto.response.DeleteCurrentMessageResponse;
 
 public class DeleteCurrentMessageInteractor implements DeleteCurrentMessageInteractorInput {
 	

@@ -4,8 +4,8 @@ import ucb.voicemail.domain.Message;
 import ucb.voicemail.domain.MessageRepository;
 import ucb.voicemail.domain.boundary.input.SendMessageInteractorInput;
 import ucb.voicemail.domain.boundary.output.SendMessageInteractorOutput;
-import ucb.voicemail.domain.dto.SendMessageRequest;
-import ucb.voicemail.domain.dto.SendMessageResponse;
+import ucb.voicemail.domain.dto.request.SendMessageRequest;
+import ucb.voicemail.domain.dto.response.SendMessageResponse;
 
 public class SendMessageInteractor implements SendMessageInteractorInput {
 

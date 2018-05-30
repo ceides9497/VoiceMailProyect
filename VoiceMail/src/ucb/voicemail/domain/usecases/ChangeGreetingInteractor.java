@@ -3,8 +3,8 @@ package ucb.voicemail.domain.usecases;
 import ucb.voicemail.domain.MailboxRepository;
 import ucb.voicemail.domain.boundary.input.ChangeGreetingInteractorInput;
 import ucb.voicemail.domain.boundary.output.ChangeGreetingInteractorOutput;
-import ucb.voicemail.domain.dto.ChangeGreetingRequest;
-import ucb.voicemail.domain.dto.ChangeGreetingResponse;
+import ucb.voicemail.domain.dto.request.ChangeGreetingRequest;
+import ucb.voicemail.domain.dto.response.ChangeGreetingResponse;
 
 public class ChangeGreetingInteractor implements ChangeGreetingInteractorInput {
 

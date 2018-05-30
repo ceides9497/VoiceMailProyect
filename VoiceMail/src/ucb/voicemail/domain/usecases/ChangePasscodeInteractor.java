@@ -3,8 +3,8 @@ package ucb.voicemail.domain.usecases;
 import ucb.voicemail.domain.MailboxRepository;
 import ucb.voicemail.domain.boundary.input.ChangePasscodeInteractorInput;
 import ucb.voicemail.domain.boundary.output.ChangePasscodeInteractorOutput;
-import ucb.voicemail.domain.dto.ChangePasscodeRequest;
-import ucb.voicemail.domain.dto.ChangePasscodeResponse;
+import ucb.voicemail.domain.dto.request.ChangePasscodeRequest;
+import ucb.voicemail.domain.dto.response.ChangePasscodeResponse;
 
 public class ChangePasscodeInteractor implements ChangePasscodeInteractorInput {
 

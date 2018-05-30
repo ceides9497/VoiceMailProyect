@@ -4,8 +4,8 @@ import ucb.voicemail.domain.Mailbox;
 import ucb.voicemail.domain.MailboxRepository;
 import ucb.voicemail.domain.boundary.input.LoginMailboxInteractorInput;
 import ucb.voicemail.domain.boundary.output.LoginMailboxInteractorOutput;
-import ucb.voicemail.domain.dto.LoginMailboxRequest;
-import ucb.voicemail.domain.dto.LoginMailboxResponse;
+import ucb.voicemail.domain.dto.request.LoginMailboxRequest;
+import ucb.voicemail.domain.dto.response.LoginMailboxResponse;
 
 public class LoginMailboxInteractor implements LoginMailboxInteractorInput {
 

@@ -4,8 +4,8 @@ import ucb.voicemail.domain.Message;
 import ucb.voicemail.domain.MessageRepository;
 import ucb.voicemail.domain.boundary.input.GetLastMessageInteractorInput;
 import ucb.voicemail.domain.boundary.output.GetLastMessageInteractorOutput;
-import ucb.voicemail.domain.dto.GetLastMessageRequest;
-import ucb.voicemail.domain.dto.GetLastMessageResponse;
+import ucb.voicemail.domain.dto.request.GetLastMessageRequest;
+import ucb.voicemail.domain.dto.response.GetLastMessageResponse;
 
 public class GetLastMessageInteractor implements GetLastMessageInteractorInput {
 
