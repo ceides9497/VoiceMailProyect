@@ -2,6 +2,8 @@ package ucb.voicemail.domain;
 
 import java.util.ArrayList;
 
+import ucb.voicemail.presentation.presenter.ConnectionPrensenter;
+
 public class Connection implements Subject {
 
     // ==================== CONSTRUCTOR ====================
@@ -114,6 +116,14 @@ public class Connection implements Subject {
     public void setConnectionState(ConnectionState connectionState) {
         this.connectionState = connectionState;
     }
+    
+    public ConnectionPrensenter generateConnectionPresenter() {
+   		ConnectionPrensenter presenter = new ConnectionPrensenter();
+   		for (Telephone telephone : userInterfaces) {
+   			presenter.addTelephone(telephone);
+		}
+   		return presenter;
+   	}
     
     // ==================== VARIABLES ====================
     

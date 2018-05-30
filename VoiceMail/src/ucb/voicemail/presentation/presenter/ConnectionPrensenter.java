@@ -39,6 +39,10 @@ public class ConnectionPrensenter implements
 		telephoneList = new ArrayList<Telephone>();
 	}
 	
+	public void addTelephone(Telephone newTelephone) {
+		telephoneList.add(newTelephone);
+	}
+	
 	// ------------------------------------------------ SendMessageInteractorOutput
 	
 	@Override
