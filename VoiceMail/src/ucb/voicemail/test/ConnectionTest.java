@@ -279,6 +279,6 @@ public class ConnectionTest {
 	
 	@Test
 	public void deberiaRetornarElMailSystemAsignadoEnElConstructor() {
-		assertEquals(mockMailboxRepository, connection.getMailSystem());
+		assertEquals(mockMailboxRepository, connection.getMailboxRepository());
 	}
 }

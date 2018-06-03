@@ -6,8 +6,6 @@ import javax.swing.border.EmptyBorder;
 
 import ucb.voicemail.domain.Connection;
 
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -16,7 +14,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JSeparator;
 import java.awt.Color;
-import javax.swing.JTextPane;
 import javax.swing.JEditorPane;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;

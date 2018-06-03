@@ -19,21 +19,16 @@ public class LoginMailboxInteractor implements LoginMailboxInteractorInput {
 
 	@Override
 	public void loginMailbox(LoginMailboxRequest request) {
-		
 		String ext = request.getExt();
 		String passcode = request.getPasscode();
-		
 		Mailbox mailbox = mailboxRepository.findMailbox(ext);
-		
 		LoginMailboxResponse response = new LoginMailboxResponse();
-		
 		if(mailbox.checkPasscode(passcode)) {
 			output.displayMailboxMenu(response);
 		}
 		else {
 			output.displayLoginFailed();
 		}
-
 	}
 	
 }

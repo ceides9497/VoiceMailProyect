@@ -9,7 +9,7 @@ public class GraphicalTelephone implements Telephone {
 	
 	public GraphicalTelephone(MainMenu mainMenu) {
 		this.mainMenu = mainMenu;
-		mainMenu.show();
+		mainMenu.setVisible(true);
 		presentersRoutes = new HashMap<>();
 	}
 	
@@ -20,7 +20,7 @@ public class GraphicalTelephone implements Telephone {
 	
 	public void run(Connection c) {
 		mainMenu.setConnection(c);
-		mainMenu.show();
+		mainMenu.setVisible(true);
 	}
 	
 	@Override

@@ -1,11 +1,25 @@
 package ucb.voicemail.domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import ucb.voicemail.presentation.presenter.ConnectionPrensenter;
 
 public class Connection implements Subject {
 
+    private HashMap<String, Object> presentersRoutes;
+    
+    public void addRoute(String route, Object presenter) {
+        presentersRoutes.put(route, presenter);
+    }
+    
+    public Object routePresenter(String route) {
+        if (presentersRoutes.containsKey(route)) {
+            return presentersRoutes.get(route);
+        }
+        return null;
+    }
+    
     // ==================== CONSTRUCTOR ====================
     
     public Connection(MailboxRepository mailboxRepository, MessageRepository messageRepository, ConnectionState initialState) {
@@ -13,6 +27,7 @@ public class Connection implements Subject {
         this.mailboxRepository = mailboxRepository;
         this.messageRepository = messageRepository;
         this.userInterfaces = new ArrayList<Telephone>();
+        presentersRoutes = new HashMap<>();
         resetConnection();
     }
 
@@ -28,7 +43,6 @@ public class Connection implements Subject {
 
     public void hangup() {
         connectionState.hangup(this);
-        resetConnection();
     }
     
     // ==================== SUBJECT FUNCTIONS ====================
@@ -56,7 +70,7 @@ public class Connection implements Subject {
         currentRecording = "";
         accumulatedKeys = "";
         connectionState = initialState;
-        speakToAll(INITIAL_PROMPT);
+        generateConnectionPresenter().displayInitialPrompt();
     }
     
     public void start() {
@@ -75,10 +89,6 @@ public class Connection implements Subject {
     
     public ArrayList<Telephone> getUserInterfaces() {
         return userInterfaces;
-    }
-    
-    public MailboxRepository getMailSystem() {
-        return mailboxRepository;
     }
     
     public String getCurrentRecording() {
@@ -105,35 +115,35 @@ public class Connection implements Subject {
         this.accumulatedKeys = accumulatedKeys;
     }
     
-    public Mailbox getCurrentMailbox() {
-        return currentMailbox;
-    }
-    
-    public void setCurrentMailbox(Mailbox currentMailbox) {
-        this.currentMailbox = currentMailbox;
-    }
-    
     public void setConnectionState(ConnectionState connectionState) {
         this.connectionState = connectionState;
     }
     
     public ConnectionPrensenter generateConnectionPresenter() {
-   		ConnectionPrensenter presenter = new ConnectionPrensenter();
+   		ConnectionPrensenter presenter = new ConnectionPrensenter(this);
    		for (Telephone telephone : userInterfaces) {
    			presenter.addTelephone(telephone);
 		}
    		return presenter;
    	}
     
+    public void setMailboxId(String mailboxId) {
+        this.mailboxId = mailboxId;
+    }
+    
+    public String getMailboxId() {
+        return mailboxId;
+    }
+    
     // ==================== VARIABLES ====================
     
     private MailboxRepository mailboxRepository;
     private MessageRepository messageRepository;
-    private Mailbox currentMailbox;
     private String currentRecording;
     private String accumulatedKeys;
     private ArrayList<Telephone> userInterfaces;
     private ConnectionState connectionState;
+    private String mailboxId;
     
     private final ConnectionState initialState;
     

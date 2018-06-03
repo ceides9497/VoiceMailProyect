@@ -28,8 +28,8 @@ public class MailSystemTester {
             MySqlMailboxRepository mysqlMailboxRepository = new MySqlMailboxRepository(connection);
             MySqlMessageRepository mysqlMessageRepository = new MySqlMessageRepository(connection);*/
             GraphicalTelephone w = new GraphicalTelephone(new MainMenu());
-            MailboxRepository mailboxRepository = new ArrayMailboxRepository(MAILBOX_COUNT);
-            MessageRepository messageRepository = new ArrayMessageRepository(MAILBOX_COUNT);
+            //MailboxRepository mailboxRepository = new ArrayMailboxRepository(MAILBOX_COUNT);
+            //MessageRepository messageRepository = new ArrayMessageRepository(MAILBOX_COUNT);
             Scanner console = new Scanner(System.in);
             ConsoleTelephone p = new ConsoleTelephone(console);
             ConsolePresenter consolePresenter = new ConsolePresenter();
@@ -40,6 +40,8 @@ public class MailSystemTester {
             p.addRoute("SaveCurrentMessage", consolePresenter);
             p.addRoute("DeleteCurrentMessage", consolePresenter);
             p.addRoute("LoginMailbox", consolePresenter);
+            p.addRoute("GetMailboxGreeting", consolePresenter);
+            p.addRoute("SendMessage", consolePresenter);
             Connection c = new Connection(sqliteMailboxRepository, sqliteMessageRepository, new ConnectedState());
             c.addUserInterface(p);
             c.addUserInterface(w);

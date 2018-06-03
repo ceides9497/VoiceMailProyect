@@ -18,13 +18,9 @@ public class DeleteCurrentMessageInteractor implements DeleteCurrentMessageInter
 	
 	@Override
 	public void deleteCurrentMessage(DeleteCurrentMessageRequest request) {
-		
 		String ext = request.getExt();
-		
 		messageRepository.removeCurrentMessage(ext);
-		
 		DeleteCurrentMessageResponse response = new DeleteCurrentMessageResponse();
-		
 		output.displayConfirmDeleteCurrentMessage(response);
 	}
 }

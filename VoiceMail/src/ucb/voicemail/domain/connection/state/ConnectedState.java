@@ -2,31 +2,25 @@ package ucb.voicemail.domain.connection.state;
 
 import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.ConnectionState;
-import ucb.voicemail.domain.Mailbox;
-import ucb.voicemail.domain.MailboxRepository;
-import ucb.voicemail.domain.usecases.LoginMailboxInteractor;
-import ucb.voicemail.domain.usecases.SendMessageInteractor;
+import ucb.voicemail.domain.boundary.input.GetMailboxGreetingInteractorInput;
+import ucb.voicemail.domain.dto.request.GetMailboxGreetingRequest;
+import ucb.voicemail.domain.usecases.GetMailboxGreetingInteractor;
 
 public class ConnectedState implements ConnectionState {
 	
 	@Override
 	public void dial(Connection connection, String key) {
 	    if (key.equals("#")) {
-	        MailboxRepository mailboxRepository = connection.getMailboxRepository();
-            Mailbox currentMailbox = mailboxRepository.findMailbox(connection.getAccumulatedKeys());
-            connection.setCurrentMailbox(currentMailbox);
+	        GetMailboxGreetingInteractorInput interactor = new GetMailboxGreetingInteractor (
+	            connection.getMailboxRepository(), 
+	            connection.generateConnectionPresenter()
+	        );
 	        
-	        if (currentMailbox != null) {
-                connection.setConnectionState(
-                		new RecordingState(
-                				new LoginMailboxInteractor(connection.getMailboxRepository(), connection.generateConnectionPresenter()),
-                				new SendMessageInteractor(connection.getMessageRepository(), connection.generateConnectionPresenter())
-                		));
-                connection.speakToAll(currentMailbox.getGreeting());
-            }
-            else {
-                connection.speakToAll("Incorrect mailbox number. Try again!");
-            }
+	        GetMailboxGreetingRequest request = new GetMailboxGreetingRequest();
+	        request.setExt(connection.getAccumulatedKeys());
+	        interactor.getMailboxGreeting(request);
+	        
+	        connection.setMailboxId(connection.getAccumulatedKeys());
             connection.setAccumulatedKeys("");
         }
         else {
@@ -41,6 +35,8 @@ public class ConnectedState implements ConnectionState {
 	
 	@Override
     public void hangup(Connection connection) {
-        
+	    connection.generateConnectionPresenter().displayInitialPrompt();
+        connection.setAccumulatedKeys("");
+        connection.setCurrentRecording("");
     }
 }

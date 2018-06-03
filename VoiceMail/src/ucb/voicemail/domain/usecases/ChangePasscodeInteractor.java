@@ -18,13 +18,10 @@ public class ChangePasscodeInteractor implements ChangePasscodeInteractorInput {
 	
 	@Override
 	public void changePasscode(ChangePasscodeRequest request) {
-		
 		String passcode = request.getPasscode();
 		String ext = request.getExt();
-		
 		mailboxRepository.setMailboxPasscode(ext, passcode);
 		ChangePasscodeResponse response = new ChangePasscodeResponse();
-		
 		output.displayConfirmChangePasscode(response);
 	}
 		

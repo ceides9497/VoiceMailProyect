@@ -18,15 +18,11 @@ public class ChangeGreetingInteractor implements ChangeGreetingInteractorInput {
 	
 	@Override
 	public void changeGreeting(ChangeGreetingRequest request) {
-		
 		String greeting = request.getGreeting();
 		String ext = request.getExt();
-		
 		mailboxRepository.setMailboxGreeting(ext, greeting);
-		
 		ChangeGreetingResponse response = new ChangeGreetingResponse();
 		response.setGreeting(greeting);
-		
 		output.displayConfirmChangeGreeting(response);
 	}
 

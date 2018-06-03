@@ -18,13 +18,9 @@ public class SaveCurrentMessageInteractor implements SaveCurrentMessageInteracto
 	
 	@Override
 	public void saveCurrentMessage(SaveCurrentMessageRequest request) {
-		
 		String ext = request.getExt();
-		
 		messageRepository.saveCurrentMessage(ext);
-		
 		SaveCurrentMessageResponse response = new SaveCurrentMessageResponse();
-		
 		output.displayConfirmSaveCurrentMessage(response);
 	}
 

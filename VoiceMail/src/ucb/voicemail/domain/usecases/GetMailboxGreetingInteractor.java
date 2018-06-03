@@ -19,11 +19,8 @@ public class GetMailboxGreetingInteractor implements GetMailboxGreetingInteracto
 	
 	@Override
 	public void getMailboxGreeting(GetMailboxGreetingRequest request) {
-		
 		String ext = request.getExt();
-		
 		Mailbox mailbox = mailboxRepository.findMailbox(ext);
-		
 		if(mailbox != null) {
 		    GetMailboxGreetingResponse response = new GetMailboxGreetingResponse();
 	        response.setGreeting(mailbox.getGreeting());
@@ -32,7 +29,6 @@ public class GetMailboxGreetingInteractor implements GetMailboxGreetingInteracto
 		else {
 		    output.displayGreetingError();
 		}
-		
 	}
 
 }

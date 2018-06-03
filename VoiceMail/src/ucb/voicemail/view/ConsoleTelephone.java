@@ -81,7 +81,6 @@ public class ConsoleTelephone implements Telephone {
 		if (presentersRoutes.containsKey(route)) {
 			return presentersRoutes.get(route);
 		}
-		
 		return null;
 	}
 }
