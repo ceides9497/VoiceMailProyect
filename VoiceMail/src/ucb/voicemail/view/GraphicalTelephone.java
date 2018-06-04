@@ -4,23 +4,25 @@ import java.util.HashMap;
 
 import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.Telephone;
+import ucb.voicemail.presentation.graphical.view.GraphicalView;
+import ucb.voicemail.presentation.graphical.view.MainGraphicalView;
 
 public class GraphicalTelephone implements Telephone {
 	
-	public GraphicalTelephone(MainMenu mainMenu) {
-		this.mainMenu = mainMenu;
-		mainMenu.setVisible(true);
+	public GraphicalTelephone(MainGraphicalView view) {
+		this.view = view;
+		view.setVisible(true);
 		presentersRoutes = new HashMap<>();
 	}
 	
 	@Override
 	public void speak(String output) {
-		mainMenu.changeMainLabel(output);
+		//mainMenu.changeMainLabel(output);
 	}
 	
 	public void run(Connection c) {
-		mainMenu.setConnection(c);
-		mainMenu.setVisible(true);
+	    view.setConnection(c);
+	    view.setVisible(true);
 	}
 	
 	@Override
@@ -33,11 +35,9 @@ public class GraphicalTelephone implements Telephone {
 		if (presentersRoutes.containsKey(route)) {
 			return presentersRoutes.get(route);
 		}
-		
 		return null;
 	}
 	
-	private MainMenu mainMenu;
-	private Connection connection;
+	private MainGraphicalView view;
 	private HashMap<String, Object> presentersRoutes;
 }

@@ -1,12 +1,12 @@
-package ucb.voicemail.presentation.console.presenter;
+package ucb.voicemail.presentation.graphical.presenter;
 
-import ucb.voicemail.presentation.console.view.ConsoleView;
-import ucb.voicemail.presentation.console.viewmodel.ConsoleViewModel;
+import ucb.voicemail.presentation.graphical.view.GraphicalView;
+import ucb.voicemail.presentation.graphical.viewmodel.GraphicalViewModel;
 import ucb.voicemail.presentation.presenter.BasicPresenter;
 
-public class ConsoleBasicPresenter implements BasicPresenter {
-
-    private ConsoleView view;
+public class GraphicalBasicPresenter implements BasicPresenter {
+    
+    private GraphicalView view;
     private static final String MAILBOX_MENU = "Enter 1 to listen to your messages\r\n" + 
             "Enter 2 to change your passcode\r\n" + 
             "Enter 3 to change your greeting";
@@ -18,43 +18,42 @@ public class ConsoleBasicPresenter implements BasicPresenter {
     private static final String GREETING_FORM = "Record your greeting, then press the # key";
     private static final String PASSCODE_FORM = "Enter new passcode followed by the # key";
     
-    public ConsoleBasicPresenter(ConsoleView view) {
+    public GraphicalBasicPresenter(GraphicalView view) {
         this.view = view;
     }
     
     @Override
     public void displayPasscodeForm() {
-        ConsoleViewModel model = new ConsoleViewModel();
+        GraphicalViewModel model = new GraphicalViewModel();
         model.setText(PASSCODE_FORM);
-        view.display(model);
+        view.changeMainLabel(model);
     }
 
     @Override
     public void displayGreetingForm() {
-        ConsoleViewModel model = new ConsoleViewModel();
+        GraphicalViewModel model = new GraphicalViewModel();
         model.setText(GREETING_FORM);
-        view.display(model);
+        view.changeMainLabel(model);
     }
 
     @Override
     public void displayInitialPrompt() {
-        ConsoleViewModel model = new ConsoleViewModel();
+        GraphicalViewModel model = new GraphicalViewModel();
         model.setText(INITIAL_PROMPT);
-        view.display(model);
+        view.changeMainLabel(model);
     }
 
     @Override
     public void displayMailboxMenu() {
-        ConsoleViewModel model = new ConsoleViewModel();
+        GraphicalViewModel model = new GraphicalViewModel();
         model.setText(MAILBOX_MENU);
-        view.display(model);
+        view.changeMainLabel(model);
     }
 
     @Override
     public void displayMessageMenu() {
-        ConsoleViewModel model = new ConsoleViewModel();
+        GraphicalViewModel model = new GraphicalViewModel();
         model.setText(MESSAGE_MENU);
-        view.display(model);
+        view.changeMainLabel(model);
     }
-    
 }

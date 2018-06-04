@@ -9,9 +9,9 @@ import org.junit.Test;
 import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.Mailbox;
 import ucb.voicemail.domain.connection.state.ConnectedState;
+import ucb.voicemail.presentation.graphical.view.MainGraphicalView;
 import ucb.voicemail.repository.mailbox.ArrayMailboxRepository;
 import ucb.voicemail.repository.message.ArrayMessageRepository;
-import ucb.voicemail.view.MainMenu;
 import ucb.voicemail.view.GraphicalTelephone;
 
 public class WindowTest {
@@ -20,7 +20,7 @@ public class WindowTest {
 	private ArrayMailboxRepository mockMailboxRepository;
 	private ArrayMessageRepository mockMessageRepository;
 	private Mailbox mockMailbox;
-	private MainMenu mockMainMenu;
+	private MainGraphicalView mockMainMenu;
 	
 	@Before
 	public void init() {
@@ -28,7 +28,7 @@ public class WindowTest {
 		mockMessageRepository = mock(ArrayMessageRepository.class);
 		connection = new Connection(mockMailboxRepository, mockMessageRepository, new ConnectedState());
 		mockMailbox = mock(Mailbox.class);
-		mockMainMenu = mock(MainMenu.class);
+		mockMainMenu = mock(MainGraphicalView.class);
 	}
 	
 	@Test

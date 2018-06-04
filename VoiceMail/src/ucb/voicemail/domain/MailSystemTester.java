@@ -7,17 +7,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-import ucb.voicemail.domain.boundary.output.ChangeGreetingInteractorOutput;
-import ucb.voicemail.domain.boundary.output.GetMailboxGreetingInteractorOutput;
 import ucb.voicemail.domain.connection.state.ConnectedState;
 import ucb.voicemail.presentation.console.presenter.*;
 import ucb.voicemail.presentation.console.view.ConsoleView;
-import ucb.voicemail.presentation.presenter.BasicPresenter;
+import ucb.voicemail.presentation.console.view.DefaultConsoleView;
+import ucb.voicemail.presentation.graphical.presenter.*;
+import ucb.voicemail.presentation.graphical.presenter.GraphicalChangeGreetingPresenter;
+import ucb.voicemail.presentation.graphical.view.MainGraphicalView;
 import ucb.voicemail.repository.mailbox.*;
 import ucb.voicemail.repository.message.*;
 import ucb.voicemail.view.ConsoleTelephone;
 import ucb.voicemail.view.GraphicalTelephone;
-import ucb.voicemail.view.MainMenu;
 
 public class MailSystemTester {
 	
@@ -45,7 +45,7 @@ public class MailSystemTester {
     public static ConsoleTelephone setConsole(Connection connection) {
         Scanner console = new Scanner(System.in);
         ConsoleTelephone telephone = new ConsoleTelephone(console);
-        ConsoleView view = new ConsoleView();
+        ConsoleView view = new DefaultConsoleView();
         telephone.addRoute("BasicPresenter"      , new ConsoleBasicPresenter(view));
         telephone.addRoute("ChangeGreeting"      , new ConsoleChangeGreetingPresenter(view));
         telephone.addRoute("ChangePasscode"      , new ConsoleChangePasscodePresenter(view));
@@ -60,9 +60,19 @@ public class MailSystemTester {
     }
     
     public static GraphicalTelephone setBasicGraphical(Connection connection) {
-        GraphicalTelephone basicGraphical = new GraphicalTelephone(new MainMenu());
-        connection.addUserInterface(basicGraphical);
-        return basicGraphical;
+        MainGraphicalView view = new MainGraphicalView();
+        GraphicalTelephone telephone = new GraphicalTelephone(view);
+        telephone.addRoute("BasicPresenter"      , new GraphicalBasicPresenter(view));
+        telephone.addRoute("ChangeGreeting"      , new GraphicalChangeGreetingPresenter(view));
+        telephone.addRoute("ChangePasscode"      , new GraphicalChangePasscodePresenter(view));
+        telephone.addRoute("GetLastMessage"      , new GraphicalGetLastMessagePresenter(view));
+        telephone.addRoute("SaveCurrentMessage"  , new GraphicalSaveCurrentMessagePresenter(view));
+        telephone.addRoute("DeleteCurrentMessage", new GraphicalDeleteCurrentMessagePresenter(view));
+        telephone.addRoute("LoginMailbox"        , new GraphicalLoginMailboxPresenter(view));
+        telephone.addRoute("GetMailboxGreeting"  , new GraphicalGetMailboxGreetingPresenter(view));
+        telephone.addRoute("SendMessage"         , new GraphicalSendMessagePresenter(view));
+        connection.addUserInterface(telephone);
+        return telephone;
     }
     
     // ========= DATABASE CONFIG ========================================================================
