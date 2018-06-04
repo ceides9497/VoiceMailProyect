@@ -1,11 +1,11 @@
 package ucb.voicemail.presentation.graphical.presenter;
 
-import ucb.voicemail.domain.boundary.output.ChangePasscodeInteractorOutput;
+import ucb.voicemail.domain.boundary.output.ChangePasscodePresenter;
 import ucb.voicemail.domain.dto.response.ChangePasscodeResponse;
 import ucb.voicemail.presentation.graphical.view.GraphicalView;
 import ucb.voicemail.presentation.graphical.viewmodel.GraphicalViewModel;
 
-public class GraphicalChangePasscodePresenter implements ChangePasscodeInteractorOutput {
+public class GraphicalChangePasscodePresenter implements ChangePasscodePresenter {
     
     private GraphicalView view;
     private static final String MAILBOX_MENU = "Enter 1 to listen to your messages\r\n" + 

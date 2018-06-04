@@ -1,11 +1,11 @@
 package ucb.voicemail.presentation.graphical.presenter;
 
-import ucb.voicemail.domain.boundary.output.ChangeGreetingInteractorOutput;
+import ucb.voicemail.domain.boundary.output.ChangeGreetingPresenter;
 import ucb.voicemail.domain.dto.response.ChangeGreetingResponse;
 import ucb.voicemail.presentation.graphical.view.GraphicalView;
 import ucb.voicemail.presentation.graphical.viewmodel.GraphicalViewModel;
 
-public class GraphicalChangeGreetingPresenter implements ChangeGreetingInteractorOutput {
+public class GraphicalChangeGreetingPresenter implements ChangeGreetingPresenter {
     
     private GraphicalView view;
     private static final String MAILBOX_MENU = "Enter 1 to listen to your messages\r\n" + 

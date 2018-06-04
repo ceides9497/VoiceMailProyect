@@ -1,11 +1,11 @@
 package ucb.voicemail.presentation.console.presenter;
 
-import ucb.voicemail.domain.boundary.output.SendMessageInteractorOutput;
+import ucb.voicemail.domain.boundary.output.SendMessagePresenter;
 import ucb.voicemail.domain.dto.response.SendMessageResponse;
 import ucb.voicemail.presentation.console.view.ConsoleView;
 import ucb.voicemail.presentation.console.viewmodel.ConsoleViewModel;
 
-public class ConsoleSendMessagePresenter implements SendMessageInteractorOutput {
+public class ConsoleSendMessagePresenter implements SendMessagePresenter {
 
     private ConsoleView view;
     private static final String INITIAL_PROMPT = "Enter mailbox number followed by #";

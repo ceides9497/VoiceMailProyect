@@ -1,12 +1,12 @@
 package ucb.voicemail.presentation.tactil.presenter;
 
-import ucb.voicemail.domain.boundary.output.SendMessageInteractorOutput;
+import ucb.voicemail.domain.boundary.output.SendMessagePresenter;
 import ucb.voicemail.domain.dto.response.SendMessageResponse;
 import ucb.voicemail.presentation.tactil.view.TactilInitialPromptView;
 import ucb.voicemail.presentation.tactil.view.TactilShowGreetingView;
 import ucb.voicemail.presentation.tactil.viewmodel.InitialPromptViewModel;
 
-public class TactilSendMessagePresenter implements SendMessageInteractorOutput {
+public class TactilSendMessagePresenter implements SendMessagePresenter {
 
     private TactilInitialPromptView initialPromptView;
     private TactilShowGreetingView showGreetingView;

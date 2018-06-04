@@ -1,11 +1,11 @@
 package ucb.voicemail.presentation.tactil.presenter;
 
-import ucb.voicemail.domain.boundary.output.SaveCurrentMessageInteractorOutput;
+import ucb.voicemail.domain.boundary.output.SaveCurrentMessagePresenter;
 import ucb.voicemail.domain.dto.response.SaveCurrentMessageResponse;
 import ucb.voicemail.presentation.tactil.view.TactilMessageView;
 import ucb.voicemail.presentation.tactil.viewmodel.MessageViewModel;
 
-public class TactilSaveCurrentMessagePresenter implements SaveCurrentMessageInteractorOutput{
+public class TactilSaveCurrentMessagePresenter implements SaveCurrentMessagePresenter{
 
     private TactilMessageView messageView;
     

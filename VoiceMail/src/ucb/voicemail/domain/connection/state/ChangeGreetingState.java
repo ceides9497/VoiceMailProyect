@@ -2,7 +2,7 @@ package ucb.voicemail.domain.connection.state;
 
 import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.ConnectionState;
-import ucb.voicemail.domain.boundary.input.ChangeGreetingInteractorInput;
+import ucb.voicemail.domain.boundary.input.ChangeGreetingUseCase;
 import ucb.voicemail.domain.dto.request.ChangeGreetingRequest;
 import ucb.voicemail.domain.usecases.ChangeGreetingInteractor;
 
@@ -11,7 +11,7 @@ public class ChangeGreetingState implements ConnectionState {
 	@Override
 	public void dial(Connection connection, String key) {
         if (key.equals("#")) {
-            ChangeGreetingInteractorInput interactor = new ChangeGreetingInteractor(
+            ChangeGreetingUseCase interactor = new ChangeGreetingInteractor(
                 connection.getMailboxRepository(), 
                 connection.generateConnectionPresenter()
             );

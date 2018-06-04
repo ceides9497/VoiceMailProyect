@@ -2,17 +2,17 @@ package ucb.voicemail.domain.usecases;
 
 import ucb.voicemail.domain.Mailbox;
 import ucb.voicemail.domain.MailboxRepository;
-import ucb.voicemail.domain.boundary.input.LoginMailboxInteractorInput;
-import ucb.voicemail.domain.boundary.output.LoginMailboxInteractorOutput;
+import ucb.voicemail.domain.boundary.input.LoginMailboxUseCase;
+import ucb.voicemail.domain.boundary.output.LoginMailboxPresenter;
 import ucb.voicemail.domain.dto.request.LoginMailboxRequest;
 import ucb.voicemail.domain.dto.response.LoginMailboxResponse;
 
-public class LoginMailboxInteractor implements LoginMailboxInteractorInput {
+public class LoginMailboxInteractor implements LoginMailboxUseCase {
 
 	private MailboxRepository mailboxRepository;
-	private LoginMailboxInteractorOutput output;
+	private LoginMailboxPresenter output;
 	
-	public LoginMailboxInteractor(MailboxRepository mailboxRepository, LoginMailboxInteractorOutput output) {
+	public LoginMailboxInteractor(MailboxRepository mailboxRepository, LoginMailboxPresenter output) {
 		this.mailboxRepository = mailboxRepository;
 		this.output = output;
 	}

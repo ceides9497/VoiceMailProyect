@@ -1,6 +1,6 @@
 package ucb.voicemail.presentation.tactil.presenter;
 
-import ucb.voicemail.domain.boundary.output.GetMailboxGreetingInteractorOutput;
+import ucb.voicemail.domain.boundary.output.GetMailboxGreetingPresenter;
 import ucb.voicemail.domain.dto.response.GetMailboxGreetingResponse;
 import ucb.voicemail.presentation.tactil.view.TactilInitialPromptView;
 import ucb.voicemail.presentation.tactil.view.TactilMessageView;
@@ -8,7 +8,7 @@ import ucb.voicemail.presentation.tactil.view.TactilShowGreetingView;
 import ucb.voicemail.presentation.tactil.viewmodel.MessageViewModel;
 import ucb.voicemail.presentation.tactil.viewmodel.ShowGreetingViewModel;
 
-public class TactilGetMailboxGreetingPresenter implements GetMailboxGreetingInteractorOutput {
+public class TactilGetMailboxGreetingPresenter implements GetMailboxGreetingPresenter {
 
     private TactilShowGreetingView showGreetingView;
     private TactilMessageView messageView;

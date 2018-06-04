@@ -2,8 +2,8 @@ package ucb.voicemail.domain.connection.state;
 
 import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.ConnectionState;
-import ucb.voicemail.domain.boundary.input.LoginMailboxInteractorInput;
-import ucb.voicemail.domain.boundary.input.SendMessageInteractorInput;
+import ucb.voicemail.domain.boundary.input.LoginMailboxUseCase;
+import ucb.voicemail.domain.boundary.input.SendMessageUseCase;
 import ucb.voicemail.domain.dto.request.LoginMailboxRequest;
 import ucb.voicemail.domain.dto.request.SendMessageRequest;
 import ucb.voicemail.domain.usecases.LoginMailboxInteractor;
@@ -14,7 +14,7 @@ public class RecordingState implements ConnectionState {
 	@Override
 	public void dial(Connection connection, String key) {
 	    if (key.equals("#")) {
-	        LoginMailboxInteractorInput interactor = new LoginMailboxInteractor(
+	        LoginMailboxUseCase interactor = new LoginMailboxInteractor(
 	            connection.getMailboxRepository(),
 	            connection.generateConnectionPresenter()
 	        );
@@ -38,7 +38,7 @@ public class RecordingState implements ConnectionState {
 	
 	@Override
     public void hangup(Connection connection) {
-	    SendMessageInteractorInput interactor = new SendMessageInteractor(
+	    SendMessageUseCase interactor = new SendMessageInteractor(
 	        connection.getMessageRepository(),
 	        connection.generateConnectionPresenter()
 	    );

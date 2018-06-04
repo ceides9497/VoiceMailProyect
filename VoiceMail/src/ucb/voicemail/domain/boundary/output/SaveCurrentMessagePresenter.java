@@ -2,6 +2,6 @@ package ucb.voicemail.domain.boundary.output;
 
 import ucb.voicemail.domain.dto.response.SaveCurrentMessageResponse;
 
-public interface SaveCurrentMessageInteractorOutput {
+public interface SaveCurrentMessagePresenter {
 	void displayConfirmSaveCurrentMessage(SaveCurrentMessageResponse response);
 }

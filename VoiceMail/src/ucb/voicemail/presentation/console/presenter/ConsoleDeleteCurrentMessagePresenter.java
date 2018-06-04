@@ -1,11 +1,11 @@
 package ucb.voicemail.presentation.console.presenter;
 
-import ucb.voicemail.domain.boundary.output.DeleteCurrentMessageInteractorOutput;
+import ucb.voicemail.domain.boundary.output.DeleteCurrentMessagePresenter;
 import ucb.voicemail.domain.dto.response.DeleteCurrentMessageResponse;
 import ucb.voicemail.presentation.console.view.ConsoleView;
 import ucb.voicemail.presentation.console.viewmodel.ConsoleViewModel;
 
-public class ConsoleDeleteCurrentMessagePresenter implements DeleteCurrentMessageInteractorOutput {
+public class ConsoleDeleteCurrentMessagePresenter implements DeleteCurrentMessagePresenter {
 
     private ConsoleView view;
     private static final String MESSAGE_MENU = "Enter 1 to listen to the current message\r\n" + 

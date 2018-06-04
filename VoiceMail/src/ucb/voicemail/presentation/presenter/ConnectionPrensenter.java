@@ -21,9 +21,9 @@ import ucb.voicemail.domain.dto.response.SaveCurrentMessageResponse;
 import ucb.voicemail.domain.dto.response.SendMessageResponse;
 import ucb.voicemail.domain.boundary.output.*;
 
-public class ConnectionPrensenter implements BasicPresenter, ChangeGreetingInteractorOutput, ChangePasscodeInteractorOutput,
-        DeleteCurrentMessageInteractorOutput, GetLastMessageInteractorOutput, GetMailboxGreetingInteractorOutput,
-        LoginMailboxInteractorOutput, SaveCurrentMessageInteractorOutput, SendMessageInteractorOutput {
+public class ConnectionPrensenter implements BasicPresenter, ChangeGreetingPresenter, ChangePasscodePresenter,
+        DeleteCurrentMessagePresenter, GetLastMessagePresenter, GetMailboxGreetingPresenter,
+        LoginMailboxPresenter, SaveCurrentMessagePresenter, SendMessagePresenter {
 
     private Connection connection;
     private ArrayList<Telephone> telephoneList;
@@ -44,7 +44,7 @@ public class ConnectionPrensenter implements BasicPresenter, ChangeGreetingInter
         connection.setConnectionState(new ConnectedState());
         for (Telephone telephone : telephoneList) {
             try {
-                SendMessageInteractorOutput output = (SendMessageInteractorOutput) telephone
+                SendMessagePresenter output = (SendMessagePresenter) telephone
                         .routePresenter("SendMessage");
                 output.displayConfirmSendMessage(response);
             } catch (Exception e) {
@@ -59,7 +59,7 @@ public class ConnectionPrensenter implements BasicPresenter, ChangeGreetingInter
     public void displayConfirmSaveCurrentMessage(SaveCurrentMessageResponse response) {
         for (Telephone telephone : telephoneList) {
             try {
-                SaveCurrentMessageInteractorOutput output = (SaveCurrentMessageInteractorOutput) telephone
+                SaveCurrentMessagePresenter output = (SaveCurrentMessagePresenter) telephone
                         .routePresenter("SaveCurrentMessage");
                 output.displayConfirmSaveCurrentMessage(response);
             } catch (Exception e) {
@@ -74,7 +74,7 @@ public class ConnectionPrensenter implements BasicPresenter, ChangeGreetingInter
         connection.setConnectionState(new MailboxMenuState());
         for (Telephone telephone : telephoneList) {
             try {
-                LoginMailboxInteractorOutput output = (LoginMailboxInteractorOutput) telephone
+                LoginMailboxPresenter output = (LoginMailboxPresenter) telephone
                         .routePresenter("LoginMailbox");
                 output.displayMailboxMenu(response);
             } catch (Exception e) {
@@ -88,7 +88,7 @@ public class ConnectionPrensenter implements BasicPresenter, ChangeGreetingInter
     public void displayLoginFailed() {
         for (Telephone telephone : telephoneList) {
             try {
-                LoginMailboxInteractorOutput output = (LoginMailboxInteractorOutput) telephone
+                LoginMailboxPresenter output = (LoginMailboxPresenter) telephone
                         .routePresenter("LoginMailbox");
                 output.displayLoginFailed();
             } catch (Exception e) {
@@ -104,7 +104,7 @@ public class ConnectionPrensenter implements BasicPresenter, ChangeGreetingInter
         connection.setConnectionState(new RecordingState());
         for (Telephone telephone : telephoneList) {
             try {
-                GetMailboxGreetingInteractorOutput output = (GetMailboxGreetingInteractorOutput) telephone
+                GetMailboxGreetingPresenter output = (GetMailboxGreetingPresenter) telephone
                         .routePresenter("GetMailboxGreeting");
                 output.displayMailboxGreeting(response);
             } catch (Exception e) {}
@@ -118,7 +118,7 @@ public class ConnectionPrensenter implements BasicPresenter, ChangeGreetingInter
     public void displayGreetingError() {
         for (Telephone telephone : telephoneList) {
             try {
-                GetMailboxGreetingInteractorOutput output = (GetMailboxGreetingInteractorOutput) telephone
+                GetMailboxGreetingPresenter output = (GetMailboxGreetingPresenter) telephone
                         .routePresenter("GetMailboxGreeting");
                 output.displayGreetingError();
             } catch (Exception e) {
@@ -133,7 +133,7 @@ public class ConnectionPrensenter implements BasicPresenter, ChangeGreetingInter
     public void presentMessage(GetLastMessageResponse response) {
         for (Telephone telephone : telephoneList) {
             try {
-                GetLastMessageInteractorOutput output = (GetLastMessageInteractorOutput) telephone
+                GetLastMessagePresenter output = (GetLastMessagePresenter) telephone
                         .routePresenter("GetLastMessage");
                 if (output != null) {
                     output.presentMessage(response);
@@ -150,7 +150,7 @@ public class ConnectionPrensenter implements BasicPresenter, ChangeGreetingInter
     public void presentNotFoundMessage() {
         for (Telephone telephone : telephoneList) {
             try {
-                GetLastMessageInteractorOutput output = (GetLastMessageInteractorOutput) telephone
+                GetLastMessagePresenter output = (GetLastMessagePresenter) telephone
                         .routePresenter("GetLastMessage");
                 if (output != null) {
                     output.presentNotFoundMessage();
@@ -167,7 +167,7 @@ public class ConnectionPrensenter implements BasicPresenter, ChangeGreetingInter
     public void displayConfirmDeleteCurrentMessage(DeleteCurrentMessageResponse response) {
         for (Telephone telephone : telephoneList) {
             try {
-                DeleteCurrentMessageInteractorOutput output = (DeleteCurrentMessageInteractorOutput) telephone
+                DeleteCurrentMessagePresenter output = (DeleteCurrentMessagePresenter) telephone
                         .routePresenter("DeleteCurrentMessage");
                 if (output != null) {
                     output.displayConfirmDeleteCurrentMessage(response);
@@ -185,7 +185,7 @@ public class ConnectionPrensenter implements BasicPresenter, ChangeGreetingInter
         connection.setConnectionState(new MailboxMenuState());
         for (Telephone telephone : telephoneList) {
             try {
-                ChangePasscodeInteractorOutput output = (ChangePasscodeInteractorOutput) telephone
+                ChangePasscodePresenter output = (ChangePasscodePresenter) telephone
                         .routePresenter("ChangePasscode");
                 if (output != null) {
                     output.displayConfirmChangePasscode(response);
@@ -203,7 +203,7 @@ public class ConnectionPrensenter implements BasicPresenter, ChangeGreetingInter
         connection.setConnectionState(new MailboxMenuState());
         for (Telephone telephone : telephoneList) {
             try {
-                ChangeGreetingInteractorOutput output = (ChangeGreetingInteractorOutput) telephone
+                ChangeGreetingPresenter output = (ChangeGreetingPresenter) telephone
                         .routePresenter("ChangeGreeting");
                 if (output != null) {
                     output.displayConfirmChangeGreeting(response);

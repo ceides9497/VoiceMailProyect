@@ -1,11 +1,11 @@
 package ucb.voicemail.presentation.tactil.presenter;
 
-import ucb.voicemail.domain.boundary.output.GetLastMessageInteractorOutput;
+import ucb.voicemail.domain.boundary.output.GetLastMessagePresenter;
 import ucb.voicemail.domain.dto.response.GetLastMessageResponse;
 import ucb.voicemail.presentation.tactil.view.TactilMessageView;
 import ucb.voicemail.presentation.tactil.viewmodel.MessageViewModel;
 
-public class TactilGetLastMessagePresenter implements GetLastMessageInteractorOutput {
+public class TactilGetLastMessagePresenter implements GetLastMessagePresenter {
 
     private TactilMessageView messageView;
     

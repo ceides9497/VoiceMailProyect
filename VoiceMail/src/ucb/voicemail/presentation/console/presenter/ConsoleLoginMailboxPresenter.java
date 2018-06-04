@@ -1,11 +1,11 @@
 package ucb.voicemail.presentation.console.presenter;
 
-import ucb.voicemail.domain.boundary.output.LoginMailboxInteractorOutput;
+import ucb.voicemail.domain.boundary.output.LoginMailboxPresenter;
 import ucb.voicemail.domain.dto.response.LoginMailboxResponse;
 import ucb.voicemail.presentation.console.view.ConsoleView;
 import ucb.voicemail.presentation.console.viewmodel.ConsoleViewModel;
 
-public class ConsoleLoginMailboxPresenter implements LoginMailboxInteractorOutput {
+public class ConsoleLoginMailboxPresenter implements LoginMailboxPresenter {
 
     private ConsoleView view;
     private static final String MAILBOX_MENU = "Enter 1 to listen to your messages\r\n" + 

@@ -1,17 +1,17 @@
 package ucb.voicemail.domain.usecases;
 
 import ucb.voicemail.domain.MailboxRepository;
-import ucb.voicemail.domain.boundary.input.ChangeGreetingInteractorInput;
-import ucb.voicemail.domain.boundary.output.ChangeGreetingInteractorOutput;
+import ucb.voicemail.domain.boundary.input.ChangeGreetingUseCase;
+import ucb.voicemail.domain.boundary.output.ChangeGreetingPresenter;
 import ucb.voicemail.domain.dto.request.ChangeGreetingRequest;
 import ucb.voicemail.domain.dto.response.ChangeGreetingResponse;
 
-public class ChangeGreetingInteractor implements ChangeGreetingInteractorInput {
+public class ChangeGreetingInteractor implements ChangeGreetingUseCase {
 
 	private MailboxRepository mailboxRepository;
-	private ChangeGreetingInteractorOutput output;
+	private ChangeGreetingPresenter output;
 	
-	public ChangeGreetingInteractor(MailboxRepository mailboxRepository, ChangeGreetingInteractorOutput output) {
+	public ChangeGreetingInteractor(MailboxRepository mailboxRepository, ChangeGreetingPresenter output) {
 		this.mailboxRepository = mailboxRepository;
 		this.output = output;
 	}

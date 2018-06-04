@@ -1,11 +1,11 @@
 package ucb.voicemail.presentation.tactil.presenter;
 
-import ucb.voicemail.domain.boundary.output.ChangePasscodeInteractorOutput;
+import ucb.voicemail.domain.boundary.output.ChangePasscodePresenter;
 import ucb.voicemail.domain.dto.response.ChangePasscodeResponse;
 import ucb.voicemail.presentation.tactil.view.TactilMailboxMenuView;
 import ucb.voicemail.presentation.tactil.viewmodel.MailboxMenuViewModel;
 
-public class TactilChangePasscodePresenter implements ChangePasscodeInteractorOutput {
+public class TactilChangePasscodePresenter implements ChangePasscodePresenter {
 
     private TactilMailboxMenuView mailboxMenuView;
     
@@ -17,7 +17,7 @@ public class TactilChangePasscodePresenter implements ChangePasscodeInteractorOu
     public void displayConfirmChangePasscode(ChangePasscodeResponse response) {
         MailboxMenuViewModel model = new MailboxMenuViewModel();
         model.setChangeGreetingName("Cambiar saludo");
-        model.setChangePasscodeName("Cambiar contraseña");
+        model.setChangePasscodeName("Cambiar contraseï¿½a");
         model.setOpenMessageMenuName("Menu de mensajes");
         model.setQuitName("Salir");
         mailboxMenuView.display(model);

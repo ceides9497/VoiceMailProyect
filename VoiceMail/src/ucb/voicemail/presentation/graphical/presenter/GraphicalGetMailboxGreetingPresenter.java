@@ -1,11 +1,11 @@
 package ucb.voicemail.presentation.graphical.presenter;
 
-import ucb.voicemail.domain.boundary.output.GetMailboxGreetingInteractorOutput;
+import ucb.voicemail.domain.boundary.output.GetMailboxGreetingPresenter;
 import ucb.voicemail.domain.dto.response.GetMailboxGreetingResponse;
 import ucb.voicemail.presentation.graphical.view.GraphicalView;
 import ucb.voicemail.presentation.graphical.viewmodel.GraphicalViewModel;
 
-public class GraphicalGetMailboxGreetingPresenter implements GetMailboxGreetingInteractorOutput {
+public class GraphicalGetMailboxGreetingPresenter implements GetMailboxGreetingPresenter {
     
     private GraphicalView view;
     private static final String MAILBOX_NUMBER_ERROR = "Incorrect mailbox number. Try again!";

@@ -1,11 +1,11 @@
 package ucb.voicemail.presentation.graphical.presenter;
 
-import ucb.voicemail.domain.boundary.output.GetLastMessageInteractorOutput;
+import ucb.voicemail.domain.boundary.output.GetLastMessagePresenter;
 import ucb.voicemail.domain.dto.response.GetLastMessageResponse;
 import ucb.voicemail.presentation.graphical.view.GraphicalView;
 import ucb.voicemail.presentation.graphical.viewmodel.GraphicalViewModel;
 
-public class GraphicalGetLastMessagePresenter implements GetLastMessageInteractorOutput {
+public class GraphicalGetLastMessagePresenter implements GetLastMessagePresenter {
     
     private GraphicalView view;
     private static final String MESSAGE_MENU = "Enter 1 to listen to the current message\r\n" + 

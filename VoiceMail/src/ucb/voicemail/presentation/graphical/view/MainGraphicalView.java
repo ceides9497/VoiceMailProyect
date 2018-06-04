@@ -18,7 +18,6 @@ import javax.swing.border.EmptyBorder;
 
 import ucb.voicemail.domain.Connection;
 import ucb.voicemail.presentation.graphical.viewmodel.GraphicalViewModel;
-import ucb.voicemail.view.MainMenu;
 
 public class MainGraphicalView extends JFrame implements GraphicalView {
 
@@ -26,25 +25,7 @@ public class MainGraphicalView extends JFrame implements GraphicalView {
     private JPanel board;
     private JTextField txtInput;
     private JEditorPane dtrpnNothing;
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    MainMenu frame = new MainMenu();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 
-    /**
-     * Create the frame.
-     */
     public MainGraphicalView() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 307, 492);

@@ -2,6 +2,6 @@ package ucb.voicemail.domain.boundary.input;
 
 import ucb.voicemail.domain.dto.request.ChangeGreetingRequest;
 
-public interface ChangeGreetingInteractorInput {
+public interface ChangeGreetingUseCase {
     void changeGreeting(ChangeGreetingRequest request);
 }

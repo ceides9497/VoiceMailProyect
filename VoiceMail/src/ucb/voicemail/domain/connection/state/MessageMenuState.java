@@ -2,9 +2,9 @@ package ucb.voicemail.domain.connection.state;
 
 import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.ConnectionState;
-import ucb.voicemail.domain.boundary.input.DeleteCurrentMessageInteractorInput;
-import ucb.voicemail.domain.boundary.input.GetLastMessageInteractorInput;
-import ucb.voicemail.domain.boundary.input.SaveCurrentMessageInteractorInput;
+import ucb.voicemail.domain.boundary.input.DeleteCurrentMessageUseCase;
+import ucb.voicemail.domain.boundary.input.GetLastMessageUseCase;
+import ucb.voicemail.domain.boundary.input.SaveCurrentMessageUseCase;
 import ucb.voicemail.domain.dto.request.DeleteCurrentMessageRequest;
 import ucb.voicemail.domain.dto.request.GetLastMessageRequest;
 import ucb.voicemail.domain.dto.request.SaveCurrentMessageRequest;
@@ -17,7 +17,7 @@ public class MessageMenuState implements ConnectionState {
 	@Override
 	public void dial(Connection connection, String key) {
 	    if (key.equals("1")) {
-	        GetLastMessageInteractorInput interactor = new GetLastMessageInteractor(
+	        GetLastMessageUseCase interactor = new GetLastMessageInteractor(
 	            connection.getMessageRepository(),
 	            connection.generateConnectionPresenter()
 	        );
@@ -27,7 +27,7 @@ public class MessageMenuState implements ConnectionState {
         	interactor.getLastMessage(request);
         }
         else if (key.equals("2")) {
-            SaveCurrentMessageInteractorInput interactor = new SaveCurrentMessageInteractor(
+            SaveCurrentMessageUseCase interactor = new SaveCurrentMessageInteractor(
                 connection.getMessageRepository(),
                 connection.generateConnectionPresenter()
             );
@@ -37,7 +37,7 @@ public class MessageMenuState implements ConnectionState {
         	interactor.saveCurrentMessage(request);
         }
         else if (key.equals("3")) {
-            DeleteCurrentMessageInteractorInput interactor = new DeleteCurrentMessageInteractor(
+            DeleteCurrentMessageUseCase interactor = new DeleteCurrentMessageInteractor(
                 connection.getMessageRepository(),
                 connection.generateConnectionPresenter()
             );

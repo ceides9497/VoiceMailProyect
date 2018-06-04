@@ -1,11 +1,11 @@
 package ucb.voicemail.presentation.tactil.presenter;
 
-import ucb.voicemail.domain.boundary.output.DeleteCurrentMessageInteractorOutput;
+import ucb.voicemail.domain.boundary.output.DeleteCurrentMessagePresenter;
 import ucb.voicemail.domain.dto.response.DeleteCurrentMessageResponse;
 import ucb.voicemail.presentation.tactil.view.TactilMessageView;
 import ucb.voicemail.presentation.tactil.viewmodel.MessageViewModel;
 
-public class TactilDeleteCurrentMessagePresenter implements DeleteCurrentMessageInteractorOutput {
+public class TactilDeleteCurrentMessagePresenter implements DeleteCurrentMessagePresenter {
 
     private TactilMessageView messageView;
     
