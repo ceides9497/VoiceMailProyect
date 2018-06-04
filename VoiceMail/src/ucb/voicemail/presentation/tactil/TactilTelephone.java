@@ -20,11 +20,6 @@ public class TactilTelephone implements Telephone {
     }
     
     @Override
-    public void speak(String output) {
-        System.out.println(output);
-    }
-    
-    @Override
     public void addRoute(String route, Object presenter) {
         presentersRoutes.put(route, presenter);
     }

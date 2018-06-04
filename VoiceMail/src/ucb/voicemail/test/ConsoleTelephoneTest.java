@@ -46,7 +46,7 @@ public class ConsoleTelephoneTest {
 	public void deberiaMostrarTestRunning() {
 		consoleTelephone = new ConsoleTelephone();
         
-        consoleTelephone.speak("TestRunning");
+        //consoleTelephone.speak("TestRunning");
         
         verify(out).println("TestRunning");
 	}

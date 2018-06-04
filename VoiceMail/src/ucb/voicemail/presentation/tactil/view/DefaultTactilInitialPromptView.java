@@ -23,9 +23,11 @@ public class DefaultTactilInitialPromptView extends JFrame implements TactilInit
     private JButton btnConnect;
     private JButton btnQuit;
     private JEditorPane txtMailboxNumber;
-
+    private DefaultTactilInitialPromptView ownView;
+    
     public DefaultTactilInitialPromptView(Connection connection) {
-        this.connection = connection;
+        ownView = this;
+    	this.connection = connection;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 220);
         contentPane = new JPanel();
@@ -51,6 +53,13 @@ public class DefaultTactilInitialPromptView extends JFrame implements TactilInit
         contentPane.add(btnConnect);
         
         btnQuit = new JButton("");
+        btnQuit.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		setVisible(false);
+        		System.exit(0);
+        	}
+        });
         btnQuit.setBounds(287, 103, 137, 72);
         contentPane.add(btnQuit);
         

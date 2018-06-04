@@ -57,13 +57,6 @@ public class Connection implements Subject {
     public void deleteUserInterface(Telephone userInterface) {
         userInterfaces.remove(userInterface);
     }
-	
-    @Override
-    public void speakToAll(String output) {
-        for(Telephone userInterface : userInterfaces) {
-            userInterface.speak(output);
-        }
-    }
     
     // ==================== HELPER FUNCTIONS ====================
     

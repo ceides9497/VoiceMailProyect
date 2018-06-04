@@ -14,11 +14,6 @@ public class GraphicalTelephone implements Telephone {
 		presentersRoutes = new HashMap<>();
 	}
 	
-	@Override
-	public void speak(String output) {
-		//mainMenu.changeMainLabel(output);
-	}
-	
 	public void run(Connection c) {
 	    view.setConnection(c);
 	    view.setVisible(true);

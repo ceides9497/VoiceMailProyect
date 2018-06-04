@@ -25,11 +25,6 @@ public class ConsoleTelephone implements Telephone {
 		presentersRoutes = new HashMap<>();
 	}
 
-	@Override
-	public void speak(String output) {
-		System.out.println(output);
-	}
-
 	public void run(Connection c) {
 		boolean more = true;
 		
@@ -43,6 +38,7 @@ public class ConsoleTelephone implements Telephone {
 				c.hangup();				
 			} else if (isFinished(input)) {
 				more = false;
+				System.exit(0);
 			} else if (isDialing(input)) {
 				c.dial(input);
 			} else {
