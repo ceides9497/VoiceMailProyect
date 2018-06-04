@@ -16,6 +16,19 @@ import ucb.voicemail.presentation.graphical.GraphicalTelephone;
 import ucb.voicemail.presentation.graphical.presenter.*;
 import ucb.voicemail.presentation.graphical.presenter.GraphicalChangeGreetingPresenter;
 import ucb.voicemail.presentation.graphical.view.MainGraphicalView;
+import ucb.voicemail.presentation.tactil.TactilTelephone;
+import ucb.voicemail.presentation.tactil.presenter.TactilBasicPresenter;
+import ucb.voicemail.presentation.tactil.presenter.TactilChangeGreetingPresenter;
+import ucb.voicemail.presentation.tactil.presenter.TactilChangePasscodePresenter;
+import ucb.voicemail.presentation.tactil.presenter.TactilDeleteCurrentMessagePresenter;
+import ucb.voicemail.presentation.tactil.presenter.TactilGetLastMessagePresenter;
+import ucb.voicemail.presentation.tactil.presenter.TactilGetMailboxGreetingPresenter;
+import ucb.voicemail.presentation.tactil.presenter.TactilLoginMailboxPresenter;
+import ucb.voicemail.presentation.tactil.presenter.TactilSaveCurrentMessagePresenter;
+import ucb.voicemail.presentation.tactil.presenter.TactilSendMessagePresenter;
+import ucb.voicemail.presentation.tactil.view.*;
+import ucb.voicemail.presentation.tactil.view.TactilInitialPromptView;
+import ucb.voicemail.presentation.tactil.viewmodel.InitialPromptViewModel;
 import ucb.voicemail.repository.mailbox.*;
 import ucb.voicemail.repository.message.*;
 
@@ -32,9 +45,12 @@ public class MailSystemTester {
         	Connection connection = new Connection(sqliteMailboxRepository, sqliteMessageRepository, new ConnectedState());
             ConsoleTelephone console = setConsole(connection);
             GraphicalTelephone basicGraphical = setBasicGraphical(connection);
+            TactilTelephone tactilGraphical = setTactilGraphical(connection);
+            
             connection.start();
             
             basicGraphical.run(connection);
+            tactilGraphical.run();
             console.run(connection);
         }
         catch(Exception e) {
@@ -71,6 +87,28 @@ public class MailSystemTester {
         telephone.addRoute("LoginMailbox"        , new GraphicalLoginMailboxPresenter(view));
         telephone.addRoute("GetMailboxGreeting"  , new GraphicalGetMailboxGreetingPresenter(view));
         telephone.addRoute("SendMessage"         , new GraphicalSendMessagePresenter(view));
+        connection.addUserInterface(telephone);
+        return telephone;
+    }
+    
+    public static TactilTelephone setTactilGraphical(Connection connection) {
+        DefaultTactilChangeGreetingView changeGreetingView = new DefaultTactilChangeGreetingView(connection);
+        DefaultTactilChangePasscodeView changePasscodeView = new DefaultTactilChangePasscodeView(connection);
+        DefaultTactilInitialPromptView initialPromptView = new DefaultTactilInitialPromptView(connection);
+        DefaultTactilMailboxMenuView mailboxMenuView = new DefaultTactilMailboxMenuView(connection);
+        DefaultTactilMessageMenuView messageMenuView = new DefaultTactilMessageMenuView(connection);
+        DefaultTactilMessageView messageView = new DefaultTactilMessageView();
+        DefaultTactilShowGreetingView showGreetingView = new DefaultTactilShowGreetingView(connection);
+        TactilTelephone telephone = new TactilTelephone(initialPromptView);
+        telephone.addRoute("BasicPresenter"      , new TactilBasicPresenter(changePasscodeView, changeGreetingView, initialPromptView, mailboxMenuView, messageMenuView));
+        telephone.addRoute("ChangeGreeting"      , new TactilChangeGreetingPresenter(mailboxMenuView));
+        telephone.addRoute("ChangePasscode"      , new TactilChangePasscodePresenter(mailboxMenuView));
+        telephone.addRoute("GetLastMessage"      , new TactilGetLastMessagePresenter(messageView));
+        telephone.addRoute("SaveCurrentMessage"  , new TactilSaveCurrentMessagePresenter(messageView));
+        telephone.addRoute("DeleteCurrentMessage", new TactilDeleteCurrentMessagePresenter(messageView));
+        telephone.addRoute("LoginMailbox"        , new TactilLoginMailboxPresenter(mailboxMenuView, messageView));
+        telephone.addRoute("GetMailboxGreeting"  , new TactilGetMailboxGreetingPresenter(showGreetingView, messageView));
+        telephone.addRoute("SendMessage"         , new TactilSendMessagePresenter(initialPromptView));
         connection.addUserInterface(telephone);
         return telephone;
     }
