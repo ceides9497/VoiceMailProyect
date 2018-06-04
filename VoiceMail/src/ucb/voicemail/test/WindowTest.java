@@ -9,10 +9,10 @@ import org.junit.Test;
 import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.Mailbox;
 import ucb.voicemail.domain.connection.state.ConnectedState;
+import ucb.voicemail.presentation.graphical.GraphicalTelephone;
 import ucb.voicemail.presentation.graphical.view.MainGraphicalView;
 import ucb.voicemail.repository.mailbox.ArrayMailboxRepository;
 import ucb.voicemail.repository.message.ArrayMessageRepository;
-import ucb.voicemail.view.GraphicalTelephone;
 
 public class WindowTest {
 	

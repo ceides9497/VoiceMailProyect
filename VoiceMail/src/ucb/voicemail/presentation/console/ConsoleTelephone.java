@@ -1,4 +1,4 @@
-package ucb.voicemail.view;
+package ucb.voicemail.presentation.console;
 
 import java.util.HashMap;
 import java.util.Scanner;

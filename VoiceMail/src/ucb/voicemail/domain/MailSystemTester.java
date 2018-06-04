@@ -8,16 +8,16 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 import ucb.voicemail.domain.connection.state.ConnectedState;
+import ucb.voicemail.presentation.console.ConsoleTelephone;
 import ucb.voicemail.presentation.console.presenter.*;
 import ucb.voicemail.presentation.console.view.ConsoleView;
 import ucb.voicemail.presentation.console.view.DefaultConsoleView;
+import ucb.voicemail.presentation.graphical.GraphicalTelephone;
 import ucb.voicemail.presentation.graphical.presenter.*;
 import ucb.voicemail.presentation.graphical.presenter.GraphicalChangeGreetingPresenter;
 import ucb.voicemail.presentation.graphical.view.MainGraphicalView;
 import ucb.voicemail.repository.mailbox.*;
 import ucb.voicemail.repository.message.*;
-import ucb.voicemail.view.ConsoleTelephone;
-import ucb.voicemail.view.GraphicalTelephone;
 
 public class MailSystemTester {
 	
