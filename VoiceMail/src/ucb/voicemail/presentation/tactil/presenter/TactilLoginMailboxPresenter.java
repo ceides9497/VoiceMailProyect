@@ -4,6 +4,7 @@ import ucb.voicemail.domain.boundary.output.LoginMailboxInteractorOutput;
 import ucb.voicemail.domain.dto.response.LoginMailboxResponse;
 import ucb.voicemail.presentation.tactil.view.TactilMailboxMenuView;
 import ucb.voicemail.presentation.tactil.view.TactilMessageView;
+import ucb.voicemail.presentation.tactil.view.TactilShowGreetingView;
 import ucb.voicemail.presentation.tactil.viewmodel.MailboxMenuViewModel;
 import ucb.voicemail.presentation.tactil.viewmodel.MessageViewModel;
 
@@ -11,19 +12,22 @@ public class TactilLoginMailboxPresenter implements LoginMailboxInteractorOutput
 
     private TactilMailboxMenuView mailboxMenuView;
     private TactilMessageView messageView;
+    private TactilShowGreetingView showGreetingview;
     
-    public TactilLoginMailboxPresenter(TactilMailboxMenuView mailboxMenuView, TactilMessageView messageView) {
+    public TactilLoginMailboxPresenter(TactilMailboxMenuView mailboxMenuView, TactilMessageView messageView, TactilShowGreetingView showGreetingview) {
         this.mailboxMenuView = mailboxMenuView;
         this.messageView = messageView;
+        this.showGreetingview = showGreetingview;
     }
 
     @Override
     public void displayMailboxMenu(LoginMailboxResponse response) {
         MailboxMenuViewModel model = new MailboxMenuViewModel();
         model.setChangeGreetingName("Cambiar saludo");
-        model.setChangePasscodeName("Cambiar contraseña");
+        model.setChangePasscodeName("Cambiar contraseï¿½a");
         model.setOpenMessageMenuName("Menu de mensajes");
         model.setQuitName("Salir");
+        showGreetingview.hideWiew();
         mailboxMenuView.display(model);
     }
 
@@ -31,7 +35,7 @@ public class TactilLoginMailboxPresenter implements LoginMailboxInteractorOutput
     public void displayLoginFailed() {
         MessageViewModel model = new MessageViewModel();
         model.setButtonAcceptName("Aceptar");
-        model.setText("Contraseña incorrecta");
+        model.setText("Contraseï¿½a incorrecta");
         messageView.display(model);
     }
     

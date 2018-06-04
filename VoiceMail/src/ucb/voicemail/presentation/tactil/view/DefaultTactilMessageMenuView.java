@@ -38,6 +38,7 @@ public class DefaultTactilMessageMenuView extends JFrame implements TactilMessag
             @Override
             public void mouseClicked(MouseEvent e) {
                 connection.hangup();
+                setVisible(false);
             }
         });
         btnQuit.setBounds(335, 11, 89, 23);
@@ -78,6 +79,7 @@ public class DefaultTactilMessageMenuView extends JFrame implements TactilMessag
             @Override
             public void mouseClicked(MouseEvent e) {
                 connection.dial("4");
+                setVisible(false);
             }
         });
         btnReturn.setBounds(10, 188, 414, 32);
@@ -87,6 +89,11 @@ public class DefaultTactilMessageMenuView extends JFrame implements TactilMessag
     public void setConnection(Connection connection) {
         this.connection = connection;
     }
+    
+    @Override
+	public void hideWiew() {
+		this.setVisible(false);
+	}
     
     private Connection connection;
 

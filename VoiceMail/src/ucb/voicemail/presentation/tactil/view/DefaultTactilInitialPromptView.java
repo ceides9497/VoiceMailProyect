@@ -77,6 +77,11 @@ public class DefaultTactilInitialPromptView extends JFrame implements TactilInit
         connection.dial("#");
     }
     
+    @Override
+	public void hideWiew() {
+		this.setVisible(false);
+	}
+    
     public void setConnection(Connection connection) {
         this.connection = connection;
     }

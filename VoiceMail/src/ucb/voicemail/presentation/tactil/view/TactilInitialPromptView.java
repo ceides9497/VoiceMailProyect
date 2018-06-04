@@ -4,4 +4,5 @@ import ucb.voicemail.presentation.tactil.viewmodel.InitialPromptViewModel;
 
 public interface TactilInitialPromptView {
     void display(InitialPromptViewModel model);
+    void hideWiew();
 }

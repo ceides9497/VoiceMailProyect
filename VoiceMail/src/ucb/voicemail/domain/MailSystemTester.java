@@ -106,9 +106,9 @@ public class MailSystemTester {
         telephone.addRoute("GetLastMessage"      , new TactilGetLastMessagePresenter(messageView));
         telephone.addRoute("SaveCurrentMessage"  , new TactilSaveCurrentMessagePresenter(messageView));
         telephone.addRoute("DeleteCurrentMessage", new TactilDeleteCurrentMessagePresenter(messageView));
-        telephone.addRoute("LoginMailbox"        , new TactilLoginMailboxPresenter(mailboxMenuView, messageView));
-        telephone.addRoute("GetMailboxGreeting"  , new TactilGetMailboxGreetingPresenter(showGreetingView, messageView));
-        telephone.addRoute("SendMessage"         , new TactilSendMessagePresenter(initialPromptView));
+        telephone.addRoute("LoginMailbox"        , new TactilLoginMailboxPresenter(mailboxMenuView, messageView, showGreetingView));
+        telephone.addRoute("GetMailboxGreeting"  , new TactilGetMailboxGreetingPresenter(showGreetingView, messageView, initialPromptView));
+        telephone.addRoute("SendMessage"         , new TactilSendMessagePresenter(initialPromptView, showGreetingView));
         connection.addUserInterface(telephone);
         return telephone;
     }

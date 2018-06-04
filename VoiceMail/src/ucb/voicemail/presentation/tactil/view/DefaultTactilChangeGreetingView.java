@@ -52,6 +52,7 @@ public class DefaultTactilChangeGreetingView extends JFrame implements TactilCha
             @Override
             public void mouseClicked(MouseEvent e) {
                 setVisible(false);
+                connection.hangup();
             }
         });
         btnCancel.setBounds(322, 136, 102, 49);
@@ -81,5 +82,10 @@ public class DefaultTactilChangeGreetingView extends JFrame implements TactilCha
     
     private Connection connection;
     private JEditorPane txtGreeting;
+
+	@Override
+	public void hideWiew() {
+		this.setVisible(false);
+	}
 
 }

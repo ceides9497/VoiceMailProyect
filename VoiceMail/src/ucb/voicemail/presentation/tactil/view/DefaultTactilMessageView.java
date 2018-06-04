@@ -46,6 +46,11 @@ public class DefaultTactilMessageView extends JFrame implements TactilMessageVie
     }
 
     @Override
+	public void hideWiew() {
+		this.setVisible(false);
+	}
+    
+    @Override
     public void display(MessageViewModel model) {
         setVisible(true);
         editorPane.setText(model.getText());

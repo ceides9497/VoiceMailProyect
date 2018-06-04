@@ -37,6 +37,7 @@ public class DefaultTactilMailboxMenuView extends JFrame implements TactilMailbo
             @Override
             public void mouseClicked(MouseEvent e) {
                 connection.dial("1");
+                setVisible(false);
             }
         });
         btnOpenMessageMenu.setBounds(10, 60, 414, 42);
@@ -66,6 +67,7 @@ public class DefaultTactilMailboxMenuView extends JFrame implements TactilMailbo
         btnQuit.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+            	setVisible(false);
                 connection.hangup();
             }
         });
@@ -76,6 +78,11 @@ public class DefaultTactilMailboxMenuView extends JFrame implements TactilMailbo
     public void setConnection(Connection connection) {
         this.connection = connection;
     }
+    
+    @Override
+	public void hideWiew() {
+		this.setVisible(false);
+	}
     
     private Connection connection;
 

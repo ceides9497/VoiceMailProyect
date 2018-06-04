@@ -39,7 +39,8 @@ public class TactilBasicPresenter implements BasicPresenter {
         ChangePasscodeViewModel model = new ChangePasscodeViewModel();
         model.setButtonAcceptName("Aceptar");
         model.setButtonCancelName("Cancelar");
-        model.setTitle("Introduce una nueva contraseña");
+        model.setTitle("Introduce una nueva contraseï¿½a");
+        mailboxMenuView.hideWiew();
         changePasscodeView.display(model);
     }
 
@@ -49,6 +50,7 @@ public class TactilBasicPresenter implements BasicPresenter {
         model.setButtonAcceptName("Aceptar");
         model.setButtonCancelName("Cancelar");
         model.setTitle("Introduce un nuevo saludo");
+        mailboxMenuView.hideWiew();
         changeGreetingView.display(model);
     }
 
@@ -66,9 +68,10 @@ public class TactilBasicPresenter implements BasicPresenter {
     public void displayMailboxMenu() {
         MailboxMenuViewModel model = new MailboxMenuViewModel();
         model.setChangeGreetingName("Cambiar saludo");
-        model.setChangePasscodeName("Cambiar contraseña");
+        model.setChangePasscodeName("Cambiar contraseï¿½a");
         model.setOpenMessageMenuName("Menu de mensajes");
         model.setQuitName("Salir");
+        messageMenuView.hideWiew();
         mailboxMenuView.display(model);
     }
 
@@ -80,6 +83,7 @@ public class TactilBasicPresenter implements BasicPresenter {
         model.setQuitName("Salir");
         model.setReturnName("Volver");
         model.setSaveCurrentMessageName("Guardar mensaje");
+        mailboxMenuView.hideWiew();
         messageMenuView.display(model);
     }
 

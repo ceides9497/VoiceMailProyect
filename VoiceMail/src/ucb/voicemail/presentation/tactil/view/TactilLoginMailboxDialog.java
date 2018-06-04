@@ -43,7 +43,6 @@ public class TactilLoginMailboxDialog extends JDialog {
                 public void mouseClicked(MouseEvent e) {
                     parentView.loginMailbox(passwordField.getPassword());
                     passwordField.setText("");
-                    ownWindow.setVisible(false);
                 }
             });
             btnLogin.setBounds(10, 99, 137, 72);
@@ -56,6 +55,7 @@ public class TactilLoginMailboxDialog extends JDialog {
                 public void mouseClicked(MouseEvent e) {
                     passwordField.setText("");
                     ownWindow.setVisible(false);
+                    parentView.setVisible(true);
                 }
             });
             btnCancel.setBounds(287, 99, 137, 72);

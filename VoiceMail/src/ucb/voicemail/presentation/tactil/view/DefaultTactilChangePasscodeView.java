@@ -58,6 +58,7 @@ public class DefaultTactilChangePasscodeView extends JFrame implements TactilCha
             @Override
             public void mouseClicked(MouseEvent e) {
                 setVisible(false);
+                connection.hangup();
             }
         });
         btnCancel.setBounds(322, 103, 102, 49);
@@ -84,6 +85,11 @@ public class DefaultTactilChangePasscodeView extends JFrame implements TactilCha
         }
         connection.dial("#");
     }
+    
+    @Override
+	public void hideWiew() {
+		this.setVisible(false);
+	}
     
     private Connection connection;
 

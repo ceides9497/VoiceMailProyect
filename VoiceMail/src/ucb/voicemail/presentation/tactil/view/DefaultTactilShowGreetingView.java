@@ -53,6 +53,7 @@ public class DefaultTactilShowGreetingView extends JFrame implements TactilShowG
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 loginMailboxDialog.setVisible(true);
+                setVisible(false);
             }
         });
         btnLogin.setBounds(10, 86, 137, 72);
@@ -63,6 +64,7 @@ public class DefaultTactilShowGreetingView extends JFrame implements TactilShowG
             @Override
             public void mouseClicked(MouseEvent arg0) {
                 sendMessageDialog.setVisible(true);
+                setVisible(false);
             }
         });
         btnSendMessage.setBounds(287, 86, 137, 72);
@@ -73,6 +75,7 @@ public class DefaultTactilShowGreetingView extends JFrame implements TactilShowG
             @Override
             public void mouseClicked(MouseEvent e) {
                 connection.hangup();
+                setVisible(false);
             }
         });
         btnQuit.setBounds(337, 21, 87, 30);
@@ -97,8 +100,15 @@ public class DefaultTactilShowGreetingView extends JFrame implements TactilShowG
         connection.dial("#");
     }
     
+    @Override
+	public void hideWiew() {
+		this.setVisible(false);
+		this.loginMailboxDialog.setVisible(false);
+		this.sendMessageDialog.setVisible(false);
+	}
+    
     private Connection connection;
-
+    
     @Override
     public void display(ShowGreetingViewModel model) {
         setVisible(true);

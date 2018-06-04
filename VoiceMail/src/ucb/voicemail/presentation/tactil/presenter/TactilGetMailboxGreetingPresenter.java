@@ -2,6 +2,7 @@ package ucb.voicemail.presentation.tactil.presenter;
 
 import ucb.voicemail.domain.boundary.output.GetMailboxGreetingInteractorOutput;
 import ucb.voicemail.domain.dto.response.GetMailboxGreetingResponse;
+import ucb.voicemail.presentation.tactil.view.TactilInitialPromptView;
 import ucb.voicemail.presentation.tactil.view.TactilMessageView;
 import ucb.voicemail.presentation.tactil.view.TactilShowGreetingView;
 import ucb.voicemail.presentation.tactil.viewmodel.MessageViewModel;
@@ -11,16 +12,18 @@ public class TactilGetMailboxGreetingPresenter implements GetMailboxGreetingInte
 
     private TactilShowGreetingView showGreetingView;
     private TactilMessageView messageView;
+    private TactilInitialPromptView InitialPromptView;
     
-    public TactilGetMailboxGreetingPresenter(TactilShowGreetingView showGreetingView, TactilMessageView messageView) {
+    public TactilGetMailboxGreetingPresenter(TactilShowGreetingView showGreetingView, TactilMessageView messageView, TactilInitialPromptView InitialPromptView) {
         this.showGreetingView = showGreetingView;
         this.messageView = messageView;
+        this.InitialPromptView = InitialPromptView;
     }
 
     @Override
     public void displayMailboxGreeting(GetMailboxGreetingResponse response) {
         ShowGreetingViewModel model = new ShowGreetingViewModel();
-        model.setDefaultMessageLoginMailbox("Introduce la contraseña");
+        model.setDefaultMessageLoginMailbox("Introduce la contraseï¿½a");
         model.setDefaultMessageSendMessage("Introduce su mensaje");
         model.setGreeting(response.getGreeting());
         model.setLoginButtonName("Login");
@@ -30,6 +33,7 @@ public class TactilGetMailboxGreetingPresenter implements GetMailboxGreetingInte
         model.setSendMessageAcceptButtonName("Enviar");
         model.setSendMessageButtonName("Enviar mensaje");
         model.setSendMessageCancelButtonName("Cancelar");
+        InitialPromptView.hideWiew();
         showGreetingView.display(model);
     }
 

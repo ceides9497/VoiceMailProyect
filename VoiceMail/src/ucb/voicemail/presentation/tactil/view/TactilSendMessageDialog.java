@@ -60,6 +60,7 @@ public class TactilSendMessageDialog extends JDialog {
                 public void mouseClicked(MouseEvent e) {
                     editorMessage.setText("");
                     ownWindow.setVisible(false);
+                    parentView.setVisible(true);
                 }
             });
             btnCancel.setBounds(287, 149, 137, 72);

@@ -4,4 +4,5 @@ import ucb.voicemail.presentation.tactil.viewmodel.ShowGreetingViewModel;
 
 public interface TactilShowGreetingView {
     void display(ShowGreetingViewModel model);
+    void hideWiew();
 }
