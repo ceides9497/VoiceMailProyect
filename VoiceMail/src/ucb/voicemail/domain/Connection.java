@@ -23,12 +23,13 @@ public class Connection implements Subject {
     // ==================== CONSTRUCTOR ====================
     
     public Connection(MailboxRepository mailboxRepository, MessageRepository messageRepository, ConnectionState initialState) {
-        this.initialState = initialState;
         this.mailboxRepository = mailboxRepository;
         this.messageRepository = messageRepository;
+        this.connectionState = initialState;
         this.userInterfaces = new ArrayList<Telephone>();
+        this.accumulatedKeys = "";
+        this.currentRecording = "";
         presentersRoutes = new HashMap<>();
-        resetConnection();
     }
 
     // ==================== FUNCTIONS ====================
@@ -66,15 +67,8 @@ public class Connection implements Subject {
     
     // ==================== HELPER FUNCTIONS ====================
     
-    private void resetConnection() {
-        currentRecording = "";
-        accumulatedKeys = "";
-        connectionState = initialState;
-        generateConnectionPresenter().displayInitialPrompt();
-    }
-    
     public void start() {
-        resetConnection();
+        generateConnectionPresenter().displayInitialPrompt();
     }
     
     public void addRecordingText(String voice) {
@@ -144,20 +138,4 @@ public class Connection implements Subject {
     private ArrayList<Telephone> userInterfaces;
     private ConnectionState connectionState;
     private String mailboxId;
-    
-    private final ConnectionState initialState;
-    
-   	public static final String INITIAL_PROMPT = 
-        "Enter mailbox number followed by #";
-   	
-   	public static final String MAILBOX_MENU_TEXT = 
-        "Enter 1 to listen to your messages\n"
-        + "Enter 2 to change your passcode\n"
-        + "Enter 3 to change your greeting";
-   	
-   	public static final String MESSAGE_MENU_TEXT = 
-        "Enter 1 to listen to the current message\n"
-        + "Enter 2 to save the current message\n"
-        + "Enter 3 to delete the current message\n"
-        + "Enter 4 to return to the main menu";
 }

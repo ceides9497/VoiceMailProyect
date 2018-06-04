@@ -16,43 +16,52 @@ import ucb.voicemail.view.GraphicalTelephone;
 import ucb.voicemail.view.MainMenu;
 
 public class MailSystemTester {
-	private static java.sql.Connection sqliteConnection;
+	
+    private static java.sql.Connection sqliteConnection;
     
     public static void main(String[] args) {
         try {
         	getConnectionSQLite();
         	MailboxRepository sqliteMailboxRepository = new SQLiteMailboxRepository(sqliteConnection);
         	MessageRepository sqliteMessageRepository = new SQLiteMessageRepository(sqliteConnection);
-        	/*Class.forName("com.mysql.jdbc.Driver");
-            java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + "arqui", "root", "mysql");
-            MySqlMailboxRepository mysqlMailboxRepository = new MySqlMailboxRepository(connection);
-            MySqlMessageRepository mysqlMessageRepository = new MySqlMessageRepository(connection);*/
-            GraphicalTelephone w = new GraphicalTelephone(new MainMenu());
-            //MailboxRepository mailboxRepository = new ArrayMailboxRepository(MAILBOX_COUNT);
-            //MessageRepository messageRepository = new ArrayMessageRepository(MAILBOX_COUNT);
-            Scanner console = new Scanner(System.in);
-            ConsoleTelephone p = new ConsoleTelephone(console);
-            ConsolePresenter consolePresenter = new ConsolePresenter();
-            p.addRoute("Presenter", consolePresenter);
-            p.addRoute("ChangeGreeting", consolePresenter);
-            p.addRoute("ChangePasscode", consolePresenter);
-            p.addRoute("GetLastMessage", consolePresenter);
-            p.addRoute("SaveCurrentMessage", consolePresenter);
-            p.addRoute("DeleteCurrentMessage", consolePresenter);
-            p.addRoute("LoginMailbox", consolePresenter);
-            p.addRoute("GetMailboxGreeting", consolePresenter);
-            p.addRoute("SendMessage", consolePresenter);
-            Connection c = new Connection(sqliteMailboxRepository, sqliteMessageRepository, new ConnectedState());
-            c.addUserInterface(p);
-            c.addUserInterface(w);
-            c.start();      // REINICIA LA CONEXION PARA QUE APAREZCA "Enter mailbox number followed by #"
-            w.run(c);
-            p.run(c);
+        	
+        	Connection connection = new Connection(sqliteMailboxRepository, sqliteMessageRepository, new ConnectedState());
+            ConsoleTelephone console = setConsole(connection);
+            GraphicalTelephone basicGraphical = setBasicGraphical(connection);
+            connection.start();
+            
+            basicGraphical.run(connection);
+            console.run(connection);
         }
         catch(Exception e) {
             e.printStackTrace();
         }
     }
+    
+    public static ConsoleTelephone setConsole(Connection connection) {
+        Scanner console = new Scanner(System.in);
+        ConsoleTelephone telephone = new ConsoleTelephone(console);
+        ConsolePresenter consolePresenter = new ConsolePresenter();
+        telephone.addRoute("Presenter", consolePresenter);
+        telephone.addRoute("ChangeGreeting", consolePresenter);
+        telephone.addRoute("ChangePasscode", consolePresenter);
+        telephone.addRoute("GetLastMessage", consolePresenter);
+        telephone.addRoute("SaveCurrentMessage", consolePresenter);
+        telephone.addRoute("DeleteCurrentMessage", consolePresenter);
+        telephone.addRoute("LoginMailbox", consolePresenter);
+        telephone.addRoute("GetMailboxGreeting", consolePresenter);
+        telephone.addRoute("SendMessage", consolePresenter);
+        connection.addUserInterface(telephone);
+        return telephone;
+    }
+    
+    public static GraphicalTelephone setBasicGraphical(Connection connection) {
+        GraphicalTelephone basicGraphical = new GraphicalTelephone(new MainMenu());
+        connection.addUserInterface(basicGraphical);
+        return basicGraphical;
+    }
+    
+    // ========= DATABASE CONFIG ========================================================================
     
     private static void getConnectionSQLite() throws ClassNotFoundException, SQLException {
     	Class.forName("org.sqlite.JDBC");
@@ -101,6 +110,4 @@ public class MailSystemTester {
     	}
     	
 	}
-
-	private static final int MAILBOX_COUNT = 20;
 }
