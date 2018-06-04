@@ -5,14 +5,6 @@ import java.util.ArrayList;
 import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.Telephone;
 
-import ucb.voicemail.domain.boundary.output.ChangeGreetingInteractorOutput;
-import ucb.voicemail.domain.boundary.output.ChangePasscodeInteractorOutput;
-import ucb.voicemail.domain.boundary.output.DeleteCurrentMessageInteractorOutput;
-import ucb.voicemail.domain.boundary.output.GetLastMessageInteractorOutput;
-import ucb.voicemail.domain.boundary.output.GetMailboxGreetingInteractorOutput;
-import ucb.voicemail.domain.boundary.output.LoginMailboxInteractorOutput;
-import ucb.voicemail.domain.boundary.output.SaveCurrentMessageInteractorOutput;
-import ucb.voicemail.domain.boundary.output.SendMessageInteractorOutput;
 import ucb.voicemail.domain.connection.state.ChangeGreetingState;
 import ucb.voicemail.domain.connection.state.ChangePasscodeState;
 import ucb.voicemail.domain.connection.state.ConnectedState;
@@ -27,8 +19,9 @@ import ucb.voicemail.domain.dto.response.GetMailboxGreetingResponse;
 import ucb.voicemail.domain.dto.response.LoginMailboxResponse;
 import ucb.voicemail.domain.dto.response.SaveCurrentMessageResponse;
 import ucb.voicemail.domain.dto.response.SendMessageResponse;
+import ucb.voicemail.domain.boundary.output.*;
 
-public class ConnectionPrensenter implements Presenter, ChangeGreetingInteractorOutput, ChangePasscodeInteractorOutput,
+public class ConnectionPrensenter implements BasicPresenter, ChangeGreetingInteractorOutput, ChangePasscodeInteractorOutput,
         DeleteCurrentMessageInteractorOutput, GetLastMessageInteractorOutput, GetMailboxGreetingInteractorOutput,
         LoginMailboxInteractorOutput, SaveCurrentMessageInteractorOutput, SendMessageInteractorOutput {
 
@@ -114,8 +107,7 @@ public class ConnectionPrensenter implements Presenter, ChangeGreetingInteractor
                 GetMailboxGreetingInteractorOutput output = (GetMailboxGreetingInteractorOutput) telephone
                         .routePresenter("GetMailboxGreeting");
                 output.displayMailboxGreeting(response);
-            } catch (Exception e) {
-            }
+            } catch (Exception e) {}
         }
     }
 
@@ -228,7 +220,7 @@ public class ConnectionPrensenter implements Presenter, ChangeGreetingInteractor
         connection.setConnectionState(new ChangePasscodeState());
         for (Telephone telephone : telephoneList) {
             try {
-                Presenter output = (Presenter) telephone.routePresenter("Presenter");
+                BasicPresenter output = (BasicPresenter) telephone.routePresenter("BasicPresenter");
                 if (output != null) {
                     output.displayPasscodeForm();
                 }
@@ -242,7 +234,7 @@ public class ConnectionPrensenter implements Presenter, ChangeGreetingInteractor
         connection.setConnectionState(new ChangeGreetingState());
         for (Telephone telephone : telephoneList) {
             try {
-                Presenter output = (Presenter) telephone.routePresenter("Presenter");
+                BasicPresenter output = (BasicPresenter) telephone.routePresenter("BasicPresenter");
                 if (output != null) {
                     output.displayGreetingForm();
                 }
@@ -256,7 +248,7 @@ public class ConnectionPrensenter implements Presenter, ChangeGreetingInteractor
         connection.setConnectionState(new ConnectedState());
         for (Telephone telephone : telephoneList) {
             try {
-                Presenter output = (Presenter) telephone.routePresenter("Presenter");
+                BasicPresenter output = (BasicPresenter) telephone.routePresenter("BasicPresenter");
                 if (output != null) {
                     output.displayInitialPrompt();
                 }
@@ -270,7 +262,7 @@ public class ConnectionPrensenter implements Presenter, ChangeGreetingInteractor
         connection.setConnectionState(new MailboxMenuState());
         for (Telephone telephone : telephoneList) {
             try {
-                Presenter output = (Presenter) telephone.routePresenter("Presenter");
+                BasicPresenter output = (BasicPresenter) telephone.routePresenter("BasicPresenter");
                 if (output != null) {
                     output.displayMailboxMenu();
                 }
@@ -284,7 +276,7 @@ public class ConnectionPrensenter implements Presenter, ChangeGreetingInteractor
         connection.setConnectionState(new MessageMenuState());
         for (Telephone telephone : telephoneList) {
             try {
-                Presenter output = (Presenter) telephone.routePresenter("Presenter");
+                BasicPresenter output = (BasicPresenter) telephone.routePresenter("BasicPresenter");
                 if (output != null) {
                     output.displayMessageMenu();
                 }

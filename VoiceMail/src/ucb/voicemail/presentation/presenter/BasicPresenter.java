@@ -1,6 +1,6 @@
 package ucb.voicemail.presentation.presenter;
 
-public interface Presenter {
+public interface BasicPresenter {
     void displayPasscodeForm();
     void displayGreetingForm();
     void displayInitialPrompt();

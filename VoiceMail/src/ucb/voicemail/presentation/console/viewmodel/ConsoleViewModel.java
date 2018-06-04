@@ -1,4 +1,4 @@
-package ucb.voicemail.presentation.viewmodel;
+package ucb.voicemail.presentation.console.viewmodel;
 
 public class ConsoleViewModel {
 

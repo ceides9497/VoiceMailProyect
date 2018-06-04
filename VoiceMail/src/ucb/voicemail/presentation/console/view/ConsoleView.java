@@ -1,6 +1,6 @@
-package ucb.voicemail.presentation.view;
+package ucb.voicemail.presentation.console.view;
 
-import ucb.voicemail.presentation.viewmodel.ConsoleViewModel;
+import ucb.voicemail.presentation.console.viewmodel.ConsoleViewModel;
 
 public class ConsoleView {
     

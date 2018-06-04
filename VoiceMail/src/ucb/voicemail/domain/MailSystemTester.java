@@ -7,8 +7,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import ucb.voicemail.domain.boundary.output.ChangeGreetingInteractorOutput;
+import ucb.voicemail.domain.boundary.output.GetMailboxGreetingInteractorOutput;
 import ucb.voicemail.domain.connection.state.ConnectedState;
-import ucb.voicemail.presentation.presenter.ConsolePresenter;
+import ucb.voicemail.presentation.console.presenter.*;
+import ucb.voicemail.presentation.console.view.ConsoleView;
+import ucb.voicemail.presentation.presenter.BasicPresenter;
 import ucb.voicemail.repository.mailbox.*;
 import ucb.voicemail.repository.message.*;
 import ucb.voicemail.view.ConsoleTelephone;
@@ -41,16 +45,16 @@ public class MailSystemTester {
     public static ConsoleTelephone setConsole(Connection connection) {
         Scanner console = new Scanner(System.in);
         ConsoleTelephone telephone = new ConsoleTelephone(console);
-        ConsolePresenter consolePresenter = new ConsolePresenter();
-        telephone.addRoute("Presenter", consolePresenter);
-        telephone.addRoute("ChangeGreeting", consolePresenter);
-        telephone.addRoute("ChangePasscode", consolePresenter);
-        telephone.addRoute("GetLastMessage", consolePresenter);
-        telephone.addRoute("SaveCurrentMessage", consolePresenter);
-        telephone.addRoute("DeleteCurrentMessage", consolePresenter);
-        telephone.addRoute("LoginMailbox", consolePresenter);
-        telephone.addRoute("GetMailboxGreeting", consolePresenter);
-        telephone.addRoute("SendMessage", consolePresenter);
+        ConsoleView view = new ConsoleView();
+        telephone.addRoute("BasicPresenter"      , new ConsoleBasicPresenter(view));
+        telephone.addRoute("ChangeGreeting"      , new ConsoleChangeGreetingPresenter(view));
+        telephone.addRoute("ChangePasscode"      , new ConsoleChangePasscodePresenter(view));
+        telephone.addRoute("GetLastMessage"      , new ConsoleGetLastMessagePresenter(view));
+        telephone.addRoute("SaveCurrentMessage"  , new ConsoleSaveCurrentMessagePresenter(view));
+        telephone.addRoute("DeleteCurrentMessage", new ConsoleDeleteCurrentMessagePresenter(view));
+        telephone.addRoute("LoginMailbox"        , new ConsoleLoginMailboxPresenter(view));
+        telephone.addRoute("GetMailboxGreeting"  , new ConsoleGetMailboxGreetingPresenter(view));
+        telephone.addRoute("SendMessage"         , new ConsoleSendMessagePresenter(view));
         connection.addUserInterface(telephone);
         return telephone;
     }
