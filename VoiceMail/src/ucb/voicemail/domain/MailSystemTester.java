@@ -32,12 +32,17 @@ import ucb.voicemail.presentation.tactil.viewmodel.InitialPromptViewModel;
 import ucb.voicemail.repository.mailbox.*;
 import ucb.voicemail.repository.message.*;
 
+import static spark.Spark.*;
+
 public class MailSystemTester {
 	
     private static java.sql.Connection sqliteConnection;
     
     public static void main(String[] args) {
         try {
+        	port(getHerokuAssignedPort());
+            get("/", (req, res) -> "Hello Heroku World");
+        	
         	getConnectionSQLite();
         	MailboxRepository sqliteMailboxRepository = new SQLiteMailboxRepository(sqliteConnection);
         	MessageRepository sqliteMessageRepository = new SQLiteMessageRepository(sqliteConnection);
@@ -56,6 +61,14 @@ public class MailSystemTester {
         catch(Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567;
     }
     
     public static ConsoleTelephone setConsole(Connection connection) {
