@@ -71,7 +71,7 @@
   </interface>  
   <interface id="8" language="java" name="ucb.voicemail.domain.Telephone" project="VoiceMail" 
     file="/VoiceMail/src/ucb/voicemail/domain/Telephone.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="10841" y="87"/>    
+    <position height="-1" width="-1" x="10827" y="73"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -537,7 +537,7 @@
   </class>  
   <interface id="56" language="java" name="ucb.voicemail.domain.Subject" project="VoiceMail" 
     file="/VoiceMail/src/ucb/voicemail/domain/Subject.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="10639" y="341"/>    
+    <position height="-1" width="-1" x="10571" y="155"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -646,7 +646,7 @@
   <class id="67" language="java" name="ucb.voicemail.presentation.graphical.GraphicalTelephone" project="VoiceMail" 
     file="/VoiceMail/src/ucb/voicemail/presentation/graphical/GraphicalTelephone.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="10388" y="-123"/>    
+    <position height="-1" width="-1" x="10404" y="-363"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -662,236 +662,316 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <realization id="69">    
-    <end type="SOURCE" refId="53"/>    
-    <end type="TARGET" refId="12"/>  
-  </realization>  
-  <association id="70">    
+  <association id="69">    
     <end type="SOURCE" refId="53" navigable="false">      
-      <attribute id="71" name="mailboxRepository"/>      
-      <multiplicity id="72" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="28" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="73">    
-    <end type="SOURCE" refId="40" navigable="false">      
-      <attribute id="74" name="mailboxRepository"/>      
-      <multiplicity id="75" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="28" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="76">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <association id="77">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="78" name="messageRepository"/>      
-      <multiplicity id="79" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="80">    
-    <end type="SOURCE" refId="47"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <realization id="81">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <association id="82">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="83" name="output"/>      
-      <multiplicity id="84" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="57" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="85">    
-    <end type="SOURCE" refId="42"/>    
-    <end type="TARGET" refId="43"/>  
-  </realization>  
-  <association id="86">    
-    <end type="SOURCE" refId="42" navigable="false">      
-      <attribute id="87" name="mailboxRepository"/>      
-      <multiplicity id="88" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="28" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="89">    
-    <end type="SOURCE" refId="30"/>    
-    <end type="TARGET" refId="54"/>  
-  </realization>  
-  <realization id="90">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="23"/>  
-  </realization>  
-  <association id="91">    
-    <end type="SOURCE" refId="53" navigable="false">      
-      <attribute id="92" name="output"/>      
-      <multiplicity id="93" minimum="0" maximum="1"/>    
+      <attribute id="70" name="output">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="71" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="29" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="94">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="95" name="messageRepository"/>      
-      <multiplicity id="96" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="97">    
-    <end type="SOURCE" refId="31"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <association id="98">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="99" name="output"/>      
-      <multiplicity id="100" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="20" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="101">    
-    <end type="SOURCE" refId="30" navigable="false">      
-      <attribute id="102" name="output"/>      
-      <multiplicity id="103" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="45" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="104">    
-    <end type="SOURCE" refId="40" navigable="false">      
-      <attribute id="105" name="connectionState"/>      
-      <multiplicity id="106" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="107">    
-    <end type="SOURCE" refId="42" navigable="false">      
-      <attribute id="108" name="output"/>      
-      <multiplicity id="109" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="37" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="110">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <association id="111">    
-    <end type="SOURCE" refId="34" navigable="false">      
-      <attribute id="112" name="mailboxRepository"/>      
-      <multiplicity id="113" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="28" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="114">    
-    <end type="SOURCE" refId="36" navigable="false">      
-      <attribute id="115" name="output"/>      
-      <multiplicity id="116" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="117">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="118" name="messageRepository"/>      
-      <multiplicity id="119" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="120">    
-    <end type="SOURCE" refId="58"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <association id="121">    
-    <end type="SOURCE" refId="40" navigable="false">      
-      <attribute id="122" name="messageRepository"/>      
-      <multiplicity id="123" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="124">    
-    <end type="SOURCE" refId="68"/>    
-    <end type="TARGET" refId="8"/>  
-  </realization>  
-  <realization id="125">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="7"/>  
-  </realization>  
-  <realization id="126">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="35"/>  
-  </realization>  
-  <realization id="127">    
-    <end type="SOURCE" refId="40"/>    
-    <end type="TARGET" refId="56"/>  
-  </realization>  
-  <association id="128">    
-    <end type="SOURCE" refId="34" navigable="false">      
-      <attribute id="129" name="output"/>      
-      <multiplicity id="130" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="48" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="131">    
-    <end type="SOURCE" refId="66"/>    
-    <end type="TARGET" refId="8"/>  
-  </realization>  
-  <realization id="132">    
+  <realization id="72">    
     <end type="SOURCE" refId="34"/>    
     <end type="TARGET" refId="41"/>  
   </realization>  
-  <association id="133">    
+  <realization id="73">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="35"/>  
+  </realization>  
+  <association id="74">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="134" name="output"/>      
-      <multiplicity id="135" minimum="0" maximum="1"/>    
+      <attribute id="75" name="output">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="76" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="33" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="136">    
+  <association id="77">    
+    <end type="SOURCE" refId="53" navigable="false">      
+      <attribute id="78" name="mailboxRepository">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="79" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="80">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="81" name="mailboxRepository">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="82" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="83">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="43"/>  
+  </realization>  
+  <realization id="84">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <association id="85">    
     <end type="SOURCE" refId="36" navigable="false">      
-      <attribute id="137" name="messageRepository"/>      
-      <multiplicity id="138" minimum="0" maximum="1"/>    
+      <attribute id="86" name="messageRepository">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="87" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="139">    
-    <end type="SOURCE" refId="67"/>    
+  <association id="88">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="89" name="messageRepository">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="90" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="91">    
+    <end type="SOURCE" refId="68"/>    
     <end type="TARGET" refId="8"/>  
   </realization>  
-  <realization id="140">    
+  <realization id="92">    
+    <end type="SOURCE" refId="40"/>    
+    <end type="TARGET" refId="56"/>  
+  </realization>  
+  <realization id="93">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <association id="94">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="95" name="mailboxRepository">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="96" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="97">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="98" name="output">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="99" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="100">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <association id="101">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="102" name="messageRepository">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="103" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="104">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="105" name="mailboxRepository">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="106" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="107">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="108" name="messageRepository">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="109" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="110">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <realization id="111">    
+    <end type="SOURCE" refId="58"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <realization id="112">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <association id="113">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="114" name="output">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="115" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="116">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="117" name="messageRepository">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="118" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="119">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="120" name="connectionState">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="121" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="122">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="123" name="output">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="124" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="125">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="126" name="output">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="127" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="48" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="128">    
     <end type="SOURCE" refId="36"/>    
     <end type="TARGET" refId="46"/>  
   </realization>  
-  <association id="141">    
+  <association id="129">    
     <end type="SOURCE" refId="40" navigable="false">      
-      <attribute id="142" name="userInterfaces"/>      
-      <multiplicity id="143" minimum="0" maximum="2147483647"/>    
+      <attribute id="130" name="userInterfaces">        
+        <position height="0" width="0" x="-14" y="-14"/>      
+      </attribute>      
+      <multiplicity id="131" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-14" y="-14"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="144">    
-    <end type="SOURCE" refId="30" navigable="false">      
-      <attribute id="145" name="mailboxRepository"/>      
-      <multiplicity id="146" minimum="0" maximum="1"/>    
+  <association id="132">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="133" name="mailboxRepository">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="134" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="135">    
+    <end type="SOURCE" refId="66"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <realization id="136">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="7"/>  
+  </realization>  
+  <realization id="137">    
+    <end type="SOURCE" refId="53"/>    
+    <end type="TARGET" refId="12"/>  
+  </realization>  
+  <association id="138">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="139" name="output">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="140" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="57" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="141">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="23"/>  
+  </realization>  
+  <realization id="142">    
+    <end type="SOURCE" refId="67"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <realization id="143">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="54"/>  
+  </realization>  
+  <association id="144">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="145" name="output">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="146" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
