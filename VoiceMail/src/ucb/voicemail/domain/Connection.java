@@ -1,18 +1,35 @@
 package ucb.voicemail.domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import ucb.voicemail.presentation.presenter.ConnectionPrensenter;
 
 public class Connection implements Subject {
 
+    private HashMap<String, Object> presentersRoutes;
+    
+    public void addRoute(String route, Object presenter) {
+        presentersRoutes.put(route, presenter);
+    }
+    
+    public Object routePresenter(String route) {
+        if (presentersRoutes.containsKey(route)) {
+            return presentersRoutes.get(route);
+        }
+        return null;
+    }
+    
     // ==================== CONSTRUCTOR ====================
     
-    public Connection(MailboxRepository mailboxRepository, MessageRepository messageRepository, ConnectionState initialState, MenuPresenter initialPromptPresenter) {
-        this.initialState = initialState;
+    public Connection(MailboxRepository mailboxRepository, MessageRepository messageRepository, ConnectionState initialState) {
         this.mailboxRepository = mailboxRepository;
         this.messageRepository = messageRepository;
+        this.connectionState = initialState;
         this.userInterfaces = new ArrayList<Telephone>();
-        this.initialPromptPresenter = initialPromptPresenter;
-        resetConnection();
+        this.accumulatedKeys = "";
+        this.currentRecording = "";
+        presentersRoutes = new HashMap<>();
     }
 
     // ==================== FUNCTIONS ====================
@@ -27,7 +44,6 @@ public class Connection implements Subject {
 
     public void hangup() {
         connectionState.hangup(this);
-        resetConnection();
     }
     
     // ==================== SUBJECT FUNCTIONS ====================
@@ -41,29 +57,11 @@ public class Connection implements Subject {
     public void deleteUserInterface(Telephone userInterface) {
         userInterfaces.remove(userInterface);
     }
-	
-    @Override
-    public void speakToAll(String output) {
-        for(Telephone userInterface : userInterfaces) {
-            userInterface.speak(output);
-        }
-    }
     
     // ==================== HELPER FUNCTIONS ====================
     
-    private void resetConnection() {
-        currentRecording = "";
-        accumulatedKeys = "";
-        connectionState = initialState;
-        speakToAll(initialPromptPresenter.getMenu());
-    }
-    
     public void start() {
-        resetConnection();
-    }
-    
-    public void addMessageInCurrentMailbox() {
-        messageRepository.addMessage(currentMailbox.getId(), new Message(currentRecording));
+        generateConnectionPresenter().displayInitialPrompt();
     }
     
     public void addRecordingText(String voice) {
@@ -74,18 +72,10 @@ public class Connection implements Subject {
         accumulatedKeys += key;
     }
     
-    public Mailbox setCurrentMailboxByAccumulatedKeys() {
-        return currentMailbox = mailboxRepository.findMailbox(accumulatedKeys);
-    }
-    
     // ==================== GET AND SET ====================
     
     public ArrayList<Telephone> getUserInterfaces() {
         return userInterfaces;
-    }
-    
-    public MailboxRepository getMailSystem() {
-        return mailboxRepository;
     }
     
     public String getCurrentRecording() {
@@ -112,42 +102,33 @@ public class Connection implements Subject {
         this.accumulatedKeys = accumulatedKeys;
     }
     
-    public Mailbox getCurrentMailbox() {
-        return currentMailbox;
-    }
-    
     public void setConnectionState(ConnectionState connectionState) {
         this.connectionState = connectionState;
     }
     
-    public void setMailBoxMenuPresenter(MenuPresenter mailboxMenuPresenter) {
-    	this.mailboxMenuPresenter = mailboxMenuPresenter;
+    public ConnectionPrensenter generateConnectionPresenter() {
+   		ConnectionPrensenter presenter = new ConnectionPrensenter(this);
+   		for (Telephone telephone : userInterfaces) {
+   			presenter.addTelephone(telephone);
+		}
+   		return presenter;
+   	}
+    
+    public void setMailboxId(String mailboxId) {
+        this.mailboxId = mailboxId;
     }
     
-    public String getMailboxMenu() {
-    	return mailboxMenuPresenter.getMenu();
-    }
-    
-    public void setMessageMenuTextPresenter(MenuPresenter messageMenuTextPresenter) {
-    	this.messageMenuTextPresenter = messageMenuTextPresenter;
-    }
-    
-    public String getMessageMenuTextPresenter() {
-    	return messageMenuTextPresenter.getMenu();
+    public String getMailboxId() {
+        return mailboxId;
     }
     
     // ==================== VARIABLES ====================
     
     private MailboxRepository mailboxRepository;
     private MessageRepository messageRepository;
-    private Mailbox currentMailbox;
     private String currentRecording;
     private String accumulatedKeys;
     private ArrayList<Telephone> userInterfaces;
     private ConnectionState connectionState;
-    private MenuPresenter initialPromptPresenter;
-    private MenuPresenter mailboxMenuPresenter;
-    private MenuPresenter messageMenuTextPresenter;
-    
-    private final ConnectionState initialState;
+    private String mailboxId;
 }

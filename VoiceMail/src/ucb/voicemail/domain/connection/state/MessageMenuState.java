@@ -2,39 +2,52 @@ package ucb.voicemail.domain.connection.state;
 
 import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.ConnectionState;
-import ucb.voicemail.domain.Mailbox;
-import ucb.voicemail.domain.Message;
-import ucb.voicemail.domain.MessageRepository;
+import ucb.voicemail.domain.boundary.input.DeleteCurrentMessageUseCase;
+import ucb.voicemail.domain.boundary.input.GetLastMessageUseCase;
+import ucb.voicemail.domain.boundary.input.SaveCurrentMessageUseCase;
+import ucb.voicemail.domain.dto.request.DeleteCurrentMessageRequest;
+import ucb.voicemail.domain.dto.request.GetLastMessageRequest;
+import ucb.voicemail.domain.dto.request.SaveCurrentMessageRequest;
+import ucb.voicemail.domain.usecases.DeleteCurrentMessageInteractor;
+import ucb.voicemail.domain.usecases.GetLastMessageInteractor;
+import ucb.voicemail.domain.usecases.SaveCurrentMessageInteractor;
 
 public class MessageMenuState implements ConnectionState {
-
+	
 	@Override
 	public void dial(Connection connection, String key) {
-	    Mailbox currentMailbox = connection.getCurrentMailbox();
-        MessageRepository messageRepository = connection.getMessageRepository();
 	    if (key.equals("1")) {
-            String output = "";
-            Message m = messageRepository.getCurrentMessage(currentMailbox.getId());
-            if (m == null) {
-                output += "No messages." + "\n";
-            }
-            else {
-                output += m.getText() + "\n";
-            }
-            output += connection.getMessageMenuTextPresenter();
-            connection.speakToAll(output);
+	        GetLastMessageUseCase interactor = new GetLastMessageInteractor(
+	            connection.getMessageRepository(),
+	            connection.generateConnectionPresenter()
+	        );
+	        
+            GetLastMessageRequest request = new GetLastMessageRequest();
+        	request.setExt(connection.getMailboxId());
+        	interactor.getLastMessage(request);
         }
         else if (key.equals("2")) {
-            messageRepository.saveCurrentMessage(currentMailbox.getId());
-            connection.speakToAll(connection.getMessageMenuTextPresenter());
+            SaveCurrentMessageUseCase interactor = new SaveCurrentMessageInteractor(
+                connection.getMessageRepository(),
+                connection.generateConnectionPresenter()
+            );
+            
+        	SaveCurrentMessageRequest request = new SaveCurrentMessageRequest();
+        	request.setExt(connection.getMailboxId());
+        	interactor.saveCurrentMessage(request);
         }
         else if (key.equals("3")) {
-            messageRepository.removeCurrentMessage(currentMailbox.getId());
-            connection.speakToAll(connection.getMessageMenuTextPresenter());
+            DeleteCurrentMessageUseCase interactor = new DeleteCurrentMessageInteractor(
+                connection.getMessageRepository(),
+                connection.generateConnectionPresenter()
+            );
+            
+            DeleteCurrentMessageRequest request = new DeleteCurrentMessageRequest();
+        	request.setExt(connection.getMailboxId());
+        	interactor.deleteCurrentMessage(request);
         }
         else if (key.equals("4")) {
-            connection.setConnectionState(new MailboxMenuState());
-            connection.speakToAll(connection.getMailboxMenu());
+            connection.generateConnectionPresenter().displayMailboxMenu();
         }
 	}
 	
@@ -45,6 +58,8 @@ public class MessageMenuState implements ConnectionState {
 	
 	@Override
     public void hangup(Connection connection) {
-        
+	    connection.generateConnectionPresenter().displayInitialPrompt();
+        connection.setAccumulatedKeys("");
+        connection.setCurrentRecording("");
     }
 }

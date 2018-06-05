@@ -2,36 +2,33 @@ package ucb.voicemail.domain.usecases;
 
 import ucb.voicemail.domain.Mailbox;
 import ucb.voicemail.domain.MailboxRepository;
-import ucb.voicemail.domain.dto.LoginMailboxRequest;
-import ucb.voicemail.domain.dto.LoginMailboxResponse;
+import ucb.voicemail.domain.boundary.input.LoginMailboxUseCase;
+import ucb.voicemail.domain.boundary.output.LoginMailboxPresenter;
+import ucb.voicemail.domain.dto.request.LoginMailboxRequest;
+import ucb.voicemail.domain.dto.response.LoginMailboxResponse;
 
-public class LoginMailboxInteractor implements InputBoundary<LoginMailboxRequest, LoginMailboxResponse> {
+public class LoginMailboxInteractor implements LoginMailboxUseCase {
 
 	private MailboxRepository mailboxRepository;
+	private LoginMailboxPresenter output;
 	
-	public LoginMailboxInteractor(MailboxRepository mailboxRepository) {
+	public LoginMailboxInteractor(MailboxRepository mailboxRepository, LoginMailboxPresenter output) {
 		this.mailboxRepository = mailboxRepository;
+		this.output = output;
 	}
 
 	@Override
-	public LoginMailboxResponse handle(LoginMailboxRequest request) {
-		
+	public void loginMailbox(LoginMailboxRequest request) {
 		String ext = request.getExt();
 		String passcode = request.getPasscode();
-		
 		Mailbox mailbox = mailboxRepository.findMailbox(ext);
-		
 		LoginMailboxResponse response = new LoginMailboxResponse();
-		
-		response.setExt(ext);
 		if(mailbox.checkPasscode(passcode)) {
-			response.setStatus(true);
+			output.displayMailboxMenu(response);
 		}
 		else {
-			response.setStatus(false);
+			output.displayLoginFailed();
 		}
-		
-		return response;
 	}
 	
 }

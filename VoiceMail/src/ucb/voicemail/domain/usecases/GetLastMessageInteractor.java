@@ -2,37 +2,34 @@ package ucb.voicemail.domain.usecases;
 
 import ucb.voicemail.domain.Message;
 import ucb.voicemail.domain.MessageRepository;
-import ucb.voicemail.domain.dto.GetLastMessageRequest;
-import ucb.voicemail.domain.dto.GetLastMessageResponse;
+import ucb.voicemail.domain.boundary.input.GetLastMessageUseCase;
+import ucb.voicemail.domain.boundary.output.GetLastMessagePresenter;
+import ucb.voicemail.domain.dto.request.GetLastMessageRequest;
+import ucb.voicemail.domain.dto.response.GetLastMessageResponse;
 
-public class GetLastMessageInteractor implements InputBoundary<GetLastMessageRequest, GetLastMessageResponse> {
+public class GetLastMessageInteractor implements GetLastMessageUseCase {
 
 	private MessageRepository messageRepository;
+	private GetLastMessagePresenter output;
 	
-	public GetLastMessageInteractor(MessageRepository messageRepository) {
+	public GetLastMessageInteractor(MessageRepository messageRepository, GetLastMessagePresenter output) {
 		this.messageRepository = messageRepository;
+		this.output = output;
 	}
 	
 	@Override
-	public GetLastMessageResponse handle(GetLastMessageRequest request) {
-		
-		String ext = request.getExt();
-		
+	public void getLastMessage(GetLastMessageRequest request) {
+	    String ext = request.getExt();
 		Message message = messageRepository.getCurrentMessage(ext);
-		
-		GetLastMessageResponse response = new GetLastMessageResponse();
-		
-		response.setExt(ext);
 		if(message != null) {
-			response.setFounded(true);
+		    GetLastMessageResponse response = new GetLastMessageResponse();
+		    response.setExt(ext);
 			response.setMessage(message.getText());
+			output.presentMessage(response);
 		}
 		else {
-			response.setFounded(false);
-			response.setMessage(null);
+		    output.presentNotFoundMessage();
 		}
-		
-		return response;
 	}
 
 }

@@ -2,20 +2,26 @@ package ucb.voicemail.domain.connection.state;
 
 import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.ConnectionState;
-import ucb.voicemail.domain.Mailbox;
-import ucb.voicemail.domain.MailboxRepository;
+import ucb.voicemail.domain.boundary.input.ChangeGreetingUseCase;
+import ucb.voicemail.domain.dto.request.ChangeGreetingRequest;
+import ucb.voicemail.domain.usecases.ChangeGreetingInteractor;
 
 public class ChangeGreetingState implements ConnectionState {
-
+	
 	@Override
 	public void dial(Connection connection, String key) {
-	    Mailbox currentMailbox = connection.getCurrentMailbox();
         if (key.equals("#")) {
-            MailboxRepository repository = connection.getMailboxRepository();
-            repository.setMailboxGreeting(currentMailbox.getId(), connection.getCurrentRecording());
-            connection.setCurrentRecording("");
-            connection.setConnectionState(new MailboxMenuState());
-            connection.speakToAll(connection.getMailboxMenu());
+            ChangeGreetingUseCase interactor = new ChangeGreetingInteractor(
+                connection.getMailboxRepository(), 
+                connection.generateConnectionPresenter()
+            );
+            
+        	ChangeGreetingRequest request = new ChangeGreetingRequest();
+        	request.setExt(connection.getMailboxId());
+        	request.setGreeting(connection.getCurrentRecording());
+        	interactor.changeGreeting(request);
+        	
+        	connection.setCurrentRecording("");
         }
 	}
 	
@@ -26,6 +32,8 @@ public class ChangeGreetingState implements ConnectionState {
 	
 	@Override
 	public void hangup(Connection connection) {
-	    
+	    connection.generateConnectionPresenter().displayInitialPrompt();
+	    connection.setAccumulatedKeys("");
+        connection.setCurrentRecording("");
 	}
 }

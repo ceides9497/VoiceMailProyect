@@ -9,11 +9,10 @@ import org.junit.Test;
 import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.Mailbox;
 import ucb.voicemail.domain.connection.state.ConnectedState;
-import ucb.voicemail.presenters.InitialPromptPresenter;
+import ucb.voicemail.presentation.graphical.GraphicalTelephone;
+import ucb.voicemail.presentation.graphical.view.MainGraphicalView;
 import ucb.voicemail.repository.mailbox.ArrayMailboxRepository;
 import ucb.voicemail.repository.message.ArrayMessageRepository;
-import ucb.voicemail.view.MainMenu;
-import ucb.voicemail.view.GraphicalTelephone;
 
 public class WindowTest {
 	
@@ -21,15 +20,15 @@ public class WindowTest {
 	private ArrayMailboxRepository mockMailboxRepository;
 	private ArrayMessageRepository mockMessageRepository;
 	private Mailbox mockMailbox;
-	private MainMenu mockMainMenu;
+	private MainGraphicalView mockMainMenu;
 	
 	@Before
 	public void init() {
 		mockMailboxRepository = mock(ArrayMailboxRepository.class);
 		mockMessageRepository = mock(ArrayMessageRepository.class);
-		connection = new Connection(mockMailboxRepository, mockMessageRepository, new ConnectedState(), new InitialPromptPresenter());
+		connection = new Connection(mockMailboxRepository, mockMessageRepository, new ConnectedState());
 		mockMailbox = mock(Mailbox.class);
-		mockMainMenu = mock(MainMenu.class);
+		mockMainMenu = mock(MainGraphicalView.class);
 	}
 	
 	@Test
@@ -42,7 +41,7 @@ public class WindowTest {
 	public void deberiaActualizarElLabelPrincipal() {
 		GraphicalTelephone w = new GraphicalTelephone(mockMainMenu);
 		connection.addUserInterface(w);
-		doNothing().when(mockMainMenu).show();
+		doNothing().when(mockMainMenu).setVisible(true);
 		when(mockMailboxRepository.findMailbox(anyString())).thenReturn(mockMailbox);
 		connection.dial("#");
 	}
@@ -51,7 +50,7 @@ public class WindowTest {
 	public void deberiaEjecutarRun() {
 		GraphicalTelephone w = new GraphicalTelephone(mockMainMenu);
 		connection.addUserInterface(w);
-		doNothing().when(mockMainMenu).show();
+		doNothing().when(mockMainMenu).setVisible(true);
 		w.run(connection);
 	}
 }

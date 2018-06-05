@@ -1,581 +1,897 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="ucb.voicemail.domain.connection.state.ConnectedState" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/domain/connection/state/ConnectedState.java" binary="false" 
+  <class id="1" language="java" name="ucb.voicemail.domain.dto.request.DeleteCurrentMessageRequest" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/dto/request/DeleteCurrentMessageRequest.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1059" y="482"/>    
+    <position height="-1" width="-1" x="11388" y="2160"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="ucb.voicemail.domain.Connection" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/domain/Connection.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="587" width="492" x="2073" y="-74"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="ucb.voicemail.presenters.InitialPromptPresenter" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/presenters/InitialPromptPresenter.java" binary="false" 
+  <class id="2" language="java" name="ucb.voicemail.domain.connection.state.ChangeGreetingState" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/connection/state/ChangeGreetingState.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3195" y="-10"/>    
+    <position height="-1" width="-1" x="10013" y="2272"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="ucb.voicemail.domain.connection.state.MailboxMenuState" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/domain/connection/state/MailboxMenuState.java" binary="false" 
+  <class id="3" language="java" name="ucb.voicemail.domain.usecases.GetLastMessageInteractor" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/usecases/GetLastMessageInteractor.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1062" y="320"/>    
+    <position height="-1" width="-1" x="9496" y="864"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="ucb.voicemail.view.MainMenu" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/view/MainMenu.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2214" y="-522"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <interface id="6" language="java" name="ucb.voicemail.domain.ConnectionState" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/domain/ConnectionState.java" binary="false" 
+  <class id="4" language="java" name="ucb.voicemail.domain.usecases.DeleteCurrentMessageInteractor" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/usecases/DeleteCurrentMessageInteractor.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1826" y="196"/>    
+    <position height="-1" width="-1" x="9559" y="626"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="ucb.voicemail.domain.MailSystemTester" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/MailSystemTester.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="9479" y="1522"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="6" language="java" name="ucb.voicemail.domain.MessageRepository" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/MessageRepository.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10210" y="659"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="7" language="java" name="ucb.voicemail.presenters.MessageMenuTextPresenter" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/presenters/MessageMenuTextPresenter.java" binary="false" 
+  <interface id="7" language="java" name="ucb.voicemail.domain.boundary.input.GetLastMessageUseCase" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/boundary/input/GetLastMessageUseCase.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3196" y="127"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="8" language="java" name="ucb.voicemail.domain.connection.state.ChangeGreetingState" 
-    project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/domain/connection/state/ChangeGreetingState.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1063" y="164"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="9" language="java" name="ucb.voicemail.domain.connection.state.ChangePasscodeState" 
-    project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/domain/connection/state/ChangePasscodeState.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1064" y="12"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <interface id="10" language="java" name="ucb.voicemail.domain.Subject" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/domain/Subject.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2242" y="642"/>    
+    <position height="-1" width="-1" x="9060" y="826"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="11" language="java" name="ucb.voicemail.repository.message.ArrayMessageRepository" 
-    project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/repository/message/ArrayMessageRepository.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1443" y="695"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <interface id="12" language="java" name="ucb.voicemail.domain.MenuPresenter" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/domain/MenuPresenter.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2823" y="284"/>    
+  <interface id="8" language="java" name="ucb.voicemail.domain.Telephone" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/Telephone.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10841" y="87"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="13" language="java" name="ucb.voicemail.domain.MailboxRepository" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/domain/MailboxRepository.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2824" y="631"/>    
+  <interface id="9" language="java" name="ucb.voicemail.domain.ConnectionState" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/ConnectionState.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10611" y="1134"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="14" language="java" name="ucb.voicemail.domain.connection.state.MessageMenuState" 
-    project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/domain/connection/state/MessageMenuState.java" binary="false" 
+  <class id="10" language="java" name="ucb.voicemail.domain.dto.request.GetMailboxGreetingRequest" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/dto/request/GetMailboxGreetingRequest.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1061" y="-136"/>    
+    <position height="-1" width="-1" x="11396" y="1932"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="ucb.voicemail.view.GraphicalTelephone" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/view/GraphicalTelephone.java" binary="false" 
+  <class id="11" language="java" name="ucb.voicemail.domain.dto.response.SaveCurrentMessageResponse" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/dto/response/SaveCurrentMessageResponse.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2460" y="-529"/>    
+    <position height="-1" width="-1" x="11388" y="1765"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="ucb.voicemail.presenters.MailboxMenuPresenter" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/presenters/MailboxMenuPresenter.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3215" y="327"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="17" language="java" name="ucb.voicemail.domain.Message" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/domain/Message.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1080" y="1042"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="18" language="java" name="ucb.voicemail.view.ConsoleTelephone" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/view/ConsoleTelephone.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2735" y="-457"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="19" language="java" name="ucb.voicemail.repository.message.MySqlMessageRepository" 
-    project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/repository/message/MySqlMessageRepository.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1693" y="978"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <interface id="20" language="java" name="ucb.voicemail.domain.MessageRepository" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/domain/MessageRepository.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1913" y="607"/>    
+  <interface id="12" language="java" name="ucb.voicemail.domain.boundary.input.GetMailboxGreetingUseCase" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/domain/boundary/input/GetMailboxGreetingUseCase.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11970" y="958"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="21" language="java" name="ucb.voicemail.domain.Telephone" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/domain/Telephone.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2519" y="-204"/>    
+  <class id="13" language="java" name="ucb.voicemail.domain.connection.state.ConnectedState" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/connection/state/ConnectedState.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="9998" y="2112"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="ucb.voicemail.domain.dto.response.LoginMailboxResponse" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/dto/response/LoginMailboxResponse.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11390" y="2497"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="15" language="java" name="ucb.voicemail.domain.boundary.output.SendMessagePresenter" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/domain/boundary/output/SendMessagePresenter.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="9726" y="1126"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="22" language="java" name="ucb.voicemail.domain.MailSystemTester" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/domain/MailSystemTester.java" binary="false" 
+  <class id="16" language="java" name="ucb.voicemail.domain.usecases.SaveCurrentMessageInteractor" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/usecases/SaveCurrentMessageInteractor.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1811" y="-335"/>    
+    <position height="-1" width="-1" x="9850" y="426"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="ucb.voicemail.repository.mailbox.ArrayMailboxRepository" 
-    project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/repository/mailbox/ArrayMailboxRepository.java" binary="false" 
+  <class id="17" language="java" name="ucb.voicemail.domain.dto.response.GetLastMessageResponse" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/dto/response/GetLastMessageResponse.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2806" y="1011"/>    
+    <position height="-1" width="-1" x="11732" y="1827"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="24" language="java" name="ucb.voicemail.repository.mailbox.MySqlMailboxRepository" 
-    project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/repository/mailbox/MySqlMailboxRepository.java" binary="false" 
+  <class id="18" language="java" name="ucb.voicemail.domain.dto.request.GetLastMessageRequest" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/dto/request/GetLastMessageRequest.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3250" y="979"/>    
+    <position height="-1" width="-1" x="11394" y="2348"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="25" language="java" name="ucb.voicemail.repository.message.MessageQueue" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/repository/message/MessageQueue.java" binary="false" 
+  <class id="19" language="java" name="ucb.voicemail.domain.dto.response.ChangeGreetingResponse" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/dto/response/ChangeGreetingResponse.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1066" y="707"/>    
+    <position height="-1" width="-1" x="11754" y="2276"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="26" language="java" name="ucb.voicemail.domain.connection.state.RecordingState" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/domain/connection/state/RecordingState.java" binary="false" 
+  <interface id="20" language="java" name="ucb.voicemail.domain.boundary.output.SaveCurrentMessagePresenter" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/domain/boundary/output/SaveCurrentMessagePresenter.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="9864" y="256"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="21" language="java" name="ucb.voicemail.domain.dto.request.LoginMailboxRequest" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/dto/request/LoginMailboxRequest.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11748" y="2525"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="ucb.voicemail.domain.connection.state.MailboxMenuState" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/connection/state/MailboxMenuState.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1062" y="-284"/>    
+    <position height="-1" width="-1" x="10007" y="1928"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="27" language="java" name="ucb.voicemail.domain.Mailbox" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/domain/Mailbox.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2484" y="696"/>    
+  <interface id="23" language="java" name="ucb.voicemail.domain.boundary.input.DeleteCurrentMessageUseCase" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/domain/boundary/input/DeleteCurrentMessageUseCase.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="8978" y="538"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
-  </class>  
-  <class id="28" language="java" name="ucb.voicemail.presenters.OptionsList" project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/presenters/OptionsList.java" binary="false" 
+  </interface>  
+  <class id="24" language="java" name="ucb.voicemail.domain.dto.response.GetMailboxGreetingResponse" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/dto/response/GetMailboxGreetingResponse.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3534" y="188"/>    
+    <position height="-1" width="-1" x="10637" y="2678"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="29" language="java" name="ucb.voicemail.repository.message.SQLiteMessageRepository" 
-    project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/repository/message/SQLiteMessageRepository.java" binary="false" 
+  <interface id="25" language="java" name="ucb.voicemail.presentation.presenter.BasicPresenter" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/presentation/presenter/BasicPresenter.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10622" y="2479"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="26" language="java" name="ucb.voicemail.presentation.console.view.ConsoleView" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/presentation/console/view/ConsoleView.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10620" y="2283"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="27" language="java" name="ucb.voicemail.domain.dto.request.ChangeGreetingRequest" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/dto/request/ChangeGreetingRequest.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1984" y="1046"/>    
+    <position height="-1" width="-1" x="10643" y="2093"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="30" language="java" name="ucb.voicemail.repository.mailbox.SQLiteMailboxRepository" 
-    project="VoicemailProject" 
-    file="/VoicemailProject/VoiceMail/src/ucb/voicemail/repository/mailbox/SQLiteMailboxRepository.java" binary="false" 
+  <interface id="28" language="java" name="ucb.voicemail.domain.MailboxRepository" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/MailboxRepository.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11226" y="699"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="29" language="java" name="ucb.voicemail.domain.boundary.output.GetMailboxGreetingPresenter" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/domain/boundary/output/GetMailboxGreetingPresenter.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11828" y="421"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="30" language="java" name="ucb.voicemail.domain.usecases.ChangePasscodeInteractor" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/usecases/ChangePasscodeInteractor.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3308" y="698"/>    
+    <position height="-1" width="-1" x="10879" y="1378"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="31">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="32" name="messageRepository">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="33" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+  <class id="31" language="java" name="ucb.voicemail.domain.connection.state.MessageMenuState" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/connection/state/MessageMenuState.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10024" y="1768"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="ucb.voicemail.domain.dto.request.ChangePasscodeRequest" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/dto/request/ChangePasscodeRequest.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10672" y="1813"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="33" language="java" name="ucb.voicemail.domain.boundary.output.GetLastMessagePresenter" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/domain/boundary/output/GetLastMessagePresenter.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="9321" y="1091"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="34" language="java" name="ucb.voicemail.domain.usecases.ChangeGreetingInteractor" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/usecases/ChangeGreetingInteractor.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11347" y="1376"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="35" language="java" name="ucb.voicemail.domain.boundary.input.SaveCurrentMessageUseCase" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/domain/boundary/input/SaveCurrentMessageUseCase.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="9239" y="400"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="36" language="java" name="ucb.voicemail.domain.usecases.SendMessageInteractor" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/usecases/SendMessageInteractor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10077" y="932"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="37" language="java" name="ucb.voicemail.domain.boundary.output.LoginMailboxPresenter" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/domain/boundary/output/LoginMailboxPresenter.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="12023" y="1321"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="38" language="java" name="ucb.voicemail.domain.dto.request.SaveCurrentMessageRequest" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/dto/request/SaveCurrentMessageRequest.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11394" y="2664"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="ucb.voicemail.domain.dto.request.SendMessageRequest" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/dto/request/SendMessageRequest.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11725" y="2069"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="ucb.voicemail.domain.Connection" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/Connection.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10762" y="700"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="41" language="java" name="ucb.voicemail.domain.boundary.input.ChangeGreetingUseCase" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/domain/boundary/input/ChangeGreetingUseCase.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11434" y="1580"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="42" language="java" name="ucb.voicemail.domain.usecases.LoginMailboxInteractor" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/usecases/LoginMailboxInteractor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11577" y="1126"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="43" language="java" name="ucb.voicemail.domain.boundary.input.LoginMailboxUseCase" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/boundary/input/LoginMailboxUseCase.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11984" y="1158"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="44" language="java" name="ucb.voicemail.domain.Message" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/Message.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10836" y="1131"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="45" language="java" name="ucb.voicemail.domain.boundary.output.ChangePasscodePresenter" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/domain/boundary/output/ChangePasscodePresenter.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11041" y="1588"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="46" language="java" name="ucb.voicemail.domain.boundary.input.SendMessageUseCase" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/boundary/input/SendMessageUseCase.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10167" y="1140"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="47" language="java" name="ucb.voicemail.domain.connection.state.RecordingState" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/connection/state/RecordingState.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10045" y="1592"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="48" language="java" name="ucb.voicemail.domain.boundary.output.ChangeGreetingPresenter" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/domain/boundary/output/ChangeGreetingPresenter.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11863" y="1582"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="49" language="java" name="ucb.voicemail.domain.dto.response.ChangePasscodeResponse" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/dto/response/ChangePasscodeResponse.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11066" y="2607"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="50" language="java" name="ucb.voicemail.domain.dto.response.SendMessageResponse" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/dto/response/SendMessageResponse.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11059" y="2398"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="51" language="java" name="ucb.voicemail.domain.Mailbox" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/Mailbox.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11098" y="2111"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="52" language="java" name="ucb.voicemail.presentation.graphical.view.GraphicalView" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/presentation/graphical/view/GraphicalView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11078" y="1887"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="53" language="java" name="ucb.voicemail.domain.usecases.GetMailboxGreetingInteractor" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/usecases/GetMailboxGreetingInteractor.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11859" y="660"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="54" language="java" name="ucb.voicemail.domain.boundary.input.ChangePasscodeUseCase" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/domain/boundary/input/ChangePasscodeUseCase.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10677" y="1592"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="55" language="java" name="ucb.voicemail.domain.dto.response.DeleteCurrentMessageResponse" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/domain/dto/response/DeleteCurrentMessageResponse.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11079" y="1727"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="56" language="java" name="ucb.voicemail.domain.Subject" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/Subject.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10639" y="341"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="57" language="java" name="ucb.voicemail.domain.boundary.output.DeleteCurrentMessagePresenter" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/domain/boundary/output/DeleteCurrentMessagePresenter.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="8919" y="706"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="58" language="java" name="ucb.voicemail.domain.connection.state.ChangePasscodeState" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/domain/connection/state/ChangePasscodeState.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10034" y="1428"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="59" language="java" name="ucb.voicemail.presentation.tactil.view.TactilChangeGreetingView" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/presentation/tactil/view/TactilChangeGreetingView.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="9808" y="-568"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="60" language="java" name="ucb.voicemail.presentation.tactil.view.TactilInitialPromptView" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/presentation/tactil/view/TactilInitialPromptView.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10152" y="-560"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="61" language="java" name="ucb.voicemail.presentation.tactil.view.TactilMessageView" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/presentation/tactil/view/TactilMessageView.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10411" y="-560"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="62" language="java" name="ucb.voicemail.presentation.tactil.view.TactilMailboxMenuView" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/presentation/tactil/view/TactilMailboxMenuView.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10673" y="-560"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="63" language="java" name="ucb.voicemail.presentation.tactil.view.TactilShowGreetingView" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/presentation/tactil/view/TactilShowGreetingView.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10949" y="-560"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="64" language="java" name="ucb.voicemail.presentation.tactil.view.TactilChangePasscodeView" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/presentation/tactil/view/TactilChangePasscodeView.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11237" y="-560"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="65" language="java" name="ucb.voicemail.presentation.tactil.view.TactilMessageMenuView" 
+    project="VoiceMail" file="/VoiceMail/src/ucb/voicemail/presentation/tactil/view/TactilMessageMenuView.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11526" y="-560"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="66" language="java" name="ucb.voicemail.presentation.console.ConsoleTelephone" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/presentation/console/ConsoleTelephone.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="11598" y="-6"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="67" language="java" name="ucb.voicemail.presentation.graphical.GraphicalTelephone" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/presentation/graphical/GraphicalTelephone.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10388" y="-123"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="68" language="java" name="ucb.voicemail.presentation.tactil.TactilTelephone" project="VoiceMail" 
+    file="/VoiceMail/src/ucb/voicemail/presentation/tactil/TactilTelephone.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="10775" y="-405"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="69">    
+    <end type="SOURCE" refId="53"/>    
+    <end type="TARGET" refId="12"/>  
+  </realization>  
+  <association id="70">    
+    <end type="SOURCE" refId="53" navigable="false">      
+      <attribute id="71" name="mailboxRepository"/>      
+      <multiplicity id="72" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="73">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="74" name="mailboxRepository"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="76">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <association id="77">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="78" name="messageRepository"/>      
+      <multiplicity id="79" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="80">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <realization id="81">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <association id="82">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="83" name="output"/>      
+      <multiplicity id="84" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="57" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="85">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="43"/>  
+  </realization>  
+  <association id="86">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="87" name="mailboxRepository"/>      
+      <multiplicity id="88" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="89">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="54"/>  
+  </realization>  
+  <realization id="90">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="23"/>  
+  </realization>  
+  <association id="91">    
+    <end type="SOURCE" refId="53" navigable="false">      
+      <attribute id="92" name="output"/>      
+      <multiplicity id="93" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="94">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="95" name="messageRepository"/>      
+      <multiplicity id="96" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="97">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <association id="98">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="99" name="output"/>      
+      <multiplicity id="100" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="20" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="34">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="10"/>  
-  </realization>  
-  <association id="35">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="36" name="mainMenu">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="37" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+  <association id="101">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="102" name="output"/>      
+      <multiplicity id="103" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="45" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="38">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="6"/>  
-  </realization>  
-  <association id="39">    
-    <end type="SOURCE" refId="25" navigable="false">      
-      <attribute id="40" name="queue">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="41" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+  <association id="104">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="105" name="connectionState"/>      
+      <multiplicity id="106" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
+    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="42">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="6"/>  
-  </realization>  
-  <realization id="43">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="12"/>  
-  </realization>  
-  <association id="44">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="45" name="mailboxMenuPresenter">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="46" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+  <association id="107">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="108" name="output"/>      
+      <multiplicity id="109" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="37" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="47">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="48" name="mailboxRepository">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="49" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="50">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="51" name="connection">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="52" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="53">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="54" name="messages">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="55" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="25" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="56">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="6"/>  
+  <realization id="110">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="9"/>  
   </realization>  
-  <realization id="57">    
-    <end type="SOURCE" refId="23"/>    
-    <end type="TARGET" refId="13"/>  
-  </realization>  
-  <realization id="58">    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="20"/>  
-  </realization>  
-  <realization id="59">    
-    <end type="SOURCE" refId="26"/>    
-    <end type="TARGET" refId="6"/>  
-  </realization>  
-  <realization id="60">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="21"/>  
-  </realization>  
-  <realization id="61">    
-    <end type="SOURCE" refId="24"/>    
-    <end type="TARGET" refId="13"/>  
-  </realization>  
-  <association id="62">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="63" name="initialState">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="64" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="65">    
-    <end type="SOURCE" refId="29"/>    
-    <end type="TARGET" refId="20"/>  
-  </realization>  
-  <association id="66">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="67" name="connectionState">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="68" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="69">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="70" name="optionsList">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="71" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+  <association id="111">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="112" name="mailboxRepository"/>      
+      <multiplicity id="113" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="28" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="72">    
+  <association id="114">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="115" name="output"/>      
+      <multiplicity id="116" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="117">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="118" name="messageRepository"/>      
+      <multiplicity id="119" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="120">    
+    <end type="SOURCE" refId="58"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <association id="121">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="122" name="messageRepository"/>      
+      <multiplicity id="123" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="124">    
+    <end type="SOURCE" refId="68"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <realization id="125">    
     <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="12"/>  
+    <end type="TARGET" refId="7"/>  
   </realization>  
-  <association id="73">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="74" name="optionsList">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="75" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+  <realization id="126">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="35"/>  
+  </realization>  
+  <realization id="127">    
+    <end type="SOURCE" refId="40"/>    
+    <end type="TARGET" refId="56"/>  
+  </realization>  
+  <association id="128">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="129" name="output"/>      
+      <multiplicity id="130" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="48" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="131">    
+    <end type="SOURCE" refId="66"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <realization id="132">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="41"/>  
+  </realization>  
+  <association id="133">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="134" name="output"/>      
+      <multiplicity id="135" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="136">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="137" name="messageRepository"/>      
+      <multiplicity id="138" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="139">    
+    <end type="SOURCE" refId="67"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <realization id="140">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="46"/>  
+  </realization>  
+  <association id="141">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="142" name="userInterfaces"/>      
+      <multiplicity id="143" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="144">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="145" name="mailboxRepository"/>      
+      <multiplicity id="146" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="28" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="76">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="77" name="currentMailbox">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="78" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="27" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="79">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="80" name="userInterfaces">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="81" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="82">    
-    <end type="SOURCE" refId="30"/>    
-    <end type="TARGET" refId="13"/>  
-  </realization>  
-  <realization id="83">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="20"/>  
-  </realization>  
-  <realization id="84">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="6"/>  
-  </realization>  
-  <association id="85">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="86" name="initialPromptPresenter">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="87" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="88">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="21"/>  
-  </realization>  
-  <realization id="89">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="12"/>  
-  </realization>  
-  <association id="90">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="91" name="connection">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="92" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="93">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="94" name="messageMenuTextPresenter">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="95" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="96">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="6"/>  
-  </realization>  
-  <association id="97">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="98" name="mailboxes">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="99" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="27" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

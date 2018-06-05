@@ -1,29 +1,28 @@
 package ucb.voicemail.domain.usecases;
 
 import ucb.voicemail.domain.MailboxRepository;
-import ucb.voicemail.domain.dto.ChangePasscodeRequest;
-import ucb.voicemail.domain.dto.ChangePasscodeResponse;
+import ucb.voicemail.domain.boundary.input.ChangePasscodeUseCase;
+import ucb.voicemail.domain.boundary.output.ChangePasscodePresenter;
+import ucb.voicemail.domain.dto.request.ChangePasscodeRequest;
+import ucb.voicemail.domain.dto.response.ChangePasscodeResponse;
 
-public class ChangePasscodeInteractor implements InputBoundary<ChangePasscodeRequest, ChangePasscodeResponse> {
+public class ChangePasscodeInteractor implements ChangePasscodeUseCase {
 
 	private MailboxRepository mailboxRepository;
+	private ChangePasscodePresenter output;
 	
-	public ChangePasscodeInteractor(MailboxRepository mailboxRepository) {
+	public ChangePasscodeInteractor(MailboxRepository mailboxRepository, ChangePasscodePresenter output) {
 		this.mailboxRepository = mailboxRepository;
+		this.output = output;
 	}
 	
 	@Override
-	public ChangePasscodeResponse handle(ChangePasscodeRequest request) {
-		
+	public void changePasscode(ChangePasscodeRequest request) {
 		String passcode = request.getPasscode();
 		String ext = request.getExt();
-		
 		mailboxRepository.setMailboxPasscode(ext, passcode);
-		
 		ChangePasscodeResponse response = new ChangePasscodeResponse();
-		response.setStatus(true);
-		
-		return response;
+		output.displayConfirmChangePasscode(response);
 	}
 		
 }

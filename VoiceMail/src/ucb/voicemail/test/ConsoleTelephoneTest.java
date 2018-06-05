@@ -12,7 +12,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import ucb.voicemail.domain.Connection;
-import ucb.voicemail.view.ConsoleTelephone;
+import ucb.voicemail.presentation.console.ConsoleTelephone;
 
 public class ConsoleTelephoneTest {
 	
@@ -46,7 +46,7 @@ public class ConsoleTelephoneTest {
 	public void deberiaMostrarTestRunning() {
 		consoleTelephone = new ConsoleTelephone();
         
-        consoleTelephone.speak("TestRunning");
+        //consoleTelephone.speak("TestRunning");
         
         verify(out).println("TestRunning");
 	}
