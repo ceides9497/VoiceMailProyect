@@ -16,7 +16,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import ucb.voicemail.domain.Connection;
+import ucb.voicemail.presentation.Connection;
 import ucb.voicemail.presentation.graphical.viewmodel.GraphicalViewModel;
 
 public class MainGraphicalView extends JFrame implements GraphicalView {

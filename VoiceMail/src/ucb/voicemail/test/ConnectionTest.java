@@ -7,7 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ucb.voicemail.domain.*;
-import ucb.voicemail.domain.connection.state.ConnectedState;
+import ucb.voicemail.presentation.Connection;
+import ucb.voicemail.presentation.connection.state.ConnectedState;
 import ucb.voicemail.repository.mailbox.ArrayMailboxRepository;
 import ucb.voicemail.repository.message.ArrayMessageRepository;
 

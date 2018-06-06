@@ -1,7 +1,7 @@
-package ucb.voicemail.domain.connection.state;
+package ucb.voicemail.presentation.connection.state;
 
-import ucb.voicemail.domain.Connection;
-import ucb.voicemail.domain.ConnectionState;
+import ucb.voicemail.presentation.Connection;
+import ucb.voicemail.presentation.ConnectionState;
 
 public class MailboxMenuState implements ConnectionState {
 

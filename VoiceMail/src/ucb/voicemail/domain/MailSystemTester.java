@@ -7,7 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-import ucb.voicemail.domain.connection.state.ConnectedState;
+import ucb.voicemail.presentation.Connection;
+import ucb.voicemail.presentation.connection.state.ConnectedState;
 import ucb.voicemail.presentation.console.ConsoleTelephone;
 import ucb.voicemail.presentation.console.presenter.*;
 import ucb.voicemail.presentation.console.view.ConsoleView;

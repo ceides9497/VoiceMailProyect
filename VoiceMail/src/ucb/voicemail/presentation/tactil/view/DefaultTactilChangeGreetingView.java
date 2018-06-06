@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import ucb.voicemail.domain.Connection;
+import ucb.voicemail.presentation.Connection;
 import ucb.voicemail.presentation.tactil.viewmodel.ChangeGreetingViewModel;
 
 public class DefaultTactilChangeGreetingView extends JFrame implements TactilChangeGreetingView {

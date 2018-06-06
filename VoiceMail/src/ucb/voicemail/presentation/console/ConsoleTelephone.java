@@ -3,8 +3,8 @@ package ucb.voicemail.presentation.console;
 import java.util.HashMap;
 import java.util.Scanner;
 
-import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.Telephone;
+import ucb.voicemail.presentation.Connection;
 
 public class ConsoleTelephone implements Telephone {
 

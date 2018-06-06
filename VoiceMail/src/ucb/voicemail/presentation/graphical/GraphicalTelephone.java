@@ -2,8 +2,8 @@ package ucb.voicemail.presentation.graphical;
 
 import java.util.HashMap;
 
-import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.Telephone;
+import ucb.voicemail.presentation.Connection;
 import ucb.voicemail.presentation.graphical.view.MainGraphicalView;
 
 public class GraphicalTelephone implements Telephone {

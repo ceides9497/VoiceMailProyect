@@ -1,13 +1,13 @@
-package ucb.voicemail.domain.connection.state;
+package ucb.voicemail.presentation.connection.state;
 
-import ucb.voicemail.domain.Connection;
-import ucb.voicemail.domain.ConnectionState;
 import ucb.voicemail.domain.boundary.input.LoginMailboxUseCase;
 import ucb.voicemail.domain.boundary.input.SendMessageUseCase;
 import ucb.voicemail.domain.dto.request.LoginMailboxRequest;
 import ucb.voicemail.domain.dto.request.SendMessageRequest;
 import ucb.voicemail.domain.usecases.LoginMailboxInteractor;
 import ucb.voicemail.domain.usecases.SendMessageInteractor;
+import ucb.voicemail.presentation.Connection;
+import ucb.voicemail.presentation.ConnectionState;
 
 public class RecordingState implements ConnectionState {
 	

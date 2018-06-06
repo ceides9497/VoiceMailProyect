@@ -1,10 +1,10 @@
-package ucb.voicemail.domain.connection.state;
+package ucb.voicemail.presentation.connection.state;
 
-import ucb.voicemail.domain.Connection;
-import ucb.voicemail.domain.ConnectionState;
 import ucb.voicemail.domain.boundary.input.ChangePasscodeUseCase;
 import ucb.voicemail.domain.dto.request.ChangePasscodeRequest;
 import ucb.voicemail.domain.usecases.ChangePasscodeInteractor;
+import ucb.voicemail.presentation.Connection;
+import ucb.voicemail.presentation.ConnectionState;
 
 public class ChangePasscodeState implements ConnectionState {
 	

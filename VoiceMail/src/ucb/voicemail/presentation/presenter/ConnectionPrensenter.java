@@ -2,15 +2,8 @@ package ucb.voicemail.presentation.presenter;
 
 import java.util.ArrayList;
 
-import ucb.voicemail.domain.Connection;
 import ucb.voicemail.domain.Telephone;
-
-import ucb.voicemail.domain.connection.state.ChangeGreetingState;
-import ucb.voicemail.domain.connection.state.ChangePasscodeState;
-import ucb.voicemail.domain.connection.state.ConnectedState;
-import ucb.voicemail.domain.connection.state.MailboxMenuState;
-import ucb.voicemail.domain.connection.state.MessageMenuState;
-import ucb.voicemail.domain.connection.state.RecordingState;
+import ucb.voicemail.presentation.connection.state.*;
 import ucb.voicemail.domain.dto.response.ChangeGreetingResponse;
 import ucb.voicemail.domain.dto.response.ChangePasscodeResponse;
 import ucb.voicemail.domain.dto.response.DeleteCurrentMessageResponse;
@@ -19,6 +12,7 @@ import ucb.voicemail.domain.dto.response.GetMailboxGreetingResponse;
 import ucb.voicemail.domain.dto.response.LoginMailboxResponse;
 import ucb.voicemail.domain.dto.response.SaveCurrentMessageResponse;
 import ucb.voicemail.domain.dto.response.SendMessageResponse;
+import ucb.voicemail.presentation.Connection;
 import ucb.voicemail.domain.boundary.output.*;
 
 public class ConnectionPrensenter implements BasicPresenter, ChangeGreetingPresenter, ChangePasscodePresenter,

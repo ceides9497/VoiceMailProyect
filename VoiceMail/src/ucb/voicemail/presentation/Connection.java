@@ -1,8 +1,12 @@
-package ucb.voicemail.domain;
+package ucb.voicemail.presentation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import ucb.voicemail.domain.MailboxRepository;
+import ucb.voicemail.domain.MessageRepository;
+import ucb.voicemail.domain.Subject;
+import ucb.voicemail.domain.Telephone;
 import ucb.voicemail.presentation.presenter.ConnectionPrensenter;
 
 public class Connection implements Subject {

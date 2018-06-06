@@ -1,7 +1,5 @@
-package ucb.voicemail.domain.connection.state;
+package ucb.voicemail.presentation.connection.state;
 
-import ucb.voicemail.domain.Connection;
-import ucb.voicemail.domain.ConnectionState;
 import ucb.voicemail.domain.boundary.input.DeleteCurrentMessageUseCase;
 import ucb.voicemail.domain.boundary.input.GetLastMessageUseCase;
 import ucb.voicemail.domain.boundary.input.SaveCurrentMessageUseCase;
@@ -11,6 +9,8 @@ import ucb.voicemail.domain.dto.request.SaveCurrentMessageRequest;
 import ucb.voicemail.domain.usecases.DeleteCurrentMessageInteractor;
 import ucb.voicemail.domain.usecases.GetLastMessageInteractor;
 import ucb.voicemail.domain.usecases.SaveCurrentMessageInteractor;
+import ucb.voicemail.presentation.Connection;
+import ucb.voicemail.presentation.ConnectionState;
 
 public class MessageMenuState implements ConnectionState {
 	
